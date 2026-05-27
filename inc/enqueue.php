@@ -120,6 +120,22 @@ add_action('wp_enqueue_scripts', function () {
         true
     );
 
+    // Footer section — enqueued unconditionally on every frontend page
+    wp_enqueue_style(
+        'btf-footer-section-styles',
+        lionwood_asset_url('build/css/sections/footer_section.min.css'),
+        ['btf-main-styles'],
+        lionwood_asset_ver('build/css/sections/footer_section.min.css')
+    );
+
+    wp_enqueue_script(
+        'btf-footer-section-scripts',
+        lionwood_asset_url('build/js/sections/footer_section.min.js'),
+        [],
+        lionwood_asset_ver('build/js/sections/footer_section.min.js'),
+        true
+    );
+
 }, 5);
 
 /* -----------------------------------------------------------

@@ -1,0 +1,214 @@
+{
+  "key": "group_footer_section",
+  "title": "Footer",
+  "fields": [
+    {
+      "key": "field_fs_logo",
+      "label": "Logo",
+      "name": "logo",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "thumbnail",
+      "required": 0
+    },
+    {
+      "key": "field_fs_support_text",
+      "label": "Support Text",
+      "name": "support_text",
+      "type": "text",
+      "required": 0
+    },
+    {
+      "key": "field_fs_emails",
+      "label": "Emails",
+      "name": "emails",
+      "type": "repeater",
+      "layout": "block",
+      "min": 0,
+      "max": 0,
+      "required": 0,
+      "sub_fields": [
+        {
+          "key": "field_fs_email_item",
+          "label": "Email",
+          "name": "email",
+          "type": "email",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_fs_menu_columns",
+      "label": "Menu Columns",
+      "name": "menu_columns",
+      "type": "repeater",
+      "layout": "block",
+      "min": 0,
+      "max": 0,
+      "required": 0,
+      "sub_fields": [
+        {
+          "key": "field_fs_mc_title",
+          "label": "Title",
+          "name": "title",
+          "type": "text",
+          "required": 0
+        },
+        {
+          "key": "field_fs_mc_links",
+          "label": "Links",
+          "name": "links",
+          "type": "repeater",
+          "layout": "block",
+          "min": 0,
+          "max": 0,
+          "required": 0,
+          "sub_fields": [
+            {
+              "key": "field_fs_mc_link_item",
+              "label": "Link",
+              "name": "link",
+              "type": "link",
+              "return_format": "array",
+              "required": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "field_fs_partner_logos",
+      "label": "Partner Logos",
+      "name": "partner_logos",
+      "type": "repeater",
+      "layout": "block",
+      "min": 0,
+      "max": 0,
+      "required": 0,
+      "sub_fields": [
+        {
+          "key": "field_fs_pl_logo",
+          "label": "Logo",
+          "name": "logo",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "required": 0
+        },
+        {
+          "key": "field_fs_pl_url",
+          "label": "URL",
+          "name": "url",
+          "type": "link",
+          "return_format": "array",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_fs_offices",
+      "label": "Offices",
+      "name": "offices",
+      "type": "repeater",
+      "layout": "block",
+      "min": 0,
+      "max": 0,
+      "required": 0,
+      "sub_fields": [
+        {
+          "key": "field_fs_off_flag",
+          "label": "Flag",
+          "name": "flag",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "required": 0
+        },
+        {
+          "key": "field_fs_off_name",
+          "label": "Name",
+          "name": "name",
+          "type": "text",
+          "required": 0
+        },
+        {
+          "key": "field_fs_off_address",
+          "label": "Address",
+          "name": "address",
+          "type": "textarea",
+          "rows": 3,
+          "required": 0
+        },
+        {
+          "key": "field_fs_off_phone",
+          "label": "Phone",
+          "name": "phone",
+          "type": "text",
+          "required": 0
+        },
+        {
+          "key": "field_fs_off_learn_more",
+          "label": "Learn More",
+          "name": "learn_more",
+          "type": "link",
+          "return_format": "array",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_fs_social_links",
+      "label": "Social Links",
+      "name": "social_links",
+      "type": "repeater",
+      "layout": "block",
+      "min": 0,
+      "max": 0,
+      "required": 0,
+      "sub_fields": [
+        {
+          "key": "field_fs_sl_link",
+          "label": "Link",
+          "name": "link",
+          "type": "link",
+          "return_format": "array",
+          "required": 0
+        },
+        {
+          "key": "field_fs_sl_icon",
+          "label": "Icon",
+          "name": "icon",
+          "type": "image",
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "required": 0
+        }
+      ]
+    },
+    {
+      "key": "field_fs_copyright",
+      "label": "Copyright",
+      "name": "copyright",
+      "type": "text",
+      "required": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "acf-options-footer"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0
+}
