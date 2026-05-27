@@ -189,23 +189,35 @@ $footer_copyright   = get_field('copyright', 'option');
                     <a
                         class="footer-section__social-btn"
                         href="<?= esc_url($sl['url']); ?>"
-                        <?= $sl['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
+                        target="<?= esc_attr($sl['target'] ?: '_blank'); ?>"
+                        rel="noopener"
                         aria-label="<?= esc_attr($sl['title']); ?>"
                     >
+                        <svg class="footer-section__social-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <g clip-path="url(#clip0_social_arrow)">
+                                <path d="M13.2442 11.5835L13.2266 4.7705L6.41358 4.75282C6.3426 4.74321 6.27039 4.74897 6.20182 4.76969C6.13326 4.79042 6.06995 4.82563 6.01617 4.87296C5.9624 4.92028 5.91943 4.9786 5.89016 5.04397C5.86088 5.10935 5.846 5.18025 5.84651 5.25188C5.84702 5.3235 5.86292 5.39418 5.89312 5.45913C5.92332 5.52408 5.96713 5.58178 6.02157 5.62833C6.07601 5.67488 6.13982 5.70919 6.20867 5.72893C6.27753 5.74868 6.34982 5.7534 6.42065 5.74277L11.526 5.76399L4.76249 12.5275C4.66872 12.6212 4.61604 12.7484 4.61604 12.881C4.61604 13.0136 4.66872 13.1408 4.76249 13.2346C4.85626 13.3283 4.98343 13.381 5.11604 13.381C5.24865 13.381 5.37583 13.3283 5.4696 13.2346L12.2331 6.47109L12.2543 11.5764C12.2548 11.7091 12.3079 11.8361 12.4021 11.9296C12.4962 12.0231 12.6236 12.0754 12.7563 12.0749C12.889 12.0744 13.0161 12.0213 13.1096 11.9271C13.2031 11.833 13.2553 11.7056 13.2548 11.5729L13.2442 11.5835Z" fill="currentColor"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_social_arrow">
+                                    <rect width="18" height="18" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                        <span class="footer-section__social-label">
+                            <?= esc_html($sl['title']); ?>
+                        </span>
+
                         <?php if (!empty($sl_icon['url'])) : ?>
                             <img
                                 class="footer-section__social-icon"
                                 src="<?= esc_url($sl_icon['url']); ?>"
-                                alt=""
+                                alt="<?= esc_attr($sl['title']); ?>"
                                 width="18"
                                 height="18"
-                                aria-hidden="true"
                                 loading="lazy"
                             >
                         <?php endif; ?>
-                        <span class="footer-section__social-label">
-                            <?= esc_html($sl['title']); ?>
-                        </span>
                     </a>
                 <?php endforeach; ?>
             </div>
