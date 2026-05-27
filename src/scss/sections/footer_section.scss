@@ -147,13 +147,13 @@
   &__office {
     flex: 1;
     min-width: 260px;
+    height: 150px;
     background: var(--color-primary);
     border-radius: 20px;
     padding: 16px 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 0;
-    overflow: hidden;
+    justify-content: space-between;
   }
 
   &__office-header {
@@ -163,7 +163,7 @@
     margin-bottom: 13px;
   }
 
-  &__office-flag-wrap {
+  &__office-flag {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -172,69 +172,69 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-  }
 
-  &__office-flag {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      display: block;
+    }
   }
 
   &__office-name {
+    flex: 1;
     font-family: var(--font-primary);
     font-size: var(--font-size-body-2);
     font-weight: 500;
+    line-height: var(--line-height-h4);
     text-transform: uppercase;
     color: var(--color-white);
-    flex: 1;
   }
 
-  &__office-toggle {
-    display: none; // shown only on mobile
-  }
-
-  &__office-address {
-    font-family: var(--font-primary);
-    font-size: var(--font-size-body-3);
-    font-weight: 400;
-    color: var(--color-white);
-    opacity: 0.8;
-    line-height: var(--line-height-body-3);
-    margin: 0 0 10px;
-  }
-
-  &__office-phone {
-    display: inline-block;
-    font-family: var(--font-primary);
-    font-size: var(--font-size-body-3);
-    color: var(--color-white);
-    text-decoration: none;
-    font-weight: 400;
-    transition: opacity var(--transition-fast);
-
-    &:hover { opacity: 0.8; }
-  }
-
-  &__office-learn-more {
-    display: inline-block;
-    margin-top: 12px;
-    border: 1px solid var(--color-white);
-    border-radius: 30px;
+  &__office-learn {
+    display: inline-flex;
+    margin-left: auto;
     padding: 8px 14px;
+    border-radius: 30px;
+    border: 1px solid var(--color-white);
     color: var(--color-white);
     font-family: var(--font-primary);
     font-size: var(--font-size-body-3);
     font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap;
     transition: background var(--transition-fast), color var(--transition-fast);
 
     &:hover {
       background: var(--color-white);
       color: var(--color-primary);
     }
+  }
+
+  &__office-address {
+    flex: 1;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-3);
+    font-weight: 400;
+    line-height: var(--line-height-h4);
+    color: var(--color-white);
+    opacity: 0.8;
+    margin: 0 0 10px;
+  }
+
+  &__office-phone {
+    margin-top: auto;
+    display: inline-block;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-3);
+    font-weight: 500;
+    line-height: var(--line-height-h4);
+    color: var(--color-white);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+
+    &:hover { opacity: 0.8; }
   }
 
   // ── Row 5: Social links ──────────────────────────────────────────────────────
@@ -333,7 +333,7 @@
       gap: 24px;
     }
 
-    // ── Office accordion ────────────────────────────────────────────────────
+    // ── Office cards ─────────────────────────────────────────────────────────
     &__offices {
       flex-direction: column;
       gap: 8px;
@@ -343,39 +343,7 @@
       min-width: 0;
       flex: unset;
       width: 100%;
-    }
-
-    &__office-header {
-      cursor: pointer;
-      user-select: none;
-      margin-bottom: 0;
-    }
-
-    &__office-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
-      flex-shrink: 0;
-
-      &--close { display: none; }
-    }
-
-    &__office-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, margin-top 0.3s ease;
-      margin-top: 0;
-    }
-
-    &__office.is-open {
-      .footer-section__office-body {
-        max-height: 400px;
-        margin-top: 13px;
-      }
-
-      .footer-section__office-toggle--open  { display: none; }
-      .footer-section__office-toggle--close { display: flex; }
+      height: auto;
     }
 
     // ── Social — icon only ──────────────────────────────────────────────────
