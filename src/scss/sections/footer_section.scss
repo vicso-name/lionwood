@@ -153,7 +153,6 @@
     padding: 16px 16px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 
   &__office-header {
@@ -235,6 +234,16 @@
     transition: opacity var(--transition-fast);
 
     &:hover { opacity: 0.8; }
+  }
+
+  &__office-toggle {
+    display: none; // shown only on mobile
+  }
+
+  &__office-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   // ── Row 5: Social links ──────────────────────────────────────────────────────
@@ -333,7 +342,7 @@
       gap: 24px;
     }
 
-    // ── Office cards ─────────────────────────────────────────────────────────
+    // ── Office accordion ────────────────────────────────────────────────────
     &__offices {
       flex-direction: column;
       gap: 8px;
@@ -344,6 +353,39 @@
       flex: unset;
       width: 100%;
       height: auto;
+    }
+
+    &__office-header {
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0;
+    }
+
+    &__office-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      flex-shrink: 0;
+
+      &--close { display: none; }
+    }
+
+    &__office-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, margin-top 0.3s ease;
+      margin-top: 0;
+    }
+
+    &__office.is-open {
+      .footer-section__office-body {
+        max-height: 400px;
+        margin-top: 13px;
+      }
+
+      .footer-section__office-toggle--open  { display: none; }
+      .footer-section__office-toggle--close { display: flex; }
     }
 
     // ── Social — icon only ──────────────────────────────────────────────────

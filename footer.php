@@ -138,18 +138,31 @@ $footer_copyright   = get_field('copyright', 'option');
                                     <?= $office['learn_more']['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
                                 ><?= esc_html($office['learn_more']['title'] ?: 'Learn More'); ?></a>
                             <?php endif; ?>
+
+                            <span class="footer-section__office-toggle footer-section__office-toggle--open" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M1.33317 8L7.99984 8M7.99984 8L14.6665 8M7.99984 8L7.99984 14.6667M7.99984 8L7.99984 1.33333" stroke="#F7F7F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span class="footer-section__office-toggle footer-section__office-toggle--close" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.28578 3.28578L7.99982 7.99982M7.99982 7.99982L12.7139 12.7139M7.99982 7.99982L3.28578 12.7139M7.99982 7.99982L12.7139 3.28578" stroke="#F7F7F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
                         </div><!-- .footer-section__office-header -->
 
-                        <p class="footer-section__office-address">
-                            <?= nl2br(esc_html($office['address'])); ?>
-                        </p>
+                        <div class="footer-section__office-body">
+                            <p class="footer-section__office-address">
+                                <?= nl2br(esc_html($office['address'])); ?>
+                            </p>
 
-                        <?php if (!empty($office['phone'])) : ?>
-                            <a
-                                class="footer-section__office-phone"
-                                href="tel:<?= esc_attr(preg_replace('/[^+\d]/', '', $office['phone'])); ?>"
-                            ><?= esc_html($office['phone']); ?></a>
-                        <?php endif; ?>
+                            <?php if (!empty($office['phone'])) : ?>
+                                <a
+                                    class="footer-section__office-phone"
+                                    href="tel:<?= esc_attr(preg_replace('/[^+\d]/', '', $office['phone'])); ?>"
+                                ><?= esc_html($office['phone']); ?></a>
+                            <?php endif; ?>
+                        </div><!-- .footer-section__office-body -->
 
                     </div><!-- .footer-section__office -->
                 <?php endforeach; ?>
