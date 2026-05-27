@@ -13,7 +13,7 @@
 // =============================================================================
 
 // Remove all emoji scripts and styles — wp_head bloat, not needed for agency sites
-function smplfy_remove_emoji(): void {
+function lionwood_remove_emoji(): void {
     remove_action('wp_head',             'print_emoji_detection_script', 7);
     remove_action('wp_print_styles',     'print_emoji_styles');
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -22,10 +22,10 @@ function smplfy_remove_emoji(): void {
     remove_filter('comment_text_rss',    'wp_staticize_emoji');
     remove_filter('wp_mail',             'wp_staticize_emoji_for_email');
 }
-add_action('init', 'smplfy_remove_emoji');
+add_action('init', 'lionwood_remove_emoji');
 
 // Remove RSS feed links, WP version tag, and oEmbed discovery from <head>
-function smplfy_remove_head_noise(): void {
+function lionwood_remove_head_noise(): void {
     // RSS <link> tags — not needed on most agency builds
     remove_action('wp_head', 'feed_links',       2);
     remove_action('wp_head', 'feed_links_extra', 3);
@@ -36,13 +36,13 @@ function smplfy_remove_head_noise(): void {
     remove_action('wp_head', 'wp_oembed_add_host_js');
     remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
 }
-add_action('init', 'smplfy_remove_head_noise');
+add_action('init', 'lionwood_remove_head_noise');
 
 // Disable XML-RPC — security risk, only needed for WP mobile app or Jetpack
 add_filter('xmlrpc_enabled', '__return_false');
 
 // Remove jQuery Migrate — legacy shim only needed for plugins targeting jQuery < 1.9
-function smplfy_remove_jquery_migrate(WP_Scripts $scripts): void {
+function lionwood_remove_jquery_migrate(WP_Scripts $scripts): void {
     if (!is_admin() && isset($scripts->registered['jquery'])) {
         $scripts->registered['jquery']->deps = array_diff(
             $scripts->registered['jquery']->deps,
@@ -50,20 +50,20 @@ function smplfy_remove_jquery_migrate(WP_Scripts $scripts): void {
         );
     }
 }
-add_action('wp_default_scripts', 'smplfy_remove_jquery_migrate');
+add_action('wp_default_scripts', 'lionwood_remove_jquery_migrate');
 
 // Remove medium_large image size — unnecessary middle size that wastes disk space
-function smplfy_remove_unneeded_image_sizes(array $sizes): array {
+function lionwood_remove_unneeded_image_sizes(array $sizes): array {
     unset($sizes['medium_large']);
     return $sizes;
 }
-add_filter('intermediate_image_sizes_advanced', 'smplfy_remove_unneeded_image_sizes');
+add_filter('intermediate_image_sizes_advanced', 'lionwood_remove_unneeded_image_sizes');
 
 // =============================================================================
 // 2. Theme support
 // =============================================================================
 
-function smplfy_register_theme_support(): void {
+function lionwood_register_theme_support(): void {
     // Let WordPress manage the <title> tag
     add_theme_support('title-tag');
 
@@ -81,22 +81,22 @@ function smplfy_register_theme_support(): void {
 
     // Navigation menus — add or remove locations as needed
     register_nav_menus([
-        'primary' => __('Primary Navigation', 'smplfy'),
-        'footer'  => __('Footer Navigation', 'smplfy'),
+        'primary' => __('Primary Navigation', 'lionwood'),
+        'footer'  => __('Footer Navigation', 'lionwood'),
     ]);
 }
-add_action('after_setup_theme', 'smplfy_register_theme_support');
+add_action('after_setup_theme', 'lionwood_register_theme_support');
 
 // =============================================================================
 // 3. Disable comments
 // =============================================================================
 
 // Remove comments support from posts and pages — delete this block to re-enable
-function smplfy_disable_comment_support(): void {
+function lionwood_disable_comment_support(): void {
     remove_post_type_support('post', 'comments');
     remove_post_type_support('page', 'comments');
 }
-add_action('init', 'smplfy_disable_comment_support');
+add_action('init', 'lionwood_disable_comment_support');
 
 // Force all comments and pings closed — delete this block to re-enable
 add_filter('comments_open',  '__return_false', 20, 2);
@@ -104,26 +104,26 @@ add_filter('pings_open',     '__return_false', 20, 2);
 add_filter('comments_array', '__return_empty_array', 10, 2);
 
 // Remove Comments from admin sidebar — delete this block to re-enable
-function smplfy_remove_comments_menu(): void {
+function lionwood_remove_comments_menu(): void {
     remove_menu_page('edit-comments.php');
 }
-add_action('admin_menu', 'smplfy_remove_comments_menu');
+add_action('admin_menu', 'lionwood_remove_comments_menu');
 
 // Remove Comments node from admin bar — delete this block to re-enable
-function smplfy_remove_comments_admin_bar(WP_Admin_Bar $bar): void {
+function lionwood_remove_comments_admin_bar(WP_Admin_Bar $bar): void {
     $bar->remove_node('comments');
 }
-add_action('admin_bar_menu', 'smplfy_remove_comments_admin_bar', 999);
+add_action('admin_bar_menu', 'lionwood_remove_comments_admin_bar', 999);
 
 // Redirect direct access to the comments admin page — delete this block to re-enable
-function smplfy_redirect_comments_admin(): void {
+function lionwood_redirect_comments_admin(): void {
     global $pagenow;
     if ($pagenow === 'edit-comments.php') {
         wp_redirect(admin_url(), 301);
         exit;
     }
 }
-add_action('admin_init', 'smplfy_redirect_comments_admin');
+add_action('admin_init', 'lionwood_redirect_comments_admin');
 
 // =============================================================================
 // 4. ACF local JSON
@@ -141,9 +141,9 @@ add_filter('acf/settings/load_json', function(array $paths): array {
 });
 
 // Create /acf-json/ directory if missing (fallback for fresh deployments without git)
-$smplfy_acf_dir = get_template_directory() . '/acf-json';
-if (!is_dir($smplfy_acf_dir)) {
-    wp_mkdir_p($smplfy_acf_dir);
+$lionwood_acf_dir = get_template_directory() . '/acf-json';
+if (!is_dir($lionwood_acf_dir)) {
+    wp_mkdir_p($lionwood_acf_dir);
 }
 
 // =============================================================================
@@ -152,14 +152,14 @@ if (!is_dir($smplfy_acf_dir)) {
 
 // Generic error message — prevents revealing whether the username or password was wrong
 add_filter('login_errors', fn(): string =>
-    __('Incorrect credentials. Please try again.', 'smplfy')
+    __('Incorrect credentials. Please try again.', 'lionwood')
 );
 
 // Remove "← Back to {site}" link — avoids hinting at the site URL structure
 add_filter('login_site_html_link', '__return_empty_string');
 
 // Require email address to log in — rejects login attempts using a username
-function smplfy_require_email_login(
+function lionwood_require_email_login(
     WP_User|WP_Error|null $user,
     string $username,
     string $password
@@ -168,9 +168,9 @@ function smplfy_require_email_login(
     if (!is_email($username)) {
         return new WP_Error(
             'email_required',
-            __('Please log in with your email address.', 'smplfy')
+            __('Please log in with your email address.', 'lionwood')
         );
     }
     return $user;
 }
-add_filter('authenticate', 'smplfy_require_email_login', 10, 3);
+add_filter('authenticate', 'lionwood_require_email_login', 10, 3);

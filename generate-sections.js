@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Section Generator — smplfy theme
+ * Section Generator — lionwood theme
  *
  * Usage:
  *   node generate-sections.js <section_name> [--js] [--dry-run]
@@ -18,7 +18,7 @@
  *
  * NOTE on enqueue.php:
  *   inc/enqueue.php does NOT need modification. Per-section CSS/JS is enqueued
- *   automatically by smplfy_enqueue_detected_block_assets() in inc/acf_blocks.php,
+ *   automatically by lionwood_enqueue_detected_block_assets() in inc/acf_blocks.php,
  *   which builds its map dynamically from the $blocks array at runtime.
  */
 
@@ -86,9 +86,9 @@ if (!fs.existsSync(ACF_FILE)) {
 const acfContent = fs.readFileSync(ACF_FILE, 'utf8');
 
 // Derive the PHP function prefix from what's actually in acf_blocks.php so this
-// string stays correct after npm run setup renames smplfy_ to {slug}_
+// string stays correct after npm run setup renames lionwood_ to {slug}_
 const prefixMatch = acfContent.match(/function\s+([a-z][a-z0-9_]*)_enqueue_detected_block_assets/);
-const phpPrefix   = prefixMatch ? prefixMatch[1] + '_' : 'smplfy_';
+const phpPrefix   = prefixMatch ? prefixMatch[1] + '_' : 'lionwood_';
 
 // Check if already registered (active or commented out)
 if (new RegExp(`['"]${sectionName}['"]`).test(acfContent)) {

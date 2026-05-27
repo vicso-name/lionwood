@@ -1,16 +1,16 @@
 <?php
 
 /**
- * smplfy functions and definitions
+ * lionwood functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package smplfy
+ * @package lionwood
 */
 
 define("THEME_URI", get_template_directory_uri());
 define("THEME_DIR", get_template_directory());
-const THEME_NAME = 'smplfy';
+const THEME_NAME = 'lionwood';
 const S_VERSION = "1.0.0";
 
 /**
@@ -20,14 +20,14 @@ const S_VERSION = "1.0.0";
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function smplfy_setup() {
+function lionwood_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on smplfy, use a find and replace
-		* to change 'smplfy' to the name of your theme in all the template files.
+		* If you're building a theme based on lionwood, use a find and replace
+		* to change 'lionwood' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'smplfy', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'lionwood', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -50,7 +50,7 @@ function smplfy_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'smplfy' ),
+			'menu-1' => esc_html__( 'Primary', 'lionwood' ),
 		)
 	);
 
@@ -75,7 +75,7 @@ function smplfy_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'smplfy_custom_background_args',
+			'lionwood_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -98,7 +98,7 @@ function smplfy_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'smplfy_setup' );
+add_action( 'after_setup_theme', 'lionwood_setup' );
 
 
 require_once get_template_directory() . '/inc/enqueue.php';

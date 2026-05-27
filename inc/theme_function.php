@@ -16,7 +16,7 @@ remove_filter('comment_text_rss', 'wp_staticize_emoji');
 remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 add_filter('emoji_svg_url', '__return_false');
 
-function smplfy_nav_active_classes( $classes, $item = null, $args = null ) {
+function lionwood_nav_active_classes( $classes, $item = null, $args = null ) {
     $markers = ['current-menu-item', 'current-menu-parent', 'current_page_item', 'current_page_parent', 'current-menu-ancestor'];
     $has_current = false;
 
@@ -32,27 +32,27 @@ function smplfy_nav_active_classes( $classes, $item = null, $args = null ) {
     }
     return $classes;
 }
-add_filter('nav_menu_css_class', 'smplfy_nav_active_classes', 10, 3);
-add_filter('page_css_class', 'smplfy_nav_active_classes', 10, 3);
+add_filter('nav_menu_css_class', 'lionwood_nav_active_classes', 10, 3);
+add_filter('page_css_class', 'lionwood_nav_active_classes', 10, 3);
 
-function smplfy_attachment_fill_alt_from_title( $response ) {
+function lionwood_attachment_fill_alt_from_title( $response ) {
     if (is_array($response) && empty($response['alt']) && !empty($response['title'])) {
         $response['alt'] = sanitize_text_field( $response['title'] );
     }
     return $response;
 }
-add_filter('wp_prepare_attachment_for_js', 'smplfy_attachment_fill_alt_from_title');
+add_filter('wp_prepare_attachment_for_js', 'lionwood_attachment_fill_alt_from_title');
 add_filter('wpcf7_autop_or_not', '__return_false');
 
-function smplfy_opengraph_namespace( $output ) {
+function lionwood_opengraph_namespace( $output ) {
     if (strpos($output, 'og: http://ogp.me/ns#') === false) {
         $output .= ' prefix="og: http://ogp.me/ns# fb: http://www.facebook.com/2008/fbml"';
     }
     return $output;
 }
-add_filter('language_attributes', 'smplfy_opengraph_namespace');
+add_filter('language_attributes', 'lionwood_opengraph_namespace');
 
-function smplfy_opengraph_meta_tags() {
+function lionwood_opengraph_meta_tags() {
     if (!is_singular()) {
         return;
     }
@@ -114,9 +114,9 @@ function smplfy_opengraph_meta_tags() {
         echo '<meta name="twitter:image" content="' . esc_url( $img_src ) . "\" />\n";
     }
 }
-add_action('wp_head', 'smplfy_opengraph_meta_tags', 5);
+add_action('wp_head', 'lionwood_opengraph_meta_tags', 5);
 
-function smplfy_custom_body_classes( $classes ) {
+function lionwood_custom_body_classes( $classes ) {
     if ((is_archive() || is_author() || is_category() || is_home() || is_tag()) && get_post_type() === 'post') {
         // $classes[] = 'is-blog';
     }
@@ -125,9 +125,9 @@ function smplfy_custom_body_classes( $classes ) {
     }
     return $classes;
 }
-add_filter('body_class', 'smplfy_custom_body_classes');
+add_filter('body_class', 'lionwood_custom_body_classes');
 
-function smplfy_get_template_page_id( $template_name = '' ) {
+function lionwood_get_template_page_id( $template_name = '' ) {
     if (!$template_name) return 0;
 
     $pages = get_posts([
@@ -144,16 +144,16 @@ function smplfy_get_template_page_id( $template_name = '' ) {
     return !empty($pages[0]) ? (int)$pages[0] : 0;
 }
 
-function smplfy_allow_svg_upload_mimes( $mimes ) {
+function lionwood_allow_svg_upload_mimes( $mimes ) {
     if ( current_user_can('manage_options') ) {
         $mimes['svg'] = 'image/svg+xml';
     }
     return $mimes;
 }
-add_filter('upload_mimes', 'smplfy_allow_svg_upload_mimes');
+add_filter('upload_mimes', 'lionwood_allow_svg_upload_mimes');
 
 
-function smplfy_login_logo_css() {
+function lionwood_login_logo_css() {
     $url = get_stylesheet_directory_uri() . '/assets/img/login-logo.jpg';
     echo '<style>
         #login h1 a {
@@ -163,7 +163,7 @@ function smplfy_login_logo_css() {
         }
     </style>';
 }
-add_action('login_head', 'smplfy_login_logo_css');
+add_action('login_head', 'lionwood_login_logo_css');
 add_filter('jpeg_quality', function($arg){ return 100; });
 add_filter('big_image_size_threshold', '__return_false');
 
@@ -205,7 +205,7 @@ add_filter( 'rank_math/frontend/breadcrumb/html', function( $html, $crumbs, $cla
     return ob_get_clean();
 }, 10, 3);
 
-function smplfy_is_blog() {
+function lionwood_is_blog() {
     return ( is_archive() || is_author() || is_category() || is_home() || is_tag() ) && get_post_type() === 'post';
 }
 
@@ -279,9 +279,9 @@ add_action('init', function(){
     } else {
         add_action( 'widgets_init', function () {
             register_sidebar([
-                'name'          => esc_html__( 'Sidebar', 'smplfy' ),
+                'name'          => esc_html__( 'Sidebar', 'lionwood' ),
                 'id'            => 'sidebar-1',
-                'description'   => esc_html__( 'Add widgets here.', 'smplfy' ),
+                'description'   => esc_html__( 'Add widgets here.', 'lionwood' ),
                 'before_widget' => '<section id="%1$s" class="widget %2$s">',
                 'after_widget'  => '</section>',
                 'before_title'  => '<h2 class="widget-title">',

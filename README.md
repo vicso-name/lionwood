@@ -1,4 +1,4 @@
-# smplfy — ACF Gutenberg Theme Boilerplate
+# lionwood — ACF Gutenberg Theme Boilerplate
 
 A WordPress theme boilerplate where every page section is an independently registered ACF Gutenberg block with its own PHP template, SCSS, and JS.
 

@@ -23,15 +23,15 @@ npm run setup
 
 | What | Before (boilerplate) | After (your project) |
 |---|---|---|
-| WordPress Theme Name | `smplfy` (in style.css Theme Name line) | your theme name |
-| PHP function prefix | `smplfy_` | `{slug}_` (underscores) |
-| Text domain / slug | `smplfy` | your slug |
-| npm package name | `butterfly-theme` | your slug |
-| Author | `Smplfy.Development` | your author |
-| Author URI | `https://smplfy.eu/` | your author URI |
-| Theme URI | `https://smplfy.eu/` | your theme URI |
-| Description | `Description` | your description |
-| BrowserSync proxy | `http://localhost/wordpress/` | your local dev URL |
+| WordPress Theme Name | `lionwood` (in style.css Theme Name line) | your theme name |
+| PHP function prefix | `lionwood_` | `{slug}_` (underscores) |
+| Text domain / slug | `lionwood` | your slug |
+| npm package name | `lionwood` | your slug |
+| Author | `Smplfy` | your author |
+| Author URI | `https://lionwood.eu/` | your author URI |
+| Theme URI | `https://lionwood.eu/` | your theme URI |
+| Modern ACF Pro + Gutenberg WordPress theme | `Modern ACF Pro + Gutenberg WordPress theme` | your description |
+| BrowserSync proxy | `http://lionwood.test` | your local dev URL |
 
 ### What setup does NOT touch
 
@@ -41,13 +41,13 @@ npm run setup
 
 ### After setup
 
-`CLAUDE.md` itself is updated by the setup script (all `smplfy` references become the new slug). After setup, this file will reflect the actual project name.
+`CLAUDE.md` itself is updated by the setup script (all `lionwood` references become the new slug). After setup, this file will reflect the actual project name.
 
 ---
 
 ## Project Overview
 
-**Package name:** butterfly-theme (package.json) — but all PHP code uses the name **smplfy** (style.css, functions.php) and some generator comments say **Barvy Theme**. These three names refer to the same project. The canonical WordPress theme name registered in `style.css` is `smplfy`.
+**Package name:** lionwood (package.json) — but all PHP code uses the name **lionwood** (style.css, functions.php) and some generator comments say **Barvy Theme**. These three names refer to the same project. The canonical WordPress theme name registered in `style.css` is `lionwood`.
 
 **Purpose:** A custom WordPress theme built around ACF Gutenberg blocks. Each page section is an independently registered ACF block with its own PHP template, SCSS file, and JS file. Intended for agency-style custom builds.
 
@@ -138,7 +138,7 @@ Butterfly-Theme/
 
 Example: `npm run new-section -- pricing_section`
 
-BrowserSync proxy is hardcoded to `http://localhost/wordpress/` in [gulpfile.js:159](gulpfile.js#L159). Change it there if your local URL differs.
+BrowserSync proxy is hardcoded to `http://lionwood.test` in [gulpfile.js:159](gulpfile.js#L159). Change it there if your local URL differs.
 
 **Production vs development:** `NODE_ENV=production` (set by `npm run build` via `cross-env`) enables terser (JS minification) and cleanCSS (CSS minification). In dev mode output is expanded but not minified.
 
@@ -216,16 +216,16 @@ No imports needed in `style.scss` — section SCSS files compile independently t
 No strict BEM enforcement is visible in the codebase. The `hero_section.php` template uses `.hero` as the block class. General utility classes in `_general.scss` follow a flat pattern (`.grid-flex`, `.grid-item-2`, `.section-first`). Recommendation: use BEM for block-specific styles inside section SCSS files.
 
 ### PHP function prefixes
-All functions across all `inc/` files now use the canonical **`smplfy_`** prefix.
+All functions across all `inc/` files now use the canonical **`lionwood_`** prefix.
 
 | File | Prefix used |
 |---|---|
-| `functions.php` | `smplfy_` |
-| `inc/acf_blocks.php` | `smplfy_` |
-| `inc/enqueue.php` | `smplfy_` |
-| `inc/theme_function.php` | `smplfy_` |
+| `functions.php` | `lionwood_` |
+| `inc/acf_blocks.php` | `lionwood_` |
+| `inc/enqueue.php` | `lionwood_` |
+| `inc/theme_function.php` | `lionwood_` |
 
-For all new functions, use `smplfy_`.
+For all new functions, use `lionwood_`.
 
 ### ACF block names
 Block `name` in `acf_register_block_type` matches the `$blocks` array value exactly (`hero_section`). The block is registered in WordPress as `acf/hero-section` (ACF converts underscores to hyphens). The block category slug is `smlfy`.
@@ -365,7 +365,7 @@ The existing `hero_section.php` is minimal (`<section class="hero"><div class="c
 
 Handled in `inc/enqueue.php` at `wp_enqueue_scripts` priority **5**:
 
-1. **Swiper CSS** — `assets/swiper/swiper-bundle.min.css` (conditional on `smplfy_should_load_swiper()`, which always returns true by default)
+1. **Swiper CSS** — `assets/swiper/swiper-bundle.min.css` (conditional on `lionwood_should_load_swiper()`, which always returns true by default)
 2. **Main CSS** — `build/css/style.min.css` (depends on Swiper CSS if loaded)
 3. **Swiper JS** — `assets/swiper/swiper-bundle.min.js` (footer, conditional)
 4. **Main JS** — `build/js/general.min.js` (footer, depends on Swiper JS if loaded)
@@ -374,7 +374,7 @@ Swiper is loaded from `assets/swiper/` — **these are manually placed vendor fi
 
 To disable Swiper globally:
 ```php
-add_filter('smplfy_load_swiper', '__return_false');
+add_filter('lionwood_load_swiper', '__return_false');
 ```
 
 ### Per-block assets (sections)
@@ -395,7 +395,7 @@ Handled in `inc/acf_blocks.php` at `wp_enqueue_scripts` priority **6** (after gl
 
 ### Asset versioning
 
-`smplfy_asset_ver()` uses `filemtime()` for cache busting — no manual version bumps needed.
+`lionwood_asset_ver()` uses `filemtime()` for cache busting — no manual version bumps needed.
 
 ---
 
@@ -425,7 +425,7 @@ Given `node generate-sections.js pricing_section --js`:
 ### What it does NOT do (by design)
 
 - Does not touch `style.scss` — section SCSS files compile independently via the Gulp glob
-- Does not touch `inc/enqueue.php` — per-section CSS/JS is enqueued automatically by `smplfy_enqueue_detected_block_assets()` which reads `$blocks` at runtime; no manual enqueue entries are needed
+- Does not touch `inc/enqueue.php` — per-section CSS/JS is enqueued automatically by `lionwood_enqueue_detected_block_assets()` which reads `$blocks` at runtime; no manual enqueue entries are needed
 - Does not create ACF field groups — do that in the WordPress admin after running the generator
 
 ### Safety
@@ -489,9 +489,9 @@ When `generate-sections.js` creates a new SCSS file or JS file, lint will run ag
 
 ## Known Issues / Tech Debt
 
-1. **Three theme names in use:** `butterfly-theme` (package.json), `smplfy` (style.css, functions.php), `Barvy Theme` (generate-sections.js comment). The codebase is a renamed/repurposed starter; `smplfy` is the active WordPress theme name.
+1. **Three theme names in use:** `lionwood` (package.json), `lionwood` (style.css, functions.php), `Barvy Theme` (generate-sections.js comment). The codebase is a renamed/repurposed starter; `lionwood` is the active WordPress theme name.
 
-2. ~~**Three PHP function prefixes:**~~ — **FIXED 2026-05-26.** All functions in `inc/acf_blocks.php`, `inc/enqueue.php`, and `inc/theme_function.php` renamed to `smplfy_` prefix. Filter hook names updated (`smplfy_registered_acf_blocks`, `smplfy_load_swiper`). Text domains `'barvy'` and `'lumina'` corrected to `'smplfy'`. `is_blog()` renamed to `smplfy_is_blog()`.
+2. ~~**Three PHP function prefixes:**~~ — **FIXED 2026-05-26.** All functions in `inc/acf_blocks.php`, `inc/enqueue.php`, and `inc/theme_function.php` renamed to `lionwood_` prefix. Filter hook names updated (`lionwood_registered_acf_blocks`, `lionwood_load_swiper`). Text domains `'barvy'` and `'lumina'` corrected to `'lionwood'`. `is_blog()` renamed to `lionwood_is_blog()`.
 
 3. ~~**`getFontWeight` defined twice in gulpfile.js**~~ — **FIXED 2026-05-26.** Duplicate definition removed; single definition kept at gulpfile.js:93.
 
@@ -513,7 +513,7 @@ When `generate-sections.js` creates a new SCSS file or JS file, lint will run ag
 
 12. **`gulp-concat` in devDependencies but not used** in gulpfile.js.
 
-13. **`smplfy_should_load_swiper()` always returns true** — the filter hook exists but no default-false path or conditional logic is implemented.
+13. **`lionwood_should_load_swiper()` always returns true** — the filter hook exists but no default-false path or conditional logic is implemented.
 
 14. ~~**`str_replace('investments_', '', $block_name)`**~~ — **FIXED 2026-05-26.** Legacy no-op removed from block title generation. Title now uses `ucwords(str_replace('_', ' ', $block_name))` directly.
 

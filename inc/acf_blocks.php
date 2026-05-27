@@ -17,8 +17,8 @@
  */
 
 
-add_action('acf/init', 'smplfy_register_acf_blocks');
-function smplfy_register_acf_blocks() {
+add_action('acf/init', 'lionwood_register_acf_blocks');
+function lionwood_register_acf_blocks() {
     $blocks = [
         'hero_section',
         // 'core_benefits',
@@ -44,22 +44,22 @@ function smplfy_register_acf_blocks() {
         ]);
     }
 
-    add_filter('smplfy_registered_acf_blocks', function($list) use ($blocks) {
+    add_filter('lionwood_registered_acf_blocks', function($list) use ($blocks) {
         return array_unique(array_merge($list, $blocks));
     });
 }
 
-add_filter('block_categories_all', 'smplfy_custom_block_category', 10, 2);
-function smplfy_custom_block_category($categories, $post) {
+add_filter('block_categories_all', 'lionwood_custom_block_category', 10, 2);
+function lionwood_custom_block_category($categories, $post) {
     return array_merge($categories, [[
         'slug'  => 'smlfy',
-        'title' => __('SMLFY Blocks', 'smplfy'),
+        'title' => __('SMLFY Blocks', 'lionwood'),
         'icon'  => null,
     ]]);
 }
 
-add_action('wp_enqueue_scripts', 'smplfy_enqueue_detected_block_assets', 6);
-function smplfy_enqueue_detected_block_assets() {
+add_action('wp_enqueue_scripts', 'lionwood_enqueue_detected_block_assets', 6);
+function lionwood_enqueue_detected_block_assets() {
     if (is_admin() || !is_singular()) return;
 
     global $post;
@@ -67,7 +67,7 @@ function smplfy_enqueue_detected_block_assets() {
 
     $theme_uri = get_template_directory_uri();
     $ver       = wp_get_theme()->get('Version');
-    $registered_blocks = apply_filters('smplfy_registered_acf_blocks', []);
+    $registered_blocks = apply_filters('lionwood_registered_acf_blocks', []);
 
     $map = [];
     foreach ($registered_blocks as $slug) {
