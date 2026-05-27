@@ -146,8 +146,7 @@
 
   &__office {
     flex: 1;
-    min-width: 260px;
-    height: 150px;
+    min-width: 0;
     background: var(--color-primary);
     border-radius: 20px;
     padding: 16px 16px 20px;
@@ -191,8 +190,8 @@
   }
 
   &__office-learn {
+    flex-shrink: 0;
     display: inline-flex;
-    margin-left: auto;
     padding: 8px 14px;
     border-radius: 30px;
     border: 1px solid var(--color-white);
@@ -224,7 +223,7 @@
 
   &__office-phone {
     margin-top: auto;
-    display: inline-block;
+    display: block;
     font-family: var(--font-primary);
     font-size: var(--font-size-body-3);
     font-weight: 500;
@@ -238,6 +237,10 @@
 
   &__office-toggle {
     display: none; // shown only on mobile
+  }
+
+  &__office-icon--close {
+    display: none; // swapped in on mobile via .is-open
   }
 
   &__office-body {
@@ -307,6 +310,14 @@
     color: var(--color-text-muted);
   }
 
+  // ── Tablet ≤900px — office cards stack ──────────────────────────────────────
+  @media (max-width: 900px) {
+    &__offices {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
   // ── Mobile ≤768px ─────────────────────────────────────────────────────────────
   @media (max-width: 768px) {
     padding: 40px 16px 32px;
@@ -343,16 +354,9 @@
     }
 
     // ── Office accordion ────────────────────────────────────────────────────
-    &__offices {
-      flex-direction: column;
-      gap: 8px;
-    }
-
     &__office {
-      min-width: 0;
       flex: unset;
       width: 100%;
-      height: auto;
     }
 
     &__office-header {
@@ -363,29 +367,37 @@
 
     &__office-toggle {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
       flex-shrink: 0;
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
 
-      &--close { display: none; }
+    &__office-learn {
+      display: none;
     }
 
     &__office-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, margin-top 0.3s ease;
-      margin-top: 0;
+      transition: max-height 0.35s ease;
     }
 
     &__office.is-open {
       .footer-section__office-body {
-        max-height: 400px;
-        margin-top: 13px;
+        max-height: 300px;
+        padding-top: 12px;
       }
 
-      .footer-section__office-toggle--open  { display: none; }
-      .footer-section__office-toggle--close { display: flex; }
+      .footer-section__office-icon--plus  { display: none; }
+      .footer-section__office-icon--close { display: flex; }
+    }
+
+    &__office:not(.is-open) {
+      .footer-section__office-icon--plus  { display: flex; }
+      .footer-section__office-icon--close { display: none; }
     }
 
     // ── Social — icon only ──────────────────────────────────────────────────
