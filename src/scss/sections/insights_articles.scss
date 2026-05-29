@@ -1,0 +1,283 @@
+// =============================================================================
+// Block: Insights & Articles
+// File : blocks/insights-articles/_insights-articles.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ia-section {
+  background-color: var(--color-background);
+  padding-block: var(--section-padding-y);
+}
+
+.ia-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Two-line heading
+// -----------------------------------------------------------------------------
+
+.ia-section__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-12); // 48px
+
+  // shared type properties
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);      // 56px desktop
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);  // 110%
+  color: var(--color-black);
+}
+
+.ia-section__heading-top {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-h2);
+  opacity: 0.5;
+
+  @media (min-width: 1024px) {
+    padding-left: 115px;
+  }
+}
+
+.ia-section__heading-bottom {
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-h2);
+}
+
+
+// -----------------------------------------------------------------------------
+// Asymmetric grid  [featured (wide)] [card] [card]
+//
+// Columns: ~49% for featured, ~25.5% × 2 for the narrow pair.
+// Gap matches --space-6 (24px) to breathe but stay compact.
+// -----------------------------------------------------------------------------
+
+.ia-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;           // mobile: single column
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);       // space before CTA button
+}
+
+
+// -----------------------------------------------------------------------------
+// Card — base
+// -----------------------------------------------------------------------------
+
+.ia-card {
+  --_radius: 20px;
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  // ── Image wrapper ──────────────────────────────────────────────────────────
+  &__image-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--_radius);
+    background-color: var(--color-background-alt);
+    // aspect ratio on mobile — square-ish works fine for both sizes
+    aspect-ratio: 16 / 10;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;   // slow zoom on hover
+  }
+
+  &__link:hover &__image,
+  &__link:focus-visible &__image {
+    transform: scale(1.05);
+  }
+
+  &__image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background-alt);
+  }
+
+  // ── Category tag ──────────────────────────────────────────────────────────
+  &__tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 4px 14px 5px;
+    border-radius: 28px;
+    background: rgb(255 255 255 / 80%);
+    backdrop-filter: blur(4px);
+
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2);  // 16px
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-body-2); // 140%
+    color: var(--color-black);
+    white-space: nowrap;
+  }
+
+  // ── Text body ─────────────────────────────────────────────────────────────
+  &__body {
+    padding-top: var(--space-4); // 16px gap between image and text
+  }
+
+  &__title {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-h4);       // 21px
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-h4);   // 140%
+    color: var(--color-black);
+    margin: 0 0 var(--space-2);           // 8px bottom margin
+  }
+
+  &__excerpt {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2);   // 16px
+    font-weight: var(--font-weight-regular);
+    line-height: 120%;
+    color: #000;
+    margin: 0;
+    opacity: 0.7;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Card — featured modifier (left wide card)
+// -----------------------------------------------------------------------------
+
+.ia-card--featured {
+  .ia-card__image-wrap {
+    aspect-ratio: 16 / 11; // slightly taller on mobile; overridden on desktop
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// CTA button row
+// -----------------------------------------------------------------------------
+
+.ia-section__cta {
+  display: flex;
+  justify-content: center;
+}
+
+// .btn and .btn--primary are assumed to be global utility classes.
+// Styles below are a local fallback if the global class is not yet available.
+.ia-section__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  border-radius: 100px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-btn-big);   // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-btn);   // 100%
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgb(200 48 48 / 30%);
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// ── Tablet: 2 columns (featured spans full width, pair side-by-side) ─────────
+@media (min-width: 600px) {
+  .ia-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ia-card--featured {
+    grid-column: 1 / -1; // span full width on tablet
+  }
+}
+
+// ── Desktop: asymmetric 3-column layout ──────────────────────────────────────
+@media (min-width: 1024px) {
+  .ia-section__grid {
+    // featured ≈ 49%, two narrow ≈ 25.5% each
+    grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    align-items: start;
+  }
+
+  .ia-card--featured {
+    grid-column: 1;          // first column only
+    grid-row: 1;
+
+    .ia-card__image-wrap {
+      aspect-ratio: unset;
+      height: 340px;          // fixed height matching design (670 × ~340 approx)
+    }
+  }
+
+  // Narrow cards stack in column 2–3 side by side, not stacked vertically
+  // They are siblings so they naturally flow into col 2 and col 3.
+  .ia-card:not(.ia-card--featured) {
+    .ia-card__image-wrap {
+      aspect-ratio: unset;
+      height: 340px;
+    }
+  }
+}
+
+// ── Large desktop: cap container & fine-tune ─────────────────────────────────
+@media (min-width: 1400px) {
+  .ia-section__heading {
+    margin-bottom: var(--space-16); // 64px — more breathing room
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Narrow cards — clamp title to 1 line, excerpt to 2 lines
+// -----------------------------------------------------------------------------
+
+.ia-card:not(.ia-card--featured) {
+  .ia-card__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ia-card__excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

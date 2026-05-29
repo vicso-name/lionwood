@@ -24,6 +24,8 @@ function lionwood_register_acf_blocks() {
         // 'core_benefits',
         // 'call_to_action',
         // ...
+        'insights_articles',
+        'contact_section',
     ];
 
     foreach ($blocks as $block_name) {

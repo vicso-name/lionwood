@@ -1,0 +1,439 @@
+// =============================================================================
+// Block: Contact Section
+// File : blocks/contact-section/_contact-section.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.cs-section {
+  position: relative;
+  background-color: var(--color-primary); // #C83030
+  overflow: hidden;
+  // padding-top / padding-bottom injected via inline style from ACF
+}
+
+.cs-section__inner {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Content block: heading + description
+// Sits ABOVE the stage (normal flow, pushes stage down)
+// -----------------------------------------------------------------------------
+
+.cs-section__content {
+  position: relative;
+  z-index: 2;
+  width: 784px;
+  margin-left: 115px;
+}
+
+.cs-section__heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  margin-right: 68px;
+  text-align: right;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);   // 500
+  line-height: var(--line-height-h2);       // 110%
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+  color: #E9E9E9;
+}
+
+.cs-section__heading-top {
+  opacity: 0.4;
+}
+
+.cs-section__heading-bottom {
+  opacity: 1;
+}
+
+.cs-section__description {
+  width: 296px;
+  margin: 0 0 62px auto; // auto left margin pushes it to the right edge
+  opacity: 0.8;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;                   // Book
+  line-height: 120%;
+  color: #E9E9E9;
+}
+
+
+// -----------------------------------------------------------------------------
+// Stage: fixed-height container that holds grid + form together
+// Grid is absolute background, form is centred on top
+// -----------------------------------------------------------------------------
+
+.cs-section__stage {
+  position: relative;
+  // 8 rows × 93px + 7 × 4px gap = 772px — stage matches grid height
+  height: 772px;
+  overflow: hidden; // clip the wide grid that exceeds container width
+}
+
+
+// -----------------------------------------------------------------------------
+// Decorative grid — hidden on mobile
+// -----------------------------------------------------------------------------
+
+.cs-section__grid-wrap {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 93px);
+  grid-auto-rows: 93px;
+  gap: 4px;
+  // Grid: 14 × 93px + 13 × 4px gap = 1354px wide; 8 × 93px + 7 × 4px = 772px tall
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+.cs-grid__cell {
+  width: 93px;
+  height: 93px;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  opacity: 0.88;
+}
+
+.cs-grid__cell--wide {
+  grid-column: span 2;
+  width: 190px;
+  height: 93px;
+  aspect-ratio: unset;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  opacity: 0.88;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 12px 14px;
+}
+
+.cs-grid__label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;
+  line-height: 120%;
+  color: #E9E9E9;
+}
+
+
+// -----------------------------------------------------------------------------
+// Form wrapper — centred over the stage
+// -----------------------------------------------------------------------------
+
+.cs-section__form-wrap {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+
+  // Mobile: static flow, full width
+  @media (max-width: 1023px) {
+    position: static;
+    transform: none;
+    width: 100%;
+    padding-inline: 0;
+  }
+}
+
+// Form card
+.cs-form {
+  width: 100%;
+  max-width: 620px;
+  border-radius: 20px;
+  background: #E9E9E9; // hardcoded — var(--color-gray-light) may not resolve
+  padding: 40px;
+  box-sizing: border-box;
+
+  @media (min-width: 1024px) {
+    height: 626px;
+    overflow-y: auto;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Form internals — fallback markup + CF7 normalisation
+// -----------------------------------------------------------------------------
+
+.cs-form__fields,
+.wpcf7-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.cs-form__field-group,
+.wpcf7-form p {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+// Inputs & select
+.cs-form__input,
+.cs-form__select,
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form select {
+  display: flex;
+  height: 54px;
+  padding: 16px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: #fff;
+  backdrop-filter: blur(15px);
+  outline: none;
+  appearance: none;
+  box-sizing: border-box;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: 350;
+  line-height: 140%;
+  color: #4B4D51;
+
+  transition: border-color var(--transition-base) ease,
+              box-shadow var(--transition-base) ease;
+
+  &::placeholder {
+    color: #4B4D51;
+    opacity: 0.6;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.15);
+  }
+}
+
+// Form section labels
+.cs-form__label,
+.wpcf7-form .cs-form__label {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+  text-transform: uppercase;
+}
+
+// Custom select wrapper
+.cs-form__select-wrap {
+  position: relative;
+
+  select {
+    padding-right: 48px;
+    cursor: pointer;
+  }
+}
+
+.cs-form__select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition-base) ease;
+}
+
+.cs-form__select-wrap.is-open .cs-form__select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+// Textarea
+.cs-form__textarea,
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: #fff;
+  backdrop-filter: blur(15px);
+  resize: vertical;
+  min-height: 100px;
+  outline: none;
+  box-sizing: border-box;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: 350;
+  line-height: 140%;
+  color: #4B4D51;
+
+  transition: border-color var(--transition-base) ease,
+              box-shadow var(--transition-base) ease;
+
+  &::placeholder {
+    color: #4B4D51;
+    opacity: 0.3;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.15);
+  }
+}
+
+// Footer: terms + submit
+.cs-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto; // push to bottom inside flex column
+  padding-top: 16px;
+}
+
+.cs-form__terms {
+  width: 246px;
+  margin: 0;
+  opacity: 0.6;
+  font-family: Inter, var(--font-primary), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.cs-form__terms-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: solid;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.cs-form__submit,
+.wpcf7-form input[type="submit"] {
+  display: inline-flex;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 30px;
+  background: var(--color-primary);
+  cursor: pointer;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  color: #fff;
+  text-transform: uppercase;
+
+  transition: background-color var(--transition-base) ease,
+              transform 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.35);
+  }
+}
+
+// CF7 validation
+.wpcf7-not-valid-tip {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.wpcf7-response-output {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .cs-section__content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .cs-section__heading {
+    text-align: right;
+    margin-right: 0;
+  }
+
+  .cs-section__description {
+    width: 100%;
+    max-width: 400px;
+    margin-left: 0;
+  }
+
+  .cs-section__stage {
+    height: auto;
+    padding-bottom: 40px;
+  }
+
+  .cs-form {
+    padding: 24px 20px;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .cs-form__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cs-form__terms {
+    width: 100%;
+  }
+}
