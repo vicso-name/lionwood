@@ -1,0 +1,494 @@
+// =============================================================================
+// Block: Testimonials Section
+// File : blocks/testimonials-section/_testimonials-section.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ts-section {
+  background-color: #111319;
+  padding-block: 100px;
+}
+
+.ts-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Header row: title block + Clutch rating
+// -----------------------------------------------------------------------------
+
+.ts-section__header {
+  display: flex;
+  align-items: flex-end;
+  gap: 300px;
+  margin-bottom: 60px;
+}
+
+// ── Title block ───────────────────────────────────────────────────────────────
+.ts-section__title-block {
+  display: flex;
+  flex-direction: column;
+  width: 391px;
+  flex-shrink: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);   // 500
+  line-height: var(--line-height-h2);       // 110%
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+}
+
+.ts-section__title-top {
+  text-align: right;
+  color: #F7F7F7;
+  opacity: 0.4;
+}
+
+.ts-section__title-bottom {
+  text-align: left;
+  color: #fff;
+}
+
+// ── Clutch rating ─────────────────────────────────────────────────────────────
+.ts-section__rating {
+  display: flex;
+  width: 304px;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ts-section__rating-score {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.ts-section__rating-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ts-section__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.ts-section__star {
+  display: flex;
+  align-items: center;
+
+  // Unfilled stars — dim the SVG
+  &:not(.ts-section__star--filled) {
+    opacity: 0.25;
+  }
+}
+
+.ts-section__rating-label {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #fff;
+  opacity: 0.5;
+}
+
+
+// -----------------------------------------------------------------------------
+// Slider wrapper — positions nav outside/below
+// -----------------------------------------------------------------------------
+
+.ts-section__slider-wrap {
+  position: relative;
+}
+
+// ── Swiper overrides ──────────────────────────────────────────────────────────
+.ts-swiper {
+  overflow: visible; // let slides peek out on the right
+  width: 100%;
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    width: 670px;     // fixed card width per design
+    height: auto;
+    flex-shrink: 0;
+  }
+}
+
+// ── Nav buttons — bottom right ────────────────────────────────────────────────
+.ts-section__nav {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.ts-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #fff;
+  cursor: pointer;
+  transition: background-color var(--transition-base) ease,
+              border-color var(--transition-base) ease;
+
+  svg {
+    display: block;
+  }
+
+  path {
+    stroke: #000;
+    transition: stroke var(--transition-base) ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: #f0f0f0;
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  }
+
+  &.swiper-button-disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Testimonial card
+// -----------------------------------------------------------------------------
+
+.ts-card {
+  position: relative;        // accordion panel is absolute inside
+  width: 670px;
+  height: 440px;             // fixed height — accordion overlays, never expands card
+  border-radius: 20px;
+  background: #ededed;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;          // clip accordion when closed
+}
+
+// ── Card header row ───────────────────────────────────────────────────────────
+.ts-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.ts-card__icons {
+  display: flex;
+  flex-shrink: 0;
+
+  // Overlap icons when there are multiple
+  .ts-card__icon + .ts-card__icon {
+    margin-left: -16px;
+  }
+}
+
+.ts-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.ts-card__reviewer {
+  flex: 1;
+  min-width: 0;
+}
+
+.ts-card__name {
+  margin: 0 0 2px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4);         // 21px
+  font-weight: var(--font-weight-medium); // 500
+  line-height: 140%;
+  color: #111319;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ts-card__position {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;                   // Book
+  line-height: 120%;
+  color: #000;
+}
+
+.ts-card__case-link {
+  display: inline-flex;
+  height: 56px;
+  padding: 16px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 69px;
+  border: 1px solid #111319;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  color: #111319;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #111319;
+    color: #fff;
+    outline: none;
+  }
+}
+
+// ── Quote ─────────────────────────────────────────────────────────────────────
+.ts-card__quote {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 90px; // visual space above accordion trigger
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: 350;               // Book
+  font-style: normal;
+  line-height: 140%;
+  color: #111319;
+  opacity: 0.8;
+
+  // Clamp to keep card height consistent
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+// -----------------------------------------------------------------------------
+// About & Results accordion
+// -----------------------------------------------------------------------------
+//
+// Structure: .ts-card__accordion is absolute, pinned to bottom of card.
+// Closed:    only the trigger bar (74px) is visible above the card bottom.
+// Open:      the whole accordion (trigger + body) slides up as one unit,
+//            covering the quote area. The trigger stays at the top of the panel.
+// -----------------------------------------------------------------------------
+
+.ts-card__accordion {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+
+  // The whole block slides up when open
+  // Closed state: translateY(0) — trigger sits at card bottom
+  // Open state:   translateY(-<body-height>) handled by .is-open on the wrapper
+}
+
+.ts-card__accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 74px;
+  padding: 0 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  // Delay re-rounding until after the body finishes closing (0.4s)
+  transition: border-radius 0s 0.4s;
+
+  // When open — square off the bottom corners so body connects seamlessly
+  &[aria-expanded="true"] {
+    border-radius: 14px 14px 0 0;
+    transition: border-radius 0s; // snap immediately on open
+
+    .ts-card__accordion-icon svg {
+      transform: rotate(45deg); // + becomes ×
+    }
+  }
+}
+
+.ts-card__accordion-label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+}
+
+.ts-card__accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ededed;
+  flex-shrink: 0;
+
+  svg {
+    display: block;
+    transition: transform 0.3s ease;
+  }
+}
+
+// Body — hidden below trigger by default via max-height:0 + overflow:hidden
+// This keeps it in the same absolute stacking context as the trigger.
+.ts-card__accordion-body {
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding  0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &[hidden] {
+    display: block !important; // always in DOM — visibility via max-height
+  }
+
+  &.is-open {
+    max-height: 400px; // large enough for any content
+    padding: 20px;
+  }
+}
+
+.ts-card__about-text {
+  width: 345px;
+  margin: 0 0 20px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+}
+
+.ts-card__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ts-card__result-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ts-card__result-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px; // optical alignment with first line of text
+}
+
+.ts-card__result-text {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 150%;
+  color: #111319;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ts-section {
+    padding-block: 60px;
+  }
+
+  .ts-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-6);
+    margin-bottom: 40px;
+  }
+
+  .ts-section__title-block {
+    width: 100%;
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .ts-section__rating {
+    width: 100%;
+  }
+
+  .ts-swiper .swiper-slide {
+    width: min(670px, calc(100vw - 2 * var(--container-padding)));
+  }
+
+  .ts-card {
+    width: 100%;
+    min-height: unset;
+  }
+
+  .ts-card__about-text {
+    width: 100%;
+  }
+
+  .ts-card__case-link {
+    padding: 12px 20px;
+    height: auto;
+  }
+}

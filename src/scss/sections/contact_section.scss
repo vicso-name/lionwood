@@ -428,12 +428,22 @@
     max-width: 100%;
   }
 
-  .cs-form__footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .cs-form__terms {
+    width: 100%;
   }
 
-  .cs-form__terms {
+}
+
+@media (max-width:768px) {
+    .cs-form__footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+  .cs-form__submit,
+  .wpcf7-form input[type="submit"] {
     width: 100%;
   }
 }
