@@ -28,6 +28,7 @@ function lionwood_register_acf_blocks() {
         'contact_section',
         'testimonials',
         'our_awards',
+        'certified',
     ];
 
     foreach ($blocks as $block_name) {

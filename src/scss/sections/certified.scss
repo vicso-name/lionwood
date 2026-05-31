@@ -1,0 +1,218 @@
+// =============================================================================
+// Block: Certified Section
+// File : blocks/certified-section/_certified-section.scss
+// =============================================================================
+
+// Base grid unit — all cells derive from this
+$cert-unit: 81px;
+$cert-gap:  4px;
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.cert-section {
+  background-color: var(--color-background);
+  padding-top:    var(--cert-pt, 80px);
+  padding-bottom: var(--cert-pb, 80px);
+  overflow: hidden;
+}
+
+.cert-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — two-line, width 526px
+// -----------------------------------------------------------------------------
+
+.cert-section__heading {
+  display: flex;
+  flex-direction: column;
+  width: 535px;
+  margin-bottom: 60px;
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);   // 500
+  line-height: var(--line-height-h2);       // 110%
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.cert-section__title-top {
+  opacity: 0.4;
+}
+
+.cert-section__title-bottom {
+  opacity: 1;
+}
+
+
+// -----------------------------------------------------------------------------
+// Grid — shared base
+// -----------------------------------------------------------------------------
+
+.cert-grid {
+  display: grid;
+  gap: $cert-gap;
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop grid — 16 cols × 2 rows
+// Visible ≥ 769px
+// -----------------------------------------------------------------------------
+
+.cert-grid--desktop {
+  display: grid;
+  grid-template-columns: repeat(16, #{$cert-unit});
+  grid-template-rows:    repeat(2,  #{$cert-unit});
+  gap: $cert-gap;
+
+  @media (max-width: 1380px) {
+    display: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Mobile grid — 4 cols × 6 rows
+// Visible < 769px
+// -----------------------------------------------------------------------------
+
+.cert-grid--mobile {
+  display: none; // hidden on desktop
+
+  @media (max-width: 1380px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // fluid — fills container
+    grid-auto-rows: calc((100vw - 2 * var(--container-padding) - 3 * #{$cert-gap}) / 4);
+    gap: $cert-gap;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Cells — shared
+// -----------------------------------------------------------------------------
+
+// ── Small (1×1) ──────────────────────────────────────────────────────────────
+.cert-cell--small {
+  width:  $cert-unit;
+  height: $cert-unit;
+  border-radius: 8px;
+  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  background: var(--color-background);
+
+  // On mobile grid: fluid width
+  @media (max-width: 1380px) {
+    width:  auto;
+    height: auto;
+  }
+}
+
+// ── Large logo (2×2) ─────────────────────────────────────────────────────────
+.cert-cell--large {
+  width:  calc(#{$cert-unit} * 2 + #{$cert-gap});
+  height: calc(#{$cert-unit} * 2 + #{$cert-gap});
+  border-radius: 8px;
+  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  background: var(--color-background);
+  opacity: 0.88;
+
+  // Center logo image within the cell
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    // Landscape logos (wider than tall) fill width; portrait fill height.
+    // object-fit: contain handles both cases automatically.
+  }
+
+  // Mobile: fluid size handled by grid-auto-rows
+  @media (max-width: 1380px) {
+    width:  auto;
+    height: auto;
+    padding: 12px;
+  }
+}
+
+// ── Text rectangle (2×1) ─────────────────────────────────────────────────────
+.cert-cell--rect {
+  width:  calc(#{$cert-unit} * 2 + #{$cert-gap});
+  height: $cert-unit;
+  border-radius: 8px;
+  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  background: var(--color-background);
+  opacity: 0.88;
+
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  @media (max-width: 1380px) {
+    width:  auto;
+    height: auto;
+    min-height: calc((100vw - 2 * var(--container-padding) - 3 * #{$cert-gap}) / 4);
+    padding: 12px;
+    align-items: flex-start;
+  }
+}
+
+.cert-cell__text {
+  margin: 0;
+  width: 133px;
+  font-family: var(--font-primary);
+  font-size: 14px;                    // B3-Regular
+  font-weight: 400;
+  line-height: 120%;
+  color: #848588;                     // var(--Gray)
+
+  @media (max-width: 1380px) {
+    width: 100%;
+  }
+}
+
+
+// =============================================================================
+// Tablet — scale up text cells (769px–1380px, mobile grid is active)
+// =============================================================================
+
+@media (min-width: 769px) and (max-width: 1380px) {
+  .cert-cell__text {
+    width: 100%;
+    font-size: 35px;
+    line-height: 130%;
+  }
+}
+
+// =============================================================================
+// Responsive — heading
+// =============================================================================
+
+@media (max-width: 1380px) {
+  .cert-section {
+    padding-top:    var(--cert-pt-mob, 70px);
+    padding-bottom: var(--cert-pb-mob, 70px);
+  }
+
+  .cert-section__heading {
+    width: 100%;
+    font-size: clamp(32px, 9vw, 56px);
+    margin-bottom: 40px;
+    text-align: left;
+  }
+}
