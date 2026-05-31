@@ -10,6 +10,7 @@
 .ts-section {
   background-color: #111319;
   padding-block: 100px;
+  overflow: hidden; // clip overflowing slider
 }
 
 .ts-section__container {
@@ -30,7 +31,6 @@
   margin-bottom: 60px;
 }
 
-// ── Title block ───────────────────────────────────────────────────────────────
 .ts-section__title-block {
   display: flex;
   flex-direction: column;
@@ -38,10 +38,10 @@
   flex-shrink: 0;
 
   font-family: var(--font-primary);
-  font-size: var(--font-size-h2);           // 56px
-  font-weight: var(--font-weight-medium);   // 500
-  line-height: var(--line-height-h2);       // 110%
-  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
   text-transform: uppercase;
 }
 
@@ -56,7 +56,6 @@
   color: #fff;
 }
 
-// ── Clutch rating ─────────────────────────────────────────────────────────────
 .ts-section__rating {
   display: flex;
   width: 304px;
@@ -67,9 +66,8 @@
 
 .ts-section__rating-score {
   font-family: var(--font-primary);
-  font-size: var(--font-size-h2);           // 56px
+  font-size: var(--font-size-h2);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-h2);
   letter-spacing: var(--letter-spacing-h2);
   text-transform: uppercase;
   color: #fff;
@@ -91,7 +89,6 @@
   display: flex;
   align-items: center;
 
-  // Unfilled stars — dim the SVG
   &:not(.ts-section__star--filled) {
     opacity: 0.25;
   }
@@ -100,7 +97,7 @@
 .ts-section__rating-label {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: var(--font-size-body-2); // 16px
+  font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 140%;
   color: #fff;
@@ -109,16 +106,15 @@
 
 
 // -----------------------------------------------------------------------------
-// Slider wrapper — positions nav outside/below
+// Slider wrapper
 // -----------------------------------------------------------------------------
 
 .ts-section__slider-wrap {
   position: relative;
 }
 
-// ── Swiper overrides ──────────────────────────────────────────────────────────
 .ts-swiper {
-  overflow: visible; // let slides peek out on the right
+  overflow: visible;
   width: 100%;
 
   .swiper-wrapper {
@@ -126,13 +122,12 @@
   }
 
   .swiper-slide {
-    width: 670px;     // fixed card width per design
+    width: 670px;
     height: auto;
     flex-shrink: 0;
   }
 }
 
-// ── Nav buttons — bottom right ────────────────────────────────────────────────
 .ts-section__nav {
   display: flex;
   gap: 12px;
@@ -153,9 +148,7 @@
   transition: background-color var(--transition-base) ease,
               border-color var(--transition-base) ease;
 
-  svg {
-    display: block;
-  }
+  svg { display: block; }
 
   path {
     stroke: #000;
@@ -185,31 +178,32 @@
 // -----------------------------------------------------------------------------
 
 .ts-card {
-  position: relative;        // accordion panel is absolute inside
+  position: relative;
   width: 670px;
-  height: 440px;             // fixed height — accordion overlays, never expands card
+  height: 440px;             // fixed — accordion overlays, never expands card
   border-radius: 20px;
   background: #ededed;
   padding: 30px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: hidden;          // clip accordion when closed
+  overflow: hidden;          // clip accordion body when closed
 }
 
-// ── Card header row ───────────────────────────────────────────────────────────
+// ── Card header ───────────────────────────────────────────────────────────────
 .ts-card__header {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 30px;
+  flex-shrink: 0;
 }
 
 .ts-card__icons {
   display: flex;
   flex-shrink: 0;
+  order: -1; // icons left on desktop
 
-  // Overlap icons when there are multiple
   .ts-card__icon + .ts-card__icon {
     margin-left: -16px;
   }
@@ -238,8 +232,8 @@
 .ts-card__name {
   margin: 0 0 2px;
   font-family: var(--font-primary);
-  font-size: var(--font-size-h4);         // 21px
-  font-weight: var(--font-weight-medium); // 500
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
   line-height: 140%;
   color: #111319;
   white-space: nowrap;
@@ -250,12 +244,13 @@
 .ts-card__position {
   margin: 0;
   font-family: var(--font-primary);
-  font-size: var(--font-size-body-2); // 16px
-  font-weight: 350;                   // Book
+  font-size: var(--font-size-body-2);
+  font-weight: 350;
   line-height: 120%;
   color: #000;
 }
 
+// Case link — absolute top-right on desktop (≥577px)
 .ts-card__case-link {
   display: inline-flex;
   height: 56px;
@@ -279,6 +274,12 @@
   transition: background-color var(--transition-base) ease,
               color var(--transition-base) ease;
 
+  @media (min-width: 577px) {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
   &:hover,
   &:focus-visible {
     background: #111319;
@@ -287,36 +288,34 @@
   }
 }
 
+// ── Quote wrap — fills space above accordion ──────────────────────────────────
+.ts-card__quote-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;                   // fill all available space above accordion
+  padding-bottom: 90px;      // clearance above accordion trigger (74px + 10px offset + gap)
+  justify-content: space-between; // quote top, case-link bottom (mobile only)
+  overflow: hidden;
+}
+
 // ── Quote ─────────────────────────────────────────────────────────────────────
 .ts-card__quote {
   margin: 0;
   padding: 0;
-  padding-bottom: 90px; // visual space above accordion trigger
-
   font-family: var(--font-primary);
-  font-size: var(--font-size-h4); // 21px
-  font-weight: 350;               // Book
+  font-size: var(--font-size-h4);
+  font-weight: 350;
   font-style: normal;
   line-height: 140%;
   color: #111319;
   opacity: 0.8;
-
-  // Clamp to keep card height consistent
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  // Length controlled in PHP via mb_strlen( 283 )
 }
 
 
 // -----------------------------------------------------------------------------
 // About & Results accordion
-// -----------------------------------------------------------------------------
-//
-// Structure: .ts-card__accordion is absolute, pinned to bottom of card.
-// Closed:    only the trigger bar (74px) is visible above the card bottom.
-// Open:      the whole accordion (trigger + body) slides up as one unit,
-//            covering the quote area. The trigger stays at the top of the panel.
+// Absolute, pinned to bottom of card. Body expands upward via max-height.
 // -----------------------------------------------------------------------------
 
 .ts-card__accordion {
@@ -325,10 +324,6 @@
   left: 10px;
   right: 10px;
   z-index: 2;
-
-  // The whole block slides up when open
-  // Closed state: translateY(0) — trigger sits at card bottom
-  // Open state:   translateY(-<body-height>) handled by .is-open on the wrapper
 }
 
 .ts-card__accordion-trigger {
@@ -343,23 +338,20 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  // Delay re-rounding until after the body finishes closing (0.4s)
-  transition: border-radius 0s 0.4s;
+  transition: border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-  // When open — square off the bottom corners so body connects seamlessly
   &[aria-expanded="true"] {
     border-radius: 14px 14px 0 0;
-    transition: border-radius 0s; // snap immediately on open
 
     .ts-card__accordion-icon svg {
-      transform: rotate(45deg); // + becomes ×
+      transform: rotate(45deg);
     }
   }
 }
 
 .ts-card__accordion-label {
   font-family: var(--font-primary);
-  font-size: var(--font-size-h4); // 21px
+  font-size: var(--font-size-h4);
   font-weight: var(--font-weight-medium);
   line-height: 140%;
   color: #111319;
@@ -381,23 +373,21 @@
   }
 }
 
-// Body — hidden below trigger by default via max-height:0 + overflow:hidden
-// This keeps it in the same absolute stacking context as the trigger.
 .ts-card__accordion-body {
   background: #fff;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 14px 14px;
   padding: 0 20px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              padding  0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              padding    0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   &[hidden] {
-    display: block !important; // always in DOM — visibility via max-height
+    display: block !important;
   }
 
   &.is-open {
-    max-height: 400px; // large enough for any content
+    max-height: 400px;
     padding: 20px;
   }
 }
@@ -406,7 +396,7 @@
   width: 345px;
   margin: 0 0 20px;
   font-family: var(--font-primary);
-  font-size: var(--font-size-body-2); // 16px
+  font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 140%;
   color: #111319;
@@ -433,12 +423,12 @@
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  margin-top: 4px; // optical alignment with first line of text
+  margin-top: 4px;
 }
 
 .ts-card__result-text {
   font-family: var(--font-primary);
-  font-size: var(--font-size-body-2); // 16px
+  font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-regular);
   line-height: 150%;
   color: #111319;
@@ -450,7 +440,7 @@
 
 
 // =============================================================================
-// Responsive
+// Responsive ≤ 1023px
 // =============================================================================
 
 @media (max-width: 1023px) {
@@ -463,6 +453,10 @@
     align-items: flex-start;
     gap: var(--space-6);
     margin-bottom: 40px;
+  }
+
+  .ts-section__title-top {
+    text-align: left;
   }
 
   .ts-section__title-block {
@@ -480,15 +474,85 @@
 
   .ts-card {
     width: 100%;
-    min-height: unset;
+    height: 440px;
   }
 
   .ts-card__about-text {
     width: 100%;
   }
+}
 
+
+// =============================================================================
+// Mobile card layout ≤ 576px
+// =============================================================================
+
+@media (max-width: 576px) {
+
+  .ts-swiper .swiper-slide {
+    width: 316px;
+  }
+
+  // Card — fixed height, accordion still absolute inside
+  .ts-card {
+    width: 316px;
+    height: 560px;
+    padding: 8px;
+    border-radius: 24px;
+    overflow: hidden; // keep clipping accordion body
+  }
+
+  // Header: reviewer left, icons right
+  .ts-card__header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 0;
+    padding: 12px 8px 0;
+    flex-shrink: 0;
+  }
+
+  .ts-card__reviewer {
+    flex: 1;
+    min-width: 0;
+  }
+
+  // Reset desktop order — icons stay right (second in DOM)
+  .ts-card__icons {
+    order: 0;
+    flex-shrink: 0;
+  }
+
+  .ts-card__name {
+    white-space: normal;
+  }
+
+  // Quote wrap — column, quote top, case-link pinned to bottom via space-between
+  .ts-card__quote-wrap {
+    flex: 1;
+    padding: 12px 8px 111px; // 90px bottom = clearance above accordion
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .ts-card__quote {
+    display: block;
+    overflow: hidden;
+  }
+
+  // Case link — full width, pinned to bottom of quote-wrap
   .ts-card__case-link {
-    padding: 12px 20px;
-    height: auto;
+    position: static;
+    width: 100%;
+    height: 56px;
+    padding: 16px 30px;
+    margin-top: 0;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .ts-card__about-text {
+    width: 100%;
   }
 }

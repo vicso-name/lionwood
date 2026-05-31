@@ -91,9 +91,15 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 							$case_label  = ! empty( $case_raw['title'] )  ? esc_html( $case_raw['title'] ) : __( 'View Case', 'theme' );
 							$case_target = ! empty( $case_raw['target'] ) ? $case_raw['target']             : '_self';
 
-							// Quote
-							$quote_raw = get_field( 'quote', $post_id );
-							$quote     = $quote_raw ? wp_kses( $quote_raw, [ 'br' => [] ] ) : '';
+							// Quote — trimmed to 283 chars at last word boundary (etalon length)
+							$quote_raw  = get_field( 'quote', $post_id );
+							$quote_text = $quote_raw ? strip_tags( $quote_raw ) : '';
+							if ( mb_strlen( $quote_text ) > 283 ) {
+								$quote_text = mb_substr( $quote_text, 0, 283 );
+								$last_space = mb_strrpos( $quote_text, ' ' );
+								$quote_text = mb_substr( $quote_text, 0, $last_space ) . '…';
+							}
+							$quote = esc_html( $quote_text );
 
 							// About & Results
 							$about_raw = get_field( 'about_description', $post_id );
@@ -107,7 +113,15 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 								<?php /* Card header row */ ?>
 								<div class="ts-card__header">
 
-									<?php /* Icons */ ?>
+									<?php /* Name + position — first in DOM = left on mobile */ ?>
+									<div class="ts-card__reviewer">
+										<p class="ts-card__name"><?php echo $reviewer_name; ?></p>
+										<?php if ( $reviewer_position ) : ?>
+											<p class="ts-card__position"><?php echo $reviewer_position; ?></p>
+										<?php endif; ?>
+									</div>
+
+									<?php /* Icons — second in DOM = right on mobile */ ?>
 									<?php if ( ! empty( $icons ) ) : ?>
 										<div class="ts-card__icons">
 											<?php foreach ( $icons as $icon_item ) :
@@ -127,15 +141,17 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 										</div>
 									<?php endif; ?>
 
-									<?php /* Name + position */ ?>
-									<div class="ts-card__reviewer">
-										<p class="ts-card__name"><?php echo $reviewer_name; ?></p>
-										<?php if ( $reviewer_position ) : ?>
-											<p class="ts-card__position"><?php echo $reviewer_position; ?></p>
-										<?php endif; ?>
-									</div>
+								</div><!-- .ts-card__header -->
 
-									<?php /* Case link */ ?>
+								<?php /* Quote + case link wrapper */ ?>
+								<div class="ts-card__quote-wrap">
+									<?php if ( $quote ) : ?>
+										<blockquote class="ts-card__quote">
+											<?php echo $quote; ?>
+										</blockquote>
+									<?php endif; ?>
+
+									<?php /* Case link — inside wrap on mobile, absolute top-right on desktop */ ?>
 									<?php if ( $case_url ) : ?>
 										<a
 											class="ts-card__case-link"
@@ -146,15 +162,7 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 											<?php echo $case_label; ?>
 										</a>
 									<?php endif; ?>
-
-								</div><!-- .ts-card__header -->
-
-								<?php /* Quote */ ?>
-								<?php if ( $quote ) : ?>
-									<blockquote class="ts-card__quote">
-										<?php echo $quote; ?>
-									</blockquote>
-								<?php endif; ?>
+								</div><!-- .ts-card__quote-wrap -->
 
 								<?php /* About & Results accordion */ ?>
 								<div class="ts-card__accordion">

@@ -1,0 +1,83 @@
+<?php
+/**
+ * Block: Our Awards
+ *
+ * ACF block slug : acf/our-awards
+ * Template file  : blocks/our-awards/our-awards.php
+ *
+ * Technique: pure-CSS infinite marquee.
+ * The item list is duplicated once in HTML — CSS animation translates
+ * the track by exactly -50% (= one copy width) creating a seamless loop.
+ * No JS, no Swiper, no flicker.
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+// ── Fields ───────────────────────────────────────────────────────────────────
+$pt        = absint( get_field( 'padding_top' )        ?: 80 );
+$pb        = absint( get_field( 'padding_bottom' )     ?: 80 );
+$pt_mob    = absint( get_field( 'padding_top_mob' )    ?: 30 );
+$pb_mob    = absint( get_field( 'padding_bottom_mob' ) ?: 30 );
+$speed     = absint( get_field( 'speed' )              ?: 30 );
+$items_raw = get_field( 'items' ) ?: [];
+
+if ( empty( $items_raw ) ) {
+	return; // nothing to render
+}
+
+// Unique ID so multiple instances on the same page don't share CSS vars
+$uid = 'oa-' . uniqid();
+?>
+
+<section
+	class="oa-section"
+	id="<?php echo esc_attr( $uid ); ?>"
+	style="
+		--oa-pt: <?php echo $pt; ?>px;
+		--oa-pb: <?php echo $pb; ?>px;
+		--oa-pt-mob: <?php echo $pt_mob; ?>px;
+		--oa-pb-mob: <?php echo $pb_mob; ?>px;
+		--oa-speed: <?php echo $speed; ?>s;
+	"
+	aria-label="<?php esc_attr_e( 'Our Awards', 'theme' ); ?>"
+>
+	<?php /* Fade masks on left and right edges */ ?>
+	<div class="oa-section__mask oa-section__mask--left"  aria-hidden="true"></div>
+	<div class="oa-section__mask oa-section__mask--right" aria-hidden="true"></div>
+
+	<div class="oa-track" aria-hidden="true">
+		<?php
+		// Render items twice — second copy creates the seamless loop
+		for ( $pass = 0; $pass < 2; $pass++ ) :
+			foreach ( $items_raw as $item ) :
+				$logo     = $item['logo']  ?? null;
+				$text_raw = $item['text']  ?? '';
+				$text     = $text_raw ? wp_kses( $text_raw, [ 'br' => [] ] ) : '';
+				if ( ! $text ) continue;
+			?>
+			<div class="oa-item">
+				<?php if ( $logo ) : ?>
+					<div class="oa-item__logo">
+						<img
+							src="<?php echo esc_url( $logo['url'] ); ?>"
+							alt="<?php echo esc_attr( $logo['alt'] ?: $text_raw ); ?>"
+							width="<?php echo esc_attr( $logo['width'] ); ?>"
+							height="<?php echo esc_attr( $logo['height'] ); ?>"
+							loading="lazy"
+						>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( $text ) : ?>
+					<p class="oa-item__text"><?php echo $text; ?></p>
+				<?php endif; ?>
+			</div>
+
+			<div class="oa-divider" aria-hidden="true"></div>
+
+		<?php
+			endforeach;
+		endfor;
+		?>
+	</div>
+</section>
