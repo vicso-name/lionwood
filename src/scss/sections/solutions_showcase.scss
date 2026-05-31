@@ -1,0 +1,499 @@
+// =============================================================================
+// Block: Solutions Showcase
+// File : blocks/solutions-showcase/_solutions-showcase.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ss-section {
+  background-color: var(--color-background);
+  padding-top:    var(--ss-pt, 80px);
+  padding-bottom: var(--ss-pb, 80px);
+}
+
+.ss-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Top row: heading (right-aligned block) + description (right column)
+// -----------------------------------------------------------------------------
+
+.ss-section__top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-8);
+  margin-bottom: 60px;
+  flex-direction: column;
+}
+
+// Heading block — width 743px, both lines right-aligned
+.ss-section__heading {
+  display: flex;
+  flex-direction: column;
+  width: 920px;
+  flex-shrink: 0;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--color-black);
+}
+
+.ss-section__title-top    { opacity: 0.5; }
+.ss-section__title-bottom { opacity: 1; }
+
+// Description — 325px, right column
+.ss-section__description {
+  width: 325px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);                   // Book
+  line-height: 120%;
+  color: #000;
+  position: relative;
+  transform: translate(240%, 0);
+}
+
+
+// -----------------------------------------------------------------------------
+// Body: left panel + right accordion — 50/50 split
+// -----------------------------------------------------------------------------
+
+.ss-section__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+
+// =============================================================================
+// LEFT PANEL
+// =============================================================================
+
+.ss-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  // Stagger animation handled by JS (.ss-anim classes injected dynamically)
+}
+
+// ── Top row: stat card + image ────────────────────────────────────────────────
+.ss-panel__top {
+  display: grid;
+  grid-template-columns: 334px 1fr;
+  gap: 4px;
+  height: 295px;
+}
+
+// Stat card — red
+.ss-panel__stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 295px;
+  border-radius: 20px;
+  background: var(--color-primary); // #C83030
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.ss-panel__stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ss-panel__stat-value {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.ss-panel__stat-desc {
+  margin: 0;
+  width: 193px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.ss-panel__stat-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+  }
+}
+
+// Image card
+.ss-panel__image {
+  height: 295px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1a2e; // dark fallback
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// ── Includes dark card ────────────────────────────────────────────────────────
+.ss-panel__includes {
+  border-radius: 20px;
+  background: var(--color-black); // #111319
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ss-panel__includes-label {
+  display: inline-flex;
+  padding: 4px 16px 6px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 35px;
+  align-self: flex-start;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.ss-panel__includes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ss-panel__includes-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: #fff;
+}
+
+.ss-panel__includes-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+
+// =============================================================================
+// RIGHT PANEL — Accordion
+// =============================================================================
+
+.ss-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ss-accordion__item {
+  border-radius: 20px;
+  background: #fff;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.is-active {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+}
+
+// Trigger (always visible)
+.ss-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 86px;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.ss-accordion__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.ss-accordion__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #F7F7F7;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+
+  svg { display: block; }
+}
+
+// Rotate arrow when open
+.ss-accordion__trigger[aria-expanded="true"] .ss-accordion__icon {
+  transform: rotate(180deg);
+}
+
+// Body
+.ss-accordion__body {
+  padding: 0 24px 24px;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.ss-accordion__desc {
+  margin: 0 0 20px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+  max-width: 360px;
+  opacity: 0.8;
+}
+
+// CTA row: tagline left + button right
+.ss-accordion__cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.ss-accordion__cta-text {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: var(--color-black);
+  flex: 1;
+}
+
+.ss-accordion__cta-btn {
+  display: inline-flex;
+  height: 46px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 69px;
+  background: var(--color-primary); // #C83030
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// All Services CTA
+// -----------------------------------------------------------------------------
+
+.ss-section__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.ss-section__all-btn {
+  display: inline-flex;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary);
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #fff;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+@media (max-width: 1110px) {
+    .ss-section__description {
+        transform: translate(50%, 0);
+    }
+}
+
+@media (max-width: 1023px) {
+  .ss-section {
+    padding-top:    var(--ss-pt-mob, 80px);
+    padding-bottom: var(--ss-pb-mob, 80px);
+  }
+
+  // Stack heading vertically
+  .ss-section__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .ss-section__heading {
+    width: 100%;
+    font-size: clamp(32px, 8vw, 56px);
+    text-align: left;
+  }
+
+  .ss-section__title-top {
+    text-align: left;
+  }
+
+  .ss-section__description {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  // Stack left panel above accordion
+  .ss-section__body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  // Fluid stat card + image on mobile
+  .ss-panel__top {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  .ss-panel__stat {
+    height: auto;
+    min-height: 160px;
+  }
+
+  .ss-panel__image {
+    height: auto;
+    min-height: 160px;
+  }
+
+  .ss-panel__stat-desc {
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+    .ss-section__description {
+        transform: translate(0, 0);
+    }
+}
+
+@media (max-width: 576px) {
+  .ss-panel__top {
+    grid-template-columns: 1fr 1fr;
+    height: 180px;
+  }
+
+  .ss-panel__stat {
+    height: 180px;
+    padding: 16px;
+  }
+
+  .ss-panel__stat-value {
+    font-size: clamp(32px, 10vw, 56px);
+  }
+
+  .ss-panel__image {
+    height: 180px;
+  }
+
+  .ss-accordion__cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
