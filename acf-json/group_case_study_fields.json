@@ -1,0 +1,131 @@
+{
+    "key": "group_case_study_fields",
+    "title": "Case Study Details",
+    "fields": [
+        {
+            "key": "field_cs2_services_text",
+            "label": "Services",
+            "name": "services_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Comma-separated services, e.g. Discovery, UX\/UI, Web&Mobile Development. Shown under the case title on cards.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Discovery, UX\/UI, Web&Mobile Development",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cs2_stats",
+            "label": "Result Stats",
+            "name": "stats",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Up to 3 result stats shown on the case card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 3,
+            "layout": "block",
+            "button_label": "Add Stat",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_cs2_stat_icon",
+                    "label": "Icon (optional)",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Optional custom icon. 16×16px recommended. Leave empty to use the default chart icon.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_cs2_stats",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_cs2_stat_text",
+                    "label": "Stat Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Use &lt;strong&gt;value&lt;\/strong&gt; for bold part. E.g. &lt;strong&gt;+30%&lt;\/strong&gt; conversion increase in 3 months",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "<strong>+30%<\/strong> conversion increase in 3 months",
+                    "parent_repeater": "field_cs2_stats",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_cs2_cta_link",
+            "label": "CTA Button Link",
+            "name": "cta_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional button shown at the bottom of the case card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case_study"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Sidebar fields for Case Study CPT.",
+    "show_in_rest": 0,
+    "modified": 1780228922
+}

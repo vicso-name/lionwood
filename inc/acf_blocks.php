@@ -30,6 +30,7 @@ function lionwood_register_acf_blocks() {
         'our_awards',
         'certified',
         'solutions_showcase',
+        'our_cases',
     ];
 
     foreach ($blocks as $block_name) {

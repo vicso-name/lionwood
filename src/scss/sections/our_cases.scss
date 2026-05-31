@@ -1,0 +1,322 @@
+// =============================================================================
+// Block: Our Cases
+// File : src/scss/sections/our_cases.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.oc-section {
+  background-color: var(--color-background);
+  padding-top:    var(--oc-pt, 80px);
+  padding-bottom: var(--oc-pb, 80px);
+}
+
+.oc-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Header row: heading (left) + description (right)
+// -----------------------------------------------------------------------------
+
+.oc-section__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(24px, 3vw, 40px);
+  margin-bottom: clamp(40px, 5.5vw, 72px);
+}
+
+// Heading uses flex-basis instead of max-width + flex-shrink:0, so it compresses
+// proportionally alongside the description rather than crushing it to zero first.
+.oc-section__heading {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 486px;
+  min-width: 0;
+  font-family: var(--font-primary);
+  // Fluid: scales between 28px at ~620px viewport and 56px at ~1244px+ —
+  // no media-query override needed for font-size.
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+}
+
+.oc-section__title-top {
+  color: var(--color-text-muted);        // was hardcoded #848588
+  text-align: right;
+  margin-right: clamp(24px, 5%, 65px);  // cascade indent scales with container
+}
+
+.oc-section__title-bottom {
+  color: var(--color-black);
+}
+
+// Description also uses flex-basis so both sides compress together.
+.oc-section__description {
+  flex: 0 1 369px;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+}
+
+
+// -----------------------------------------------------------------------------
+// Cases grid — fully fluid, auto-drops columns based on available space
+// -----------------------------------------------------------------------------
+//
+// repeat(3, 426px) required exactly 1326px — overflowed for any container
+// between 1326px and 1024px (no container padding on desktop).
+// auto-fit + minmax(min(100%, 280px), 1fr) gives:
+//   3 cols  ≥ ~920px container  (desktop + landscape tablet)
+//   2 cols  ~580–920px          (portrait tablet)
+//   1 col   < ~580px            (mobile — also forced explicitly below)
+
+.oc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  // removed: margin-bottom: 60px — was doubling the 60px margin-top on .oc-section__cta
+}
+
+
+// -----------------------------------------------------------------------------
+// Case card
+// -----------------------------------------------------------------------------
+
+.oc-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.oc-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+// ── Image ─────────────────────────────────────────────────────────────────────
+
+// Was width:426px + height:460px + flex-shrink:0 — caused image to overflow
+// any column narrower than 426px (all of tablet range after the breakpoint fired).
+// aspect-ratio maintains the original 426×460 proportion at any column width.
+.oc-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-background-alt);
+  width: 100%;
+  aspect-ratio: 426 / 460;
+}
+
+.oc-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+
+  .oc-card__link:hover &,
+  .oc-card__link:focus-visible & {
+    transform: scale(1.04);
+  }
+}
+
+// Tag badge — top left of image
+.oc-card__tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 14px 5px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(4px);
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+// ── Body ──────────────────────────────────────────────────────────────────────
+
+.oc-card__body {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.oc-card__title {
+  margin: 0 0 4px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.oc-card__services {
+  margin: 0 0 16px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+}
+
+// ── Stats list ────────────────────────────────────────────────────────────────
+
+.oc-card__stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.oc-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.oc-card__stat-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+
+  img {
+    display: block;
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+}
+
+.oc-card__stat-text {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 150%;
+  color: var(--color-black);
+
+  strong {
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// All Cases CTA
+// -----------------------------------------------------------------------------
+
+.oc-section__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.oc-section__all-btn {
+  display: inline-flex;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary);
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// Below 1024px: stack header vertically, switch to mobile padding values.
+// Grid column count is NOT controlled here — auto-fit handles it continuously.
+@media (max-width: 1023px) {
+  .oc-section {
+    padding-top:    var(--oc-pt-mob, 80px);
+    padding-bottom: var(--oc-pb-mob, 80px);
+  }
+
+  .oc-section__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  // Reset flex-basis so the heading stretches to full container width.
+  .oc-section__heading {
+    flex-basis: auto;
+  }
+
+  .oc-section__description {
+    flex-basis: auto;
+  }
+
+  .oc-section__title-top {
+    margin-right: 40px;
+  }
+}
+
+// Mobile: explicitly force single column as a reliable fallback.
+// (auto-fit would also produce 1 column below ~580px container, but
+// an explicit rule here removes any ambiguity.)
+@media (max-width: 576px) {
+  .oc-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .oc-section__title-top {
+    margin-right: 24px;
+  }
+
+  .oc-section__all-btn {
+    width: 100%;
+  }
+
+  .oc-section__cta {
+    margin-top: 50px;
+  }
+}
