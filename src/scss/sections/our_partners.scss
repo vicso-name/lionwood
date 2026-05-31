@@ -1,0 +1,185 @@
+// =============================================================================
+// Block: Our Partners
+// =============================================================================
+
+@keyframes op-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--op-single-w, -50%)); }
+}
+
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.op-section {
+  position: relative;
+  background: var(--color-primary);
+  border-radius: 60px 60px 0 0;
+  overflow: hidden;
+  padding-top:    var(--op-pt, 100px);
+  padding-bottom: 0; // bars sit flush at the bottom edge — no gap below them
+}
+
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.op-marquee-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.op-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+
+  &--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-primary) 0%, transparent 100%);
+  }
+
+  &--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-primary) 0%, transparent 100%);
+  }
+}
+
+.op-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: op-marquee var(--op-speed, 30s) linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Logo item
+// -----------------------------------------------------------------------------
+
+.op-logo {
+  display: flex;
+  // No fixed width — container adapts to each image so the padding alone
+  // defines the gap between any logo edge and the nearest divider.
+  height: 56px;
+  padding: 12px 28px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    max-width: 100px; // caps unusually wide logos
+    max-height: 32px; // 56px container − 2×12px padding
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.op-divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 22px;
+  background: #f7f7f7;
+  opacity: 0.2;
+}
+
+
+// -----------------------------------------------------------------------------
+// Animated bars
+//
+// Phase 1 — Entrance: JS applies CSS transition to scaleX(0 → 1) with stagger.
+// Phase 2 — Scroll:   JS sets inline width (base% → 100%) via rAF, no transition.
+//
+// Layout: flex column, centered. Bars 6 & 7 are 100% wide with no gap between
+// them so they form one continuous white block that blends into the next section.
+// -----------------------------------------------------------------------------
+
+.op-bars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // Space between the marquee and the bar cluster.
+  // ACF padding_bottom controls this gap (repurposed from section bottom padding).
+  margin-top: var(--op-pb, 80px);
+}
+
+.op-bar {
+  display: block;
+  background: #f7f7f7;
+  will-change: width;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+// Desktop: heights and base widths from Figma spec (1440px canvas).
+// Widths are also set via data-base on each <span>; the CSS values here are
+// the visual starting point that JS reads via getComputedStyle at init.
+.op-bar:nth-child(1) { width: 51.8%; height: 2px;   }
+.op-bar:nth-child(2) { width: 70.1%; height: 4px;   }
+.op-bar:nth-child(3) { width: 83.2%; height: 6px;   }
+.op-bar:nth-child(4) { width: 92.6%; height: 8px;   }
+.op-bar:nth-child(5) { width: 97.9%; height: 40px;  }
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 768px) {
+  .op-section {
+    border-radius: 30px 30px 0 0;
+  }
+
+  .op-mask {
+    width: 40px;
+  }
+
+  .op-logo {
+    height: 44px;
+    padding: 8px 20px;
+
+    img {
+      max-width: 80px;
+      max-height: 28px; // 44px − 2×8px
+    }
+  }
+
+  .op-bars {
+    margin-top: var(--op-pb-mob, 48px);
+  }
+
+  // Proportionally wider on mobile — narrower viewport makes thin bars near-invisible
+  .op-bar:nth-child(1) { width: 60%;  height: 1px;  }
+  .op-bar:nth-child(2) { width: 75%;  height: 2px;  }
+  .op-bar:nth-child(3) { width: 87%;  height: 3px;  }
+  .op-bar:nth-child(4) { width: 95%;  height: 5px;  }
+  .op-bar:nth-child(5) { width: 99%;  height: 24px; }
+}
