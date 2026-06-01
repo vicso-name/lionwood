@@ -1,0 +1,304 @@
+// =============================================================================
+// Block: Solutions Section
+// File : blocks/solutions-section/_solutions-section.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.sol-section {
+  background-color: var(--color-background);
+  padding-top:    var(--sol-pt, 100px);
+  padding-bottom: var(--sol-pb, 100px);
+}
+
+.sol-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Two-column body
+// Left: 478px | gap: 260px | Right: 463px
+// -----------------------------------------------------------------------------
+
+.sol-section__body {
+  display: flex;
+  align-items: flex-start;
+  gap: 260px;
+}
+
+// Left column — sticky so it stays in view while right column scrolls
+.sol-col--left {
+  width: 478px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px; // offset from viewport top when sticky
+}
+
+// Right column — relative so decorative line is positioned within it
+.sol-col--right {
+  position: relative;
+  width: 463px;
+  flex-shrink: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Vertical decorative line — center of right column
+// z-index: 0 so it sits behind the cards (cards get z-index: 1)
+// top/bottom use negative values to escape column padding and reach section edges
+// -----------------------------------------------------------------------------
+
+.sol-col__line {
+  position: absolute;
+  // Escape the section padding to touch top and bottom edges
+  top: calc(-1 * var(--sol-pt, 100px));
+  bottom: calc(-1 * var(--sol-pb, 100px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  background: #000;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0; // behind cards
+}
+
+
+// -----------------------------------------------------------------------------
+// Left column content
+// -----------------------------------------------------------------------------
+
+// Heading block — max-width 414px
+.sol-heading {
+  display: flex;
+  flex-direction: column;
+  max-width: 414px;
+  margin-bottom: 40px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.sol-heading__top {
+  opacity: 0.4;
+  text-align: right;
+}
+
+.sol-heading__bottom {
+  opacity: 1;
+}
+
+// Outer wrap — use to push sol-content-wrap right via justify-content or padding-left
+.sol-content-outer {
+  display: flex;
+  justify-content: flex-end; // push content-wrap to the right by default
+}
+
+// Content wrap: description + CTA
+.sol-content-wrap {
+  width: 360px;
+}
+
+// Description
+.sol-description {
+  margin-bottom: 30px;
+
+  p, li {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-regular);
+    line-height: 120%;
+    color: #000;
+  }
+}
+
+// CTA block
+.sol-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.sol-cta__text {
+  margin: 0 0 12px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #000;
+}
+
+.sol-cta__btn {
+  display: flex;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary); // #C83030
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column — solution cards
+// -----------------------------------------------------------------------------
+
+.sol-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sol-card {
+  position: relative;
+  z-index: 1; // above the decorative line
+  width: 463px;
+  min-height: 236px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #EDEDED;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.sol-card__icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 50px;
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+}
+
+.sol-card__title {
+  margin: 0 0 8px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.sol-card__desc {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+  opacity: 0.8;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .sol-section__body {
+    gap: 60px;
+    justify-content: space-around;
+  }
+
+  .sol-heading__top{
+    text-align: left;
+  }
+
+  .sol-col--left {
+    width: 380px;
+  }
+
+  .sol-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sol-section {
+    padding-top:    var(--sol-pt-mob, 70px);
+    padding-bottom: var(--sol-pb-mob, 70px);
+  }
+
+  .sol-section__body {
+    flex-direction: column;
+    gap: 110px;
+  }
+
+  .sol-col--left {
+    width: 100%;
+    position: static; // no sticky on mobile
+  }
+
+  .sol-content-outer {
+    justify-content: flex-start;
+  }
+
+  .sol-content-wrap {
+    width: 100%;
+  }
+
+  .sol-col--right {
+    width: 100%;
+  }
+
+  .sol-heading {
+    max-width: fit-content;
+    font-size: clamp(32px, 8vw, 56px);
+  }
+  .sol-heading__top{
+    text-align: right;
+  }
+  .sol-card {
+    width: 100%;
+    min-height: unset;
+  }
+
+  .sol-card__icon {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sol-col__line {
+    top: calc(-75px);
+    bottom: calc(-75px);
+  }
+}
+
+@media (max-width: 576px) {
+  .sol-cards {
+    gap: 20px;
+  }
+}
