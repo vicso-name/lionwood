@@ -34,6 +34,7 @@ function lionwood_register_acf_blocks() {
         'our_partners',
         'industries_section',
         'solutions_section',
+        'get_started',
     ];
 
     foreach ($blocks as $block_name) {
