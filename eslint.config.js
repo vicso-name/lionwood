@@ -17,6 +17,8 @@ module.exports = [
                 MutationObserver: 'readonly',
                 DOMParser: 'readonly',
                 requestAnimationFrame: 'readonly',
+                setTimeout: 'readonly',
+                clearTimeout: 'readonly',
             },
         },
         rules: {

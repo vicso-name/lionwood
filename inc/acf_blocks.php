@@ -37,6 +37,8 @@ function lionwood_register_acf_blocks() {
         'get_started',
         'value_section',
         'map_section',
+        'technologies_section',
+        'home_hero',
     ];
 
     foreach ($blocks as $block_name) {

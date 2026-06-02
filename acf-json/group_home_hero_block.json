@@ -1,0 +1,207 @@
+{
+    "key": "group_home_hero_block",
+    "title": "Home Hero",
+    "fields": [
+        {
+            "key": "field_hh_title_line1_start",
+            "label": "Title Line 1 — Start Word",
+            "name": "title_line1_start",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First word on line 1, left-aligned. e.g. 'FIND'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Find",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hh_title_line1_end",
+            "label": "Title Line 1 — End Word",
+            "name": "title_line1_end",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Last word on line 1, right-aligned. e.g. 'PERFECT'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Perfect",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hh_title_line2",
+            "label": "Title Line 2",
+            "name": "title_line2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line of the heading. e.g. 'Software For'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Software For",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hh_industries",
+            "label": "Typed Industries",
+            "name": "industries",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Industries that cycle in the animated third line.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Industry",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_hh_industry_name",
+                    "label": "Industry Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. Manufacturing",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_hh_industries",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_hh_industry_image",
+                    "label": "Industry Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Industry image shown in the circle. 96×96px recommended.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_hh_industries",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                }
+            ]
+        },
+        {
+            "key": "field_hh_description",
+            "label": "Description",
+            "name": "description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short description text below the heading. Width ~410px.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": "br",
+            "default_value": "We help companies create new digital products and improve existing ones — reducing risks, accelerating time to market, and increasing revenue.",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_hh_cta_estimate",
+            "label": "Get Estimate — Link",
+            "name": "cta_estimate",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary CTA button link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_hh_cta_meeting",
+            "label": "Book a Meeting — Link",
+            "name": "cta_meeting",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary CTA — this button becomes sticky on scroll.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/home-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Home hero with animated typed heading, two CTAs and sticky Book a Meeting button.",
+    "show_in_rest": 0,
+    "modified": 1780411890
+}

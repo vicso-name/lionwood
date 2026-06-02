@@ -1,0 +1,289 @@
+// =============================================================================
+// Block: Technologies Section
+// File : blocks/technologies-section/_technologies-section.scss
+// =============================================================================
+
+@keyframes ts2-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ts2-cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ts2-section {
+  background: var(--color-primary); // #C83030
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  padding-top:    var(--ts2-pt, 100px);
+  padding-bottom: var(--ts2-pb, 100px);
+}
+
+.ts2-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.ts2-marquee {
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.ts2-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: ts2-marquee 35s linear infinite;
+  will-change: transform;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.ts2-marquee__item {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+
+  &::before {
+    content: '—';
+    margin-inline: 40px; // equal 40px on both sides of the dash
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Tabs
+// -----------------------------------------------------------------------------
+
+.ts2-tabs-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 60px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.ts2-tabs {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  gap: 0;
+  min-width: max-content; // border-bottom spans full scroll width on mobile; fills container on desktop because block element stretches to parent
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ts2-tab {
+  position: relative;
+  flex: 1;
+  padding-bottom: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -0.42px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+
+  // Active underline
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &.is-active {
+    opacity: 1;
+    font-weight: var(--font-weight-medium);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:hover:not(.is-active) {
+    opacity: 0.75;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Grid
+// -----------------------------------------------------------------------------
+
+.ts2-grid {
+  display: grid;
+  grid-template-columns: repeat(14, #{93px});
+  grid-auto-rows: 93px;
+  gap: 4px;
+  // Allow grid to overflow on smaller desktops — section clips it
+  width: max-content;
+}
+
+// Base cell — empty
+.ts2-cell {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  opacity: 0.88;
+  box-sizing: border-box;
+}
+
+// Tech cell — has icon
+.ts2-cell--tech {
+  background: rgba(255, 255, 255, 0.30);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ts2-cell__icon {
+  width: 56px;
+  height: 56px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+}
+
+// Label cell — spans 2 grid columns via JS gridColumn; dimensions from grid track
+.ts2-cell--label {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  opacity: 0.88;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.ts2-cell__name-inline {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;
+  line-height: 120%;
+  color: #E9E9E9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Stagger entrance animation — JS sets --cell-delay
+.ts2-cell.is-entering {
+  animation: ts2-cell-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: var(--cell-delay, 0ms);
+}
+
+
+// =============================================================================
+// Responsive — fluid cells via --ts2-cell; mirrors JS getMobileCols()
+// Formula: (100vw - 2*container-padding - (cols-1)*gap) / cols
+// =============================================================================
+
+// 900–1023 px → 10 cols, fluid
+@media (max-width: 1023px) {
+  .ts2-section {
+    padding-top:    var(--ts2-pt-mob, 70px);
+    padding-bottom: var(--ts2-pb-mob, 70px);
+    --ts2-cell: calc((100vw - 2 * var(--container-padding) - 9 * 4px) / 10);
+  }
+
+  .ts2-marquee__item {
+    font-size: clamp(28px, 6vw, 56px);
+  }
+
+  .ts2-tabs-scroll {
+    margin-bottom: 32px;
+  }
+
+  .ts2-tab {
+    flex: 1 0 max-content; // grow to fill (no bunching), but never shrink below content width (triggers scroll)
+    padding-inline: 24px;
+  }
+
+  .ts2-grid {
+    grid-template-columns: repeat(10, var(--ts2-cell));
+    grid-auto-rows: var(--ts2-cell);
+    width: auto;
+  }
+
+  .ts2-cell__icon {
+    width: calc(var(--ts2-cell) * 0.6);
+    height: calc(var(--ts2-cell) * 0.6);
+  }
+}
+
+// 768–899 px → 8 cols
+@media (max-width: 899px) {
+  .ts2-section {
+    --ts2-cell: calc((100vw - 2 * var(--container-padding) - 7 * 4px) / 8);
+  }
+
+  .ts2-grid { grid-template-columns: repeat(8, var(--ts2-cell)); }
+}
+
+// 600–767 px → 6 cols
+@media (max-width: 767px) {
+  .ts2-section {
+    --ts2-cell: calc((100vw - 2 * var(--container-padding) - 5 * 4px) / 6);
+  }
+
+  .ts2-grid { grid-template-columns: repeat(6, var(--ts2-cell)); }
+}
+
+// ≤599 px → 4 cols (matches designer mobile at 375 px → ~81 px cells)
+@media (max-width: 599px) {
+  .ts2-section {
+    --ts2-cell: calc((100vw - 2 * var(--container-padding) - 3 * 4px) / 4);
+  }
+
+  .ts2-grid { grid-template-columns: repeat(4, var(--ts2-cell)); }
+
+  .ts2-cell__name-inline {
+    font-size: 13px;
+  }
+}

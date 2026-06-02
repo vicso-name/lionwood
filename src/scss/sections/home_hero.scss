@@ -1,0 +1,346 @@
+// =============================================================================
+// Block: Home Hero
+// File : blocks/home-hero/_home-hero.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.hh-section {
+  background-color: var(--color-background);
+  padding-top: 80px;    // hero has its own spacing
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.hh-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .hh-section after DOMContentLoaded
+// Each .hh-anim element uses --anim-delay from data-delay attr (set by JS)
+// -----------------------------------------------------------------------------
+
+.hh-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .hh-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.hh-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 120px;
+}
+
+// Shared type styles for all heading lines
+.hh-heading__line {
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+// Line 1: FIND [arrow] ......... PERFECT
+.hh-heading__line--1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hh-heading__word--start {
+  // Left-aligned (default flex)
+}
+
+.hh-heading__arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+  margin-bottom: -8px; // optical vertical alignment
+
+  svg {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.hh-heading__word--end {
+  margin-left: auto; // push to right edge
+}
+
+// Line 2: SOFTWARE FOR — right-aligned
+.hh-heading__line--2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// Line 3: _ [TYPED] [circle image]
+.hh-heading__line--3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hh-heading__dash {
+  color: #848588;
+  flex-shrink: 0;
+  line-height: 100%;
+}
+
+// Typed / cycling industry name — gray, no cursor
+.hh-heading__typed {
+  color: #848588;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+// Image wrap — 96×96 square with rounded corners and dark border
+// Subtract SVG mask replaced with CSS border-radius + border
+.hh-heading__img-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid var(--color-black);
+  background: var(--color-black);
+  opacity: 0;
+  transition: opacity 0.5s ease-out; // exit: fade out
+
+  &.is-visible {
+    opacity: 1;
+    transition: opacity 0.9s ease-in; // enter: gentle ramp-up
+  }
+}
+
+.hh-heading__img {
+  position: absolute;
+  // Circle inset with white border — 6px from edges
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  object-fit: cover;
+  border-radius: 50%;    // circle
+  outline: 5px solid #fff; // white border around circle
+  outline-offset: 0;
+}
+
+// SVG mask sits on top (mix-blend-mode for the subtract effect)
+.hh-heading__img-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Bottom row: description + CTAs
+// -----------------------------------------------------------------------------
+
+.hh-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 100px;
+}
+
+.hh-description {
+  width: 410px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+.hh-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+
+.hh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease,
+              border-color var(--transition-base) ease;
+
+  &--primary {
+    background: var(--color-primary); // #C83030
+    color: #F7F7F7;
+    border: 2px solid transparent;
+
+    &:hover { background: var(--color-primary-hover); }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--color-black);
+    border: 2px solid var(--color-black);
+
+    &:hover {
+      background: var(--color-black);
+      color: #fff;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Sticky Book a Meeting button
+// Initially hidden; JS makes it visible after hero scrolls out
+// -----------------------------------------------------------------------------
+
+.hh-sticky-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: 100px;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  // Hidden by default
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease,
+              background-color var(--transition-base) ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &:hover { background: var(--color-primary-hover); }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .hh-heading__line {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+
+  .hh-heading {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hh-section {
+    padding-top: 48px;
+  }
+
+  .hh-heading {
+    margin-bottom: 60px;
+  }
+
+  .hh-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-bottom: 70px;
+  }
+
+  .hh-description {
+    width: 100%;
+  }
+
+  .hh-ctas {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hh-heading__line {
+    font-size: clamp(36px, 10vw, 72px);
+    letter-spacing: -1px;
+  }
+
+  .hh-heading__img-wrap {
+    display: none;
+  }
+
+  .hh-heading__arrow svg {
+    width: 32px;
+    height: 24px;
+  }
+
+  .hh-sticky-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+}
