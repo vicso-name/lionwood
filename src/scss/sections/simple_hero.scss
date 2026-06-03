@@ -1,0 +1,133 @@
+// =============================================================================
+// Block: Simple Hero Section
+// File : blocks/simple-hero/_simple-hero.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .sh-section; each .sh-anim reads --anim-delay
+// -----------------------------------------------------------------------------
+
+.sh-anim {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .sh-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.sh-section {
+  background-color: var(--color-background);
+  padding-top:    var(--sh-pt, 100px);
+  padding-bottom: var(--sh-pb, 100px);
+  position: relative;
+}
+
+.sh-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — one row, two parts
+// -----------------------------------------------------------------------------
+
+.sh-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 0 0;
+
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+}
+
+.sh-heading__dark {
+  color: var(--color-black); // #111319
+}
+
+.sh-heading__gray {
+  color: #848588;
+}
+
+
+// -----------------------------------------------------------------------------
+// Description — pushed to right half, margin-top 100px
+// -----------------------------------------------------------------------------
+
+.sh-description-wrap {
+  display: flex;
+  justify-content: flex-end; // push to right
+  margin-top: 100px;
+}
+
+.sh-description {
+  width: 392px;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .sh-heading {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .sh-section {
+    padding-top:    var(--sh-pt-mob, 70px);
+    padding-bottom: var(--sh-pb-mob, 70px);
+  }
+
+  .sh-heading {
+    font-size: clamp(40px, 12vw, 80px);
+    letter-spacing: -1px;
+    flex-wrap: wrap;
+    gap: 0 16px;
+  }
+
+  .sh-description-wrap {
+    margin-top: 48px;
+    justify-content: flex-start;
+  }
+
+  .sh-description {
+    width: 100%;
+    max-width: 392px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sh-heading {
+    font-size: clamp(32px, 14vw, 64px);
+    letter-spacing: -0.5px;
+  }
+
+  .sh-description {
+    font-size: 16px;
+  }
+}

@@ -40,6 +40,7 @@ function lionwood_register_acf_blocks() {
         'technologies_section',
         'home_hero',
         'cta_section',
+        'simple_hero',
     ];
 
     foreach ($blocks as $block_name) {
