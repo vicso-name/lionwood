@@ -95,4 +95,7 @@ foreach ( $tabs as $tab ) {
         </div>
 
     </div>
+
+    <?php get_template_part('template-parts/partials/decor-bottom'); ?>
+
 </section>

@@ -216,4 +216,7 @@ if ( empty( $industries ) ) return;
         </div><!-- .ind-section__footer -->
 
     </div><!-- .ind-section__container -->
+
+    <?php get_template_part('template-parts/partials/decor-bottom'); ?>
+
 </section>

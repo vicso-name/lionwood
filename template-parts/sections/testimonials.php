@@ -249,4 +249,7 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 		<?php endif; ?>
 
 	</div><!-- .ts-section__container -->
+
+	<?php get_template_part('template-parts/partials/decor-bottom'); ?>
+
 </section>

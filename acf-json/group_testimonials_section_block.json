@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_ts_title_top",
-            "label": "Heading — Top Line",
+            "label": "Heading - Top Line",
             "name": "title_top",
             "aria-label": "",
             "type": "text",
@@ -24,7 +24,7 @@
         },
         {
             "key": "field_ts_title_bottom",
-            "label": "Heading — Bottom Line",
+            "label": "Heading - Bottom Line",
             "name": "title_bottom",
             "aria-label": "",
             "type": "text",
@@ -68,7 +68,7 @@
             "name": "rating_stars",
             "aria-label": "",
             "type": "number",
-            "instructions": "Number of filled stars to display (1–5).",
+            "instructions": "Number of filled stars to display (1-5).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -130,6 +130,52 @@
             "max": 0,
             "elements": [],
             "bidirectional_target": []
+        },
+        {
+            "key": "field_ts_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show a decorative arc at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_ts_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_ts_decor_bottom_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
         }
     ],
     "location": [
@@ -150,5 +196,5 @@
     "active": true,
     "description": "Testimonials slider section with Clutch rating.",
     "show_in_rest": 0,
-    "modified": 1780167285
+    "modified": 1780498813
 }

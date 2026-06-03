@@ -92,7 +92,7 @@
         },
         {
             "key": "field_ind_title_top",
-            "label": "Heading — Top Line",
+            "label": "Heading - Top Line",
             "name": "title_top",
             "aria-label": "",
             "type": "text",
@@ -112,7 +112,7 @@
         },
         {
             "key": "field_ind_title_bottom",
-            "label": "Heading — Bottom Line",
+            "label": "Heading - Bottom Line",
             "name": "title_bottom",
             "aria-label": "",
             "type": "text",
@@ -146,7 +146,7 @@
             },
             "rows": 3,
             "new_lines": "br",
-            "default_value": "We help companies across industries — from Healthcare to FinTech — build and improve digital products, focusing on real business results: higher revenue, stronger engagement, and optimized processes.",
+            "default_value": "",
             "maxlength": "",
             "placeholder": ""
         },
@@ -164,7 +164,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Didn't find your industry or solution?",
+            "default_value": "",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -172,7 +172,7 @@
         },
         {
             "key": "field_ind_cta_link",
-            "label": "Learn More — Link",
+            "label": "Learn More - Link",
             "name": "cta_link",
             "aria-label": "",
             "type": "link",
@@ -214,6 +214,52 @@
                 "featured_image"
             ],
             "bidirectional_target": []
+        },
+        {
+            "key": "field_ind_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show a decorative arc at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_ind_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_ind_decor_bottom_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
         }
     ],
     "location": [
@@ -234,5 +280,5 @@
     "active": true,
     "description": "Full-screen industries slider with scroll-driven navigation.",
     "show_in_rest": 0,
-    "modified": 1780249785
+    "modified": 1780497477
 }
