@@ -19,6 +19,15 @@
       "required": 0
     },
     {
+      "key": "field_fs_support_flag",
+      "label": "Support Flag",
+      "name": "support_flag",
+      "type": "image",
+      "return_format": "array",
+      "preview_size": "thumbnail",
+      "required": 0
+    },
+    {
       "key": "field_fs_emails",
       "label": "Emails",
       "name": "emails",

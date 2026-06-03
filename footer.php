@@ -2,7 +2,8 @@
 
 <?php
 $footer_logo        = get_field('logo', 'option');
-$footer_support     = get_field('support_text', 'option');
+$footer_support      = get_field('support_text', 'option');
+$footer_support_flag = get_field('support_flag', 'option');
 $footer_emails      = get_field('emails', 'option') ?: [];
 $footer_menu_cols   = get_field('menu_columns', 'option') ?: [];
 $footer_partners    = get_field('partner_logos', 'option') ?: [];
@@ -28,8 +29,20 @@ $footer_copyright   = get_field('copyright', 'option');
                 </a>
             <?php endif; ?>
 
-            <?php if ($footer_support) : ?>
-                <span class="footer-section__support"><?= esc_html($footer_support); ?></span>
+            <?php if ($footer_support || !empty($footer_support_flag['url'])) : ?>
+                <div class="footer-section__support">
+                    <?php if (!empty($footer_support_flag['url'])) : ?>
+                        <img
+                            class="footer-section__support-flag"
+                            src="<?= esc_url($footer_support_flag['url']); ?>"
+                            alt="<?= esc_attr($footer_support_flag['alt'] ?: ''); ?>"
+                            loading="lazy"
+                        >
+                    <?php endif; ?>
+                    <?php if ($footer_support) : ?>
+                        <span><?= esc_html($footer_support); ?></span>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div><!-- .footer-section__top -->
 
@@ -42,7 +55,7 @@ $footer_copyright   = get_field('copyright', 'option');
                         if (empty($item['email'])) continue;
                         $email = antispambot($item['email']);
                     ?>
-                        <a class="footer-section__email-link" href="<?= esc_url('mailto:' . $email); ?>">
+                        <a class="footer-section__email-link" href="<?= esc_url('mailto:' . $email); ?>" target="_blank" rel="noopener">
                             <?= esc_html($email); ?>
                         </a>
                     <?php endforeach; ?>
@@ -80,33 +93,33 @@ $footer_copyright   = get_field('copyright', 'option');
                 </div>
             <?php endif; ?>
 
-        </div><!-- .footer-section__nav -->
+            <?php /* ── Row 3: Partner logos (inside nav for ordering at 568px) ── */ ?>
+            <?php if ($footer_partners) : ?>
+                <div class="footer-section__partners">
+                    <?php foreach ($footer_partners as $partner) :
+                        if (empty($partner['logo']['url'])) continue;
+                        $partner_link = $partner['url'] ?? null;
+                        $img = '<img'
+                            . ' class="footer-section__partner-logo"'
+                            . ' src="' . esc_url($partner['logo']['url']) . '"'
+                            . ' alt="' . esc_attr($partner['logo']['alt'] ?: $partner['logo']['title']) . '"'
+                            . ' loading="lazy"'
+                            . '>';
+                    ?>
+                        <?php if (!empty($partner_link['url'])) : ?>
+                            <a
+                                class="footer-section__partner-link"
+                                href="<?= esc_url($partner_link['url']); ?>"
+                                <?= $partner_link['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
+                            ><?= $img; ?></a>
+                        <?php else : ?>
+                            <div class="footer-section__partner-item"><?= $img; ?></div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-        <?php /* ── Row 3: Partner logos ── */ ?>
-        <?php if ($footer_partners) : ?>
-            <div class="footer-section__partners">
-                <?php foreach ($footer_partners as $partner) :
-                    if (empty($partner['logo']['url'])) continue;
-                    $partner_link = $partner['url'] ?? null;
-                    $img = '<img'
-                        . ' class="footer-section__partner-logo"'
-                        . ' src="' . esc_url($partner['logo']['url']) . '"'
-                        . ' alt="' . esc_attr($partner['logo']['alt'] ?: $partner['logo']['title']) . '"'
-                        . ' loading="lazy"'
-                        . '>';
-                ?>
-                    <?php if (!empty($partner_link['url'])) : ?>
-                        <a
-                            class="footer-section__partner-link"
-                            href="<?= esc_url($partner_link['url']); ?>"
-                            <?= $partner_link['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
-                        ><?= $img; ?></a>
-                    <?php else : ?>
-                        <div class="footer-section__partner-item"><?= $img; ?></div>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
+        </div><!-- .footer-section__nav -->
 
         <?php /* ── Row 4: Office cards ── */ ?>
         <?php if ($footer_offices) : ?>
@@ -130,14 +143,6 @@ $footer_copyright   = get_field('copyright', 'option');
                             <span class="footer-section__office-name">
                                 <?= esc_html($office['name']); ?>
                             </span>
-
-                            <?php if (!empty($office['learn_more']['url'])) : ?>
-                                <a
-                                    class="footer-section__office-learn"
-                                    href="<?= esc_url($office['learn_more']['url']); ?>"
-                                    <?= $office['learn_more']['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
-                                ><?= esc_html($office['learn_more']['title'] ?: 'Learn More'); ?></a>
-                            <?php endif; ?>
 
                             <button class="footer-section__office-toggle" aria-expanded="false">
                                 <span class="footer-section__office-icon footer-section__office-icon--plus" aria-hidden="true">
@@ -164,7 +169,16 @@ $footer_copyright   = get_field('copyright', 'option');
                                     href="tel:<?= esc_attr(preg_replace('/[^+\d]/', '', $office['phone'])); ?>"
                                 ><?= esc_html($office['phone']); ?></a>
                             <?php endif; ?>
+
                         </div><!-- .footer-section__office-body -->
+
+                        <?php if (!empty($office['learn_more']['url'])) : ?>
+                            <a
+                                class="footer-section__office-learn"
+                                href="<?= esc_url($office['learn_more']['url']); ?>"
+                                <?= $office['learn_more']['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
+                            ><?= esc_html($office['learn_more']['title'] ?: 'Learn More'); ?></a>
+                        <?php endif; ?>
 
                     </div><!-- .footer-section__office -->
                 <?php endforeach; ?>

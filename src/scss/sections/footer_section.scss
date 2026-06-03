@@ -31,14 +31,26 @@
   }
 
   &__support {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
     font-size: var(--font-size-body-2);
-    color: var(--color-text);
+    color: var(--color-total-black);
+  }
+
+  &__support-flag {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
   // ── Row 2: Emails + Menu columns ────────────────────────────────────────────
   &__nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
@@ -115,12 +127,14 @@
 
   // ── Row 3: Partner logos ─────────────────────────────────────────────────────
   &__partners {
+    flex: 0 0 100%;   // full-width row below emails + menus on desktop
+    order: 3;
     display: flex;
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
-    border-top: 1px solid var(--color-border-black);
-    padding-top: 40px;
+    padding-bottom: 32px;
+    opacity: 30%;
   }
 
   &__partner-link,
@@ -131,8 +145,8 @@
   }
 
   &__partner-logo {
-    width: 122.5px;
-    aspect-ratio: 122.5 / 34.92;
+    height: 34px;
+    width: auto;
     object-fit: contain;
     display: block;
   }
@@ -150,11 +164,16 @@
     background: var(--color-primary);
     border-radius: 20px;
     padding: 16px 16px 20px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 16px;
+    align-items: start;
   }
 
   &__office-header {
+    grid-column: 1 / 3;
+    grid-row: 1;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -172,8 +191,8 @@
     flex-shrink: 0;
 
     img {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
       display: block;
     }
@@ -190,8 +209,12 @@
   }
 
   &__office-learn {
-    flex-shrink: 0;
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
     display: inline-flex;
+    justify-content: center;
+    min-width: 117px;
     padding: 8px 14px;
     border-radius: 30px;
     border: 1px solid var(--color-white);
@@ -244,7 +267,8 @@
   }
 
   &__office-body {
-    flex: 1;
+    grid-column: 2;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
   }
@@ -310,6 +334,27 @@
     color: var(--color-text-muted);
   }
 
+  // ── ≤1200px ──────────────────────────────────────────────────────────────────
+  @media (max-width: 1200px) {
+    &__nav {
+      flex-direction: column;
+    }
+
+    &__emails {
+      flex: 1;
+    }
+
+    &__office {
+      grid-template-columns: 40px 1fr;
+    }
+
+    &__office-learn {
+      grid-column: 2;
+      grid-row: 3;
+      margin-top: 12px;
+    }
+  }
+
   // ── Tablet ≤900px — office cards stack ──────────────────────────────────────
   @media (max-width: 900px) {
     &__offices {
@@ -319,7 +364,7 @@
   }
 
   // ── Mobile ≤768px ─────────────────────────────────────────────────────────────
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     padding: 40px 16px 32px;
 
     &__container {
@@ -355,14 +400,26 @@
 
     // ── Office accordion ────────────────────────────────────────────────────
     &__office {
+      display: flex;          // override desktop grid
+      flex-direction: column;
       flex: unset;
       width: 100%;
+      border-radius: 100px;
+      padding: 8px 16px;
+      height: 56px;
+      overflow: hidden;
+      transition: height 0.35s ease, border-radius 0.35s ease;
     }
 
     &__office-header {
+      grid-column: unset;
+      grid-row: unset;
       cursor: pointer;
       user-select: none;
       margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+      width: 100%;
     }
 
     &__office-toggle {
@@ -375,21 +432,28 @@
       padding: 0;
     }
 
-    &__office-learn {
-      display: none;
+    &__office-body {
+      grid-column: unset;
+      grid-row: unset;
+      position: relative;
+      z-index: 1;
+      flex: none;
+      margin-top: -20px;
+      padding-top: 28px;
+      padding-left: 52px; // align text under office name (flag 40px + gap 12px)
+      padding-bottom: 12px;
     }
 
-    &__office-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
+    &__office-learn {
+      grid-column: unset;
+      grid-row: unset;
+      align-self: flex-start;
+      margin-left: 52px; // same offset as body
+      margin-bottom: 4px;
     }
 
     &__office.is-open {
-      .footer-section__office-body {
-        max-height: 300px;
-        padding-top: 12px;
-      }
+      border-radius: 28px 28px 20px 20px;
 
       .footer-section__office-icon--plus  { display: none; }
       .footer-section__office-icon--close { display: flex; }
@@ -417,4 +481,33 @@
     &__social-label { display: none; }
     &__social-icon  { display: flex; }
   }
+}
+
+@media (max-width: 568px) {
+    .footer-section__social {
+        justify-content: space-between;
+    }
+    .footer-section__menus  { order: 1; }
+    .footer-section__partners {
+        order: 0;          // before menus (emails is first in DOM)
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 0;
+        padding-bottom: 20px;
+        border-top: 1px solid var(--divider-20, rgba(0, 0, 0, 0.20));
+        border-bottom: 1px solid var(--divider-20, rgba(0, 0, 0, 0.20));
+    }
+    .footer-section__copyright{
+        text-align: center;
+        width: 270px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 350px) {
+    .footer-section__social-btn{
+        width: 36px;
+        height: 36px;
+    }
 }
