@@ -34,7 +34,7 @@ if ( ! function_exists( 'theme_register_cpt_industries' ) ) {
 			'show_in_rest'       => true,   // Gutenberg enabled
 			'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ],
 			'menu_icon'          => 'dashicons-building',
-			'has_archive'        => true,
+			'has_archive'        => false,
 			'rewrite'            => [ 'slug' => 'industries' ],
 			'query_var'          => true,
 			'capability_type'    => 'post',

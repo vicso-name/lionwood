@@ -36,7 +36,7 @@ if ( ! function_exists( 'theme_register_cpt_services' ) ) {
 			'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes', 'revisions' ],
 			'hierarchical'        => true,   // parent/child like pages
 			'menu_icon'           => 'dashicons-admin-tools',
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'rewrite'             => [ 'slug' => 'services' ],
 			'query_var'           => true,
 			'capability_type'     => 'page',
