@@ -1,14 +1,14 @@
 {
-    "key": "group_industries_section_block",
-    "title": "Industries Section",
+    "key": "group_choose_service_grid_block",
+    "title": "Choose Service Grid",
     "fields": [
         {
-            "key": "field_ind_padding_top",
+            "key": "field_csg_padding_top",
             "label": "Padding Top (px)",
             "name": "padding_top",
             "aria-label": "",
             "type": "number",
-            "instructions": "Desktop top padding. Default: 100.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -25,12 +25,12 @@
             "prepend": ""
         },
         {
-            "key": "field_ind_padding_bottom",
+            "key": "field_csg_padding_bottom",
             "label": "Padding Bottom (px)",
             "name": "padding_bottom",
             "aria-label": "",
             "type": "number",
-            "instructions": "Desktop bottom padding. Default: 100.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -47,12 +47,12 @@
             "prepend": ""
         },
         {
-            "key": "field_ind_padding_top_mob",
+            "key": "field_csg_padding_top_mob",
             "label": "Padding Top Mobile (px)",
             "name": "padding_top_mob",
             "aria-label": "",
             "type": "number",
-            "instructions": "Mobile top padding. Default: 70.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -69,12 +69,12 @@
             "prepend": ""
         },
         {
-            "key": "field_ind_padding_bottom_mob",
+            "key": "field_csg_padding_bottom_mob",
             "label": "Padding Bottom Mobile (px)",
             "name": "padding_bottom_mob",
             "aria-label": "",
             "type": "number",
-            "instructions": "Mobile bottom padding. Default: 70.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -91,52 +91,12 @@
             "prepend": ""
         },
         {
-            "key": "field_ind_title_top",
-            "label": "Heading - Top Line",
-            "name": "title_top",
+            "key": "field_csg_marquee_text",
+            "label": "Marquee Text",
+            "name": "marquee_text",
             "aria-label": "",
             "type": "text",
-            "instructions": "First line of the heading.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Our Industry",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_ind_title_bottom",
-            "label": "Heading - Bottom Line",
-            "name": "title_bottom",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Second line of the heading.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Expertise",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_ind_description",
-            "label": "Description",
-            "name": "description",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Short text beside the heading. ~439px wide.",
+            "instructions": "Word repeated in the scrolling marquee at the top.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -144,71 +104,69 @@
                 "class": "",
                 "id": ""
             },
-            "rows": 3,
-            "new_lines": "br",
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_ind_cta_label",
-            "label": "CTA Label",
-            "name": "cta_label",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Text above the Learn More button (bottom right).",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
+            "default_value": "Choose Your Service",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_ind_cta_link",
-            "label": "Learn More - Link",
-            "name": "cta_link",
+            "key": "field_csg_mode",
+            "label": "Display Mode",
+            "name": "mode",
             "aria-label": "",
-            "type": "link",
-            "instructions": "Global CTA button shown at the bottom right.",
+            "type": "select",
+            "instructions": "Manual: pick services via relationship. Auto: latest services by date.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "choices": {
+                "auto": "Auto (latest by date)",
+                "manual": "Manual (relationship)"
+            },
+            "default_value": "auto",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
-            "key": "field_ind_industries",
-            "label": "Industries",
-            "name": "industries",
+            "key": "field_csg_services",
+            "label": "Services",
+            "name": "services",
             "aria-label": "",
             "type": "relationship",
-            "instructions": "Select industries to display in the slider. Order is controlled by drag-and-drop.",
+            "instructions": "Select services to display (manual mode only). First 9 shown, rest via Load More.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_csg_mode",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "post_type": [
-                "industry"
+                "service"
             ],
             "taxonomy": [],
             "filters": [
                 "search"
             ],
-            "return_format": "object",
-            "min": 1,
+            "return_format": "id",
+            "min": 0,
             "max": 0,
             "elements": [
                 "featured_image"
@@ -216,7 +174,7 @@
             "bidirectional_target": []
         },
         {
-            "key": "field_ind_decor_bottom_enabled",
+            "key": "field_csg_decor_bottom_enabled",
             "label": "Enable Bottom Decoration",
             "name": "decor_bottom_enabled",
             "aria-label": "",
@@ -229,14 +187,14 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
             "default_value": 0,
             "ui": 1,
+            "message": "",
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
-            "key": "field_ind_decor_bottom_color",
+            "key": "field_csg_decor_bottom_color",
             "label": "Decoration Color",
             "name": "decor_bottom_color",
             "aria-label": "",
@@ -246,7 +204,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_ind_decor_bottom_enabled",
+                        "field": "field_csg_decor_bottom_enabled",
                         "operator": "==",
                         "value": "1"
                     }
@@ -267,7 +225,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/industries-section"
+                "value": "acf\/choose-service-grid"
             }
         ]
     ],
@@ -278,7 +236,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Full-screen industries slider with scroll-driven navigation.",
+    "description": "Services grid with marquee, 3-col cards, subservices toggle and AJAX load more.",
     "show_in_rest": 0,
-    "modified": 1780497477
+    "modified": 1780582692
 }

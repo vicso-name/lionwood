@@ -106,8 +106,7 @@ require_once get_template_directory() . '/inc/acf_blocks.php';
 require_once get_template_directory() . '/inc/testimonials-cpt.php';
 require_once get_template_directory() . '/inc/industries-cpt.php';
 require_once get_template_directory() . '/inc/cases-cpt.php';
+require_once get_template_directory() . '/inc/services-cpt.php';
+require_once get_template_directory() . '/inc/csg-load-more.php';
 require_once get_template_directory() . '/inc/theme_function.php';
 require_once get_template_directory() . '/inc/theme_settings.php';
-
-require_once get_template_directory() . '/inc/seed-industries-cpt.php';
-
