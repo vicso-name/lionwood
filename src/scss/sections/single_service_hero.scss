@@ -1,0 +1,250 @@
+// =============================================================================
+// Block: Single Service Hero
+// File : blocks/single-service-hero/_single-service-hero.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .ssh-section; each .ssh-anim reads --anim-delay
+// -----------------------------------------------------------------------------
+
+.ssh-anim {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .ssh-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ssh-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top:    var(--ssh-pt, 80px);
+  padding-bottom: var(--ssh-pb, 80px);
+  overflow: visible; // allow decorative image to overflow upward
+  border-radius: 20px 20px 0 0;
+  background-attachment: fixed; // parallax effect on desktop
+}
+
+.ssh-section__container {
+  position: relative;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  // Must be tall enough to anchor image bottom
+  min-height: 500px;
+  display: flex;
+  align-items: stretch;
+}
+
+
+// -----------------------------------------------------------------------------
+// Body — two columns: content left, image right
+// -----------------------------------------------------------------------------
+
+.ssh-body {
+  display: flex;
+  align-items: flex-end; // both cols align to bottom
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+}
+
+
+// -----------------------------------------------------------------------------
+// Left content column
+// Heading is full width; description + CTA are wrapped in a 330px block
+// shifted ~25% from left (via margin-left on the inner wrap)
+// -----------------------------------------------------------------------------
+
+.ssh-content {
+  flex: 0 0 auto;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  align-self: center;
+}
+
+// Double heading — full width of column
+.ssh-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+}
+
+.ssh-heading__prefix {
+  color: #848588;
+}
+
+.ssh-heading__title {
+  color: #F7F7F7;
+}
+
+// Description + CTA wrap — 330px, shifted right ~25%
+.ssh-content-inner {
+  width: 330px;
+  margin-left: 25%;
+}
+
+// Wysiwyg description
+.ssh-description {
+  margin-bottom: 30px;
+
+  p, li {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-medium);
+    line-height: 140%;
+    color: #F7F7F7;
+    margin: 0 0 8px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  strong { font-weight: 700; }
+}
+
+// CTA button
+.ssh-cta-btn {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary); // #C83030
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column: decorative image
+// Image bottom is flush with section bottom edge;
+// top overflows upward outside the section bounds.
+//
+// Best practice: position the image wrapper with bottom: 0 relative to the
+// section, so it always anchors to the bottom regardless of content height.
+// The section has overflow: visible so the top part shows above.
+// -----------------------------------------------------------------------------
+
+.ssh-image-wrap {
+  position: absolute;
+  bottom: -80px;
+  right: var(--container-padding);
+  width: 679px;
+  // No height constraint — image natural height flows upward
+  pointer-events: none;
+  user-select: none;
+}
+
+.ssh-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .ssh-image-wrap {
+    width: 480px;
+  }
+
+  .ssh-heading {
+    font-size: clamp(36px, 5vw, 56px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ssh-section {
+    padding-top:    var(--ssh-pt-mob, 70px);
+    padding-bottom: var(--ssh-pb-mob, 70px);
+    overflow: hidden; // clip image on mobile
+  }
+
+  .ssh-section__container {
+    min-height: unset;
+  }
+
+  .ssh-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .ssh-image-wrap {
+    position: relative;
+    right: auto;
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  .ssh-content {
+    max-width: 100%;
+  }
+
+  .ssh-content-inner {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .ssh-heading {
+    margin-bottom: 40px;
+    font-size: clamp(32px, 8vw, 56px);
+  }
+}
+
+@media (max-width: 576px) {
+    .ssh-cta-btn{
+        width: 100%;
+    }
+    .ssh-image-wrap {
+        bottom: -35px;
+    }
+}

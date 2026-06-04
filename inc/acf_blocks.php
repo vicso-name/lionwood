@@ -42,6 +42,7 @@ function lionwood_register_acf_blocks() {
         'cta_section',
         'simple_hero',
         'choose_service_grid',
+        'single_service_hero',
     ];
 
     foreach ($blocks as $block_name) {
