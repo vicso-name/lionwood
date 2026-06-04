@@ -1,0 +1,203 @@
+// =============================================================================
+// Block: Single Service Definition
+// File : blocks/single-service-definition/_single-service-definition.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ssd-section {
+  background: var(--color-primary); // #C83030
+  padding-top:    var(--ssd-pt, 100px);
+  padding-bottom: var(--ssd-pb, 160px);
+  position: relative;
+}
+
+.ssd-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — left-aligned, 519px wide
+// Top line: full white; bottom line: white 50% opacity
+// -----------------------------------------------------------------------------
+
+.ssd-heading {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+}
+
+.ssd-heading__top {
+  color: #fff;
+}
+
+.ssd-heading__bottom {
+  text-align: right;
+  margin-right: 80px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop grid — equal height cards via align-items: stretch
+// -----------------------------------------------------------------------------
+
+.ssd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: stretch; // equal height
+}
+
+
+// -----------------------------------------------------------------------------
+// Card — same for grid and swiper
+// -----------------------------------------------------------------------------
+
+.ssd-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 20px;
+  pbottom: 40px;
+  border-radius: 20px;
+  background: #E9E9E9;
+  height: 100%; // stretch to equal height within grid row
+  box-sizing: border-box;
+}
+
+.ssd-card__icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  margin-bottom: 40px;
+
+  img {
+    display: block;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+}
+
+.ssd-card__title {
+  margin: 0 0 10px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.ssd-card__desc {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+
+// -----------------------------------------------------------------------------
+// Mobile Swiper — hidden on desktop
+// -----------------------------------------------------------------------------
+
+.ssd-swiper-wrap {
+  display: none; // shown only on mobile via media query
+}
+
+.ssd-swiper {
+  overflow: visible !important; // show partial next slide
+}
+
+.ssd-slide {
+  width: 328px;
+  height: auto;
+}
+
+// Numeric counter: 01 / 04
+.ssd-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ssd-counter__current {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #F7F7F7;
+}
+
+.ssd-counter__sep {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: rgba(247, 247, 247, 0.50);
+}
+
+.ssd-counter__total {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: rgba(247, 247, 247, 0.50);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ssd-section {
+    padding-top:    var(--ssd-pt-mob, 70px);
+    padding-bottom: var(--ssd-pb-mob, 70px);
+    overflow: hidden; // clip swiper overflow: visible so no horizontal page scroll
+  }
+
+  .ssd-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 48px;
+  }
+
+  // Hide desktop grid, show swiper
+  .ssd-grid {
+    display: none;
+  }
+
+  .ssd-swiper-wrap {
+    display: block;
+  }
+}
+
+@media (max-width:576px) {
+    .ssd-heading {
+        text-align: center;
+        width: 235px;
+    }
+    .ssd-heading__bottom {
+        text-align: right;
+        margin-right: 0;
+        color: rgba(255, 255, 255, 0.50);
+    }
+}
