@@ -131,6 +131,32 @@
             "append": ""
         },
         {
+            "key": "field_ssd_columns",
+            "label": "Columns per Row",
+            "name": "columns",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Number of cards per row. Default: 4.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "4": "4 columns",
+                "3": "3 columns"
+            },
+            "default_value": 4,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_ssd_items",
             "label": "Definition Items",
             "name": "items",
@@ -286,5 +312,5 @@
     "active": true,
     "description": "Service definition section with double heading and equal-height cards grid. Mobile: Swiper slider with numeric counter.",
     "show_in_rest": 0,
-    "modified": 1780604624
+    "modified": 1780661331
 }

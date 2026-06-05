@@ -20,6 +20,7 @@ $title_bottom  = get_field( 'title_bottom' ) ?: '';
 $items         = get_field( 'items' )        ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
+$columns       = absint( get_field( 'columns' ) ?: 4 );
 $total         = count( $items );
 
 if ( empty( $items ) ) return;
@@ -32,6 +33,7 @@ if ( empty( $items ) ) return;
         --ssd-pb: <?php echo $pb; ?>px;
         --ssd-pt-mob: <?php echo $pt_mob; ?>px;
         --ssd-pb-mob: <?php echo $pb_mob; ?>px;
+        --ssd-columns: <?php echo $columns; ?>;
     "
 >
     <div class="ssd-section__container">

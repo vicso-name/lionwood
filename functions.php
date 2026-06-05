@@ -111,3 +111,4 @@ require_once get_template_directory() . '/inc/csg-load-more.php';
 require_once get_template_directory() . '/inc/cig-load-more.php';
 require_once get_template_directory() . '/inc/theme_function.php';
 require_once get_template_directory() . '/inc/theme_settings.php';
+require_once get_template_directory() . '/inc/service_template_manager.php';

@@ -37,7 +37,7 @@ $panels = [];
 foreach ( $services as $i => $svc ) {
     $img    = $svc['image']    ?? null;
     $icon   = $svc['stat_icon'] ?? null;
-    $items  = $svc['includes_items'] ?? [];
+    $items  = $svc['includes_items'] ?: [];
 
     $panels[] = [
         'stat_value'      => esc_html( $svc['stat_value']       ?? '' ),
