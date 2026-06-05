@@ -46,6 +46,7 @@ function lionwood_register_acf_blocks() {
         'choose_industries_grid',
         'single_service_definition',
         'single_service_explore',
+        'single_deliver_solutions',
     ];
 
     foreach ($blocks as $block_name) {

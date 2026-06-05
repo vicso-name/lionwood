@@ -1,0 +1,277 @@
+// =============================================================================
+// Block: Single Deliver Solutions
+// File : blocks/single-deliver-solutions/_single-deliver-solutions.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.sds-section {
+  background-color: var(--color-background);
+  padding-top:    var(--sds-pt, 100px);
+  padding-bottom: var(--sds-pb, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sds-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — 590px wide, left-aligned
+// -----------------------------------------------------------------------------
+
+.sds-heading {
+  width: 590px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+}
+
+.sds-heading__top    { color: #848588; position: relative; left: 110px;  }
+.sds-heading__bottom { color: var(--color-black); }
+
+
+// -----------------------------------------------------------------------------
+// Scroll animations — heading (JS adds .sds-anim to guard; .is-visible reveals)
+// -----------------------------------------------------------------------------
+
+.sds-heading.sds-anim .sds-heading__top,
+.sds-heading.sds-anim .sds-heading__bottom {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sds-heading.sds-anim .sds-heading__bottom {
+  transition-delay: 0.15s;
+}
+
+.sds-heading.is-visible .sds-heading__top,
+.sds-heading.is-visible .sds-heading__bottom {
+  opacity: 1;
+  transform: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop grid — 14 cols × N rows, 93px cells, 4px gap
+// -----------------------------------------------------------------------------
+
+.sds-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 93px);
+  grid-template-rows: repeat(var(--sds-grid-rows, 3), 93px);
+  gap: 4px;
+  // Center grid within container on wide screens
+  justify-content: center;
+}
+
+// Empty cell
+.sds-cell {
+  width: 93px;
+  height: 93px;
+  border-radius: 8px;
+  border: 1.071px solid #E9E9E9;
+  box-sizing: border-box;
+}
+
+// Content cell — spans 3×3
+.sds-cell--content {
+  width: auto;
+  height: auto;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Card — 287×287px, inside the 3×3 content cell
+// -----------------------------------------------------------------------------
+
+.sds-card {
+  width: 287px;
+  height: 287px;
+  padding: 20px;
+  border-radius: 8px;
+  background: #E9E9E9;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+// Number badge — red circle
+.sds-card__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  flex-shrink: 0;
+  margin-bottom: 74px; // 74px gap from num to title
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+  text-align: center;
+}
+
+// Title
+.sds-card__title {
+  margin: 0 0 10px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+  // Prevent overflow if title is too long
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// Description
+.sds-card__desc {
+  margin: 0;
+  width: 236px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #3D3F43;
+  // Clamp to prevent overflow
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+
+// -----------------------------------------------------------------------------
+// Scroll animations — cards (desktop only; JS adds .sds-anim + transition-delay)
+// -----------------------------------------------------------------------------
+
+@media (min-width: 1024px) {
+  .sds-card.sds-anim {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity  0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .sds-card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Mobile Swiper — hidden on desktop, same pattern as Single Service Definition
+// -----------------------------------------------------------------------------
+
+.sds-swiper-wrap {
+  display: none;
+}
+
+.sds-swiper {
+  overflow: visible !important;
+}
+
+.sds-slide {
+  width: 287px;
+  height: auto;
+  // gap between slides set to 16px in Swiper JS config
+}
+
+// Numeric counter
+.sds-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.sds-counter__current {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+.sds-counter__sep,
+.sds-counter__total {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: rgba(17, 19, 25, 0.40);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .sds-section {
+    padding-top:    var(--sds-pt-mob, 70px);
+    padding-bottom: var(--sds-pb-mob, 70px);
+  }
+
+  .sds-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 40px;
+  }
+
+  // Hide desktop grid, show swiper
+  .sds-grid        { display: none; }
+  .sds-swiper-wrap { display: block; }
+
+  // Cards in swiper — slightly smaller on mobile
+  .sds-slide { width: 260px; } // must match card width to keep spaceBetween = 16px
+
+  .sds-card {
+    width: 260px;
+    height: 260px;
+  }
+
+  .sds-card__num {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+    .sds-heading{
+        width: 170px;
+    }
+    .sds-heading__top {
+        color: #848588;
+        position: relative;
+        left: 65px;
+    }
+}

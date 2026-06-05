@@ -80,7 +80,7 @@
   width: 80px;  // fixed left column
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
-  font-weight: 350;
+  font-weight: var(--font-weight-regular);
   line-height: 120%;
   color: var(--color-black);
 }
@@ -105,9 +105,11 @@
   margin-left: 130px;
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
-  font-weight: 350;
+  font-weight: var(--font-weight-regular);
   line-height: 120%;
   color: var(--color-black);
+  opacity: 0.8;
+
 }
 
 // Arrow button — right edge, red circle
