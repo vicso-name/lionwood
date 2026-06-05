@@ -1,0 +1,303 @@
+{
+    "key": "group_sse_block",
+    "title": "Single Service Explore",
+    "fields": [
+        {
+            "key": "field_sse_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_sse_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_sse_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_sse_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_sse_title_top",
+            "label": "Heading — Top Line (gray)",
+            "name": "title_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line of the heading, shown in gray.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Explore",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sse_title_bottom",
+            "label": "Heading — Bottom Line (black)",
+            "name": "title_bottom",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line of the heading, shown in black.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our AI Solutions",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sse_initial_count",
+            "label": "Items shown initially",
+            "name": "initial_count",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Number of items visible before 'Load More'. Default: 3.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sse_items",
+            "label": "Explore Items",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add explore rows. If total exceeds 'Items shown initially', a Load More button appears.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Item",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_sse_item_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Service \/ solution name.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_sse_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_sse_item_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Short description shown on the right.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": "br",
+                    "parent_repeater": "field_sse_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_sse_item_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Arrow button link.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_sse_items"
+                }
+            ]
+        },
+        {
+            "key": "field_sse_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_sse_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sse_decor_bottom_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/single-service-explore"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Explore section with double heading and repeater rows. JS-only load more (no AJAX).",
+    "show_in_rest": 0,
+    "modified": 1780637929
+}
