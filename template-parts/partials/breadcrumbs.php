@@ -41,12 +41,18 @@ if ( is_singular() ) {
         }
     }
 
-    // 3. Parent page/post (for hierarchical CPTs)
-    $post_parent = wp_get_post_parent_id( get_the_ID() );
-    if ( $post_parent ) {
+    // 3. Parent page/post
+    if ( $post_type === 'sub_service' ) {
+        // sub_service uses ACF meta field instead of native post_parent
+        $parent_id = (int) get_post_meta( get_the_ID(), 'parent_service', true );
+    } else {
+        $parent_id = (int) wp_get_post_parent_id( get_the_ID() );
+    }
+
+    if ( $parent_id ) {
         $items[] = [
-            'label'   => esc_html( get_the_title( $post_parent ) ),
-            'url'     => esc_url( get_permalink( $post_parent ) ),
+            'label'   => esc_html( get_the_title( $parent_id ) ),
+            'url'     => esc_url( get_permalink( $parent_id ) ),
             'current' => false,
         ];
     }

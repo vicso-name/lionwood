@@ -57,20 +57,6 @@ $has_more   = $total > $per_page;
 // Unique block ID for AJAX
 $block_id = 'csg-' . uniqid();
 
-// Helper: get subservices
-if ( ! function_exists( 'smplfy_get_subservices' ) ) {
-	function smplfy_get_subservices( int $parent_id, int $limit = 5 ): array {
-		return get_posts( [
-			'post_type'      => 'service',
-			'post_parent'    => $parent_id,
-			'posts_per_page' => $limit,
-			'post_status'    => 'publish',
-			'orderby'        => 'menu_order',
-			'order'          => 'ASC',
-			'fields'         => 'ids',
-		] );
-	}
-}
 ?>
 
 <section
@@ -111,7 +97,7 @@ if ( ! function_exists( 'smplfy_get_subservices' ) ) {
 				$num         = '/ ' . str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
 				$thumb_id    = get_post_thumbnail_id( $service_id );
 				$thumb_url   = $thumb_id ? esc_url( wp_get_attachment_image_url( $thumb_id, 'large' ) ) : '';
-				$sub_ids     = smplfy_get_subservices( $service_id );
+				$sub_ids     = lionwood_get_subservices( $service_id );
 				$has_subs    = ! empty( $sub_ids );
 			?>
 				<?php get_template_part( 'template-parts/partials/service-card', null, [

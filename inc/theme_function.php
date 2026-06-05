@@ -83,9 +83,10 @@ function lionwood_opengraph_meta_tags() {
         }
     }
 
-    $excerpt = $post->post_content
-        ? wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 55 )
-        : get_bloginfo('description');
+    $raw_excerpt = has_excerpt( $post->ID )
+        ? get_the_excerpt( $post )
+        : wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 55 );
+    $excerpt = $raw_excerpt ?: get_bloginfo('description');
 
     $published = get_gmt_from_date( $post->post_date_gmt ? $post->post_date_gmt : $post->post_date, 'c' );
     $modified  = get_gmt_from_date( $post->post_modified_gmt ? $post->post_modified_gmt : $post->post_modified, 'c' );
