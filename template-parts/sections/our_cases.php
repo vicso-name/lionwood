@@ -19,7 +19,9 @@ $title_bottom = get_field( 'title_bottom' ) ?: __( 'Real Impact, Real Results', 
 $desc_raw     = get_field( 'description' );
 $description  = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
-$cases        = get_field( 'cases' )           ?: [];
+$cases         = get_field( 'cases' )           ?: [];
+$decor_enabled = get_field( 'decor_bottom_enabled' );
+$decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 $link_raw     = get_field( 'all_cases_link' );
 $link_url     = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
 $link_label   = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'All Cases', 'theme' );
@@ -172,4 +174,9 @@ $allowed_stat = [ 'strong' => [] ];
         <?php endif; ?>
 
     </div><!-- .oc-section__container -->
+
+    <?php if ( $decor_enabled ) : ?>
+        <?php get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] ); ?>
+    <?php endif; ?>
+
 </section>
