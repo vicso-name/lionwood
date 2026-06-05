@@ -1,0 +1,293 @@
+// =============================================================================
+// Block: Single Real Solutions
+// File : blocks/single-real-solutions/_single-real-solutions.scss
+// =============================================================================
+
+.srs-section {
+  background-color: var(--color-background);
+  padding-top:    var(--srs-pt, 70px);
+  padding-bottom: var(--srs-pb, 70px);
+  position: relative;
+}
+
+.srs-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — 620px
+// -----------------------------------------------------------------------------
+
+.srs-heading {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+}
+
+.srs-heading__top    { color: #848588; position: relative; left: 100px; }
+.srs-heading__bottom { color: var(--color-black); }
+
+
+// -----------------------------------------------------------------------------
+// Rows
+// -----------------------------------------------------------------------------
+
+.srs-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+// Each row — full width
+.srs-row {
+  display: flex;
+  align-items: stretch;
+}
+
+
+// -----------------------------------------------------------------------------
+// WITH IMAGE — 50/50 columns
+// -----------------------------------------------------------------------------
+
+.srs-row--has-image {
+  .srs-col--image,
+  .srs-col--content {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+}
+
+// Image right: reverse column order
+.srs-row--img-right {
+  flex-direction: row-reverse;
+}
+
+// Image column
+.srs-col--image {
+  display: flex;
+  align-items: stretch;
+}
+
+.srs-image-wrap {
+  width: 100%;
+  min-height: 600px;
+  border-radius: 20px;
+  background: #E9E9E9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
+// Content column — max-width 428px, centered
+.srs-col--content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.srs-content {
+  max-width: 428px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// NO IMAGE — two text columns with vertical divider
+// -----------------------------------------------------------------------------
+
+.srs-row--no-image {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  // No padding here — vertical padding lives on the columns so the divider touches the top border
+}
+
+.srs-col--text-only {
+  flex: 0 0 50%;
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 60px 60px;
+
+  &:first-child { padding-left: 0; }
+  &:last-child  { padding-right: 0; }
+
+  .srs-content {
+    max-width: 428px;
+    width: 100%;
+  }
+}
+
+.srs-col-divider {
+  flex-shrink: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  align-self: stretch;
+}
+
+
+// -----------------------------------------------------------------------------
+// Content elements
+// -----------------------------------------------------------------------------
+
+// Red badge
+.srs-badge {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--color-primary); // #C83030
+  margin-bottom: 30px;
+  width: fit-content;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// Description (wysiwyg)
+.srs-desc {
+  margin-bottom: 24px;
+
+  p {
+    margin: 0 0 16px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-regular);
+    line-height: 120%;
+    color: #3D3F43;
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+// Checklist
+.srs-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.srs-checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  &:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Checkmark circle
+.srs-checklist__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+}
+
+.srs-checklist__text {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .srs-section {
+    padding-top:    var(--srs-pt-mob, 50px);
+    padding-bottom: var(--srs-pb-mob, 50px);
+  }
+
+  .srs-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 40px;
+  }
+
+  .srs-row--has-image {
+    flex-direction: column !important; // override img-right on mobile
+
+    .srs-col--image,
+    .srs-col--content {
+      flex: none;
+      width: 100%;
+    }
+  }
+
+  .srs-image-wrap {
+    min-height: 300px;
+    border-radius: 12px;
+  }
+
+  .srs-col--content {
+    padding: 32px 0;
+    justify-content: flex-start;
+  }
+
+  .srs-row--no-image {
+    flex-direction: column;
+    padding: 32px 0;
+    gap: 32px;
+  }
+
+  .srs-col--text-only {
+    flex: none;
+    width: 100%;
+    padding: 0;
+  }
+
+  .srs-col-divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+  }
+}
+
+@media( max-width: 576px) {
+    .srs-heading__top {
+        position: relative;
+        left: 30px;
+    }
+}
