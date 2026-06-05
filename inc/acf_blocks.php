@@ -49,6 +49,7 @@ function lionwood_register_acf_blocks() {
         'single_deliver_solutions',
         'single_real_solutions',
         'faq_section',
+        'single_problem_solution',
     ];
 
     foreach ($blocks as $block_name) {

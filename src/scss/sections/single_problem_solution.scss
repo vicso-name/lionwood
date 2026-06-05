@@ -1,0 +1,361 @@
+// =============================================================================
+// Block: Single Problem Solution
+// File : blocks/single-problem-solution/_single-problem-solution.scss
+// =============================================================================
+
+.sps-section {
+  background: #111319;
+  padding-top:    var(--sps-pt, 100px);
+  padding-bottom: var(--sps-pb, 100px);
+  position: relative;
+}
+
+.sps-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Staircase heading — 4 lines, H1 size
+// Each line progressively indented from left → creates staircase effect
+// Line 4 is dimmed (opacity 0.5)
+// -----------------------------------------------------------------------------
+
+.sps-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: #F7F7F7;
+}
+
+.sps-heading__line {
+  display: block;
+
+  &--1 { padding-left: 0; }
+  &--2 { padding-left: 140px; }
+  &--3 { padding-left: 280px; }
+  &--4 { padding-left: 0; opacity: 0.5; }
+}
+
+
+// -----------------------------------------------------------------------------
+// Problem / Solution row
+// -----------------------------------------------------------------------------
+
+.sps-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+
+// Top horizontal line
+.sps-row__top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #fff;
+  opacity: 0.2;
+}
+
+// 50/50 columns
+.sps-col {
+  flex: 0 0 50%;
+  width: 50%;
+  padding-top: 40px; // breathing room from top line
+}
+
+// Vertical divider between cols
+.sps-row__divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 265px;
+  background: #fff;
+  opacity: 0.2;
+  margin-top: 0; // touches the top line
+  align-self: flex-start;
+}
+
+// Badge — light (gray bg, dark text)
+.sps-badge {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 30px;
+  width: fit-content;
+  &--light {
+    background: #E9E9E9;
+    color: #111319;
+  }
+}
+
+
+// ── Problem column ────────────────────────────────────────────────────────────
+.sps-col--problem {
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
+}
+
+.sps-problem-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sps-problem-list__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sps-problem-list__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+}
+
+.sps-problem-list__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #F7F7F7;
+  opacity: 0.8;
+}
+
+
+// ── Solution column ───────────────────────────────────────────────────────────
+.sps-col--solution {
+  display: flex;
+  flex-direction: column;
+  padding-left: 60px;
+}
+
+.sps-solution-text {
+  max-width: 420px;
+
+  p, li {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-h4); // 21px
+    font-weight: var(--font-weight-medium);
+    line-height: 140%;
+    color: #F7F7F7;
+    margin: 0 0 16px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Optional red banner
+// -----------------------------------------------------------------------------
+
+.sps-banner {
+  position: relative;
+  width: 100%;
+  min-height: 272px;
+  padding: 50px;
+  border-radius: 30px;
+  background-color: var(--color-primary); // #C83030
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+}
+
+// Gradient overlay over bg image
+.sps-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(200, 48, 48, 0.85) 0%, rgba(200, 48, 48, 0.20) 100%);
+  z-index: 0;
+}
+
+.sps-banner__text {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 0 0 40px;
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: #F7F7F7;
+}
+
+.sps-banner__btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 19px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 100px;
+  background: #F7F7F7;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #111319;
+
+  transition: background-color var(--transition-base) ease;
+
+  svg { display: block; flex-shrink: 0; }
+
+  &:hover {
+    background: #e0e0e0;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Scroll-triggered animations  (class .is-visible added by JS)
+// Guarded by prefers-reduced-motion so elements stay visible when motion is off
+// -----------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: no-preference) {
+  // Heading lines — slide up + fade in with stagger
+  .sps-heading__line {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.65s ease,
+                transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &--1 { transition-delay: 0s; }
+    &--2 { transition-delay: 0.12s; }
+    &--3 { transition-delay: 0.24s; }
+    &--4 { transition-delay: 0.36s; }
+  }
+
+  .sps-heading.is-visible .sps-heading__line {
+    opacity: 1;
+    transform: translateY(0);
+
+    // restore designed dimmed state for line 4
+    &.sps-heading__line--4 { opacity: 0.5; }
+  }
+
+  // Banner — slide up + subtle scale + fade in
+  .sps-banner {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.7s ease,
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .sps-banner.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .sps-heading {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+
+  .sps-heading__line {
+    &--2 { padding-left: 80px; }
+    &--3 { padding-left: 160px; }
+  }
+}
+
+@media (max-width: 1023px) {
+  .sps-section {
+    padding-top:    var(--sps-pt-mob, 70px);
+    padding-bottom: var(--sps-pb-mob, 70px);
+  }
+
+  .sps-heading {
+    font-size: clamp(36px, 10vw, 80px);
+    margin-bottom: 48px;
+  }
+
+  .sps-heading__line {
+    &--2 { padding-left: 40px; }
+    &--3 { padding-left: 80px; }
+  }
+
+  .sps-row {
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .sps-col {
+    flex: none;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .sps-row__divider {
+    width: 100%;
+    height: 1px;
+    align-self: auto;
+  }
+
+  .sps-banner {
+    padding: 32px;
+    min-height: auto;
+  }
+
+  .sps-banner__text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sps-heading {
+    font-size: clamp(28px, 12vw, 60px);
+  }
+
+  .sps-heading__line {
+    &--2 { padding-left: 20px; }
+    &--3 { padding-left: 40px; }
+  }
+}

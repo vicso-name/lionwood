@@ -16,6 +16,7 @@ module.exports = [
                 fetch: 'readonly',
                 MutationObserver: 'readonly',
                 DOMParser: 'readonly',
+                IntersectionObserver: 'readonly',
                 requestAnimationFrame: 'readonly',
                 setTimeout: 'readonly',
                 clearTimeout: 'readonly',
