@@ -1,0 +1,251 @@
+// =============================================================================
+// Block: Company Advantages
+// File : blocks/company-advantages/_company-advantages.scss
+// =============================================================================
+
+.ca-section {
+  background-color: var(--color-background);
+  padding-top:    var(--ca-pt, 100px);
+  padding-bottom: var(--ca-pb, 100px);
+  position: relative;
+}
+
+.ca-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Large title — max-width 1195px
+// First word is indented right via text-indent on first line
+// The trick: use a wide ::before pseudo pushing the first word right,
+// achieved with padding-left on the first span + negative margin on the rest
+// -----------------------------------------------------------------------------
+
+.ca-title {
+  max-width: 1195px;
+  margin: 0 0 60px;
+  font-family: var(--font-primary);
+  font-size: 36px;
+  font-weight: var(--font-weight-medium);
+  line-height: normal;
+  color: #000;
+
+  // Inline: first word + rest flow together, first word has left indent
+  display: block;
+}
+
+// First word — padded left to create indent effect
+.ca-title__first {
+  display: inline;
+  padding-left: 140px; // visual staircase indent on first word
+}
+
+// Rest of text — continues inline after first word
+.ca-title__rest {
+  display: inline;
+}
+
+
+// -----------------------------------------------------------------------------
+// Two-column row
+// -----------------------------------------------------------------------------
+
+.ca-row {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+.ca-col {
+  flex: 1 1 50%;
+  width: 50%;
+}
+
+
+// -----------------------------------------------------------------------------
+// Left column: badge + checklist + rating
+// -----------------------------------------------------------------------------
+
+// Dark badge
+.ca-badge {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #111319;
+  margin-bottom: 35px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// Checklist
+.ca-list {
+  list-style: none;
+  margin: 0 0 70px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ca-list__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+// Check icon — red circle
+.ca-list__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+
+  svg { display: block; }
+}
+
+.ca-list__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #3D3F43;
+}
+
+// Rating block
+.ca-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 304px;
+}
+
+.ca-rating__value {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  color: var(--color-black);
+  flex-shrink: 0;
+}
+
+.ca-rating__right {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ca-rating__stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  svg { display: block; }
+}
+
+.ca-rating__link {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  opacity: 0.5;
+
+  &:hover {
+    color: var(--color-primary);
+    opacity: 1;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column: image 555×500px with gradient overlay
+// -----------------------------------------------------------------------------
+
+.ca-col--right {
+  display: flex;
+  align-items: stretch;
+}
+
+.ca-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #E9E9E9; // fallback
+
+  &--empty {
+    background: #E9E9E9;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ca-section {
+    padding-top:    var(--ca-pt-mob, 70px);
+    padding-bottom: var(--ca-pb-mob, 70px);
+  }
+
+  .ca-title {
+    font-size: clamp(20px, 4vw, 36px);
+    margin-bottom: 40px;
+  }
+
+  .ca-title__first {
+    padding-left: 60px;
+  }
+
+  .ca-row {
+    flex-direction: column;
+  }
+
+  .ca-col {
+    flex: none;
+    width: 100%;
+  }
+
+  .ca-image {
+    height: 300px;
+  }
+
+  .ca-rating {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .ca-title__first {
+    padding-left: 32px;
+  }
+
+  .ca-rating__value {
+    font-size: 40px;
+  }
+}

@@ -17,7 +17,8 @@ $pt      = absint( get_field( 'padding_top' )        ?: 100 );
 $pb      = absint( get_field( 'padding_bottom' )     ?: 80 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 60 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 48 );
-$items   = get_field( 'items' ) ?: [];
+$items    = get_field( 'items' )    ?: [];
+$bg_color = get_field( 'bg_color' ) ?: '#C83030';
 ?>
 
 <section
@@ -27,6 +28,7 @@ $items   = get_field( 'items' ) ?: [];
         --vs-pb: <?php echo $pb; ?>px;
         --vs-pt-mob: <?php echo $pt_mob; ?>px;
         --vs-pb-mob: <?php echo $pb_mob; ?>px;
+        --vs-bg: <?php echo esc_attr( $bg_color ); ?>;
     "
     aria-label="<?php esc_attr_e( 'Our Values', 'theme' ); ?>"
 >

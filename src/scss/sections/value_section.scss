@@ -12,7 +12,7 @@
 
 .vs-section {
   position: relative;
-  background: var(--color-primary); // #C83030
+  background: var(--vs-bg, var(--color-primary));
   overflow: hidden;
   padding-top: var(--vs-pt, 100px);
   padding-bottom: 0; // bars flush at bottom edge

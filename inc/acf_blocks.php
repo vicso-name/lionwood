@@ -50,6 +50,8 @@ function lionwood_register_acf_blocks() {
         'single_real_solutions',
         'faq_section',
         'single_problem_solution',
+        'business_impact',
+        'company_advantages',
     ];
 
     foreach ($blocks as $block_name) {

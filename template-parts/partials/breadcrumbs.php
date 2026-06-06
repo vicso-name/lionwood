@@ -31,13 +31,32 @@ if ( is_singular() ) {
     $pt_obj    = get_post_type_object( $post_type );
 
     if ( $pt_obj && $post_type !== 'post' && $post_type !== 'page' ) {
-        $archive_url = get_post_type_archive_link( $post_type );
-        if ( $archive_url ) {
-            $items[] = [
-                'label'   => $pt_obj->labels->name,
-                'url'     => $archive_url,
-                'current' => false,
-            ];
+        // CPTs that use a custom page as their archive instead of a native CPT archive.
+        // The page is identified by its page template, so renaming its slug is safe.
+        $custom_archive_templates = [
+            'industry'    => 'page-templates/industries-archive.php',
+            'service'     => 'page-templates/services-archive.php',
+            'sub_service' => 'page-templates/services-archive.php',
+        ];
+
+        if ( isset( $custom_archive_templates[ $post_type ] ) ) {
+            $archive_page_id = lionwood_get_template_page_id( $custom_archive_templates[ $post_type ] );
+            if ( $archive_page_id ) {
+                $items[] = [
+                    'label'   => esc_html( get_the_title( $archive_page_id ) ),
+                    'url'     => get_permalink( $archive_page_id ),
+                    'current' => false,
+                ];
+            }
+        } else {
+            $archive_url = get_post_type_archive_link( $post_type );
+            if ( $archive_url ) {
+                $items[] = [
+                    'label'   => $pt_obj->labels->name,
+                    'url'     => $archive_url,
+                    'current' => false,
+                ];
+            }
         }
     }
 
