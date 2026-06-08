@@ -1,7 +1,7 @@
 <?php
 /**
  * Custom Post Type: Cases (Case Studies)
- * Taxonomy: Industry (hierarchical — like categories)
+ * Taxonomies: Industry, Service (hierarchical — like categories)
  *
  * File: inc/cpt/cases.php
  * Include in functions.php:
@@ -35,7 +35,7 @@ if ( ! function_exists( 'theme_register_cpt_cases' ) ) {
 			'show_in_menu'        => true,
 			'show_in_rest'        => true,   // Gutenberg enabled
 			'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ],
-			'taxonomies'          => [ 'case_study_category' ],
+			'taxonomies'          => [ 'case_study_category', 'case_study_service' ],
 			'menu_icon'           => 'dashicons-portfolio',
 			'has_archive'         => true,
 			'rewrite'             => [ 'slug' => 'cases' ],
@@ -76,3 +76,34 @@ if ( ! function_exists( 'theme_register_tax_industry' ) ) {
 	}
 }
 add_action( 'init', 'theme_register_tax_industry' );
+
+
+// ── Taxonomy: Service ─────────────────────────────────────────────────────────
+if ( ! function_exists( 'theme_register_tax_case_service' ) ) {
+	function theme_register_tax_case_service(): void {
+		$labels = [
+			'name'              => __( 'Services', 'theme' ),
+			'singular_name'     => __( 'Service', 'theme' ),
+			'search_items'      => __( 'Search Services', 'theme' ),
+			'all_items'         => __( 'All Services', 'theme' ),
+			'parent_item'       => __( 'Parent Service', 'theme' ),
+			'parent_item_colon' => __( 'Parent Service:', 'theme' ),
+			'edit_item'         => __( 'Edit Service', 'theme' ),
+			'update_item'       => __( 'Update Service', 'theme' ),
+			'add_new_item'      => __( 'Add New Service', 'theme' ),
+			'new_item_name'     => __( 'New Service Name', 'theme' ),
+			'menu_name'         => __( 'Services', 'theme' ),
+		];
+
+		register_taxonomy( 'case_study_service', [ 'case_study' ], [
+			'labels'            => $labels,
+			'hierarchical'      => true,
+			'public'            => true,
+			'show_ui'           => true,
+			'show_in_rest'      => true,
+			'show_admin_column' => true,
+			'rewrite'           => [ 'slug' => 'case-study-service' ],
+		] );
+	}
+}
+add_action( 'init', 'theme_register_tax_case_service' );
