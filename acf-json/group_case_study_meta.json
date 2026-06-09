@@ -1,0 +1,85 @@
+{
+    "key": "group_case_study_meta",
+    "title": "Case Study Meta",
+    "fields": [
+        {
+            "key": "field_cs_date_from",
+            "label": "Date From",
+            "name": "date_from",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Start year or date. e.g. '2025' or 'December 2020'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. 2024",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cs_date_to",
+            "label": "Date To",
+            "name": "date_to",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "End year or 'ongoing' if project is still active.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. 2026 or ongoing",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cs_country",
+            "label": "Country",
+            "name": "country",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Country the project was made for. e.g. 'Sweden'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. Sweden",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case_study"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Meta fields for Case Study CPT: date range and country.",
+    "show_in_rest": 0,
+    "modified": 1780928641
+}

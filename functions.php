@@ -109,9 +109,12 @@ require_once get_template_directory() . '/inc/industry_template_manager.php';
 require_once get_template_directory() . '/inc/cases-cpt.php';
 require_once get_template_directory() . '/inc/services-cpt.php';
 require_once get_template_directory() . '/inc/csg-load-more.php';
+require_once get_template_directory() . '/inc/ccg_ajax.php';
 require_once get_template_directory() . '/inc/cig-load-more.php';
 require_once get_template_directory() . '/inc/theme_function.php';
 require_once get_template_directory() . '/inc/theme_settings.php';
 require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';
+
+

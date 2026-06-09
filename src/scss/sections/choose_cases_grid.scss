@@ -1,0 +1,379 @@
+// =============================================================================
+// Block: Choose Cases Grid
+// File : blocks/choose-cases-grid/_choose-cases-grid.scss
+// =============================================================================
+
+@keyframes ccg-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ccg-section {
+  background-color: var(--color-background-alt);
+  padding-top:    var(--ccg-pt, 100px);
+  padding-bottom: var(--ccg-pb, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ccg-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.ccg-marquee {
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.ccg-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: ccg-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.ccg-marquee__item {
+  font-family: var(--font-primary);
+  font-size: 76px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.28px;
+  text-transform: uppercase;
+  color: #848588;
+  opacity: 0.3;
+  white-space: nowrap;
+  padding-right: 40px;
+}
+
+
+// -----------------------------------------------------------------------------
+// Filter: tabs + pills
+// -----------------------------------------------------------------------------
+
+.ccg-filter {
+  margin-bottom: 48px;
+}
+
+// Tabs row
+.ccg-tabs {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 0;
+}
+
+.ccg-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 0 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  font-family: var(--font-primary);
+  font-size: 21px;
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -0.42px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  transition: opacity var(--transition-base) ease;
+
+  // Active underline
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #111319;
+    opacity: 0;
+    transition: opacity var(--transition-base) ease;
+  }
+
+  &.is-active {
+    opacity: 1;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+}
+
+.ccg-tab__plus {
+  font-size: 18px;
+  line-height: 1;
+}
+
+// Full-width border under tabs
+.ccg-tabs__border {
+  width: 100%;
+  height: 1px;
+  background: #111319;
+  opacity: 0.2;
+  margin-bottom: 24px;
+}
+
+// Pills container
+.ccg-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.ccg-pill {
+  display: flex;
+  padding: 8px 18px 9px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 28px;
+  border: 1px solid #111319;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+  text-align: center;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease;
+
+  &.is-active {
+    background: #111319;
+    color: #fff;
+  }
+
+  &:hover:not(.is-active) {
+    background: rgba(17, 19, 25, 0.06);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Grid — 3 cols, 40px gap
+// -----------------------------------------------------------------------------
+
+.ccg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+  // Fade during AJAX
+  transition: opacity 0.2s ease;
+
+  &.is-loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Case card
+// -----------------------------------------------------------------------------
+
+.ccg-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ccg-card__link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
+}
+
+// Image area
+.ccg-card__image {
+  width: 100%;
+  height: 460px;
+  border-radius: 20px;
+  background-color: #D1D1D1;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+// Industry tags on image
+.ccg-card__tags {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ccg-card__tag {
+  display: inline-flex;
+  padding: 4px 14px 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.80);
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+  text-align: center;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+
+// Meta: date + divider + country
+.ccg-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ccg-card__meta-date,
+.ccg-card__meta-country {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #111319;
+}
+
+.ccg-card__meta-sep {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: #111319;
+  opacity: 0.2;
+  flex-shrink: 0;
+}
+
+// Title
+.ccg-card__title {
+  margin: 0 0 6px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+}
+
+// Services
+.ccg-card__services {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #111319;
+  opacity: 0.7;
+}
+
+
+// -----------------------------------------------------------------------------
+// Load More
+// -----------------------------------------------------------------------------
+
+.ccg-loadmore-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.ccg-loadmore-btn {
+  display: inline-flex;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  border: 1px solid #111319;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #111319;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease;
+
+  &:hover {
+    background: #111319;
+    color: #fff;
+  }
+
+  &.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ccg-section {
+    padding-top:    var(--ccg-pt-mob, 70px);
+    padding-bottom: var(--ccg-pb-mob, 70px);
+  }
+
+  .ccg-marquee__item {
+    font-size: clamp(32px, 7vw, 76px);
+  }
+
+  .ccg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .ccg-card__image {
+    height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ccg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ccg-tabs {
+    gap: 32px;
+  }
+}
