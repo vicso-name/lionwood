@@ -56,6 +56,10 @@ function lionwood_register_acf_blocks() {
         'case_hero',
         'case_hero_section',
         'case_client_overview',
+        'case_results',
+        'two_column_images',
+        'business_challenge',
+        'case_solution',
     ];
 
     foreach ($blocks as $block_name) {

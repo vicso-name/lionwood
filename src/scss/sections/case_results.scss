@@ -1,0 +1,172 @@
+// =============================================================================
+// Block: Case Results
+// File : blocks/case-results/_case-results.scss
+// =============================================================================
+
+.cr-section {
+  background: #E9E9E9;
+  padding-top:    var(--cr-pt, 100px);
+  padding-bottom: var(--cr-pb, 100px);
+  position: relative;
+}
+
+.cr-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Row 1: Heading (left, 489px) + Description (right, 442px)
+// -----------------------------------------------------------------------------
+
+.cr-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.cr-title {
+  width: 489px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.cr-description {
+  width: 442px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+
+// -----------------------------------------------------------------------------
+// Row 2: Stat cards — flex wrap, 15px gap
+// -----------------------------------------------------------------------------
+
+.cr-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.cr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 260px;
+  min-height: 162px;
+  padding: 20px 66px 20px 20px;
+  border-radius: 20px;
+  background: #F7F7F7;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+// Top section: value or icon
+.cr-card__top {
+  display: flex;
+  align-items: flex-start;
+}
+
+// Large red value
+.cr-card__value {
+  font-family: var(--font-primary);
+  font-size: 32px; // H3
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: var(--color-primary); // #C83030
+}
+
+// Optional icon
+.cr-card__icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  // Icon in red — if it's SVG with currentColor
+  color: var(--color-primary);
+}
+
+// Label — short description, supports line breaks
+.cr-card__label {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 75%;
+  color: var(--color-black);
+  white-space: pre-line; // respect \n line breaks
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .cr-title {
+    width: auto;
+    flex: 1;
+    font-size: clamp(36px, 5vw, 56px);
+  }
+
+  .cr-description {
+    width: auto;
+    flex: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cr-section {
+    padding-top:    var(--cr-pt-mob, 70px);
+    padding-bottom: var(--cr-pb-mob, 70px);
+  }
+
+  .cr-header {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .cr-title {
+    font-size: clamp(32px, 8vw, 56px);
+    width: 100%;
+  }
+
+  .cr-description {
+    width: 100%;
+  }
+
+  .cr-cards {
+    gap: 12px;
+  }
+
+  .cr-card {
+    width: calc(50% - 8px);
+    min-height: auto;
+    padding: 20px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cr-card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,191 @@
+// =============================================================================
+// Block: Case Solution Section
+// File : blocks/case-solution/_case-solution.scss
+// =============================================================================
+
+.csol-section {
+  background: var(--color-background);
+  padding-top:    var(--csol-pt, 100px);
+  padding-bottom: var(--csol-pb, 100px);
+  position: relative;
+}
+
+.csol-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Header: heading (left) + description (right, 460px)
+// -----------------------------------------------------------------------------
+
+.csol-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.csol-title {
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.csol-description {
+  width: 460px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+
+// -----------------------------------------------------------------------------
+// Subtitle badge — red pill
+// -----------------------------------------------------------------------------
+
+.csol-subtitle {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--color-primary); // #C83030
+  margin-bottom: 20px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+// -----------------------------------------------------------------------------
+// Cards row — flex wrap, auto-fill with 260px cards, 15px gap
+// -----------------------------------------------------------------------------
+
+.csol-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.csol-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 60px;
+  width: 260px;
+  min-height: 192px;
+  padding: 20px 66px 20px 20px;
+  border-radius: 20px;
+  background: var(--color-background-alt);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+// Icon wrap — red circle
+.csol-card__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.csol-card__icon-default,
+.csol-card__icon-img {
+  display: block;
+  width: 19px;
+  height: 19px;
+
+  svg { display: block; }
+}
+
+.csol-card__icon-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+// Card text
+.csol-card__text {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+  opacity: 0.8;
+  white-space: pre-line;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .csol-title {
+    font-size: clamp(36px, 5vw, 56px);
+  }
+
+  .csol-description {
+    width: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .csol-section {
+    padding-top:    var(--csol-pt-mob, 70px);
+    padding-bottom: var(--csol-pb-mob, 70px);
+  }
+
+  .csol-header {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .csol-title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .csol-cards {
+    gap: 12px;
+  }
+
+  .csol-card {
+    width: calc(50% - 8px);
+    min-height: auto;
+    padding: 20px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .csol-card {
+    width: 100%;
+  }
+}

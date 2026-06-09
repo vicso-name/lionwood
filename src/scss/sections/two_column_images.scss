@@ -1,0 +1,72 @@
+// =============================================================================
+// Block: Two Column Images
+// File : blocks/two-column-images/_two-column-images.scss
+// =============================================================================
+
+.tci-section {
+  background-color: var(--color-background-alt);
+  padding-top:    var(--tci-pt, 80px);
+  padding-bottom: var(--tci-pb, 100px);
+  position: relative;
+}
+
+.tci-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.tci-row {
+  display: flex;
+  gap: 20px;
+}
+
+// Single image — full width, 1360:700 aspect ratio
+.tci-row--one {
+  .tci-img {
+    flex: 1;
+    aspect-ratio: 1360 / 700;
+  }
+}
+
+// Two images — 50/50, 670:700 aspect ratio
+.tci-row--two {
+  .tci-img {
+    flex: 1 1 50%;
+    aspect-ratio: 670 / 700;
+  }
+}
+
+// Shared image styles
+.tci-img {
+  border-radius: 20px;
+  background-color: #D1D1D1; // fallback
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .tci-section {
+    padding-top:    var(--tci-pt-mob, 50px);
+    padding-bottom: var(--tci-pb-mob, 50px);
+  }
+}
+
+@media (max-width: 640px) {
+  // Stack images vertically on mobile
+  .tci-row--two {
+    flex-direction: column;
+
+    .tci-img {
+      flex: none;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+    }
+  }
+}

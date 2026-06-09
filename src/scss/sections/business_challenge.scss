@@ -1,0 +1,197 @@
+// =============================================================================
+// Block: Business Challenge Section
+// File : blocks/business-challenge/_business-challenge.scss
+// =============================================================================
+
+.bc-section {
+  background: #E9E9E9;
+  padding-top:    var(--bc-pt, 80px);
+  padding-bottom: var(--bc-pb, 100px);
+  position: relative;
+}
+
+.bc-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Header: heading (left, 431px) + description (right, 430px)
+// -----------------------------------------------------------------------------
+
+.bc-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+// Staircase heading — line 2 indented right
+.bc-heading {
+  width: 431px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.bc-heading__line-1 {
+  display: block;
+  padding-left: 0;
+}
+
+.bc-heading__line-2 {
+  display: block;
+  padding-left: 100px; // staircase indent
+}
+
+.bc-description {
+  width: 430px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+
+// -----------------------------------------------------------------------------
+// Two challenge cards — equal 50/50 with 20px gap
+// -----------------------------------------------------------------------------
+
+.bc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bc-card {
+  border-radius: 20px;
+  border: 1px solid #E9E9E9;
+  background: #F7F7F7;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+// Red header badge
+.bc-card__header {
+  border-radius: 14px;
+  background: var(--color-primary); // #C83030
+  padding: 16px 20px;
+  margin-bottom: 40px;
+  min-height: 69px;
+  display: flex;
+  align-items: center;
+}
+
+.bc-card__title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+}
+
+// Checklist
+.bc-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bc-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+// Red circle icon
+.bc-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  margin-top: 2px;
+
+  svg { display: block; }
+}
+
+.bc-card__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .bc-heading {
+    width: auto;
+    font-size: clamp(36px, 5vw, 56px);
+  }
+
+  .bc-description {
+    width: auto;
+  }
+
+  .bc-heading__line-2 {
+    padding-left: 60px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .bc-section {
+    padding-top:    var(--bc-pt-mob, 50px);
+    padding-bottom: var(--bc-pb-mob, 50px);
+  }
+
+  .bc-header {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .bc-heading {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .bc-heading__line-2 {
+    padding-left: 40px;
+  }
+
+  .bc-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .bc-heading__line-2 {
+    padding-left: 24px;
+  }
+}
