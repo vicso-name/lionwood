@@ -1,0 +1,276 @@
+// =============================================================================
+// Block: Case Core Capabilities
+// File : blocks/case-core-capabilities/_case-core-capabilities.scss
+// =============================================================================
+
+.ccc-section {
+  background: #F7F7F7;
+  padding-top:    var(--ccc-pt, 100px);
+  padding-bottom: var(--ccc-pb, 100px);
+  position: relative;
+}
+
+.ccc-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — staircase, width 456px
+// -----------------------------------------------------------------------------
+
+.ccc-heading {
+  width: 456px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.ccc-heading__top    { padding-left: 0; }
+.ccc-heading__bottom { padding-left: 100px; } // staircase indent
+
+
+// -----------------------------------------------------------------------------
+// Two-column row
+// -----------------------------------------------------------------------------
+
+.ccc-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+
+// -----------------------------------------------------------------------------
+// Left: dark panel
+// -----------------------------------------------------------------------------
+
+.ccc-panel {
+  flex-shrink: 0;
+  width: 674px;
+  min-height: 377px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #111319;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+// White badge inside dark panel
+.ccc-panel__badge {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: #F7F7F7;
+  margin-bottom: 30px;
+  flex-shrink: 0;
+  width: fit-content;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #111319;
+  text-align: center;
+  white-space: nowrap;
+}
+
+// Feature list
+.ccc-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ccc-panel__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(247, 247, 247, 0.20);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  // Fade-in animation for item transitions
+  animation: ccc-fade-in 0.35s ease both;
+}
+
+@keyframes ccc-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// Red circle icon
+.ccc-panel__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+
+  svg { display: block; }
+}
+
+.ccc-panel__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #F7F7F7;
+}
+
+
+// -----------------------------------------------------------------------------
+// Right: accordion
+// -----------------------------------------------------------------------------
+
+.ccc-accordion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ccc-item {
+  border-radius: 20px;
+  background: #fff;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+
+  &:last-child { margin-bottom: 0; }
+
+  &.is-active {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+
+    .ccc-item__arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.ccc-item__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 29px 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+    border-radius: 20px;
+  }
+}
+
+.ccc-item__title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+// Arrow circle
+.ccc-item__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #F7F7F7;
+  transition: transform 0.3s ease, background-color 0.2s ease;
+
+  svg { display: block; }
+
+  .ccc-item.is-active & {
+    background: #F7F7F7;
+  }
+}
+
+// Accordion body
+.ccc-item__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.is-open {
+    max-height: 300px;
+  }
+}
+
+.ccc-item__desc {
+  padding: 0 30px 24px;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+  max-width: 500px;
+  opacity: 0.8;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .ccc-panel {
+    width: 48%;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .ccc-section {
+    padding-top:    var(--ccc-pt-mob, 70px);
+    padding-bottom: var(--ccc-pb-mob, 70px);
+  }
+
+  .ccc-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 40px;
+  }
+
+  .ccc-heading__bottom {
+    padding-left: 40px;
+  }
+
+  .ccc-row {
+    flex-direction: column;
+  }
+
+  .ccc-panel {
+    width: 100%;
+    min-height: auto;
+  }
+}

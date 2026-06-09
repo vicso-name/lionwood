@@ -1,0 +1,321 @@
+{
+    "key": "group_ccc_block",
+    "title": "Case Core Capabilities",
+    "fields": [
+        {
+            "key": "field_ccc_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ccc_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ccc_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 35,
+            "min": 0,
+            "max": 200,
+            "placeholder": "",
+            "step": 4,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_ccc_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 120,
+            "min": 0,
+            "max": 200,
+            "placeholder": "",
+            "step": 4,
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_ccc_title_top",
+            "label": "Heading — Line 1",
+            "name": "title_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line of the heading — left-aligned.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Core System",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_ccc_title_bottom",
+            "label": "Heading — Line 2",
+            "name": "title_bottom",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line — indented right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Capabilities",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_ccc_panel_badge",
+            "label": "Left Panel Badge Label",
+            "name": "panel_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Label for the white badge inside the dark left panel. e.g. 'Key features'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Key features",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_ccc_items",
+            "label": "Capability Items",
+            "name": "items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Each item has an accordion title+description on the right, and a list of key features shown on the left panel when active.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 1,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Capability",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_ccc_item_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Accordion item title shown on the right panel.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_ccc_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_ccc_item_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Short text shown below the title when accordion is open.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": "br",
+                    "parent_repeater": "field_ccc_items",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_ccc_item_features",
+                    "label": "Key Features (left panel)",
+                    "name": "features",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "List of features shown in the dark left panel when this item is active.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "button_label": "Add Feature",
+                    "parent_repeater": "field_ccc_items",
+                    "rows_per_page": 20,
+                    "collapsed": "",
+                    "sub_fields": [
+                        {
+                            "key": "field_ccc_feature_text",
+                            "label": "Feature Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "parent_repeater": "field_ccc_item_features",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_ccc_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_ccc_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/case-core-capabilities"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Core capabilities: staircase heading, dark left panel synced with right accordion.",
+    "show_in_rest": 0,
+    "modified": 1781008878
+}

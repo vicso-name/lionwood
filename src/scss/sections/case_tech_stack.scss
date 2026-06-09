@@ -1,0 +1,266 @@
+// =============================================================================
+// Block: Case Tech Stack Section
+// File : blocks/case-tech-stack/_case-tech-stack.scss
+// Reuses cell/grid styles similar to technologies-section (ts2-) but dark bg.
+// =============================================================================
+
+.cts-section {
+  background: #111319;
+  padding-top:    var(--cts-pt, 100px);
+  padding-bottom: var(--cts-pb, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cts-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Row 1: Heading + Description
+// -----------------------------------------------------------------------------
+
+.cts-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.cts-heading {
+  width: 489px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: #F7F7F7;
+}
+
+.cts-heading__top    { padding-left: 0; }
+.cts-heading__bottom { padding-left: 100px; } // staircase indent
+
+.cts-description {
+  width: 414px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+}
+
+
+// -----------------------------------------------------------------------------
+// Row 2: Team table — two columns
+// -----------------------------------------------------------------------------
+
+.cts-team {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 40px;
+  margin-bottom: 90px;
+}
+
+.cts-team__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.cts-team__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.cts-team__role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+
+  svg { display: block; flex-shrink: 0; }
+}
+
+.cts-team__count {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;
+  line-height: 120%;
+  color: #F7F7F7;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Row 3: Technology grid — mirrors ts2-grid pattern, dark theme
+// -----------------------------------------------------------------------------
+
+.cts-grid {
+  display: grid;
+  grid-template-columns: repeat(14, 93px);
+  grid-auto-rows: 93px;
+  gap: 4px;
+  width: max-content;
+}
+
+@keyframes cts-cell-in {
+  from { opacity: 0; transform: scale(0.85) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+// Empty cell
+.cts-cell {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: transparent;
+  box-sizing: border-box;
+
+  // Tech cell — icon
+  &--tech {
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Label cell — name
+  &--label {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+  }
+}
+
+.cts-cell.is-entering {
+  animation: cts-cell-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: var(--cell-delay, 0ms);
+}
+
+.cts-cell__icon {
+  width: 56px;
+  height: 56px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.cts-cell__name-inline {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 350;
+  line-height: 120%;
+  color: rgba(247, 247, 247, 0.60);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+// =============================================================================
+// Responsive — fluid cells via --cts-cell; mirrors JS getMobileCols()
+// Formula: (100vw - 2*container-padding - (cols-1)*gap) / cols
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .cts-heading {
+    width: auto;
+    font-size: clamp(36px, 5vw, 56px);
+  }
+
+  .cts-description {
+    width: auto;
+  }
+}
+
+// 900–1023 px → 10 cols, fluid
+@media (max-width: 1023px) {
+  .cts-section {
+    padding-top:    var(--cts-pt-mob, 70px);
+    padding-bottom: var(--cts-pb-mob, 70px);
+    --cts-cell: calc((100vw - 2 * var(--container-padding) - 9 * 4px) / 10);
+  }
+
+  .cts-header {
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .cts-heading {
+    font-size: clamp(32px, 7vw, 56px);
+  }
+
+  .cts-heading__bottom {
+    padding-left: 40px;
+  }
+
+  .cts-team {
+    grid-template-columns: 1fr;
+    margin-bottom: 48px;
+  }
+
+  .cts-grid {
+    grid-template-columns: repeat(10, var(--cts-cell));
+    grid-auto-rows: var(--cts-cell);
+    width: auto;
+  }
+
+  .cts-cell__icon {
+    width: calc(var(--cts-cell) * 0.6);
+    height: calc(var(--cts-cell) * 0.6);
+  }
+}
+
+// 768–899 px → 8 cols
+@media (max-width: 899px) {
+  .cts-section {
+    --cts-cell: calc((100vw - 2 * var(--container-padding) - 7 * 4px) / 8);
+  }
+
+  .cts-grid { grid-template-columns: repeat(8, var(--cts-cell)); }
+}
+
+// 600–767 px → 6 cols
+@media (max-width: 767px) {
+  .cts-section {
+    --cts-cell: calc((100vw - 2 * var(--container-padding) - 5 * 4px) / 6);
+  }
+
+  .cts-grid { grid-template-columns: repeat(6, var(--cts-cell)); }
+}
+
+// ≤599 px → 4 cols
+@media (max-width: 599px) {
+  .cts-section {
+    --cts-cell: calc((100vw - 2 * var(--container-padding) - 3 * 4px) / 4);
+  }
+
+  .cts-grid { grid-template-columns: repeat(4, var(--cts-cell)); }
+
+  .cts-cell__name-inline {
+    font-size: 13px;
+  }
+}
