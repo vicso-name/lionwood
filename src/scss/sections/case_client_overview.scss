@@ -1,0 +1,310 @@
+// =============================================================================
+// Block: Case Client Overview
+// File : blocks/case-client-overview/_case-client-overview.scss
+// =============================================================================
+
+@keyframes cco-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.cco-section {
+  background: #C83030;
+  padding-top:    var(--cco-pt, 100px);
+  padding-bottom: var(--cco-pb, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cco-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.cco-marquee {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.cco-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: cco-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.cco-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-size: 76px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.28px;
+  text-transform: uppercase;
+  color: #E9E9E9;
+  opacity: 0.3;
+  white-space: nowrap;
+
+  &::before {
+    content: '—';
+    margin-inline: 40px; // equal spacing on both sides of the dash
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Rows
+// -----------------------------------------------------------------------------
+
+.cco-row {
+  display: flex;
+  gap: 100px;
+  align-items: flex-start;
+  padding: 60px 0;
+}
+
+.cco-col {
+  flex: 1 1 50%;
+  width: 50%;
+}
+
+// Full-width horizontal divider between rows
+.cco-divider {
+  width: 100%;
+  height: 1px;
+  background: #fff;
+  opacity: 0.2;
+}
+
+
+// -----------------------------------------------------------------------------
+// Left column heading — max-width 410px
+// About the Client: two lines, line 1 indented right
+// Summary: single line
+// -----------------------------------------------------------------------------
+
+.cco-heading {
+  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: #F7F7F7;
+}
+
+// Line 1 — indented right (as on screenshot)
+.cco-heading__top {
+  padding-left: 100px;
+
+  // Single-line variant (Summary) — no indent
+  &--single {
+    padding-left: 0!important;
+  }
+}
+
+.cco-heading__bottom {
+  padding-left: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column content — width 440px
+// -----------------------------------------------------------------------------
+
+.cco-col--right {
+  display: flex;
+  flex-direction: column;
+}
+
+.cco-content {
+  width: 440px;
+
+  p, li {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-medium);
+    line-height: 140%;
+    color: #F7F7F7;
+    margin: 0 0 12px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  strong { font-weight: 700; }
+
+  ul, ol {
+    padding-left: 20px;
+    margin: 0 0 12px;
+  }
+
+  &--summary {
+    margin-bottom: 50px;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Details table
+// -----------------------------------------------------------------------------
+
+.cco-details {
+  width: 440px;
+  margin: 0 0 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cco-details__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+
+  &:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
+  }
+}
+
+.cco-details__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+  flex-shrink: 0;
+
+  svg { display: block; flex-shrink: 0; }
+}
+
+.cco-details__value {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+  text-align: right;
+  margin: 0;
+  max-width: 250px;
+}
+
+
+// -----------------------------------------------------------------------------
+// Service tags
+// -----------------------------------------------------------------------------
+
+.cco-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cco-tag {
+  display: inline-flex;
+  padding: 8px 18px 9px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 28px;
+  border: 1px solid #F7F7F7;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  text-align: center;
+  white-space: nowrap;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.10);
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .cco-row {
+    gap: 60px;
+  }
+
+  .cco-content,
+  .cco-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .cco-section {
+    padding-top:    var(--cco-pt-mob, 70px);
+    padding-bottom: var(--cco-pb-mob, 70px);
+  }
+
+  .cco-marquee {
+    margin-bottom: 20px;
+  }
+
+  .cco-marquee__item {
+    font-size: clamp(32px, 7vw, 76px);
+
+    &::before {
+      margin-inline: 24px;
+    }
+  }
+
+  .cco-row {
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px 0;
+  }
+
+  .cco-col {
+    flex: none;
+    width: 100%;
+  }
+
+  .cco-heading {
+    max-width: 100%;
+    font-size: clamp(36px, 8vw, 56px);
+  }
+
+  .cco-heading__top {
+    padding-left: 40px;
+  }
+
+  .cco-content,
+  .cco-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .cco-heading__top {
+    padding-left: 20px;
+  }
+}

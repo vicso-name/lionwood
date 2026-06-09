@@ -55,6 +55,7 @@ function lionwood_register_acf_blocks() {
         'choose_cases_grid',
         'case_hero',
         'case_hero_section',
+        'case_client_overview',
     ];
 
     foreach ($blocks as $block_name) {
