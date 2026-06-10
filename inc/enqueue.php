@@ -112,6 +112,23 @@ add_action('wp_enqueue_scripts', function () {
         $script_deps[] = 'btf-swiper-script';
     }
 
+    // GSAP + ScrollTrigger (CDN)
+    wp_enqueue_script(
+        'gsap',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+        [],
+        '3.12.5',
+        true
+    );
+
+    wp_enqueue_script(
+        'gsap-scroll-trigger',
+        'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
+        ['gsap'],
+        '3.12.5',
+        true
+    );
+
     wp_enqueue_script(
         'btf-main-scripts',
         lionwood_asset_url('build/js/general.min.js'),

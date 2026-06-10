@@ -64,6 +64,8 @@ function lionwood_register_acf_blocks() {
         'case_core_capabilities',
         'case_client_story',
         'case_tech_stack',
+        'process_timeline',
+        'case_testimonial',
     ];
 
     foreach ($blocks as $block_name) {

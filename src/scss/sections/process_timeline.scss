@@ -1,0 +1,276 @@
+// =============================================================================
+// Block: Process Timeline Section
+// File : blocks/process-timeline/_process-timeline.scss
+// =============================================================================
+
+.pt-section {
+  background: #C83030;
+  padding-top:    var(--pt-pt, 100px);
+  padding-bottom: var(--pt-pb, 100px);
+  position: relative;
+}
+
+.pt-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — staircase, width 473px
+// -----------------------------------------------------------------------------
+
+.pt-heading {
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.pt-heading__top    { padding-left: 0; }
+.pt-heading__bottom { padding-left: 100px; }
+
+
+// -----------------------------------------------------------------------------
+// Timeline wrapper — relative for SVG overlay
+// -----------------------------------------------------------------------------
+
+.pt-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+// SVG overlay — JS positions paths to connect milestones
+.pt-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Rows
+// -----------------------------------------------------------------------------
+
+.pt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 40px 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.pt-row--reversed {
+  justify-content: flex-start;
+  padding-left: 20%;
+
+  .pt-milestone {
+    flex: 1;
+    max-width: 220px;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Milestone
+// -----------------------------------------------------------------------------
+
+.pt-milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+  max-width: 220px;
+  position: relative;
+}
+
+// Hidden dot — desktop only, used by JS for path geometry
+.pt-milestone__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+// Date pill — inactive state (default)
+.pt-milestone__pill {
+  display: inline-flex;
+  padding: 8px 18px 9px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  border: 1px solid rgba(247, 247, 247, 0.60);
+  background: #C83030;
+  cursor: default;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  white-space: nowrap;
+  width: fit-content;
+  // Initial animation state (GSAP)
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+// Active pill state
+.pt-milestone__pill.is-active {
+  background: #F7F7F7;
+  border-color: #F7F7F7;
+  color: #C83030;
+  opacity: 1;
+  transform: scale(1);
+}
+
+// Description
+.pt-milestone__desc {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 130%;
+  color: rgba(247, 247, 247, 0.85);
+  white-space: pre-line;
+
+  // Initial animation state
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+// =============================================================================
+// Responsive — vertical list with animated dot + line on mobile
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .pt-section {
+    padding-top:    var(--pt-pt-mob, 70px);
+    padding-bottom: var(--pt-pb-mob, 70px);
+  }
+
+  .pt-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 30px;
+  }
+
+  .pt-heading__bottom {
+    padding-left: 40px;
+  }
+
+  // Hide desktop SVG snake
+  .pt-svg {
+    display: none;
+  }
+
+  // Timeline: add left padding for dot + line
+  .pt-timeline {
+    padding-left: 28px; // 12px dot + 16px gap to pill
+    position: relative;
+  }
+
+  // Vertical base line — starts at first dot center, extends to bottom of section
+  .pt-timeline::before {
+    content: '';
+    position: absolute;
+    top: 14px;   // 8px margin-top + 6px (half dot height) = center of first dot
+    left: 5px;   // center of 12px dot
+    width: 1px;
+    bottom: calc(-1 * var(--pt-pb-mob, 70px)); // extend to bottom of section
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  // Animated progress line
+  .pt-timeline__line-progress {
+    position: absolute;
+    top: 14px;
+    left: 5px;
+    width: 1px;
+    bottom: calc(-1 * var(--pt-pb-mob, 70px));
+    background: #fff;
+    transform-origin: top center;
+    transform: scaleY(0);
+  }
+
+  .pt-row {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .pt-row--reversed {
+    padding-left: 0;
+
+    .pt-milestone {
+      max-width: 100%;
+    }
+  }
+
+  .pt-milestone {
+    max-width: 100%;
+    flex-direction: row;      // dot left, content right
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0 0 32px;
+    margin-left: -28px;       // pull back to overlay the line padding
+  }
+
+  // Mobile dot — replaces desktop hidden dot
+  .pt-milestone__mob-dot {
+    display: flex;
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    margin-top: 8px; // align with pill text baseline
+  }
+
+  // Pill: reset animation state on mobile — GSAP handles it
+  .pt-milestone__pill {
+    opacity: 0;
+    transform: scale(0.9);
+    background: #C83030;
+    white-space: normal;
+  }
+
+  .pt-milestone__pill.is-active {
+    background: #F7F7F7;
+    border-color: #F7F7F7;
+    color: #C83030;
+  }
+
+  .pt-milestone__desc {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  // Content wrapper (pill + desc stacked)
+  .pt-milestone__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+}

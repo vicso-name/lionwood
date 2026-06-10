@@ -1,0 +1,229 @@
+// =============================================================================
+// Block: Case Testimonial
+// File : blocks/case-testimonial/_case-testimonial.scss
+// =============================================================================
+
+.ctm-section {
+  background: #F7F7F7;
+  padding-top:    var(--ctm-pt, 100px);
+  padding-bottom: var(--ctm-pb, 100px);
+  position: relative;
+}
+
+.ctm-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Author row — left: avatar + name/position | right: stars + clutch link
+// -----------------------------------------------------------------------------
+
+.ctm-author-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.ctm-author {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+// Avatar — 80×80 circle
+.ctm-author__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  aspect-ratio: 1;
+
+  &--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg { display: block; width: 80px; height: 80px; }
+  }
+}
+
+.ctm-author__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ctm-author__name {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black);
+}
+
+.ctm-author__position {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: var(--color-black);
+}
+
+// Rating block — right side
+.ctm-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.ctm-rating__stars {
+  display: flex;
+  gap: 2px;
+  svg { display: block; }
+}
+
+.ctm-rating__link {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 2px;
+
+  &:hover { color: var(--color-primary); }
+}
+
+
+// -----------------------------------------------------------------------------
+// Review text — large 32px wysiwyg
+// -----------------------------------------------------------------------------
+
+.ctm-review {
+  margin-bottom: 60px;
+
+  p {
+    margin: 0 0 16px;
+    font-family: var(--font-primary);
+    font-size: 32px;
+    font-weight: var(--font-weight-medium);
+    line-height: 130%;
+    color: var(--color-black);
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  strong { font-weight: 700; }
+}
+
+
+// -----------------------------------------------------------------------------
+// Highlights row
+// -----------------------------------------------------------------------------
+
+.ctm-highlights {
+  display: flex;
+  flex-direction: column;
+}
+
+// Top / bottom lines
+.ctm-highlights__line {
+  width: 100%;
+  height: 1px;
+  background: #111319;
+  opacity: 0.1;
+}
+
+.ctm-highlights__items {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 28px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+// Vertical separator between items
+.ctm-highlights__sep {
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: #111319;
+  opacity: 0.2;
+  flex-shrink: 0;
+  margin: 0 40px;
+}
+
+.ctm-highlights__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+// Red circle icon
+.ctm-highlights__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  aspect-ratio: 1;
+
+  svg { display: block; }
+}
+
+.ctm-highlights__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+  white-space: nowrap;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ctm-section {
+    padding-top:    var(--ctm-pt-mob, 70px);
+    padding-bottom: var(--ctm-pb-mob, 70px);
+  }
+
+  .ctm-author-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ctm-rating {
+    align-items: flex-start;
+  }
+
+  .ctm-review p {
+    font-size: clamp(20px, 5vw, 32px);
+  }
+
+  .ctm-highlights__items {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .ctm-highlights__sep {
+    display: none;
+  }
+}
