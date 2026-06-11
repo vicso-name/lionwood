@@ -68,6 +68,7 @@ function lionwood_register_acf_blocks() {
         'case_testimonial',
         'about_hero',
         'about_rows',
+        'about_vision',
     ];
 
     foreach ($blocks as $block_name) {

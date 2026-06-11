@@ -1,0 +1,258 @@
+// =============================================================================
+// Block: About Vision
+// File : blocks/about-vision/_about-vision.scss
+// =============================================================================
+
+@keyframes av-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.av-section {
+    background:     #111319;
+    padding-top:    var(--av-pt, 100px);
+    padding-bottom: var(--av-pb, 100px);
+    position:       relative;
+    overflow:       hidden;
+}
+
+.av-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.av-marquee {
+    overflow: hidden;
+}
+
+.av-marquee__track {
+    display:     flex;
+    width:       max-content;
+    animation:   av-marquee 40s linear infinite;
+    will-change: transform;
+}
+
+.av-marquee__item {
+    font-family:    var(--font-primary);
+    font-size:      76px;
+    font-weight:    var(--font-weight-medium);
+    line-height:    100%;
+    letter-spacing: -2.28px;
+    text-transform: uppercase;
+    color:          #848588;
+    opacity:        0.3;
+    white-space:    nowrap;
+
+    &::before {
+        content:       '—';
+        margin-inline: 40px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Top divider — separates marquee from content row
+// -----------------------------------------------------------------------------
+
+.av-divider {
+    height:     1px;
+    background: #fff;
+    opacity:    0.2;
+    margin-top: 60px;
+}
+
+// -----------------------------------------------------------------------------
+// Body row — text left, image right
+// -----------------------------------------------------------------------------
+
+.av-body {
+    position:    relative;
+    display:     flex;
+    align-items: flex-start;
+}
+
+// Vertical divider between columns — starts exactly at the top line
+.av-body__divider {
+    flex-shrink: 0;
+    width:       1px;
+    height:      560px; // tall enough to cover content
+    background:  #fff;
+    opacity:     0.2;
+    align-self:  flex-start;
+    margin-top:  0; // flush to top line
+}
+
+// -----------------------------------------------------------------------------
+// Text column
+// -----------------------------------------------------------------------------
+
+.av-col--text {
+    flex:           0 0 50%;
+    width:          50%;
+    padding-top:    40px;
+    padding-right:  60px;
+    display:        flex;
+    flex-direction: column;
+    min-width:      0; // prevent flex blowout
+}
+
+.av-badge {
+    display:         inline-flex;
+    padding:         5px 15px 6px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   8px;
+    background:      #E9E9E9;
+    color:           #111319;
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-2); // 16px
+    font-weight:     var(--font-weight-medium);
+    line-height:     140%;
+    text-align:      center;
+    white-space:     nowrap;
+    margin-bottom:   30px;
+    width:           fit-content;
+}
+
+.av-description {
+    max-width:   494px;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-medium);
+    line-height: 150%;
+    margin:      0;
+}
+
+// -----------------------------------------------------------------------------
+// Image column
+// -----------------------------------------------------------------------------
+
+.av-col--image {
+    flex:            0 0 50%;
+    width:           50%;
+    padding-top:     40px;
+    padding-left:    60px;
+    display:         flex;
+    justify-content: flex-end;
+    min-width:       0; // prevent flex blowout
+}
+
+.av-image {
+    width:               100%;
+    max-width:           650px;
+    height:              460px;
+    border-radius:       16px;
+    background-size:     cover;
+    background-position: center;
+    background-repeat:   no-repeat;
+    background-color:    #1e2028;
+    flex-shrink:         1; // allow shrinking
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .av-marquee__item {
+        font-size: clamp(40px, 6vw, 76px);
+    }
+
+    .av-image {
+        height: 400px;
+    }
+
+    .av-body__divider {
+        height: 400px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .av-section {
+        padding-top:    var(--av-pt-mob, 70px);
+        padding-bottom: var(--av-pb-mob, 70px);
+    }
+
+    .av-marquee__item {
+        font-size: clamp(32px, 7vw, 76px);
+    }
+
+    .av-marquee {
+        margin-bottom: 80px;
+    }
+
+    .av-divider {
+        display:    none;
+        margin-top: 40px;
+    }
+
+    .av-body {
+        flex-direction: column;
+        position:       relative;
+        border-left:    none;
+
+        // Left border starts from top of av-body (after the horizontal divider)
+        &::before {
+            content:    '';
+            position:   absolute;
+            top:        0;
+            left:       0;
+            width:      1px;
+            height:     100%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    // Vertical divider → becomes horizontal between image and text
+    .av-body__divider {
+        width:      100%;
+        height:     1px;
+        align-self: auto;
+        margin-top: 0;
+        order:      2;
+    }
+
+    // Image on top
+    .av-col--image {
+        order:           1;
+        flex:            none;
+        width:           100%;
+        padding-left:    24px;
+        padding-right:   24px;
+        padding-top:     30px;
+        padding-bottom:  30px;
+        justify-content: flex-start;
+        min-height:      unset;
+    }
+
+    .av-image {
+        width:  100%;
+        height: 300px;
+    }
+
+    .av-col--text {
+        order:         3;
+        flex:          none;
+        width:         100%;
+        padding-right: 0;
+        padding-top:   40px;
+        padding-left:  24px;
+        border-left:   none;
+    }
+}
+
+@media (max-width: 640px) {
+    .av-image {
+        height: 260px;
+    }
+}
