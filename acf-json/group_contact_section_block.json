@@ -1,0 +1,347 @@
+{
+    "key": "group_contact_section_block",
+    "title": "Contact Section",
+    "fields": [
+        {
+            "key": "field_cs_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Top padding of the section in pixels. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "prepend": "",
+            "append": "px",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Bottom padding of the section in pixels. Default: 200.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 200,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "prepend": "",
+            "append": "px",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile top padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "prepend": "",
+            "append": "px",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile bottom padding. Default: 140.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 140,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "prepend": "",
+            "append": "px",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_title_top",
+            "label": "Heading — Top Line",
+            "name": "title_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line of the heading (dimmed, opacity 0.4).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Ready to Accelerate",
+            "placeholder": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cs_title_bottom",
+            "label": "Heading — Bottom Lines",
+            "name": "title_bottom",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Second part of the heading (full opacity). Use one line per row.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Your Business Growth?\nContact Us.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_cs_description",
+            "label": "Description",
+            "name": "description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short text below the heading block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get a consultation within one business day.",
+            "rows": 3,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_grid_label_1",
+            "label": "Grid Label 1",
+            "name": "grid_label_1",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Row 1, columns 13–14.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/ 8 years on\nthe market",
+            "rows": 2,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_grid_label_2",
+            "label": "Grid Label 2",
+            "name": "grid_label_2",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Row 2, columns 12–13.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/ ai & automation\nsmart digital solutions",
+            "rows": 2,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_grid_label_3",
+            "label": "Grid Label 3",
+            "name": "grid_label_3",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Row 4, columns 2–3.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/ global clients\n50+ projects delivered",
+            "rows": 2,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_grid_label_4",
+            "label": "Grid Label 4",
+            "name": "grid_label_4",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Row 6, columns 13–14.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/ product development\nfrom idea to launch",
+            "rows": 2,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_grid_label_5",
+            "label": "Grid Label 5",
+            "name": "grid_label_5",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Row 8, columns 1–2.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/ custom software\nweb · mobile · cloud",
+            "rows": 2,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_form_shortcode",
+            "label": "Form Shortcode",
+            "name": "form_shortcode",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Paste your CF7 shortcode here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "rows": 2,
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cs_terms_link",
+            "label": "Terms & Conditions Link",
+            "name": "terms_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "URL for the Terms & Conditions link inside the form footer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cs_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show a decorative arc at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_cs_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F7F7F7",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/contact-section"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Full-width contact section with decorative grid background, two-line heading, description, and a centred contact form.",
+    "show_in_rest": 0,
+    "modified": 1781190964
+}

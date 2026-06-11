@@ -1,0 +1,501 @@
+// =============================================================================
+// Block: About Our Talent  (prefix: abt-)
+// Left panel: funnel card + stat card + gender card
+// Right panel: accordion (identical pattern to ss-)
+// =============================================================================
+
+.abt-section {
+    background-color: var(--color-background, #F7F7F7);
+    padding-top:      var(--abt-pt, 100px);
+    padding-bottom:   var(--abt-pb, 100px);
+    overflow:         hidden;
+    position:         relative;
+}
+
+.abt-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Top: heading + description
+// =============================================================================
+
+.abt-section__top {
+    display:        flex;
+    justify-content: space-between;
+    gap:            var(--space-8);
+    margin-bottom:  60px;
+    flex-direction: column;
+}
+
+.abt-section__heading {
+    display:        flex;
+    flex-direction: column;
+    width:          920px;
+    flex-shrink:    0;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2);
+    font-weight:    var(--font-weight-medium);
+    line-height:    var(--line-height-h2);
+    letter-spacing: var(--letter-spacing-h2);
+    text-transform: uppercase;
+    text-align:     right;
+    color:          var(--color-black);
+}
+
+.abt-section__title-top    { opacity: 0.5; }
+.abt-section__title-bottom { opacity: 1; }
+
+.abt-section__description {
+    width:       278px;
+    flex-shrink: 0;
+    margin:      0;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2);
+    font-weight: 500;
+    line-height: 1.4;
+    color:       #3D3F43;
+    position:    relative;
+    transform:   translate(240%, 0);
+}
+
+// =============================================================================
+// Body: left panel + accordion — 50/50
+// =============================================================================
+
+.abt-section__body {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    gap:                   24px;
+    align-items:           start;
+}
+
+// =============================================================================
+// LEFT PANEL
+// =============================================================================
+
+.abt-panel {
+    display:        flex;
+    flex-direction: column;
+}
+
+.abt-panel__inner {
+    display: grid;
+    grid-template-columns: 332px 1fr;
+    gap:                   4px;
+}
+
+// =============================================================================
+// Funnel card (left column of panel)
+// =============================================================================
+
+.abt-funnel {
+    width:         332px;
+    padding:       30px;
+    border-radius: 20px;
+    background:    var(--color-primary, #C83030);
+    display:       flex;
+    flex-direction: column;
+    box-sizing:    border-box;
+    flex-shrink:   0;
+}
+
+.abt-funnel__label {
+    display:         inline-flex;
+    padding:         5px 15px 6px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   8px;
+    background:      #F7F7F7;
+    color:           #111319;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1.4;
+    text-align:      center;
+    margin-bottom:   30px;
+    align-self:      flex-start;
+    white-space:     nowrap;
+}
+
+// Three-row funnel: each row is its own SVG + centered text
+.abt-funnel__rows {
+    display:        flex;
+    flex-direction: column;
+}
+
+.abt-funnel__row {
+    position: relative;
+
+    svg {
+        display: block;
+        width:   100%;
+        height:  auto;
+    }
+
+    span {
+        position:        absolute;
+        inset:           0;
+        display:         flex;
+        align-items:     center;
+        justify-content: center;
+        font-family:     var(--font-primary);
+        font-size:       18px;
+        font-weight:     500;
+        line-height:     1.3;
+        text-align:      center;
+        pointer-events:  none;
+    }
+}
+
+// Row 1 — top trapezoid (white bg → red text)
+.abt-funnel__row--1 span { color: var(--color-primary, #C83030); }
+
+// Row 2 — middle band (semi-transparent white → white text)
+.abt-funnel__row--2 span { color: #F7F7F7; }
+
+// Row 3 — bottom trapezoid (low opacity white → white text)
+.abt-funnel__row--3 span { color: #F7F7F7; }
+
+// =============================================================================
+// Right column of panel: stat + gender stacked
+// =============================================================================
+
+.abt-cards-col {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+}
+
+// ── Stat card ────────────────────────────────────────────────────────────────
+
+.abt-stat {
+    height:        184px;
+    border-radius: 20px;
+    background:    var(--color-primary, #C83030);
+    padding:       30px;
+    display:       flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing:    border-box;
+}
+
+.abt-stat__label {
+    display:         inline-flex;
+    padding:         5px 15px 6px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   8px;
+    background:      #F7F7F7;
+    color:           #111319;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1.4;
+    align-self:      flex-start;
+    white-space:     nowrap;
+    margin-bottom:   30px;
+}
+
+.abt-stat__bottom {
+    display:     flex;
+    align-items: flex-end;
+    gap:         12px;
+}
+
+.abt-stat__value {
+    margin:         0;
+    color:          #fff;
+    font-family:    var(--font-primary);
+    font-size:      56px;
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    flex-shrink:    0;
+}
+
+.abt-stat__desc {
+    margin:      0;
+    color:       #fff;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    opacity:     0.8;
+    padding-bottom: 6px;
+}
+
+// ── Gender card ───────────────────────────────────────────────────────────────
+
+.abt-gender {
+    height:        183px;
+    border-radius: 20px;
+    background:    var(--color-black, #111319);
+    padding:       30px;
+    display:       flex;
+    align-items:   center;
+    gap:           20px;
+    box-sizing:    border-box;
+}
+
+.abt-gender__icon {
+    flex-shrink: 0;
+    width:       110px;
+    height:      110px;
+
+    svg {
+        display: block;
+        width:   110px;
+        height:  110px;
+    }
+}
+
+.abt-gender__badges {
+    display:        flex;
+    flex-direction: column;
+    gap:            8px;
+    flex:           1;
+}
+
+.abt-gender__badge {
+    display:     inline-flex;
+    padding:     5px 10px;
+    align-items: center;
+    gap:         10px;
+    border-radius: 6px;
+    font-family:   var(--font-primary);
+    font-size:     16px;
+    font-weight:   500;
+    line-height:   1.4;
+    white-space:   nowrap;
+
+    &--light {
+        background: #fff;
+        color:      #111319;
+    }
+
+    &--red {
+        background: var(--color-primary, #C83030);
+        color:      #F7F7F7;
+    }
+}
+
+// =============================================================================
+// RIGHT PANEL — Accordion (mirror of ss-accordion)
+// =============================================================================
+
+.abt-accordion {
+    display:        flex;
+    flex-direction: column;
+    gap:            0;
+}
+
+.abt-accordion__item {
+    border-radius: 20px;
+    background:    #fff;
+    margin-bottom: 8px;
+    overflow:      hidden;
+    transition:    box-shadow 0.25s ease;
+
+    &:last-child { margin-bottom: 0; }
+
+    &.is-active {
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+}
+
+.abt-accordion__trigger {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    width:           100%;
+    min-height:      86px;
+    padding:         20px 24px;
+    background:      transparent;
+    border:          none;
+    cursor:          pointer;
+    text-align:      left;
+    gap:             16px;
+    box-sizing:      border-box;
+}
+
+.abt-accordion__title {
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: 500;
+    line-height: 1.4;
+    color:       var(--color-black, #111319);
+}
+
+.abt-accordion__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           42px;
+    height:          42px;
+    border-radius:   50%;
+    background:      #F7F7F7;
+    flex-shrink:     0;
+    transition:      transform 0.3s ease;
+
+    svg { display: block; }
+}
+
+.abt-accordion__trigger[aria-expanded="true"] .abt-accordion__icon {
+    transform: rotate(180deg);
+}
+
+.abt-accordion__body {
+    padding: 0 24px 24px;
+
+    &[hidden] { display: none; }
+}
+
+.abt-accordion__desc {
+    margin:      0 0 20px;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color:       var(--color-black, #111319);
+    max-width:   455px;
+    opacity:     0.8;
+}
+
+.abt-accordion__cta-row {
+    margin-top: 24px;
+}
+
+.abt-accordion__cta-btn {
+    display:         inline-flex;
+    height:          46px;
+    padding:         16px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   69px;
+    background:      var(--color-primary, #C83030);
+    text-decoration: none;
+    font-family:     var(--font-primary);
+    font-size:       14px;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+    color:           #F7F7F7;
+    transition:      background-color var(--transition-base, 0.25s) ease;
+
+    &:hover,
+    &:focus-visible {
+        background-color: var(--color-primary-hover, #a82828);
+        outline: none;
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .abt-panel__inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .abt-funnel {
+        width: auto;
+    }
+}
+
+@media (max-width: 1110px) {
+    .abt-section__description {
+        transform: translate(50%, 0);
+    }
+}
+
+@media (max-width: 1023px) {
+    .abt-section {
+        padding-top:    var(--abt-pt-mob, 70px);
+        padding-bottom: var(--abt-pb-mob, 70px);
+    }
+
+    .abt-section__top {
+        flex-direction: column;
+        align-items:    flex-start;
+        gap:            24px;
+        margin-bottom:  40px;
+    }
+
+    .abt-section__heading {
+        font-size:  clamp(32px, 8vw, 56px);
+        width:      100%;
+        text-align: left;
+    }
+
+    .abt-section__title-top    { text-align: right; }
+    .abt-section__title-bottom { text-align: left; }
+
+    .abt-section__description {
+        width:     100%;
+        max-width: 500px;
+        transform: none;
+    }
+
+    .abt-section__body {
+        grid-template-columns: 1fr;
+        gap:                   16px;
+    }
+
+    .abt-panel__inner {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .abt-funnel {
+        height: auto;
+    }
+
+    .abt-stat {
+        height: auto;
+        min-height: 140px;
+    }
+
+    .abt-gender {
+        height: auto;
+        min-height: 120px;
+    }
+
+    .abt-gender__icon {
+        width:  80px;
+        height: 80px;
+
+        svg {
+            width:  80px;
+            height: 80px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .abt-section__description {
+        transform: translate(0, 0);
+    }
+}
+
+@media (max-width: 640px) {
+    .abt-panel__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .abt-gender { order: -1; }
+
+    .abt-stat__value {
+        font-size: clamp(32px, 10vw, 56px);
+    }
+
+    .abt-section__heading {
+        font-size: clamp(28px, 9vw, 56px);
+    }
+}

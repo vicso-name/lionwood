@@ -216,3 +216,50 @@ $cert-gap:  4px;
     text-align: left;
   }
 }
+
+
+// -----------------------------------------------------------------------------
+// CTA Button — optional link below the grid
+// -----------------------------------------------------------------------------
+
+.cert-section__cta {
+    margin-top: 60px;
+    display:    flex;
+    justify-content: flex-start;
+}
+
+.cert-section__btn {
+    display:         inline-flex;
+    padding:         20px 32px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   100px;
+    background:      var(--color-primary, #C83030);
+    color:           #F7F7F7;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-style:      normal;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    transition:      background var(--transition-base, 0.25s ease);
+    margin: 0 auto;
+    &:hover {
+        background: var(--color-primary-hover, #a82828);
+    }
+}
+
+@media (max-width: 1380px) {
+    .cert-section__cta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .cert-section__btn {
+        width:           100%;
+        justify-content: center;
+    }
+}

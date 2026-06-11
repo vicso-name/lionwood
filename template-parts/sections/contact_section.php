@@ -9,8 +9,10 @@
 defined( 'ABSPATH' ) || exit;
 
 // ── Field values ────────────────────────────────────────────────────────────
-$padding_top    = absint( get_field( 'padding_top' ) ?: 100 );
-$padding_bottom = absint( get_field( 'padding_bottom' ) ?: 100 );
+$padding_top    = absint( get_field( 'padding_top' )        ?: 100 );
+$padding_bottom = absint( get_field( 'padding_bottom' )     ?: 200 );
+$padding_top_mob    = absint( get_field( 'padding_top_mob' )    ?: 70 );
+$padding_bottom_mob = absint( get_field( 'padding_bottom_mob' ) ?: 140 );
 
 $title_top    = get_field( 'title_top' )    ?: __( 'Ready to Accelerate', 'theme' );
 // ACF textarea with new_lines=br already converts \n → <br> — use wp_kses
@@ -34,6 +36,9 @@ for ( $i = 1; $i <= 5; $i++ ) {
 $form_shortcode = get_field( 'form_shortcode' ) ?: '';
 $terms_raw      = get_field( 'terms_link' );
 $terms_url      = ! empty( $terms_raw['url'] )    ? esc_url( $terms_raw['url'] )  : esc_url( home_url( '/terms-and-conditions/' ) );
+
+$decor_enabled = get_field( 'decor_bottom_enabled' );
+$decor_color   = get_field( 'decor_bottom_color' ) ?: '#F7F7F7';
 $terms_target   = ! empty( $terms_raw['target'] ) ? $terms_raw['target']           : '_self';
 
 // ── Grid map ─────────────────────────────────────────────────────────────────
@@ -53,9 +58,11 @@ foreach ( $wide_cells as $key => $label_idx ) {
 
 // ── Inline style for custom padding ─────────────────────────────────────────
 $section_style = sprintf(
-    'padding-top:%dpx; padding-bottom:%dpx;',
+    '--cs-pt:%dpx; --cs-pb:%dpx; --cs-pt-mob:%dpx; --cs-pb-mob:%dpx;',
     $padding_top,
-    $padding_bottom
+    $padding_bottom,
+    $padding_top_mob,
+    $padding_bottom_mob
 );
 ?>
 
@@ -221,4 +228,7 @@ $section_style = sprintf(
         </div><!-- .cs-section__stage -->
 
     </div><!-- .cs-section__inner -->
+    <?php if ( $decor_enabled ) :
+        get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] );
+    endif; ?>
 </section>

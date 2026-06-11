@@ -447,3 +447,16 @@
     width: 100%;
   }
 }
+
+
+.cs-section {
+    padding-top:    var(--cs-pt, 100px);
+    padding-bottom: var(--cs-pb, 200px);
+}
+
+@media (max-width: 1023px) {
+    .cs-section {
+        padding-top:    var(--cs-pt-mob, 70px);
+        padding-bottom: var(--cs-pb-mob, 140px);
+    }
+}
