@@ -1,0 +1,355 @@
+// =============================================================================
+// Block: About Different (What Makes Us Different)
+// File : blocks/about-different/_about-different.scss
+//
+// Card stack logic identical to get-started (gs-).
+// Key difference: H2 heading (56px), two lines, line 2 offset 30% right.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.adf-section {
+    background-color: var(--color-background-alt, #E9E9E9);
+    padding-top:      var(--adf-pt, 100px);
+    padding-bottom:   var(--adf-pb, 100px);
+    overflow:         hidden;
+    position:         relative;
+}
+
+.adf-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// -----------------------------------------------------------------------------
+// Heading — two lines, H2 (56px)
+// Line 1: black, flush left
+// Line 2: black, offset 30% to the right
+// -----------------------------------------------------------------------------
+
+.adf-heading {
+    display:        flex;
+    flex-direction: column;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      56px;
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+.adf-heading__line1 {
+    color:        var(--color-black, #111319);
+    opacity:      0.5;
+    padding-left: 0;
+}
+
+.adf-heading__line2 {
+    color:        var(--color-black, #111319);
+    padding-left: 10%;
+}
+
+// -----------------------------------------------------------------------------
+// Row — 3 cols: left indicator | middle desc+nav | right card stack
+// (identical structure to gs-row)
+// -----------------------------------------------------------------------------
+
+.adf-row {
+    display:               grid;
+    grid-template-columns: 180px 345px 1fr;
+    gap:                   0 40px;
+    align-items:           start;
+}
+
+// Left col
+.adf-col--left {
+    display:        flex;
+    flex-direction: column;
+    gap:            24px;
+    padding-top:    4px;
+}
+
+.adf-indicator {
+    margin:      0;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 140%;
+    color:       #000;
+    opacity:     0.2;
+    transition:  opacity 0.3s ease;
+}
+
+// Nav buttons
+.adf-nav {
+    display: flex;
+    gap:     8px;
+}
+
+.adf-nav__btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    background:      #fff;
+    border:          none;
+    cursor:          pointer;
+    transition:      background-color var(--transition-base, 0.25s) ease;
+
+    svg { display: block; }
+
+    &:hover,
+    &:focus-visible {
+        background: #f0f0f0;
+        outline:    none;
+    }
+}
+
+// Middle col
+.adf-col--middle {
+    padding-top:     4px;
+    display:         flex;
+    flex-direction:  column;
+    justify-content: space-between;
+    gap:             24px;
+    height:          100%;
+}
+
+.adf-description {
+    margin:      0;
+    width:       345px;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-regular);
+    line-height: 120%;
+    color:       var(--color-black, #111319);
+}
+
+// Right col
+.adf-col--right {
+    position: relative;
+    display:  flex;
+    justify-content: flex-end;
+}
+
+// -----------------------------------------------------------------------------
+// Card stack
+// -----------------------------------------------------------------------------
+
+.adf-cards-wrapper {
+    position:   relative;
+    width:      554px;
+    min-height: 368px;
+}
+
+// -----------------------------------------------------------------------------
+// Slide card
+// -----------------------------------------------------------------------------
+
+.adf-slide {
+    position:   absolute;
+    top:        0;
+    left:       0;
+    width:      554px;
+    height:     auto;
+    min-height: 368px;
+    padding:    30px;
+    border-radius: 20px;
+    display:       flex;
+    flex-direction: column;
+    box-sizing:    border-box;
+    cursor:        pointer;
+    transition:    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                   opacity   0.4s ease;
+    will-change:   transform, opacity;
+
+    &.is-active { cursor: default; }
+}
+
+// Light content (red / black bg)
+.adf-slide--light {
+    .adf-slide__title { color: #fff; }
+    .adf-slide__desc  { color: #E9E9E9; }
+    .adf-slide__btn {
+        border-color: #fff;
+        color:        #fff;
+        background:   transparent;
+        &:hover { background: rgba(255,255,255,0.1); }
+    }
+    .adf-slide__icon img {
+        filter: brightness(0) invert(1);
+    }
+}
+
+// Dark content (gray bg)
+.adf-slide--dark {
+    .adf-slide__title { color: #111319; }
+    .adf-slide__desc  { color: #111319; }
+    .adf-slide__btn {
+        border-color: #111319;
+        color:        #111319;
+        background:   transparent;
+        &:hover { background: rgba(0,0,0,0.06); }
+    }
+}
+
+.adf-slide__icon {
+    width:         70px;
+    height:        70px;
+    margin-bottom: 40px;
+    flex-shrink:   0;
+
+    img {
+        display:    block;
+        width:      70px;
+        height:     70px;
+        object-fit: contain;
+    }
+}
+
+.adf-slide__title {
+    margin:      0 0 10px;
+    font-family: var(--font-primary);
+    font-size:   32px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+}
+
+.adf-slide__desc {
+    margin:      0 0 60px;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.2;
+    opacity:     0.8;
+}
+
+.adf-slide__btn {
+    display:         inline-flex;
+    align-self:      flex-start;
+    padding:         20px 32px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   100px;
+    border:          1px solid;
+    text-decoration: none;
+    margin-top:      auto;
+
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-2, 16px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1;
+    text-transform:  uppercase;
+    transition:      background-color var(--transition-base, 0.25s) ease;
+
+    &:focus-visible {
+        outline:        2px solid currentColor;
+        outline-offset: 3px;
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1480px) {
+    .adf-col--right {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1280px) {
+    .adf-section {
+        padding-top:    var(--adf-pt-mob, 70px);
+        padding-bottom: var(--adf-pb-mob, 70px);
+    }
+
+    .adf-col--right {
+        justify-content: flex-start;
+    }
+
+    .adf-heading {
+        font-size: clamp(28px, 5vw, 56px);
+    }
+
+    // On mobile line2 offset stays 10%
+    .adf-heading__line2 {
+        padding-left: 10%;
+    }
+
+    .adf-row {
+        grid-template-columns: 1fr;
+        gap:                   32px;
+    }
+
+    .adf-col--left {
+        flex-direction: row;
+        align-items:    center;
+        justify-content: space-between;
+    }
+
+    .adf-description {
+        width:         100%;
+        margin-bottom: 40px;
+    }
+
+    .adf-col--middle { display: contents; }
+
+    .adf-col--left   { order: 1; }
+    .adf-description { order: 2; }
+    .adf-col--right  { order: 3; }
+    .adf-nav         { order: 4; justify-self: end; }
+
+    .adf-cards-wrapper {
+        width:      calc(100% - 40px);
+        min-height: 416px;
+    }
+
+    .adf-slide {
+        width:      100%;
+        height:     auto;
+        min-height: 416px;
+    }
+
+    .adf-slide__btn {
+        align-self:      stretch;
+        justify-content: center;
+        padding-top:     16px;
+        padding-bottom:  16px;
+        padding-inline:  20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .adf-heading__line2 {
+        padding-left: 10%;
+    }
+}
+
+@media (max-width: 576px) {
+    .adf-heading {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .adf-heading__line2 {
+        padding-left: 10%;
+    }
+
+    .adf-cards-wrapper { min-height: 390px; }
+    .adf-slide         { min-height: 390px; }
+
+    .adf-slide__desc {
+        margin-bottom: 24px;
+    }
+
+    .adf-slide__btn {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,321 @@
+{
+    "key": "group_about_team_block",
+    "title": "About Team Section",
+    "fields": [
+        {
+            "key": "field_atm_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop top padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_atm_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop bottom padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_atm_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile top padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_atm_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile bottom padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_atm_title_line1",
+            "label": "Heading — Line 1 (black, indented)",
+            "name": "title_line1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line of the heading — black, shifted right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The People",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_atm_title_line2",
+            "label": "Heading — Line 2 (gray)",
+            "name": "title_line2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line of the heading — gray.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Behind Your Product",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_atm_members",
+            "label": "Team Members",
+            "name": "members",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add team member cards.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_atm_member_name",
+            "button_label": "Add Member",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_atm_member_photo",
+                    "label": "Photo",
+                    "name": "photo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Portrait photo. Recommended: 440×420px.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_atm_members"
+                },
+                {
+                    "key": "field_atm_member_name",
+                    "label": "Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Use <br> to split into two lines if needed.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_atm_members"
+                },
+                {
+                    "key": "field_atm_member_position",
+                    "label": "Position",
+                    "name": "position",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. 'Our responsible Co-founder, CEO'",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_atm_members"
+                },
+                {
+                    "key": "field_atm_member_linkedin",
+                    "label": "LinkedIn",
+                    "name": "linkedin",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "LinkedIn profile URL.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_atm_members"
+                },
+                {
+                    "key": "field_atm_member_quote",
+                    "label": "Quote \/ Description",
+                    "name": "quote",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Short quote or description. Max 450 characters.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "new_lines": "br",
+                    "default_value": "",
+                    "maxlength": 450,
+                    "placeholder": "",
+                    "parent_repeater": "field_atm_members"
+                }
+            ]
+        },
+        {
+            "key": "field_atm_decor_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show decorative arc at the bottom.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_atm_decor_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F7F7F7",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/about-team"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "About page Team section — two-line H1, team member cards with photo, name, position, LinkedIn, quote.",
+    "show_in_rest": 0,
+    "modified": 1781181350
+}

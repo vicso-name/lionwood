@@ -1,0 +1,231 @@
+// =============================================================================
+// Block: About Team Section
+// File : blocks/about-team/_about-team.scss
+// =============================================================================
+
+.atm-section {
+    background-color: #E9E9E9;
+    padding-top:      var(--atm-pt, 100px);
+    padding-bottom:   var(--atm-pb, 100px);
+    position:         relative;
+}
+
+.atm-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Heading — two-line H1, staircase
+// =============================================================================
+
+.atm-heading {
+    display:        flex;
+    flex-direction: column;
+    max-width:      1334px;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      120px;
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1;
+    letter-spacing: -2.4px;
+    text-transform: uppercase;
+}
+
+.atm-heading__line1 {
+    color:        var(--color-black, #111319);
+    // Indent right — staircase effect like other headings
+    padding-left: 100px;
+}
+
+.atm-heading__line2 {
+    color: #848588;
+}
+
+// =============================================================================
+// Cards grid — 3 cols, equal height rows
+// =============================================================================
+
+.atm-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 440px);
+    gap:                   20px;
+    justify-content:       start;
+}
+
+// =============================================================================
+// Card
+// =============================================================================
+
+.atm-card {
+    display:        flex;
+    width:          440px;
+    padding:        10px 10px 20px 10px;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            0; // controlled per-element
+    border-radius:  20px;
+    background:     #F7F7F7;
+    // Equal height: all cards in same row stretch to tallest
+    align-self:     stretch;
+}
+
+// Photo
+.atm-card__photo {
+    height:              420px;
+    align-self:          stretch;
+    border-radius:       12px;
+    background-size:     cover;
+    background-position: center top;
+    background-repeat:   no-repeat;
+    background-color:    #D1D1D1;
+    margin-bottom:       24px;
+    flex-shrink:         0;
+}
+
+// Body — grows to fill remaining card height
+.atm-card__body {
+    display:        flex;
+    flex-direction: column;
+    flex:           1 1 auto;
+    width:          100%;
+    padding-inline: 10px;
+}
+
+// Name row — name + LinkedIn icon side by side
+.atm-card__name-row {
+    display:         flex;
+    align-items:     flex-start;
+    justify-content: space-between;
+    gap:             12px;
+    width:           100%;
+    margin-bottom:   4px;
+}
+
+.atm-card__name {
+    color:          var(--color-black, #111319);
+    font-family:    var(--font-primary);
+    font-size:      32px;
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.2;
+    margin:         0;
+    flex:           1 1 auto;
+}
+
+// LinkedIn button
+.atm-card__linkedin {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           40px;
+    height:          40px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+    text-decoration: none;
+    transition:      background var(--transition-base, 0.25s ease);
+    margin-top:      4px;
+
+    svg {
+        display: block;
+        width:   23px;
+        height:  23px;
+    }
+
+    &:hover {
+        background: var(--color-primary-hover, #a82828);
+    }
+}
+
+// Position
+.atm-card__position {
+    color:         #848588;
+    font-family:   var(--font-primary);
+    font-size:     14px;
+    font-weight:   var(--font-weight-medium, 500);
+    line-height:   1.2;
+    margin:        0 0 32px;
+}
+
+// Quote
+.atm-card__quote {
+    color:       #3D3F43;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    margin:      0;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1400px) {
+    .atm-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .atm-card {
+        width: auto;
+    }
+
+    .atm-heading {
+        font-size: clamp(60px, 9vw, 120px);
+    }
+
+    .atm-heading__line1 {
+        padding-left: clamp(40px, 5vw, 100px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .atm-section {
+        padding-top:    var(--atm-pt-mob, 70px);
+        padding-bottom: var(--atm-pb-mob, 70px);
+    }
+
+    .atm-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .atm-heading {
+        font-size: clamp(40px, 8vw, 80px);
+    }
+}
+
+@media (max-width: 640px) {
+    .atm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .atm-heading {
+        font-size: clamp(32px, 10vw, 56px);
+        letter-spacing: -1px;
+    }
+
+    .atm-heading__line1 {
+        padding-left: 24px;
+    }
+
+    .atm-card__photo {
+        height: 700px;
+    }
+
+    .atm-card__name {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .atm-card__photo {
+        height: 580px;
+    }
+}
+
+@media (max-width: 480px) {
+    .atm-card__photo {
+        height: 380px;
+    }
+}

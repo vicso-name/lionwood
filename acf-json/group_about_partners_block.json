@@ -1,0 +1,442 @@
+{
+    "key": "group_about_partners_block",
+    "title": "About Partners & Associations",
+    "fields": [
+        {
+            "key": "field_apm_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop top padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_apm_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop bottom padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_apm_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile top padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_apm_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile bottom padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_apm_title_top",
+            "label": "Heading — Top Line",
+            "name": "title_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line (dimmed, indented).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Partners",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_apm_title_bottom",
+            "label": "Heading — Bottom Line",
+            "name": "title_bottom",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line (full opacity).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "and Associations",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_apm_logo_1",
+            "label": "Logo 1",
+            "name": "logo_1",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Partner logo (recommended: PNG on transparent bg).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_2",
+            "label": "Logo 2",
+            "name": "logo_2",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_3",
+            "label": "Logo 3",
+            "name": "logo_3",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_4",
+            "label": "Logo 4",
+            "name": "logo_4",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_5",
+            "label": "Logo 5",
+            "name": "logo_5",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_6",
+            "label": "Logo 6",
+            "name": "logo_6",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_logo_7",
+            "label": "Logo 7",
+            "name": "logo_7",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_apm_text_1",
+            "label": "Text Label 1",
+            "name": "text_1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label for text cell (e.g. '\/ Government partner').",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_apm_text_2",
+            "label": "Text Label 2",
+            "name": "text_2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_apm_text_3",
+            "label": "Text Label 3",
+            "name": "text_3",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_apm_cta_link",
+            "label": "CTA Button",
+            "name": "cta_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Button shown below the grid (e.g. 'All Partners').",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_apm_decor_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show decorative arc at the bottom.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_apm_decor_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F7F7F7",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/about-partners"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Partners & Associations section — dark bg, staircase heading, 16-col logo grid, CTA button.",
+    "show_in_rest": 0,
+    "modified": 1781175300
+}

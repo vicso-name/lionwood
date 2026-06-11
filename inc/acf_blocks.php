@@ -69,6 +69,9 @@ function lionwood_register_acf_blocks() {
         'about_hero',
         'about_rows',
         'about_vision',
+        'about_partners',
+        'about_team',
+        'about_different',
     ];
 
     foreach ($blocks as $block_name) {
