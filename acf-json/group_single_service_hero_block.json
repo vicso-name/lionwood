@@ -38,13 +38,13 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 80,
+            "default_value": 140,
             "min": 0,
             "max": 300,
-            "step": 4,
-            "append": "px",
             "placeholder": "",
-            "prepend": ""
+            "step": 4,
+            "prepend": "",
+            "append": "px"
         },
         {
             "key": "field_ssh_padding_top_mob",
@@ -192,6 +192,32 @@
             "return_format": "array"
         },
         {
+            "key": "field_ssh_image_style",
+            "label": "Decorative Image Style",
+            "name": "image_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "overflow — tall portrait image (679×786px) that overflows upward. centered — wide landscape image (833×483px) flush to right edge, centered vertically.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "overflow": "Overflow (679×786, portrait, overflows top)",
+                "centered": "Centered (833×483, landscape, flush right)"
+            },
+            "default_value": "overflow",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_ssh_hero_image",
             "label": "Hero Decorative Image",
             "name": "hero_image",
@@ -244,15 +270,7 @@
             "type": "color_picker",
             "instructions": "Background color of the decorative arc.",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_ssh_decor_bottom_enabled",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -281,5 +299,5 @@
     "active": true,
     "description": "Hero section for single service pages with bg image, double heading, wysiwyg description, CTA and overflowing decorative image.",
     "show_in_rest": 0,
-    "modified": 1780584970
+    "modified": 1781094599
 }

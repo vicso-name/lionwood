@@ -209,7 +209,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 1,
+            "default_value": 0,
             "ui": 1,
             "message": "",
             "ui_on_text": "",
@@ -223,15 +223,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_sds_decor_bottom_enabled",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -260,5 +252,5 @@
     "active": true,
     "description": "Chess-pattern 14-col grid with 3x3 content blocks. Mobile: Swiper slider. Min 4 items recommended.",
     "show_in_rest": 0,
-    "modified": 1780640533
+    "modified": 1781085714
 }

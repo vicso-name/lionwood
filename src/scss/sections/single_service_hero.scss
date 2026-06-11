@@ -38,11 +38,10 @@
 }
 
 .ssh-section__container {
-  position: relative;
+  position: static; // image-wrap must position vs .ssh-section, not container
   max-width: var(--container-max-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
-  // Must be tall enough to anchor image bottom
   min-height: 500px;
   display: flex;
   align-items: stretch;
@@ -170,7 +169,7 @@
 .ssh-image-wrap {
   position: absolute;
   bottom: -80px;
-  right: var(--container-padding);
+  right: 0;
   width: 679px;
   // No height constraint — image natural height flows upward
   pointer-events: none;
@@ -247,4 +246,68 @@
     .ssh-image-wrap {
         bottom: -35px;
     }
+}
+
+// =============================================================================
+// Image style: centered mode (833×483, flush right, vertically centered)
+// =============================================================================
+
+.ssh-body--centered {
+  align-items: center;
+
+  .ssh-image-wrap {
+    flex: 1;
+    min-width: 0;
+    position: relative; // re-enter flex flow; overrides position:absolute from base
+    // right omitted — position:relative defaults to auto; mobile sets right:-80px
+    bottom: auto;
+    // 1025–1360px: container fills viewport, padding = 0 → margin-right = 0
+    // ≤1024px: container has 20px padding → bleed through it
+    margin-right: calc(-1 * var(--container-padding));
+  }
+
+  .ssh-image {
+    width: 100%;
+    height: 483px;
+    object-fit: contain;
+    object-position: right;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+}
+
+// ≥1361px: container = 1360px centered; compensate (vw − 1360px) / 2 centering gap
+@media (min-width: 1361px) {
+  .ssh-body--centered .ssh-image-wrap {
+    margin-right: calc((var(--container-max-width) - 100vw) / 2);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ssh-section--centered {
+    padding-bottom: 200px;
+  }
+
+  .ssh-body--centered {
+    flex-direction: column;
+
+    .ssh-image-wrap {
+      width: calc(100% + var(--container-padding));
+      max-width: none;
+      margin-left: 0;
+      margin-right: calc(-1 * var(--container-padding));
+      transform: translateY(137px) rotate(45deg) !important;
+      right: -80px;
+    }
+
+    .ssh-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 833 / 483;
+      border-radius: 0;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+  }
 }

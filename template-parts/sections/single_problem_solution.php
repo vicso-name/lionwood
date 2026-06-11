@@ -20,8 +20,12 @@ $line_4          = get_field( 'title_line_4' ) ?: '';
 
 $prob_badge      = get_field( 'problem_badge' )  ?: __( "Client's problem", 'theme' );
 $prob_items      = get_field( 'problem_items' )  ?: [];
-$sol_badge       = get_field( 'solution_badge' ) ?: __( 'Proposed solution', 'theme' );
+$sol_badge       = get_field( 'solution_badge' ) ?: '';
 $sol_text        = get_field( 'solution_text' )  ?: '';
+$sol_link        = get_field( 'solution_link' );
+$sol_link_url    = ! empty( $sol_link['url'] )    ? esc_url( $sol_link['url'] )    : '';
+$sol_link_lbl    = ! empty( $sol_link['title'] )  ? esc_html( $sol_link['title'] ) : __( 'Get Estimate', 'theme' );
+$sol_link_tgt    = ! empty( $sol_link['target'] ) ? $sol_link['target']             : '_self';
 
 $banner_enabled  = get_field( 'banner_enabled' );
 $banner_text_raw = get_field( 'banner_text' ) ?: '';
@@ -105,6 +109,15 @@ $cal_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" view
                     <div class="sps-solution-text">
                         <?php echo wp_kses_post( $sol_text ); ?>
                     </div>
+                <?php endif; ?>
+
+                <?php if ( $sol_link_url ) : ?>
+                    <a
+                        class="sps-solution-btn"
+                        href="<?php echo $sol_link_url; ?>"
+                        target="<?php echo esc_attr( $sol_link_tgt ); ?>"
+                        <?php echo '_blank' === $sol_link_tgt ? 'rel="noopener noreferrer"' : ''; ?>
+                    ><?php echo $sol_link_lbl; ?></a>
                 <?php endif; ?>
             </div>
         </div><!-- .sps-row -->

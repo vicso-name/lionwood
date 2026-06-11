@@ -1,0 +1,307 @@
+// =============================================================================
+// Block: About Rows
+// File : blocks/about-rows/_about-rows.scss
+// =============================================================================
+
+.ar-section {
+    padding-top:    var(--ar-pt, 100px);
+    padding-bottom: var(--ar-pb, 100px);
+    background:     var(--color-background, #F7F7F7);
+    position:       relative;
+}
+
+.ar-section__container {
+    max-width:     var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Row
+// =============================================================================
+
+.ar-row {
+    display:               grid;
+    grid-template-columns: 670px 1fr;
+    align-items:           stretch;
+    min-height:            700px;
+
+    & + & {
+        margin-top: 80px;
+    }
+
+    &--reversed {
+        grid-template-columns: 1fr 670px;
+
+        .ar-row__image-col { order: 2; }
+        .ar-row__text-col  { order: 1; }
+    }
+}
+
+// =============================================================================
+// Image column
+// =============================================================================
+
+.ar-row__image-col {
+    width:  670px;
+    height: 700px;
+}
+
+.ar-row__image {
+    width:              100%;
+    height:             100%;
+    background-size:    cover;
+    background-position: center;
+    background-repeat:  no-repeat;
+    background-color:   #D1D1D1;
+
+    // Normal: image on the left → flat left edge, rounded right
+    border-radius: 0 20px 20px 0;
+}
+
+// Reversed: image on the right → rounded left, flat right edge
+.ar-row--reversed .ar-row__image {
+    border-radius: 20px 0 0 20px;
+}
+
+// =============================================================================
+// Text column
+// =============================================================================
+
+.ar-row__text-col {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    justify-content: center;
+    padding-left:    60px;
+
+    .ar-row--reversed & {
+        padding-left:  0;
+        padding-right: 60px;
+    }
+}
+
+.ar-row__text-inner {
+    width:     100%;
+    max-width: 433px;
+}
+
+// =============================================================================
+// Typography
+// =============================================================================
+
+.ar-row__title {
+    color:          var(--color-black, #111319);
+    font-family:    var(--font-primary, 'PP Neue Montreal'), sans-serif;
+    font-size:      56px;
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    margin:         0 0 20px;
+}
+
+.ar-row__description {
+    color:       #3D3F43;
+    font-family: var(--font-primary, 'PP Neue Montreal'), sans-serif;
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin:      0 0 80px;
+}
+
+// =============================================================================
+// Checklist
+// =============================================================================
+
+.ar-checklist {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+    width:      100%;
+}
+
+.ar-checklist__item {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    padding:     14px 0;
+    position:    relative;
+
+    &::after {
+        content:    '';
+        position:   absolute;
+        bottom:     0;
+        left:       0;
+        width:      100%;
+        height:     1px;
+        background: #000;
+        opacity:    0.2;
+    }
+}
+
+.ar-checklist__icon {
+    display:     flex;
+    align-items: center;
+    flex-shrink: 0;
+    width:       16px;
+    height:      16px;
+
+    svg {
+        display: block;
+        width:   16px;
+        height:  16px;
+    }
+}
+
+.ar-checklist__text {
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary, 'PP Neue Montreal'), sans-serif;
+    font-size:   16px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+// =============================================================================
+// Logos
+// =============================================================================
+
+.ar-logos {
+    display:     flex;
+    flex-wrap:   wrap;
+    gap:         12px;
+    align-items: center;
+}
+
+.ar-logos__item {
+    display:        block;
+    width:          auto;
+    height:         auto;
+    max-width:      76px;
+    max-height:     76px;
+    object-fit:     contain;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+// =============================================================================
+// Button
+// =============================================================================
+
+.ar-btn {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             10px;
+    margin-top:      32px;
+    padding:         20px 32px;
+    border-radius:   100px;
+    background:      var(--color-primary, #C83030);
+    color:           #F7F7F7;
+    font-family:     var(--font-primary, 'PP Neue Montreal'), sans-serif;
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    transition:      background var(--transition-base, 0.25s ease);
+
+    &:hover {
+        background: var(--color-primary-hover, #a82828);
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .ar-row {
+        grid-template-columns: 1fr 1fr;
+
+        &--reversed {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .ar-row__image-col {
+        width:  auto;
+        height: 560px;
+    }
+
+    .ar-row__title {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ar-section {
+        padding-top:    var(--ar-pt-mob, 70px);
+        padding-bottom: var(--ar-pb-mob, 70px);
+    }
+
+    .ar-row {
+        grid-template-columns: 1fr;
+
+        & + & {
+            margin-top: 60px;
+        }
+
+        // Text top, image bottom — for both normal and reversed
+        .ar-row__image-col { order: 2; }
+        .ar-row__text-col  { order: 1; }
+
+        &--reversed {
+            grid-template-columns: 1fr;
+
+            .ar-row__image-col { order: 2; }
+            .ar-row__text-col  { order: 1; }
+        }
+    }
+
+    .ar-row__image-col {
+        width:  100%;
+        height: 360px;
+    }
+
+    // Full border-radius on mobile for all images
+    .ar-row__image,
+    .ar-row--reversed .ar-row__image {
+        border-radius: 20px;
+    }
+
+    .ar-row__text-col,
+    .ar-row--reversed .ar-row__text-col {
+        padding-left:   0;
+        padding-right:  0;
+        padding-top:    0;
+        padding-bottom: 32px;
+    }
+
+    .ar-row__text-inner {
+        max-width: 100%;
+    }
+
+    .ar-row__title {
+        font-size:      36px;
+        letter-spacing: -1px;
+    }
+
+    .ar-row__description {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ar-row__title {
+        font-size:      28px;
+        letter-spacing: -0.5px;
+    }
+
+    .ar-row__image-col {
+        height: 280px;
+    }
+
+    .ar-btn {
+        width: 100%;
+    }
+}

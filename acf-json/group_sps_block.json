@@ -275,6 +275,22 @@
             "default_value": ""
         },
         {
+            "key": "field_sps_solution_link",
+            "label": "Solution CTA Button (optional)",
+            "name": "solution_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional CTA button shown below the solution text. e.g. 'Get Estimate'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_sps_banner_enabled",
             "label": "Show Banner",
             "name": "banner_enabled",
@@ -385,7 +401,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 1,
+            "default_value": 0,
             "ui": 1,
             "message": "",
             "ui_on_text": "",
@@ -399,15 +415,7 @@
             "type": "color_picker",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_sps_decor_bottom_enabled",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -436,5 +444,5 @@
     "active": true,
     "description": "Dark section with staircase heading, problem\/solution columns and optional red banner.",
     "show_in_rest": 0,
-    "modified": 1780651077
+    "modified": 1781079289
 }

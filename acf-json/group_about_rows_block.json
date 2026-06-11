@@ -1,0 +1,430 @@
+{
+    "key": "group_about_rows_block",
+    "title": "About Rows",
+    "fields": [
+        {
+            "key": "field_ar_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop top padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ar_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Desktop bottom padding. Default: 100.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ar_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile top padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ar_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mobile bottom padding. Default: 70.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_ar_rows",
+            "label": "Rows",
+            "name": "rows",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add alternating image + text rows. First row: image left. Second: image right. Etc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_ar_row_title",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_ar_row_image",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "670×700px recommended.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Heading displayed above the description.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Body text displayed below the title.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "new_lines": "br",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_content_type",
+                    "label": "Content Block Type",
+                    "name": "content_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Optional content block shown below the description.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "None",
+                        "checklist": "Checklist Items",
+                        "logos": "Logo Grid"
+                    },
+                    "default_value": "none",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_checklist",
+                    "label": "Checklist Items",
+                    "name": "checklist",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "List of items with red checkmark icons and separator lines.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ar_row_content_type",
+                                "operator": "==",
+                                "value": "checklist"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add Item",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_ar_row_checklist_text",
+                            "label": "Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_ar_row_checklist"
+                        }
+                    ],
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_logos",
+                    "label": "Logos",
+                    "name": "logos",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Grid of logo images.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ar_row_content_type",
+                                "operator": "==",
+                                "value": "logos"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add Logo",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_ar_row_logo_image",
+                            "label": "Logo",
+                            "name": "logo",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium",
+                            "parent_repeater": "field_ar_row_logos"
+                        }
+                    ],
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_button_enabled",
+                    "label": "Show Button",
+                    "name": "button_enabled",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Toggle to show a CTA button below the content.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "ui": 1,
+                    "message": "",
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_ar_rows"
+                },
+                {
+                    "key": "field_ar_row_button_link",
+                    "label": "Button",
+                    "name": "button_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Button label, URL and optional target.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_ar_row_button_enabled",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_ar_rows"
+                }
+            ]
+        },
+        {
+            "key": "field_ar_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show a decorative arc at the bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_ar_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F7F7F7",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/about-rows"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Alternating image + text rows for About page. Checkerboard layout.",
+    "show_in_rest": 0,
+    "modified": 1781163735
+}

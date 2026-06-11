@@ -6,9 +6,15 @@
 (function () {
   'use strict';
 
-  var COLS_DESKTOP = 14;
-  var ROWS_DESKTOP = 5;
-  var GAP_MS       = 25;
+  var COLS_DESKTOP      = 14;
+  var ROWS_DESKTOP_MAX  = 5;
+  var ROWS_DESKTOP_MIN  = 3;
+  var ROWS_DESKTOP_THRESHOLD = 5;
+  var GAP_MS            = 25;
+
+  function getDesktopRows(techCount) {
+    return techCount <= ROWS_DESKTOP_THRESHOLD ? ROWS_DESKTOP_MIN : ROWS_DESKTOP_MAX;
+  }
 
   // ── PRNG ──────────────────────────────────────────────────────────────────
   function makePRNG(seed) {
@@ -113,7 +119,7 @@
 
     if (isDesktop) {
       cols = COLS_DESKTOP;
-      rows = ROWS_DESKTOP;
+      rows = getDesktopRows(technologies.length);
     } else {
       cols = getMobileCols();
       rows = getMobileRows(cols, technologies.length);

@@ -15,7 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $pt     = absint( get_field( 'padding_top' )        ?: 80 );
-$pb     = absint( get_field( 'padding_bottom' )     ?: 80 );
+$pb     = absint( get_field( 'padding_bottom' )     ?: 140 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
@@ -35,6 +35,7 @@ $cta_label     = ! empty( $cta_raw['title'] )  ? esc_html( $cta_raw['title'] ) :
 $cta_target    = ! empty( $cta_raw['target'] ) ? $cta_raw['target']             : '_self';
 
 $hero_image    = get_field( 'hero_image' );
+$image_style   = get_field( 'image_style' ) ?: 'overflow';
 
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
@@ -49,7 +50,7 @@ if ( $bg_url ) {
 ?>
 
 <section
-	class="ssh-section"
+	class="ssh-section ssh-section--<?php echo esc_attr( $image_style ); ?>"
 	style="
 		--ssh-pt: <?php echo $pt; ?>px;
 		--ssh-pb: <?php echo $pb; ?>px;
@@ -59,7 +60,7 @@ if ( $bg_url ) {
 	"
 >
 	<div class="ssh-section__container">
-		<div class="ssh-body">
+		<div class="ssh-body ssh-body--<?php echo esc_attr( $image_style ); ?>">
 
 			<?php /* ── Left column ──────────────────────────────────────── */ ?>
 			<div class="ssh-content">

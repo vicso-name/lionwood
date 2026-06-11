@@ -107,6 +107,7 @@ require_once get_template_directory() . '/inc/testimonials-cpt.php';
 require_once get_template_directory() . '/inc/industries-cpt.php';
 require_once get_template_directory() . '/inc/industry_template_manager.php';
 require_once get_template_directory() . '/inc/cases-cpt.php';
+require_once get_template_directory() . '/inc/case_template_manager.php';
 require_once get_template_directory() . '/inc/services-cpt.php';
 require_once get_template_directory() . '/inc/csg-load-more.php';
 require_once get_template_directory() . '/inc/ccg_ajax.php';
