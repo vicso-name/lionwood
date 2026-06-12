@@ -1,0 +1,268 @@
+// =============================================================================
+// Block: Career Grow With  (prefix: cgw-)
+// Identical to about-vision (av-) — marquee replaced with two-line heading,
+// badge removed, description + checklist items added.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell — mirrors av-section exactly
+// -----------------------------------------------------------------------------
+
+.cgw-section {
+    background:     #111319;
+    padding-top:    var(--cgw-pt, 100px);
+    padding-bottom: var(--cgw-pb, 100px);
+    position:       relative;
+    overflow:       hidden;
+}
+
+.cgw-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// -----------------------------------------------------------------------------
+// Two-line heading (replaces marquee)
+// -----------------------------------------------------------------------------
+
+.cgw-heading {
+    display:        flex;
+    flex-direction: column;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    margin-bottom:  0; // divider provides separation
+}
+
+.cgw-heading__top {
+    color:        #848588;
+    // Centered relative to bottom line
+    padding-left: 80px;
+}
+
+.cgw-heading__bottom {
+    color: #F7F7F7;
+}
+
+// -----------------------------------------------------------------------------
+// Top divider — mirrors av-divider exactly
+// -----------------------------------------------------------------------------
+
+.cgw-divider {
+    height:     1px;
+    background: #fff;
+    opacity:    0.2;
+    margin-top: 60px;
+}
+
+// -----------------------------------------------------------------------------
+// Body row — mirrors av-body exactly
+// -----------------------------------------------------------------------------
+
+.cgw-body {
+    position:    relative;
+    display:     flex;
+    align-items: flex-start;
+}
+
+// Vertical divider — mirrors av-body__divider
+.cgw-body__divider {
+    flex-shrink: 0;
+    width:       1px;
+    height:      560px;
+    background:  #fff;
+    opacity:     0.2;
+    align-self:  flex-start;
+    margin-top:  0;
+}
+
+// -----------------------------------------------------------------------------
+// Text column — mirrors av-col--text
+// -----------------------------------------------------------------------------
+
+.cgw-col--text {
+    flex:           0 0 50%;
+    width:          50%;
+    padding-top:    40px;
+    padding-right:  60px;
+    display:        flex;
+    flex-direction: column;
+    min-width:      0;
+}
+
+.cgw-description {
+    max-width:     494px;
+    color:         #F7F7F7;
+    font-family:   var(--font-primary);
+    font-size:     var(--font-size-body-2, 16px);
+    font-weight:   var(--font-weight-medium, 500);
+    line-height:   1.5;
+    margin:        0 0 30px;
+}
+
+// Checklist
+.cgw-list {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+    display:    flex;
+    flex-direction: column;
+    gap:        16px;
+}
+
+.cgw-list__item {
+    display:     flex;
+    align-items: flex-start;
+    gap:         12px;
+}
+
+.cgw-list__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           18px;
+    height:          18px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+    margin-top:      2px; // optical alignment with text
+
+    svg { display: block; }
+}
+
+.cgw-list__text {
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   18px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.3;
+    opacity:     0.8;
+}
+
+// -----------------------------------------------------------------------------
+// Image column — mirrors av-col--image + av-image exactly
+// -----------------------------------------------------------------------------
+
+.cgw-col--image {
+    flex:            0 0 50%;
+    width:           50%;
+    padding-top:     40px;
+    padding-left:    60px;
+    display:         flex;
+    justify-content: flex-end;
+    min-width:       0;
+}
+
+.cgw-image {
+    width:               100%;
+    max-width:           650px;
+    height:              460px;
+    border-radius:       16px;
+    background-size:     cover;
+    background-position: center;
+    background-repeat:   no-repeat;
+    background-color:    #1e2028;
+    flex-shrink:         1;
+}
+
+// =============================================================================
+// Responsive — mirrors av- breakpoints exactly
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .cgw-heading {
+        font-size: clamp(32px, 5vw, 56px);
+    }
+
+    .cgw-image {
+        height: 400px;
+    }
+
+    .cgw-body__divider {
+        height: 400px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .cgw-section {
+        padding-top:    var(--cgw-pt-mob, 70px);
+        padding-bottom: var(--cgw-pb-mob, 70px);
+    }
+
+    .cgw-heading {
+        font-size:     clamp(32px, 7vw, 56px);
+        margin-bottom: 80px;
+    }
+
+    .cgw-heading__top {
+        padding-left: 30px;
+    }
+
+    .cgw-divider {
+        display: none;
+    }
+
+    .cgw-body {
+        flex-direction: column;
+
+        &::before {
+            content:    '';
+            position:   absolute;
+            top:        0;
+            left:       0;
+            width:      1px;
+            height:     100%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    .cgw-body__divider {
+        width:      100%;
+        height:     1px;
+        align-self: auto;
+        margin-top: 0;
+        order:      2;
+    }
+
+    // Image on top
+    .cgw-col--image {
+        order:           1;
+        flex:            none;
+        width:           100%;
+        padding-left:    24px;
+        padding-right:   24px;
+        padding-top:     30px;
+        padding-bottom:  30px;
+        justify-content: flex-start;
+        min-height:      unset;
+    }
+
+    .cgw-image {
+        width:  100%;
+        height: 300px;
+    }
+
+    .cgw-col--text {
+        order:         3;
+        flex:          none;
+        width:         100%;
+        padding-right: 0;
+        padding-top:   40px;
+        padding-left:  24px;
+        border-left:   none;
+    }
+}
+
+@media (max-width: 640px) {
+    .cgw-image {
+        height: 260px;
+    }
+
+    .cgw-heading__top {
+        padding-left: 15px;
+    }
+}
