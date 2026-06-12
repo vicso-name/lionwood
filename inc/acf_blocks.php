@@ -79,6 +79,8 @@ function lionwood_register_acf_blocks() {
         'career_grid',
         'career_life',
         'career_grow',
+        'privacy_hero',
+        'privacy_content',
     ];
 
     foreach ($blocks as $block_name) {
