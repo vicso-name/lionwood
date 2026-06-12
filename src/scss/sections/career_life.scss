@@ -1,0 +1,281 @@
+// =============================================================================
+// Block: Career Our Life  (prefix: cl-)
+// Dark bg, full-width Swiper gallery, progress bar + nav
+// =============================================================================
+
+.cl-section {
+    background-color: #111319;
+    padding-top:      var(--cl-pt, 100px);
+    padding-bottom:   var(--cl-pb, 100px);
+    overflow:         hidden;
+    position:         relative;
+}
+
+.cl-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Header — heading left + description right
+// =============================================================================
+
+.cl-header {
+    display:         flex;
+    align-items:     flex-start;
+    justify-content: space-between;
+    gap:             60px;
+    margin-bottom:   80px;
+}
+
+// Two-line heading — 539px wide
+.cl-heading {
+    display:        flex;
+    flex-direction: column;
+    width:          539px;
+    flex-shrink:    0;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+.cl-heading__top {
+    color: #848588;
+    padding-left: 80px;
+}
+
+.cl-heading__bottom {
+    color: #F7F7F7;
+}
+
+// Description — right side
+.cl-description {
+    width:       390px;
+    flex-shrink: 0;
+    margin:      0;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    color:       #F7F7F7;
+    padding-top: 8px;
+}
+
+// =============================================================================
+// Full-width Swiper
+// =============================================================================
+
+.cl-slider {
+    width:         100%;
+    overflow:      hidden;
+    margin-bottom: 80px;
+}
+
+.cl-slide {
+    width: 670px;
+}
+
+.cl-slide__img {
+    width:               670px;
+    height:              500px;
+    background-size:     cover;
+    background-position: center;
+    background-color:    #1e2028;
+}
+
+// =============================================================================
+// Controls: progress bar + nav (desktop)
+// =============================================================================
+
+.cl-controls {
+    display:     flex;
+    align-items: center;
+    gap:         40px;
+}
+
+// Progress track — full available width
+.cl-progress {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.cl-progress__track {
+    width:         100%;
+    height:        1px;
+    // rgba instead of opacity so the child bar is not dimmed
+    background:    rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow:      visible;
+    position:      relative;
+}
+
+.cl-progress__bar {
+    position:      absolute;
+    top:           50%;
+    left:          0;
+    transform:     translateY(-50%);
+    height:        3px;
+    width:         0%;
+    border-radius: 10px;
+    background:    #F7F7F7;
+    transition:    width 0.3s ease;
+    will-change:   width;
+}
+
+// Nav buttons
+.cl-nav {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    flex-shrink: 0;
+}
+
+.cl-nav__btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    background:      #F7F7F7;
+    border:          none;
+    cursor:          pointer;
+    flex-shrink:     0;
+    transition:      background var(--transition-base, 0.25s ease),
+                     opacity    0.2s ease;
+
+    svg { display: block; }
+
+    &:hover {
+        background: #d8d8d8;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor:  default;
+    }
+}
+
+// =============================================================================
+// Counter (mobile only)
+// =============================================================================
+
+.cl-counter {
+    display: none;
+    justify-content: center;
+}
+
+.cl-counter__current {
+    color:       var(--White, #F7F7F7);
+    font-family: "PP Neue Montreal";
+    font-size:   18px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.cl-counter__sep,
+.cl-counter__total {
+    color:       var(--Gray, #848588);
+    font-family: "PP Neue Montreal";
+    font-size:   18px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .cl-header {
+        gap: 40px;
+    }
+
+    .cl-heading {
+        width:     auto;
+        font-size: clamp(32px, 5vw, 56px);
+    }
+
+    .cl-heading__top {
+        padding-left: 40px;
+    }
+
+    .cl-description {
+        width: 320px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .cl-section {
+        padding-top:    var(--cl-pt-mob, 70px);
+        padding-bottom: var(--cl-pb-mob, 70px);
+    }
+
+    .cl-header {
+        flex-direction: column;
+        gap:            32px;
+        margin-bottom:  48px;
+    }
+
+    .cl-heading {
+        width: 100%;
+    }
+
+    .cl-heading__top {
+        padding-left: 20px;
+    }
+
+    .cl-description {
+        width: 100%;
+    }
+
+    .cl-slide {
+        width: 80vw;
+    }
+
+    .cl-slide__img {
+        width:  80vw;
+        height: 56vw;
+    }
+
+    .cl-slider {
+        margin-bottom: 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cl-slide {
+        width: calc(100vw - 2 * var(--container-padding));
+    }
+
+    .cl-slide__img {
+        width:  100%;
+        height: 260px;
+    }
+
+    .cl-heading {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .cl-heading__top {
+        padding-left: 10px;
+    }
+
+    .cl-slider {
+        margin-bottom: 32px;
+    }
+
+    // Hide desktop controls, show mobile counter
+    .cl-controls {
+        display: none;
+    }
+
+    .cl-counter {
+        display:     flex;
+        align-items: center;
+    }
+}

@@ -77,6 +77,7 @@ function lionwood_register_acf_blocks() {
         'career_hero',
         'career_values',
         'career_grid',
+        'career_life',
     ];
 
     foreach ($blocks as $block_name) {
