@@ -117,5 +117,4 @@ require_once get_template_directory() . '/inc/theme_settings.php';
 require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';
-
-
+require_once get_template_directory() . '/inc/careers-cpt.php';

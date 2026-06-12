@@ -74,6 +74,9 @@ function lionwood_register_acf_blocks() {
         'about_different',
         'about_map',
         'about_talent',
+        'career_hero',
+        'career_values',
+        'career_grid',
     ];
 
     foreach ($blocks as $block_name) {
