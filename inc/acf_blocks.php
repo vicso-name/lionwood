@@ -81,6 +81,7 @@ function lionwood_register_acf_blocks() {
         'career_grow',
         'privacy_hero',
         'privacy_content',
+        'single_job_hero',
     ];
 
     foreach ($blocks as $block_name) {

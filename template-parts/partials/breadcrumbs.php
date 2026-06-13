@@ -37,6 +37,7 @@ if ( is_singular() ) {
             'industry'    => 'page-templates/industries-archive.php',
             'service'     => 'page-templates/services-archive.php',
             'sub_service' => 'page-templates/services-archive.php',
+            'career'      => 'page-templates/careers-page.php',
         ];
 
         if ( isset( $custom_archive_templates[ $post_type ] ) ) {

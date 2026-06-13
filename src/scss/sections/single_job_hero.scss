@@ -1,0 +1,245 @@
+// =============================================================================
+// Block: Single Job Hero  (prefix: sjh-)
+// Dark rounded-top section, two-line H1, description + recruiter card
+// =============================================================================
+
+.sjh-section {
+    background:     var(--color-black, #111319);
+    border-radius:  60px 60px 0 0;
+    padding-top:    var(--sjh-pt, 100px);
+    padding-bottom: var(--sjh-pb, 200px);
+    position:       relative;
+    overflow:       hidden;
+}
+
+.sjh-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Title block — 692px wide, two lines
+// =============================================================================
+
+.sjh-heading {
+    display:        flex;
+    flex-direction: column;
+    max-width:      692px;
+    margin-bottom:  80px;
+    font-family:    var(--font-primary);
+    font-size:      56px;
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+// Line 1 — gray, shifted 20% right
+.sjh-heading__line1 {
+    color:        #848588;
+    padding-left: 20%;
+}
+
+// Line 2 — white, from left edge
+.sjh-heading__line2 {
+    color: #F7F7F7;
+}
+
+// =============================================================================
+// Content row — max-width 1080px, description left + card right
+// =============================================================================
+
+.sjh-row {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             60px;
+    max-width:       1080px;
+}
+
+// Description
+.sjh-description {
+    width:       411px;
+    flex-shrink: 0;
+    margin:      0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   18px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.3;
+}
+
+// =============================================================================
+// Recruiter card
+// =============================================================================
+
+.sjh-card {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    width:          381px;
+    padding:        6px;
+    border-radius:  16px;
+    background:     #F7F7F7;
+    flex-shrink:    0;
+    box-sizing:     border-box;
+}
+
+// Top row: photo + info side by side
+.sjh-card__top {
+    display:     flex;
+    align-items: stretch;
+    gap:         16px;
+    min-height:  146px;
+}
+
+// Photo
+.sjh-card__photo {
+    flex-shrink:         0;
+    width:               146px;
+    height:              146px;
+    border-radius:       12px;
+    background-size:     cover;
+    background-position: center top;
+    background-color:    #D1D1D1;
+}
+
+// Info column — label top, name middle, button bottom
+.sjh-card__info {
+    display:         flex;
+    flex-direction:  column;
+    justify-content: space-between;
+    flex:            1;
+    padding:         10px 4px 10px 0;
+    min-width:       0;
+}
+
+.sjh-card__label {
+    display:       block;
+    color:         #848588;
+    font-family:   var(--font-primary);
+    font-size:     14px;
+    font-weight:   500;
+    line-height:   1.2;
+    margin-bottom: 4px;
+}
+
+.sjh-card__name {
+    margin:        0 0 20px;
+    color:         #110A03;
+    font-family:   var(--font-primary);
+    font-size:     21px;
+    font-weight:   500;
+    line-height:   1.4;
+}
+
+// Button variants
+.sjh-card__btn {
+    display:         inline-flex;
+    padding:         20px 32px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   100px;
+    background:      var(--color-primary, #C83030);
+    color:           #F7F7F7;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    transition:      background var(--transition-base, 0.25s ease);
+    box-sizing:      border-box;
+
+    &:hover { background: var(--color-primary-hover, #a82828); }
+}
+
+// Desktop: inside info column, 169px wide
+.sjh-card__btn--desktop {
+    width:      169px;
+    align-self: flex-start;
+}
+
+// Mobile button: hidden on desktop
+.sjh-card__btn--mobile {
+    display: none;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .sjh-heading {
+        font-size: clamp(36px, 5vw, 56px);
+    }
+
+    .sjh-row {
+        max-width: 100%;
+        gap:       40px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .sjh-section {
+        padding-top:    var(--sjh-pt-mob, 70px);
+        padding-bottom: var(--sjh-pb-mob, 140px);
+        border-radius:  30px 30px 0 0;
+    }
+
+    .sjh-heading {
+        font-size:     clamp(28px, 7vw, 56px);
+        margin-bottom: 48px;
+    }
+
+    .sjh-heading__line1 {
+        padding-left: 15%;
+    }
+
+    .sjh-row {
+        flex-direction: column;
+        align-items:    flex-start;
+        gap:            40px;
+    }
+
+    .sjh-description {
+        width: 100%;
+    }
+
+    .sjh-card {
+        width:      100%;
+        max-width:  440px;
+        flex-wrap:  wrap;
+    }
+}
+
+@media (max-width: 640px) {
+    .sjh-section {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .sjh-heading {
+        font-size: clamp(24px, 9vw, 40px);
+    }
+
+    .sjh-heading__line1 {
+        padding-left: 10%;
+    }
+
+    .sjh-card {
+        width: 100%;
+    }
+
+    // Hide desktop button, show mobile full-width button
+    .sjh-card__btn--desktop {
+        display: none;
+    }
+
+    .sjh-card__btn--mobile {
+        display: flex;
+        width:   100%;
+        margin-top: 4px;
+    }
+}
