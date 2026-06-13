@@ -1,9 +1,9 @@
 {
-    "key": "group_career_grow_block",
-    "title": "Career Grow With",
+    "key": "group_single_job_benefits_block",
+    "title": "Single Job Benefits",
     "fields": [
         {
-            "key": "field_cgw_padding_top",
+            "key": "field_sjb_padding_top",
             "label": "Padding Top (px)",
             "name": "padding_top",
             "aria-label": "",
@@ -25,7 +25,7 @@
             "prepend": ""
         },
         {
-            "key": "field_cgw_padding_bottom",
+            "key": "field_sjb_padding_bottom",
             "label": "Padding Bottom (px)",
             "name": "padding_bottom",
             "aria-label": "",
@@ -38,16 +38,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 200,
+            "default_value": 100,
             "min": 0,
             "max": 300,
-            "placeholder": "",
             "step": 4,
-            "prepend": "",
-            "append": "px"
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
         },
         {
-            "key": "field_cgw_padding_top_mob",
+            "key": "field_sjb_padding_top_mob",
             "label": "Padding Top Mobile (px)",
             "name": "padding_top_mob",
             "aria-label": "",
@@ -69,7 +69,7 @@
             "prepend": ""
         },
         {
-            "key": "field_cgw_padding_bottom_mob",
+            "key": "field_sjb_padding_bottom_mob",
             "label": "Padding Bottom Mobile (px)",
             "name": "padding_bottom_mob",
             "aria-label": "",
@@ -82,21 +82,21 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 140,
+            "default_value": 70,
             "min": 0,
             "max": 200,
-            "placeholder": "",
             "step": 4,
-            "prepend": "",
-            "append": "px"
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
         },
         {
-            "key": "field_cgw_title_top",
-            "label": "Heading — Line 1 (gray, centered)",
+            "key": "field_sjb_title_top",
+            "label": "Heading — Line 1 (gray, shifted right)",
             "name": "title_top",
             "aria-label": "",
             "type": "text",
-            "instructions": "First line — gray, centered relative to line 2.",
+            "instructions": "First line — gray, shifted 30% right.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -104,14 +104,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Grow with",
+            "default_value": "What You",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_cgw_title_bottom",
+            "key": "field_sjb_title_bottom",
             "label": "Heading — Line 2 (white)",
             "name": "title_bottom",
             "aria-label": "",
@@ -124,19 +124,19 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Lionwood Team Today",
+            "default_value": "Will Get",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_cgw_description",
+            "key": "field_sjb_description",
             "label": "Description",
             "name": "description",
             "aria-label": "",
             "type": "textarea",
-            "instructions": "Short text shown above the checklist.",
+            "instructions": "Short description shown right of the heading. Width: 390px.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -151,12 +151,12 @@
             "placeholder": ""
         },
         {
-            "key": "field_cgw_items",
-            "label": "Checklist Items",
-            "name": "items",
+            "key": "field_sjb_benefits",
+            "label": "Benefits",
+            "name": "benefits",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "List items with red checkmark icon.",
+            "instructions": "Add benefit cards. 4 columns on desktop. Description truncated at 120 characters.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -168,60 +168,82 @@
             "pagination": 0,
             "min": 0,
             "max": 0,
-            "collapsed": "",
-            "button_label": "Add Item",
+            "collapsed": "field_sjb_benefit_title",
+            "button_label": "Add Benefit",
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_cgw_item_text",
-                    "label": "Text",
-                    "name": "text",
+                    "key": "field_sjb_benefit_icon",
+                    "label": "Icon (SVG)",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "SVG icon, 26×26px. Shown white on red circle.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "svg",
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_sjb_benefits"
+                },
+                {
+                    "key": "field_sjb_benefit_title",
+                    "label": "Title",
+                    "name": "title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "",
+                        "width": "40",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "e.g. Paid vacation",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_cgw_items"
+                    "parent_repeater": "field_sjb_benefits"
+                },
+                {
+                    "key": "field_sjb_benefit_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Max 120 characters displayed. Longer text is truncated automatically.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "new_lines": "",
+                    "default_value": "",
+                    "maxlength": 150,
+                    "placeholder": "",
+                    "parent_repeater": "field_sjb_benefits"
                 }
             ]
         },
         {
-            "key": "field_cgw_image",
-            "label": "Image",
-            "name": "image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Right column image. Recommended: 650×460px.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_cgw_decor_enabled",
+            "key": "field_sjb_decor_enabled",
             "label": "Enable Bottom Decoration",
             "name": "decor_bottom_enabled",
             "aria-label": "",
@@ -241,7 +263,7 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_cgw_decor_color",
+            "key": "field_sjb_decor_color",
             "label": "Decoration Color",
             "name": "decor_bottom_color",
             "aria-label": "",
@@ -264,7 +286,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/career-grow"
+                "value": "acf\/single-job-benefits"
             }
         ]
     ],
@@ -275,7 +297,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Career page — Grow With section. Dark bg, two-line heading, description + checklist, image.",
+    "description": "Single job page benefits section — dark bg, two-line heading, 4-col benefit cards.",
     "show_in_rest": 0,
-    "modified": 1781362357
+    "modified": 1781348077
 }

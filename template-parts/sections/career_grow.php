@@ -12,9 +12,9 @@
 defined( 'ABSPATH' ) || exit;
 
 $pt     = absint( get_field('padding_top')        ?: 100 );
-$pb     = absint( get_field('padding_bottom')     ?: 100 );
+$pb     = absint( get_field('padding_bottom')     ?: 200 );
 $pt_mob = absint( get_field('padding_top_mob')    ?: 70 );
-$pb_mob = absint( get_field('padding_bottom_mob') ?: 70 );
+$pb_mob = absint( get_field('padding_bottom_mob') ?: 140 );
 
 $title_top    = get_field('title_top')    ?: 'Grow with';
 $title_bottom = get_field('title_bottom') ?: 'Lionwood Team Today';

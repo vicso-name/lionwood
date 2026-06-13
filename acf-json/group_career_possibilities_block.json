@@ -1,9 +1,9 @@
 {
-    "key": "group_career_grow_block",
-    "title": "Career Grow With",
+    "key": "group_career_possibilities_block",
+    "title": "Career Possibilities",
     "fields": [
         {
-            "key": "field_cgw_padding_top",
+            "key": "field_cp_padding_top",
             "label": "Padding Top (px)",
             "name": "padding_top",
             "aria-label": "",
@@ -25,12 +25,12 @@
             "prepend": ""
         },
         {
-            "key": "field_cgw_padding_bottom",
+            "key": "field_cp_padding_bottom",
             "label": "Padding Bottom (px)",
             "name": "padding_bottom",
             "aria-label": "",
             "type": "number",
-            "instructions": "Desktop bottom padding. Default: 100.",
+            "instructions": "Desktop bottom padding. Default: 200.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -40,14 +40,14 @@
             },
             "default_value": 200,
             "min": 0,
-            "max": 300,
-            "placeholder": "",
+            "max": 400,
             "step": 4,
-            "prepend": "",
-            "append": "px"
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
         },
         {
-            "key": "field_cgw_padding_top_mob",
+            "key": "field_cp_padding_top_mob",
             "label": "Padding Top Mobile (px)",
             "name": "padding_top_mob",
             "aria-label": "",
@@ -69,12 +69,12 @@
             "prepend": ""
         },
         {
-            "key": "field_cgw_padding_bottom_mob",
+            "key": "field_cp_padding_bottom_mob",
             "label": "Padding Bottom Mobile (px)",
             "name": "padding_bottom_mob",
             "aria-label": "",
             "type": "number",
-            "instructions": "Mobile bottom padding. Default: 70.",
+            "instructions": "Mobile bottom padding. Default: 140.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -84,19 +84,19 @@
             },
             "default_value": 140,
             "min": 0,
-            "max": 200,
-            "placeholder": "",
+            "max": 300,
             "step": 4,
-            "prepend": "",
-            "append": "px"
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
         },
         {
-            "key": "field_cgw_title_top",
-            "label": "Heading — Line 1 (gray, centered)",
+            "key": "field_cp_title_top",
+            "label": "Heading — Line 1 (gray, shifted right)",
             "name": "title_top",
             "aria-label": "",
             "type": "text",
-            "instructions": "First line — gray, centered relative to line 2.",
+            "instructions": "First line — gray, shifted 20% right.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -104,19 +104,19 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Grow with",
+            "default_value": "Latest",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_cgw_title_bottom",
-            "label": "Heading — Line 2 (white)",
+            "key": "field_cp_title_bottom",
+            "label": "Heading — Line 2 (black)",
             "name": "title_bottom",
             "aria-label": "",
             "type": "text",
-            "instructions": "Second line — white.",
+            "instructions": "Second line — black.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -124,19 +124,19 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Lionwood Team Today",
+            "default_value": "Career Possibilities",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_cgw_description",
-            "label": "Description",
-            "name": "description",
+            "key": "field_cp_source",
+            "label": "Posts Source",
+            "name": "source",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Short text shown above the checklist.",
+            "type": "select",
+            "instructions": "Show latest 3 automatically, or hand-pick specific positions.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -144,84 +144,55 @@
                 "class": "",
                 "id": ""
             },
-            "rows": 3,
-            "new_lines": "br",
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "query": "Latest 3 (automatic)",
+                "selected": "Hand-picked"
+            },
+            "default_value": "query",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
             "placeholder": ""
         },
         {
-            "key": "field_cgw_items",
-            "label": "Checklist Items",
-            "name": "items",
+            "key": "field_cp_selected_posts",
+            "label": "Selected Positions",
+            "name": "selected_posts",
             "aria-label": "",
-            "type": "repeater",
-            "instructions": "List items with red checkmark icon.",
+            "type": "relationship",
+            "instructions": "Choose up to 3 career posts (only used when source = Hand-picked).",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_cp_source",
+                        "operator": "==",
+                        "value": "selected"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
+            "post_type": [
+                "career"
+            ],
+            "taxonomy": [],
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
             "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Item",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_cgw_item_text",
-                    "label": "Text",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_cgw_items"
-                }
-            ]
+            "max": 3,
+            "elements": [],
+            "bidirectional_target": []
         },
         {
-            "key": "field_cgw_image",
-            "label": "Image",
-            "name": "image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Right column image. Recommended: 650×460px.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_cgw_decor_enabled",
+            "key": "field_cp_decor_enabled",
             "label": "Enable Bottom Decoration",
             "name": "decor_bottom_enabled",
             "aria-label": "",
@@ -234,19 +205,19 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 0,
+            "default_value": 1,
             "ui": 1,
             "message": "",
             "ui_on_text": "",
             "ui_off_text": ""
         },
         {
-            "key": "field_cgw_decor_color",
+            "key": "field_cp_decor_color",
             "label": "Decoration Color",
             "name": "decor_bottom_color",
             "aria-label": "",
             "type": "color_picker",
-            "instructions": "",
+            "instructions": "Default: #F7F7F7",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -264,7 +235,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/career-grow"
+                "value": "acf\/career-possibilities"
             }
         ]
     ],
@@ -275,7 +246,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Career page — Grow With section. Dark bg, two-line heading, description + checklist, image.",
+    "description": "Latest 3 career posts — desktop 3-col grid, mobile Swiper carousel.",
     "show_in_rest": 0,
-    "modified": 1781362357
+    "modified": 1781362186
 }
