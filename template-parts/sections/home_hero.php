@@ -57,7 +57,7 @@ $first_img      = $first_industry['image'] ?? null;
     <div class="hh-section__container">
 
         <?php /* ── Heading ────────────────────────────────────────────── */ ?>
-        <div class="hh-heading" aria-label="<?php echo esc_attr( $line1_start . ' ' . $line1_end . ' ' . $line2 . ' ' . $first_name ); ?>">
+        <h1 class="hh-heading" aria-label="<?php echo esc_attr( $line1_start . ' ' . $line1_end . ' ' . $line2 . ' ' . $first_name ); ?>">
 
             <?php /* Line 1: FIND [arrow] ........... PERFECT */ ?>
             <div class="hh-heading__line hh-heading__line--1">
@@ -106,7 +106,7 @@ $first_img      = $first_industry['image'] ?? null;
                 </span>
             </div>
 
-        </div><!-- .hh-heading -->
+        </h1><!-- .hh-heading -->
 
         <?php /* ── Bottom row: description + CTAs ────────────────────── */ ?>
         <div class="hh-bottom">

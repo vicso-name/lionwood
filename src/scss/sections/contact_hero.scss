@@ -1,0 +1,315 @@
+// =============================================================================
+// Block: Contact Hero Section  (prefix: coh-)
+// Based 1-to-1 on case-hero-section (chs-)
+// =============================================================================
+
+.coh-section {
+    background-color: var(--color-background);
+    padding-top:      var(--coh-pt, 100px);
+    padding-bottom:   var(--coh-pb, 100px);
+    position:         relative;
+}
+
+.coh-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// -----------------------------------------------------------------------------
+// Load-in animation — mirrors chs-anim exactly
+// -----------------------------------------------------------------------------
+
+.coh-anim {
+    opacity:    0;
+    transform:  translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--anim-delay, 0ms);
+
+    .coh-section.is-loaded & {
+        opacity:   1;
+        transform: translateY(0);
+    }
+}
+
+.coh-anim--image {
+    transform:         translateY(16px) scale(0.97);
+    transition-duration: 0.9s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    .coh-section.is-loaded & {
+        transform: translateY(0) scale(1);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Row — single column layout (no image in this hero variant)
+// -----------------------------------------------------------------------------
+
+.coh-row {
+    display:        flex;
+    flex-direction: column;
+    min-height:     400px;
+}
+
+.coh-col {
+    width: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Left column
+// -----------------------------------------------------------------------------
+
+.coh-col--left {
+    display:        flex;
+    flex-direction: column;
+    position:       relative;
+}
+
+// Title — single line, two inline colored parts
+.coh-title {
+    margin:         0 0 0;
+    font-family:    var(--font-primary);
+    font-weight:    var(--font-weight-medium);
+    font-size:      var(--font-size-h1, 120px);
+    line-height:    1;
+    letter-spacing: -2.4px;
+    text-transform: uppercase;
+    white-space:    nowrap;
+    align-self:     flex-start;
+}
+
+.coh-title__part1 {
+    color: var(--color-black, #111319);
+}
+
+.coh-title__part2 {
+    color: #848588;
+}
+
+// Bottom row: socials left + description right
+.coh-bottom {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             40px;
+    margin-top:      auto;
+    padding-top:     120px;
+    max-width:       1025px;
+}
+
+// Description — starts under the last letter of the title
+// Since title is left-aligned and ~820px wide, description sits at the right
+.coh-description {
+    max-width:       320px;
+    flex-shrink: 0;
+    margin:      0;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    color:       var(--color-black, #111319);
+    opacity:     0.8;
+}
+
+// -----------------------------------------------------------------------------
+// Social icons
+// -----------------------------------------------------------------------------
+
+.coh-socials {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    flex-wrap:   nowrap;
+    flex-shrink: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Social icons
+// -----------------------------------------------------------------------------
+
+.coh-socials {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    flex-wrap:   nowrap;
+    margin-bottom: 0;
+}
+
+// Social link — just the image, no wrapper styling
+.coh-socials__item {
+    display:    block;
+    flex-shrink: 0;
+    line-height: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    img {
+        display:    block;
+        width:      46px;
+        height:     46px;
+        object-fit: contain;
+    }
+
+    &:hover {
+        transform: scale(1.08);
+        opacity:   0.85;
+    }
+
+    // Hidden items (index ≥ 2)
+    &--hidden {
+        display: none;
+
+        .coh-socials.is-expanded & {
+            display: block;
+        }
+    }
+}
+
+// Shared circle button base (more + close)
+%coh-circle-btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    border:          1px solid rgba(0, 0, 0, 0.1);
+    background:      transparent;
+    cursor:          pointer;
+    flex-shrink:     0;
+    transition:      border-color 0.2s ease;
+    padding:         0;
+
+    &:hover {
+        border-color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+// "···" expand button — three red dots
+.coh-socials__more {
+    @extend %coh-circle-btn;
+    gap: 3px;
+
+    // Hide when expanded
+    .coh-socials.is-expanded & {
+        display: none;
+    }
+}
+
+.coh-socials__dot {
+    display:       block;
+    width:         3px;
+    height:        3px;
+    border-radius: 50%;
+    background:    var(--color-primary, #C83030);
+    flex-shrink:   0;
+}
+
+// Close button — red X, hidden by default
+.coh-socials__close {
+    @extend %coh-circle-btn;
+    display: none;
+
+    svg { display: block; }
+
+    .coh-socials.is-expanded & {
+        display: flex;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Right column: image — identical to chs-image
+// -----------------------------------------------------------------------------
+
+.coh-col--right {
+    flex-shrink: 0;
+}
+
+.coh-image {
+    width:               100%;
+    height:              660px;
+    border-radius:       20px;
+    background-color:    #D1D1D1;
+    background-size:     cover;
+    background-position: center;
+    position:            relative;
+    overflow:            hidden;
+
+    &::after {
+        content:       '';
+        position:      absolute;
+        inset:         0;
+        background:    linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.04) 0%,
+            rgba(0, 0, 0, 0.28) 100%
+        );
+        pointer-events: none;
+        border-radius:  inherit;
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1400px) {
+    .coh-title__line1,
+    .coh-title__line2 {
+        font-size: clamp(56px, 9vw, 120px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .coh-row {
+        gap: 60px;
+    }
+
+    .coh-title__line1,
+    .coh-title__line2 {
+        font-size: clamp(48px, 8vw, 100px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .coh-section {
+        padding-top:    var(--coh-pt-mob, 70px);
+        padding-bottom: var(--coh-pb-mob, 70px);
+    }
+
+    .coh-row {
+        flex-direction: column;
+        gap:            40px;
+    }
+
+    .coh-col {
+        flex:  none;
+        width: 100%;
+    }
+
+    .coh-title {
+        font-size: clamp(40px, 12vw, 80px);
+    }
+
+    .coh-bottom {
+        align-items:    flex-start;
+        gap:            24px;
+        padding-top:    120px;
+        flex-direction: column-reverse;
+    }
+
+    .coh-description {
+        width: 100%;
+    }
+
+    .coh-image {
+        height: 360px;
+    }
+}
+
+@media (max-width: 640px) {
+    .coh-title__line1,
+    .coh-title__line2 {
+        font-size: clamp(32px, 14vw, 56px);
+    }
+}

@@ -65,10 +65,10 @@ if ( $bg_url ) {
 			<?php /* ── Left column ──────────────────────────────────────── */ ?>
 			<div class="ssh-content">
 
-				<div class="ssh-heading">
+				<h1 class="ssh-heading">
 					<span class="ssh-heading__prefix ssh-anim" data-delay="0"><?php echo esc_html( $title_prefix ); ?></span>
 					<span class="ssh-heading__title ssh-anim" data-delay="120"><?php echo $title; ?></span>
-				</div>
+				</h1>
 
 				<div class="ssh-content-inner ssh-anim" data-delay="260">
 					<?php if ( $description ) : ?>

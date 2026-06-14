@@ -47,10 +47,10 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#C83030';
     <div class="sjh-section__container">
 
         <?php /* ── Title block ── */ ?>
-        <div class="sjh-heading">
+        <h1 class="sjh-heading">
             <span class="sjh-heading__line1"><?php echo esc_html( $line1 ); ?></span>
             <span class="sjh-heading__line2"><?php echo esc_html( $line2 ); ?></span>
-        </div>
+        </h1>
 
         <?php /* ── Content row: description + recruiter card ── */ ?>
         <div class="sjh-row">
