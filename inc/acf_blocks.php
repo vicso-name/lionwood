@@ -88,6 +88,13 @@ function lionwood_register_acf_blocks() {
         'contact_hero',
         'contact_directly',
         'contact_map',
+        'partnership_hero',
+        'partnership_designed_for',
+        'partnership_partners',
+        'partnership_benefits',
+        'partnership_quote',
+        'partnership_referral',
+        'partnership_technologies',
     ];
 
     foreach ($blocks as $block_name) {

@@ -1,0 +1,145 @@
+// =============================================================================
+// Block: Partnership Quote  (prefix: pq-)
+// Full-width photo bg with overlay, quote text left-aligned
+// =============================================================================
+
+.pq-section {
+    position:      relative;
+    border-radius: 60px 60px 0 0;
+    overflow:      hidden;
+    min-height:    100vh;
+
+    // Paddings drive the section height
+    padding-top:    var(--pq-pt, 100px);
+    padding-bottom: var(--pq-pb, 200px);
+
+    background-image:    var(--pq-bg, none);
+    background-size:     cover;
+    background-position: center center;
+    background-repeat:   no-repeat;
+    background-color:    #1a1a1a;
+}
+
+// =============================================================================
+// Overlay — two-layer gradient matching design spec
+// =============================================================================
+
+.pq-overlay {
+    position:   absolute;
+    inset:      0;
+    z-index:    1;
+    display:    flex;
+    align-items: flex-start;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.50) 18.27%,
+            rgba(0, 0, 0, 0.00) 66.14%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.30) 0%,
+            rgba(0, 0, 0, 0.30) 100%
+        );
+}
+
+.pq-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+    position:       relative;
+    z-index:        2; // above overlay
+}
+
+// =============================================================================
+// Content — icon + quote, left-aligned, max half width
+// =============================================================================
+
+.pq-content {
+    display:        flex;
+    flex-direction: column;
+    gap:            24px;
+    max-width:      680px; // keeps text on left half, right side shows photo
+}
+
+// Quote icon — red rounded square 50×50
+.pq-icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           50px;
+    height:          50px;
+    border-radius:   12px;
+    background:      var(--color-primary, #C83030);
+
+    svg { display: block; }
+}
+
+// Quote text
+.pq-quote {
+    margin:      0;
+    padding:     0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-h3, 32px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+    font-style:  normal; // override browser blockquote italic
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .pq-quote {
+        font-size: clamp(22px, 3vw, 32px);
+    }
+
+    .pq-content {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .pq-section {
+        border-radius:  30px 30px 0 0;
+        padding-top:    var(--pq-pt-mob, 70px);
+        padding-bottom: var(--pq-pb-mob, 140px);
+    }
+
+    .pq-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.65) 0%,
+                rgba(0, 0, 0, 0.20) 100%
+            ),
+            linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.40) 0%,
+                rgba(0, 0, 0, 0.40) 100%
+            );
+    }
+
+    .pq-content {
+        max-width: 100%;
+    }
+
+    .pq-quote {
+        font-size: clamp(20px, 5vw, 28px);
+    }
+}
+
+@media (max-width: 640px) {
+    .pq-section {
+        border-radius: 20px 20px 0 0;
+        background-position: right;
+    }
+
+    .pq-quote {
+        font-size: clamp(18px, 6vw, 24px);
+    }
+}

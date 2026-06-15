@@ -1,0 +1,382 @@
+// =============================================================================
+// Block: Partnership Hero
+// File : blocks/partnership-hero/_partnership-hero.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ph-section {
+  background-color: var(--color-background);
+  padding-top:    var(--ph-pt, 100px);
+  padding-bottom: var(--ph-pb, 200px);
+  overflow: hidden;
+}
+
+.ph-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .ph-section after DOMContentLoaded
+// Each .ph-anim element uses --anim-delay from data-delay attr (set by JS)
+// -----------------------------------------------------------------------------
+
+.ph-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .ph-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.ph-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 120px;
+  // h1 browser reset
+  margin-top: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+// Shared type styles for all heading lines
+.ph-heading__line {
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+// Line 1: FIND [arrow] ......... PERFECT
+.ph-heading__line--1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ph-heading__start-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ph-heading__word--start {
+  // Left-aligned (default flex)
+}
+
+.ph-heading__arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+  margin-bottom: -8px; // optical vertical alignment
+
+  svg {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.ph-heading__word--end {
+  margin-left: auto; // push to right edge
+}
+
+// Line 2: SENIOR EXPERTS — right-aligned
+.ph-heading__line--2 {
+  display: flex;
+  justify-content: center;
+}
+
+.ph-heading__gray {
+  color: var(--Gray, #848588);
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+}
+
+// Line 3: _ [TYPED] [circle image]
+.ph-heading__line--3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ph-heading__dash {
+  color: #848588;
+  flex-shrink: 0;
+  line-height: 100%;
+}
+
+// Typed / cycling industry name — gray, no cursor
+
+// Image wrap — 96×96 square with rounded corners and dark border
+// Subtract SVG mask replaced with CSS border-radius + border
+
+
+// SVG mask sits on top (mix-blend-mode for the subtract effect)
+.ph-heading__img-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Bottom row: description + CTAs
+// -----------------------------------------------------------------------------
+
+.ph-bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 100px;
+}
+
+
+// Label + description group — stacked vertically
+.ph-desc-group {
+  display:        flex;
+  flex-direction: column;
+  align-items:    flex-start;
+  gap:            12px;
+  width:          410px;
+  flex-shrink:    0;
+}
+
+// Label badge
+.ph-label {
+  display:         inline-flex;
+  padding:         5px 15px 6px;
+  justify-content: center;
+  align-items:     center;
+  gap:             10px;
+  border-radius:   8px;
+  background:      var(--color-black, #111319);
+  color:           #F7F7F7;
+  font-family:     var(--font-primary);
+  font-size:       16px;
+  font-weight:     var(--font-weight-medium, 500);
+  line-height:     1.4;
+  text-align:      center;
+  width:           fit-content;
+}
+
+.ph-description {
+  width:       100%;
+  flex-shrink: 0;
+  margin:      0;
+  font-family: var(--font-primary);
+  font-size:   18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color:       var(--color-black);
+}
+
+.ph-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+
+.ph-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease,
+              border-color var(--transition-base) ease;
+
+  &--primary {
+    background: var(--color-primary); // #C83030
+    color: #F7F7F7;
+    border: 2px solid transparent;
+
+    &:hover { background: var(--color-primary-hover); }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--color-black);
+    border: 2px solid var(--color-black);
+
+    &:hover {
+      background: var(--color-black);
+      color: #fff;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Sticky Book a Meeting button
+// Initially hidden; JS makes it visible after hero scrolls out
+// -----------------------------------------------------------------------------
+
+.ph-sticky-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: 100px;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  // Hidden by default
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease,
+              background-color var(--transition-base) ease;
+
+
+  &:hover { background: var(--color-primary-hover); }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .ph-heading__line {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+
+  .ph-heading__gray {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+
+  .ph-heading {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .ph-section {
+    padding-top:    var(--ph-pt-mob, 70px);
+    padding-bottom: var(--ph-pb-mob, 140px);
+  }
+
+  .ph-heading {
+    margin-bottom: 60px;
+  }
+
+  .ph-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-bottom: 70px;
+  }
+
+  .ph-desc-group {
+    width: 100%;
+  }
+
+  .ph-description {
+    width: 100%;
+  }
+
+  .ph-ctas {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .ph-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .ph-heading__line {
+    font-size: clamp(36px, 10vw, 72px);
+    letter-spacing: -1px;
+  }
+
+  .ph-heading__gray {
+    font-size: clamp(36px, 10vw, 72px);
+    letter-spacing: -1px;
+  }
+
+  .ph-heading__line--1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ph-heading__word--end {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+
+  .ph-heading__line--2 {
+    justify-content: flex-start;
+  }
+
+  .ph-heading__arrow svg {
+    width: 32px;
+    height: 24px;
+  }
+
+  .ph-sticky-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 14px 20px;
+    font-size: 13px;
+  }
+}

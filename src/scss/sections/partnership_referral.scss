@@ -1,0 +1,164 @@
+// =============================================================================
+// Block: Partnership Referral Partner  (prefix: prr-)
+// Red bg, two-line heading, 3-col numbered step cards
+// =============================================================================
+
+.prr-section {
+    background-color: var(--color-primary, #C83030);
+    padding-top:      var(--prr-pt, 100px);
+    padding-bottom:   var(--prr-pb, 100px);
+    position:         relative;
+    overflow:         hidden;
+}
+
+.prr-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Heading — 630px, two lines
+// =============================================================================
+
+.prr-heading {
+    display:        flex;
+    flex-direction: column;
+    width:          630px;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+.prr-heading__top {
+    color:   #F7F7F7;
+    opacity: 0.5;
+}
+
+.prr-heading__bottom {
+    color:        #F7F7F7;
+    opacity:      1;
+    padding-left: 15%;
+}
+
+// =============================================================================
+// Grid — 3 columns, auto-wraps
+// =============================================================================
+
+.prr-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   20px;
+}
+
+// =============================================================================
+// Card
+// =============================================================================
+
+.prr-card {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+    padding:        20px 70px 20px 20px;
+    border-radius:  20px;
+    background:     #EDEDED;
+    box-sizing:     border-box;
+}
+
+// Number badge — red circle
+.prr-card__number {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+    margin-bottom:   30px;
+
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+}
+
+// Title
+.prr-card__title {
+    margin:      0;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// Description
+.prr-card__desc {
+    margin:      0;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    opacity:     0.8;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .prr-heading {
+        width:     auto;
+        font-size: clamp(36px, 5vw, 56px);
+    }
+
+    .prr-card {
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .prr-section {
+        padding-top:    var(--prr-pt-mob, 70px);
+        padding-bottom: var(--prr-pb-mob, 70px);
+    }
+
+    .prr-heading {
+        font-size:     clamp(28px, 7vw, 48px);
+        margin-bottom: 40px;
+    }
+
+    .prr-heading__bottom {
+        padding-left: 10%;
+    }
+
+    .prr-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .prr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prr-heading {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .prr-heading__bottom {
+        padding-left: 5%;
+    }
+
+    .prr-card {
+        padding-right: 20px;
+    }
+}
