@@ -35,7 +35,7 @@
   overflow: hidden;                        // clip the overflowing track
   padding-top:    var(--oa-pt, 80px);
   padding-bottom: var(--oa-pb, 80px);
-  background-color: var(--color-background);  // inherit site bg (light)
+  background-color: var(--oa-bg, var(--color-background));
 }
 
 
@@ -56,7 +56,7 @@
     left: 0;
     background: linear-gradient(
       to right,
-      var(--color-background) 0%,
+      var(--oa-bg, var(--color-background)) 0%,
       transparent 100%
     );
   }
@@ -65,7 +65,7 @@
     right: 0;
     background: linear-gradient(
       to left,
-      var(--color-background) 0%,
+      var(--oa-bg, var(--color-background)) 0%,
       transparent 100%
     );
   }
@@ -153,6 +153,41 @@
   opacity: 0.2;
 }
 
+
+
+// -----------------------------------------------------------------------------
+// Optional heading block
+// -----------------------------------------------------------------------------
+
+.oa-section__container {
+  max-width:      var(--container-max-width);
+  margin-inline:  auto;
+  padding-inline: var(--container-padding);
+}
+
+.oa-heading {
+  display:        flex;
+  flex-direction: column;
+  width:          526px;
+  margin-bottom:  80px;
+  font-family:    var(--font-primary);
+  font-size:      var(--font-size-h2, 56px);
+  font-weight:    var(--font-weight-medium, 500);
+  line-height:    1.1;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color:          var(--color-black, #111319);
+}
+
+.oa-heading__top {
+  opacity:      0.5;
+  // centered relative to bottom — use text-align center or padding trick
+  text-align:   center;
+}
+
+.oa-heading__bottom {
+  opacity: 1;
+}
 
 // =============================================================================
 // Responsive

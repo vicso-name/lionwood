@@ -19,6 +19,9 @@ $pb        = absint( get_field( 'padding_bottom' )     ?: 80 );
 $pt_mob    = absint( get_field( 'padding_top_mob' )    ?: 30 );
 $pb_mob    = absint( get_field( 'padding_bottom_mob' ) ?: 30 );
 $speed     = absint( get_field( 'speed' )              ?: 30 );
+$title_top    = get_field( 'title_top' )    ?: '';
+$title_bottom = get_field( 'title_bottom' ) ?: '';
+$bg_color     = get_field( 'bg_color' )     ?: '';
 $items_raw = get_field( 'items' ) ?: [];
 
 if ( empty( $items_raw ) ) {
@@ -33,6 +36,7 @@ $uid = 'oa-' . uniqid();
 	class="oa-section"
 	id="<?php echo esc_attr( $uid ); ?>"
 	style="
+		<?php if ( $bg_color ) : ?>--oa-bg: <?php echo esc_attr( $bg_color ); ?>;<?php endif; ?>
 		--oa-pt: <?php echo $pt; ?>px;
 		--oa-pb: <?php echo $pb; ?>px;
 		--oa-pt-mob: <?php echo $pt_mob; ?>px;
@@ -41,6 +45,19 @@ $uid = 'oa-' . uniqid();
 	"
 	aria-label="<?php esc_attr_e( 'Our Awards', 'theme' ); ?>"
 >
+	<?php if ( $title_top || $title_bottom ) : ?>
+	<div class="oa-section__container">
+		<div class="oa-heading">
+			<?php if ( $title_top ) : ?>
+				<span class="oa-heading__top"><?php echo esc_html( $title_top ); ?></span>
+			<?php endif; ?>
+			<?php if ( $title_bottom ) : ?>
+				<span class="oa-heading__bottom"><?php echo esc_html( $title_bottom ); ?></span>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php endif; ?>
+
 	<?php /* Fade masks on left and right edges */ ?>
 	<div class="oa-section__mask oa-section__mask--left"  aria-hidden="true"></div>
 	<div class="oa-section__mask oa-section__mask--right" aria-hidden="true"></div>
