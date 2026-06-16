@@ -1,0 +1,279 @@
+// =============================================================================
+// Block: Product Overview  (prefix: po-)
+// Dark bg, marquee title, two-col: heading left + description/items right
+// =============================================================================
+
+@keyframes po-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.po-section {
+    background:     #111319;
+    padding-top:    var(--po-pt, 100px);
+    padding-bottom: var(--po-pb, 200px);
+    position:       relative;
+    overflow:       hidden;
+}
+
+.po-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// -----------------------------------------------------------------------------
+// Marquee — identical to av-marquee
+// -----------------------------------------------------------------------------
+
+.po-marquee {
+    overflow:      hidden;
+    margin-bottom: 90px;
+}
+
+.po-marquee__track {
+    display:     flex;
+    width:       max-content;
+    animation:   po-marquee 40s linear infinite;
+    will-change: transform;
+}
+
+.po-marquee__item {
+    font-family:    var(--font-primary);
+    font-size:      76px;
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1;
+    letter-spacing: -2.28px;
+    text-transform: uppercase;
+    color:          #E9E9E9;
+    opacity:        0.3;
+    white-space:    nowrap;
+
+    &::before {
+        content:       '—';
+        margin-inline: 40px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Two-column row
+// -----------------------------------------------------------------------------
+
+.po-row {
+    display:     flex;
+    align-items: flex-start;
+    gap:         300px;
+}
+
+// -----------------------------------------------------------------------------
+// Left col — two-line heading, width 370px
+// -----------------------------------------------------------------------------
+
+.po-col--left {
+    flex-shrink: 0;
+    width:       370px;
+}
+
+.po-heading {
+    display:        flex;
+    flex-direction: column;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    color:          #F7F7F7;
+}
+
+.po-heading__top {
+    // left-aligned — default
+}
+
+.po-heading__bottom {
+    padding-left: 30%; // shifted 30% right
+}
+
+// -----------------------------------------------------------------------------
+// Right col — description + items list
+// -----------------------------------------------------------------------------
+
+.po-col--right {
+    flex:       1 1 0;
+    min-width:  0;
+}
+
+.po-col__inner {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            50px;
+    width:          441px;
+    max-width:      100%;
+}
+
+.po-description {
+    margin:      0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// Items list
+.po-list {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+    width:      100%;
+    display:    flex;
+    flex-direction: column;
+}
+
+// Each row item
+.po-list__item {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             12px;
+    padding:         14px 0;
+}
+
+// Left side: chevron + label
+.po-list__main {
+    display:     flex;
+    align-items: center;
+    gap:         6px;
+    flex-shrink: 0;
+}
+
+.po-list__icon {
+    display:     flex;
+    align-items: center;
+    flex-shrink: 0;
+    svg { display: block; }
+}
+
+.po-list__label {
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+// Right side: value
+.po-list__value {
+    max-width:   195px;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align:  right;
+    flex-shrink: 0;
+}
+
+// Divider between items
+.po-list__divider {
+    width:      100%;
+    height:     1px;
+    background: #FFF;
+    opacity:    0.2;
+    display:    block;
+}
+
+// Remove last divider
+.po-list__divider:last-child {
+    display: none;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1400px) {
+    .po-row {
+        gap: 160px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .po-row {
+        gap: 80px;
+    }
+
+    .po-marquee__item {
+        font-size: clamp(40px, 6vw, 76px);
+    }
+
+    .po-col--left {
+        flex: 0 0 320px;
+    }
+
+    .po-col__inner {
+        width: 100%;
+    }
+
+    .po-heading {
+        font-size: clamp(36px, 5vw, 56px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .po-section {
+        padding-top:    var(--po-pt-mob, 70px);
+        padding-bottom: var(--po-pb-mob, 140px);
+    }
+
+    .po-marquee {
+        margin-bottom: 60px;
+    }
+
+    .po-marquee__item {
+        font-size: clamp(32px, 7vw, 60px);
+    }
+
+    .po-row {
+        flex-direction: column;
+        gap:            48px;
+    }
+
+    .po-col--left {
+        flex: none;
+        width: 100%;
+    }
+
+    .po-col--right {
+        width: 100%;
+        flex:  none;
+    }
+
+    .po-col__inner {
+        width: 100%;
+        gap:   32px;
+    }
+
+    .po-heading {
+        font-size: clamp(28px, 8vw, 48px);
+    }
+
+    .po-heading__bottom {
+        padding-left: 20%;
+    }
+}
+
+@media (max-width: 640px) {
+    .po-heading {
+        font-size: clamp(24px, 9vw, 40px);
+    }
+
+    .po-heading__bottom {
+        padding-left: 10%;
+    }
+}

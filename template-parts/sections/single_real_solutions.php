@@ -27,33 +27,35 @@ $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewB
 </svg>';
 
 // Helper: render content block (badge + desc + checklist)
-function smplfy_srs_content( array $row, string $check_svg ): void {
-    $badge = esc_html( $row['badge'] ?? '' );
-    $desc  = $row['description'] ?? '';
-    $items = $row['items']       ?? [];
-    ?>
-    <div class="srs-content">
-        <?php if ( $badge ) : ?>
-            <span class="srs-badge"><?php echo $badge; ?></span>
-        <?php endif; ?>
-        <?php if ( $desc ) : ?>
-            <div class="srs-desc"><?php echo wp_kses_post( $desc ); ?></div>
-        <?php endif; ?>
-        <?php if ( ! empty( $items ) ) : ?>
-            <ul class="srs-checklist">
-                <?php foreach ( $items as $item ) :
-                    $text = esc_html( $item['text'] ?? '' );
-                    if ( ! $text ) continue;
-                ?>
-                    <li class="srs-checklist__item">
-                        <span class="srs-checklist__icon" aria-hidden="true"><?php echo $check_svg; ?></span>
-                        <span class="srs-checklist__text"><?php echo $text; ?></span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </div>
-    <?php
+if ( ! function_exists( 'smplfy_srs_content' ) ) {
+    function smplfy_srs_content( array $row, string $check_svg ): void {
+        $badge = esc_html( $row['badge'] ?? '' );
+        $desc  = $row['description'] ?? '';
+        $items = $row['items']       ?? [];
+        ?>
+        <div class="srs-content">
+            <?php if ( $badge ) : ?>
+                <span class="srs-badge"><?php echo $badge; ?></span>
+            <?php endif; ?>
+            <?php if ( $desc ) : ?>
+                <div class="srs-desc"><?php echo wp_kses_post( $desc ); ?></div>
+            <?php endif; ?>
+            <?php if ( ! empty( $items ) ) : ?>
+                <ul class="srs-checklist">
+                    <?php foreach ( $items as $item ) :
+                        $text = esc_html( $item['text'] ?? '' );
+                        if ( ! $text ) continue;
+                    ?>
+                        <li class="srs-checklist__item">
+                            <span class="srs-checklist__icon" aria-hidden="true"><?php echo $check_svg; ?></span>
+                            <span class="srs-checklist__text"><?php echo $text; ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
 }
 
 // Track which rows have been rendered (for no-image pairing)

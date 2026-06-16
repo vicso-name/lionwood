@@ -98,6 +98,8 @@ function lionwood_register_acf_blocks() {
         'partnership_designed_who',
         'leader_insights',
         'single_real_impact',
+        'product_overview',
+        'product_hero',
     ];
 
     foreach ($blocks as $block_name) {

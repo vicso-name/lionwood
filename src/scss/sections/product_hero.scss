@@ -1,0 +1,295 @@
+// =============================================================================
+// Block: Product Hero  (prefix: ph2-)
+// Colored bg, rounded top corners, title + content left + image right
+// =============================================================================
+
+.ph2-section {
+    background:     var(--ph2-bg, #384AD6);
+    border-radius:  60px 60px 0 0;
+    overflow:       hidden;
+    padding-top:    var(--ph2-pt, 80px);
+    padding-bottom: var(--ph2-pb, 200px);
+    position:       relative;
+}
+
+.ph2-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Title row
+// =============================================================================
+
+.ph2-title-row {
+    margin-bottom: 60px;
+}
+
+.ph2-title {
+    display:         inline-flex;
+    align-items:     center;
+    gap:             12px;
+    color:           #F7F7F7;
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-h2, 56px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.1;
+    letter-spacing:  -1.68px;
+    text-transform:  uppercase;
+    text-decoration: none;
+    margin:          0;
+
+    &:hover .ph2-title__arrow {
+        transform: translate(3px, -3px);
+    }
+}
+
+.ph2-title__arrow {
+    display:    inline-flex;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    svg { display: block; }
+}
+
+// =============================================================================
+// Body row — content left + image right
+// =============================================================================
+
+.ph2-body {
+    display:    flex;
+    min-height: 500px;
+}
+
+// =============================================================================
+// Content block — left col
+// =============================================================================
+
+.ph2-content {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            0;
+    width:          545px;
+    flex-shrink:    0;
+    padding-left:   115px;
+    position:       relative;
+    z-index:        2;
+}
+
+// Label badge
+.ph2-label {
+    display:         inline-flex;
+    padding:         4px 14px 5px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   28px;
+    background:      #F7F7F7;
+    color:           #111319;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    text-align:      center;
+    width:           fit-content;
+    margin-bottom:   30px;
+    flex-shrink:     0;
+}
+
+// Description
+.ph2-description {
+    margin:      0 0 30px;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    max-width:  315px;
+}
+
+// Checklist
+.ph2-list {
+    list-style:     none;
+    margin:         0 0 60px;
+    padding:        0;
+    display:        flex;
+    flex-direction: column;
+    gap:            10px;
+}
+
+.ph2-list__item {
+    display:     flex;
+    align-items: flex-start;
+    gap:         8px;
+}
+
+.ph2-list__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           20px;
+    height:          20px;
+    border-radius:   50%;
+    background:      #F7F7F7;
+    margin-top:      1px;
+
+    svg { display: block; }
+}
+
+.ph2-list__text {
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    opacity:     0.8;
+}
+
+// Logo
+.ph2-logo {
+    flex-shrink: 0;
+
+    img {
+        display:    block;
+        height:     60px;
+        width:      auto;      // preserves aspect ratio, no width constraint
+        max-width:  180px;     // reasonable max
+        object-fit: contain;
+    }
+}
+
+// =============================================================================
+// Image — absolute, pinned to bottom-right of section
+// =============================================================================
+
+.ph2-image-wrap {
+    position: absolute;
+    bottom:   var(--ph2-image-bottom, 0px);
+    right:    15%;
+    width:    760px;
+    display:  flex;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.ph2-image {
+    display:    block;
+    width:      100%;
+    height:     auto;
+    object-fit: contain;
+    object-position: bottom right;
+}
+
+// =============================================================================
+// Load-in animation
+// JS adds .is-loaded to .ph2-section after DOMContentLoaded
+// Each .ph2-anim element uses --anim-delay from data-delay attr (set by JS)
+// =============================================================================
+
+.ph2-anim {
+    opacity:          0;
+    transform:        translateY(24px);
+    transition:       opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--anim-delay, 0ms);
+
+    .ph2-section.is-loaded & {
+        opacity:   1;
+        transform: translateY(0);
+    }
+}
+
+.ph2-anim--from-right {
+    transform: translateX(60px);
+
+    .ph2-section.is-loaded & {
+        transform: translateX(0);
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// Image scales fluidly — never exceeds 760px, shrinks proportionally below 1460px
+@media (max-width: 1460px) {
+    .ph2-image-wrap {
+        width: min(760px, 52vw);
+    }
+}
+
+@media (max-width: 1200px) {
+    .ph2-content {
+        padding-left: 60px;
+        width:        420px;
+    }
+
+    .ph2-image-wrap {
+        width: min(640px, 48vw);
+    }
+
+    .ph2-title {
+        font-size: clamp(36px, 5vw, 56px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .ph2-section {
+        padding-top:    var(--ph2-pt-mob, 60px);
+        padding-bottom: var(--ph2-pb-mob, 140px);
+        border-radius:  30px 30px 0 0;
+    }
+
+    .ph2-title {
+        font-size: clamp(28px, 7vw, 56px);
+    }
+
+    .ph2-body {
+        flex-direction: column;
+        min-height:     unset;
+    }
+
+    .ph2-content {
+        padding-left: 0;
+        width:        100%;
+    }
+
+    // Image back into flow below content
+    .ph2-image-wrap {
+        position:        relative;
+        bottom:          auto;
+        right:           auto;
+        width:           calc(100% + var(--container-padding));
+        margin-top:      47px;
+        // pull image into section's padding-bottom so it reaches the bottom edge;
+        // when decor enabled (60px), stops 60px above bottom so decor isn't covered
+        margin-bottom:   calc(-1 * var(--ph2-pb-mob, 140px) + var(--ph2-image-bottom, 0px));
+        justify-content: flex-end;
+    }
+
+    .ph2-image {
+        width:       90vw;
+        max-width:   500px;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .ph2-section {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .ph2-title {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .ph2-content {
+        padding-left: 0;
+    }
+
+    .ph2-image {
+        width:     100%;
+        max-width: none;
+    }
+}

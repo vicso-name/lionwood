@@ -28,26 +28,28 @@ $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" vie
 </svg>';
 
 // Helper: render a challenge card
-function smplfy_bc_card( string $title, array $items, string $check_svg ): void { ?>
-    <div class="bc-card">
-        <div class="bc-card__header">
-            <h3 class="bc-card__title"><?php echo esc_html( $title ); ?></h3>
+if ( ! function_exists( 'smplfy_bc_card' ) ) {
+    function smplfy_bc_card( string $title, array $items, string $check_svg ): void { ?>
+        <div class="bc-card">
+            <div class="bc-card__header">
+                <h3 class="bc-card__title"><?php echo esc_html( $title ); ?></h3>
+            </div>
+            <?php if ( ! empty( $items ) ) : ?>
+                <ul class="bc-card__list">
+                    <?php foreach ( $items as $item ) :
+                        $text = esc_html( $item['text'] ?? '' );
+                        if ( ! $text ) continue;
+                    ?>
+                        <li class="bc-card__item">
+                            <span class="bc-card__icon" aria-hidden="true"><?php echo $check_svg; ?></span>
+                            <span class="bc-card__text"><?php echo $text; ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
-        <?php if ( ! empty( $items ) ) : ?>
-            <ul class="bc-card__list">
-                <?php foreach ( $items as $item ) :
-                    $text = esc_html( $item['text'] ?? '' );
-                    if ( ! $text ) continue;
-                ?>
-                    <li class="bc-card__item">
-                        <span class="bc-card__icon" aria-hidden="true"><?php echo $check_svg; ?></span>
-                        <span class="bc-card__text"><?php echo $text; ?></span>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </div>
-<?php }
+    <?php }
+}
 ?>
 
 <section
