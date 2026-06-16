@@ -95,6 +95,9 @@ function lionwood_register_acf_blocks() {
         'partnership_quote',
         'partnership_referral',
         'partnership_technologies',
+        'partnership_designed_who',
+        'leader_insights',
+        'single_real_impact',
     ];
 
     foreach ($blocks as $block_name) {

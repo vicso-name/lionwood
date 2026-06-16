@@ -168,13 +168,13 @@
 .oa-heading {
   display:        flex;
   flex-direction: column;
-  width:          526px;
+  width:          550px;
   margin-bottom:  80px;
   font-family:    var(--font-primary);
   font-size:      var(--font-size-h2, 56px);
   font-weight:    var(--font-weight-medium, 500);
-  line-height:    1.1;
-  letter-spacing: -1.68px;
+  line-height:    var(--line-height-h2, 1.1);
+  letter-spacing: var(--letter-spacing-h2);
   text-transform: uppercase;
   color:          var(--color-black, #111319);
 }
@@ -217,4 +217,60 @@
   .oa-item__text {
     font-size: 14px;
   }
+
+  .oa-heading {
+    width:         100%;
+    margin-bottom: 40px;
+  }
+}
+
+// =============================================================================
+// Dark mode — applied when .oa-section--dark is set via PHP
+// =============================================================================
+
+.oa-section--dark {
+
+    // Heading — white
+    .oa-heading {
+        color: #F7F7F7; // override base color: var(--color-black)
+    }
+
+    .oa-heading__top {
+        color:   #F7F7F7;
+        opacity: 0.5;
+    }
+
+    .oa-heading__bottom {
+        color:   #F7F7F7;
+        opacity: 1;
+    }
+
+    // Item text — white
+    .oa-item__text {
+        color:   #F7F7F7;
+        opacity: 0.6;
+    }
+
+    // Divider — white
+    .oa-divider {
+        background: #FFF;
+        opacity:    0.2;
+    }
+
+    // Fade masks — use dark bg color
+    .oa-section__mask--left {
+        background: linear-gradient(
+            to right,
+            var(--oa-bg, #111319) 0%,
+            transparent 100%
+        );
+    }
+
+    .oa-section__mask--right {
+        background: linear-gradient(
+            to left,
+            var(--oa-bg, #111319) 0%,
+            transparent 100%
+        );
+    }
 }

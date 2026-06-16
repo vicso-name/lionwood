@@ -1,8 +1,8 @@
 <?php
 /**
- * Block: Single Problem Solution
+ * Block: Single Real Impact
  *
- * ACF block slug : acf/single-problem-solution
+ * ACF block slug : acf/single-real-impact
  * Dark bg, staircase 4-line heading, problem/solution columns, optional banner.
  */
 
@@ -15,8 +15,6 @@ $pb_mob          = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
 $line_1          = get_field( 'title_line_1' ) ?: '';
 $line_2          = get_field( 'title_line_2' ) ?: '';
-$line_3          = get_field( 'title_line_3' ) ?: '';
-$line_4          = get_field( 'title_line_4' ) ?: '';
 
 $prob_badge      = get_field( 'problem_badge' )  ?: __( "Client's problem", 'theme' );
 $prob_items      = get_field( 'problem_items' )  ?: [];
@@ -54,43 +52,41 @@ $cal_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" view
 ?>
 
 <section
-    class="sps-section"
+    class="sri-section"
     style="
-        --sps-pt: <?php echo $pt; ?>px;
-        --sps-pb: <?php echo $pb; ?>px;
-        --sps-pt-mob: <?php echo $pt_mob; ?>px;
-        --sps-pb-mob: <?php echo $pb_mob; ?>px;
+        --sri-pt: <?php echo $pt; ?>px;
+        --sri-pb: <?php echo $pb; ?>px;
+        --sri-pt-mob: <?php echo $pt_mob; ?>px;
+        --sri-pb-mob: <?php echo $pb_mob; ?>px;
     "
 >
-    <div class="sps-section__container">
+    <div class="sri-section__container">
 
         <?php /* ── Staircase heading ─────────────────────────────────── */ ?>
-        <div class="sps-heading" aria-label="<?php echo esc_attr( implode( ' ', array_filter( [ $line_1, $line_2, $line_3, $line_4 ] ) ) ); ?>">
-            <?php if ( $line_1 ) : ?><span class="sps-heading__line sps-heading__line--1"><?php echo esc_html( $line_1 ); ?></span><?php endif; ?>
-            <?php if ( $line_2 ) : ?><span class="sps-heading__line sps-heading__line--2"><?php echo esc_html( $line_2 ); ?></span><?php endif; ?>
-            <?php if ( $line_3 ) : ?><span class="sps-heading__line sps-heading__line--3"><?php echo esc_html( $line_3 ); ?></span><?php endif; ?>
-            <?php if ( $line_4 ) : ?><span class="sps-heading__line sps-heading__line--4"><?php echo esc_html( $line_4 ); ?></span><?php endif; ?>
+        <div class="sri-heading" aria-label="<?php echo esc_attr( implode( ' ', array_filter( [ $line_1, $line_2 ] ) ) ); ?>">
+            <?php if ( $line_1 ) : ?><span class="sri-heading__line sri-heading__line--1"><?php echo esc_html( $line_1 ); ?></span><?php endif; ?>
+            <?php if ( $line_2 ) : ?><span class="sri-heading__line sri-heading__line--2"><?php echo esc_html( $line_2 ); ?></span><?php endif; ?>
         </div>
 
         <?php /* ── Problem / Solution row ────────────────────────────── */ ?>
-        <div class="sps-row">
-            <div class="sps-row__top-line" aria-hidden="true"></div>
+        <div class="sri-row">
+            <div class="sri-row__top-line" aria-hidden="true"></div>
 
             <?php /* Left: problem */ ?>
-            <div class="sps-col sps-col--problem">
+            <div class="sri-col sri-col--problem">
                 <?php if ( $prob_badge ) : ?>
-                    <span class="sps-badge sps-badge--light"><?php echo esc_html( $prob_badge ); ?></span>
+                    <span class="sri-badge sri-badge--light"><?php echo esc_html( $prob_badge ); ?></span>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $prob_items ) ) : ?>
-                    <ul class="sps-problem-list">
+                    <ul class="sri-problem-list">
                         <?php foreach ( $prob_items as $prob ) :
                             $text = esc_html( $prob['text'] ?? '' );
                             if ( ! $text ) continue;
                         ?>
-                            <li class="sps-problem-list__item">
-                                <span class="sps-problem-list__icon"><?php echo $x_icon; ?></span>
-                                <span class="sps-problem-list__text"><?php echo $text; ?></span>
+                            <li class="sri-problem-list__item">
+                                <span class="sri-problem-list__icon"><?php echo $x_icon; ?></span>
+                                <span class="sri-problem-list__text"><?php echo $text; ?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -98,40 +94,40 @@ $cal_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" view
             </div>
 
             <?php /* Vertical divider */ ?>
-            <div class="sps-row__divider" aria-hidden="true"></div>
+            <div class="sri-row__divider" aria-hidden="true"></div>
 
             <?php /* Right: solution */ ?>
-            <div class="sps-col sps-col--solution">
+            <div class="sri-col sri-col--solution">
                 <?php if ( $sol_badge ) : ?>
-                    <span class="sps-badge sps-badge--light"><?php echo esc_html( $sol_badge ); ?></span>
+                    <span class="sri-badge sri-badge--light"><?php echo esc_html( $sol_badge ); ?></span>
                 <?php endif; ?>
                 <?php if ( $sol_text ) : ?>
-                    <div class="sps-solution-text">
+                    <div class="sri-solution-text">
                         <?php echo wp_kses_post( $sol_text ); ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ( $sol_link_url ) : ?>
                     <a
-                        class="sps-solution-btn"
+                        class="sri-solution-btn"
                         href="<?php echo $sol_link_url; ?>"
                         target="<?php echo esc_attr( $sol_link_tgt ); ?>"
                         <?php echo '_blank' === $sol_link_tgt ? 'rel="noopener noreferrer"' : ''; ?>
                     ><?php echo $sol_link_lbl; ?></a>
                 <?php endif; ?>
             </div>
-        </div><!-- .sps-row -->
+        </div><!-- .sri-row -->
 
         <?php /* ── Optional banner ───────────────────────────────────── */ ?>
         <?php if ( $banner_enabled ) : ?>
-            <div class="sps-banner"<?php if ( $banner_bg ) echo ' style="background-image: url(\'' . esc_url( $banner_bg['url'] ) . '\')"'; ?>>
-                <div class="sps-banner__overlay" aria-hidden="true"></div>
+            <div class="sri-banner"<?php if ( $banner_bg ) echo ' style="background-image: url(\'' . esc_url( $banner_bg['url'] ) . '\')"'; ?>>
+                <div class="sri-banner__overlay" aria-hidden="true"></div>
                 <?php if ( $banner_text ) : ?>
-                    <p class="sps-banner__text"><?php echo $banner_text; ?></p>
+                    <p class="sri-banner__text"><?php echo $banner_text; ?></p>
                 <?php endif; ?>
                 <?php if ( $banner_link_url ) : ?>
                     <a
-                        class="sps-banner__btn"
+                        class="sri-banner__btn"
                         href="<?php echo $banner_link_url; ?>"
                         target="<?php echo esc_attr( $banner_tgt ); ?>"
                         <?php echo '_blank' === $banner_tgt ? 'rel="noopener noreferrer"' : ''; ?>
@@ -143,7 +139,7 @@ $cal_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" view
             </div>
         <?php endif; ?>
 
-    </div><!-- .sps-section__container -->
+    </div><!-- .sri-section__container -->
 
     <?php if ( $decor_enabled ) : ?>
         <?php get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] ); ?>

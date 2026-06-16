@@ -22,6 +22,8 @@ $speed     = absint( get_field( 'speed' )              ?: 30 );
 $title_top    = get_field( 'title_top' )    ?: '';
 $title_bottom = get_field( 'title_bottom' ) ?: '';
 $bg_color     = get_field( 'bg_color' )     ?: '';
+$decor_enabled = get_field( 'decor_bottom_enabled' );
+$decor_color   = get_field( 'decor_bottom_color' ) ?: '#C83030';
 $items_raw = get_field( 'items' ) ?: [];
 
 if ( empty( $items_raw ) ) {
@@ -30,10 +32,13 @@ if ( empty( $items_raw ) ) {
 
 // Unique ID so multiple instances on the same page don't share CSS vars
 $uid = 'oa-' . uniqid();
+// Dark mode: detect dark bg
+$is_dark = $bg_color && in_array( strtolower( $bg_color ), [ '#111319', '#000000', '#000', '#111', '#1a1a1a' ] );
+$section_classes = 'oa-section' . ( $is_dark ? ' oa-section--dark' : '' );
 ?>
 
 <section
-	class="oa-section"
+	class="<?php echo esc_attr( $section_classes ); ?>"
 	id="<?php echo esc_attr( $uid ); ?>"
 	style="
 		<?php if ( $bg_color ) : ?>--oa-bg: <?php echo esc_attr( $bg_color ); ?>;<?php endif; ?>
@@ -47,14 +52,14 @@ $uid = 'oa-' . uniqid();
 >
 	<?php if ( $title_top || $title_bottom ) : ?>
 	<div class="oa-section__container">
-		<div class="oa-heading">
+		<h2 class="oa-heading">
 			<?php if ( $title_top ) : ?>
 				<span class="oa-heading__top"><?php echo esc_html( $title_top ); ?></span>
 			<?php endif; ?>
 			<?php if ( $title_bottom ) : ?>
 				<span class="oa-heading__bottom"><?php echo esc_html( $title_bottom ); ?></span>
 			<?php endif; ?>
-		</div>
+		</h2>
 	</div>
 	<?php endif; ?>
 
@@ -97,4 +102,7 @@ $uid = 'oa-' . uniqid();
 		endfor;
 		?>
 	</div>
+<?php if ( $decor_enabled ) :
+	get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] );
+endif; ?>
 </section>

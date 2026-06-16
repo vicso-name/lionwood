@@ -4,7 +4,7 @@
 // =============================================================================
 
 .cr-section {
-  background: #E9E9E9;
+  background: var(--cr-bg, #E9E9E9);
   padding-top:    var(--cr-pt, 100px);
   padding-bottom: var(--cr-pb, 100px);
   position: relative;
@@ -69,13 +69,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 40px;
-  width: 260px;
+  flex: 1;              // stretches to fill row equally
+  min-width: 200px;     // prevents collapse on very few cards
   min-height: 162px;
   padding: 20px 66px 20px 20px;
   border-radius: 20px;
   background: #F7F7F7;
   box-sizing: border-box;
-  flex-shrink: 0;
 }
 
 // Top section: value or icon
@@ -109,7 +109,7 @@
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
-  line-height: 125%;
+  line-height: 75%;
   color: var(--color-black);
   white-space: pre-line; // respect \n line breaks
 }
@@ -158,7 +158,7 @@
   }
 
   .cr-card {
-    width: calc(50% - 8px);
+    flex: 0 0 calc(50% - 8px);
     min-height: auto;
     padding: 20px;
     gap: 24px;

@@ -1,0 +1,142 @@
+// =============================================================================
+// Block: Leader Insights  (prefix: li-)
+// Dark bg by default, author + large quote text
+// =============================================================================
+
+.li-section {
+    background-color: var(--li-bg, #111319);
+    padding-top:      var(--li-pt, 70px);
+    padding-bottom:   var(--li-pb, 70px);
+    position:         relative;
+    overflow:         hidden;
+}
+
+.li-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Author block
+// =============================================================================
+
+.li-author {
+    display:     flex;
+    align-items: center;
+    gap:         20px;
+    margin-bottom: 40px;
+}
+
+// Photo — 80×80 circle
+.li-author__photo {
+    flex-shrink:  0;
+    width:        80px;
+    height:       80px;
+    border-radius: 80px;
+    border:       1px solid rgba(255, 255, 255, 0.20);
+    overflow:     hidden;
+
+    img {
+        display:    block;
+        width:      100%;
+        height:     100%;
+        object-fit: cover;
+    }
+}
+
+// Info column
+.li-author__info {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+}
+
+.li-author__name {
+    display:     block;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+.li-author__role {
+    display:     block;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    opacity:     0.8;
+}
+
+// =============================================================================
+// Content — large quote text
+// =============================================================================
+
+.li-content {
+    max-width: 1217px;
+
+    // Base paragraph style
+    p {
+        margin:      0 0 1em;
+        color:       #F7F7F7;
+        font-family: var(--font-primary);
+        font-size:   32px;
+        font-weight: var(--font-weight-medium, 500);
+        line-height: 1.3;
+
+        &:last-child { margin-bottom: 0; }
+    }
+
+    // Other elements that may appear in wysiwyg
+    strong { font-weight: 700; }
+    em     { font-style: italic; }
+
+    a {
+        color:           #F7F7F7;
+        text-decoration: underline;
+        &:hover { opacity: 0.7; }
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .li-content p {
+        font-size: clamp(22px, 3vw, 32px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .li-section {
+        padding-top:    var(--li-pt-mob, 50px);
+        padding-bottom: var(--li-pb-mob, 50px);
+    }
+
+    .li-content p {
+        font-size: clamp(18px, 5vw, 28px);
+    }
+}
+
+@media (max-width: 640px) {
+    .li-author {
+        gap: 14px;
+    }
+
+    .li-author__photo {
+        width:  60px;
+        height: 60px;
+    }
+
+    .li-author__name {
+        font-size: 18px;
+    }
+
+    .li-content p {
+        font-size: clamp(16px, 5.5vw, 22px);
+    }
+}

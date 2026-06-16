@@ -12,11 +12,12 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 30 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_raw     = get_field( 'title' ) ?: __( 'Implementation & Results', 'theme' );
+$title_raw     = get_field( 'title' ) ?: '';
 $title         = wp_kses( $title_raw, [ 'br' => [] ] );
 $desc_raw      = get_field( 'description' );
 $description   = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 $items         = get_field( 'items' ) ?: [];
+$bg_color      = get_field( 'bg_color' ) ?: '';
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 ?>
@@ -24,6 +25,7 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 <section
     class="cr-section"
     style="
+        <?php if ( $bg_color ) : ?>--cr-bg: <?php echo esc_attr( $bg_color ); ?>;<?php endif; ?>
         --cr-pt: <?php echo $pt; ?>px;
         --cr-pb: <?php echo $pb; ?>px;
         --cr-pt-mob: <?php echo $pt_mob; ?>px;
@@ -33,12 +35,14 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
     <div class="cr-section__container">
 
         <?php /* ── Row 1: Heading + Description ───────────────────────── */ ?>
+        <?php if ( $title || $description ) : ?>
         <div class="cr-header">
-            <h2 class="cr-title"><?php echo $title; ?></h2>
+            <?php if ( $title ) : ?><h2 class="cr-title"><?php echo $title; ?></h2><?php endif; ?>
             <?php if ( $description ) : ?>
                 <p class="cr-description"><?php echo $description; ?></p>
             <?php endif; ?>
         </div>
+        <?php endif; ?>
 
         <?php /* ── Row 2: Stat cards ──────────────────────────────────── */ ?>
         <?php if ( ! empty( $items ) ) : ?>

@@ -171,6 +171,44 @@
             "return_format": "string"
         },
         {
+            "key": "field_oa_decor_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show decorative arc at the bottom.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_oa_decor_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Default: #C83030",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#C83030",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
             "key": "field_oa_items",
             "label": "Award Items",
             "name": "items",
@@ -259,5 +297,5 @@
     "active": true,
     "description": "Infinite CSS marquee strip displaying award badges with text.",
     "show_in_rest": 0,
-    "modified": 1781518606
+    "modified": 1781591451
 }
