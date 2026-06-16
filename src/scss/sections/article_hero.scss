@@ -1,0 +1,325 @@
+// =============================================================================
+// Block: Article Hero  (prefix: ah2-)
+// Two-col: content left 50% | image right 50%
+// =============================================================================
+
+.ah2-section {
+    background:     var(--color-background, #F7F7F7);
+    padding-top:    var(--ah2-pt, 40px);
+    padding-bottom: var(--ah2-pb, 200px);
+    position:       relative;
+    overflow:       hidden;
+}
+
+.ah2-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Row — two equal columns
+// =============================================================================
+
+.ah2-row {
+    display:     flex;
+    align-items: flex-start;
+    gap:         60px;
+}
+
+.ah2-col {
+    flex:      0 0 calc(50% - 30px); // 50% minus half-gap
+    min-width: 0;
+}
+
+// =============================================================================
+// Left column
+// =============================================================================
+
+.ah2-col--left {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    align-self:     stretch; // matches right col height so margin-top: auto works
+}
+
+// Top group: meta + title + description + author
+.ah2-top {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    width:          100%;
+}
+
+// Meta
+.ah2-meta {
+    display:       flex;
+    align-items:   center;
+    gap:           8px;
+    margin-bottom: 20px;
+    font-family:   Inter, var(--font-primary);
+    font-size:     14px;
+    font-weight:   600;
+    line-height:   1.55;
+    color:         var(--color-black, #111319);
+    text-transform: uppercase;
+}
+
+// Title
+.ah2-title {
+    margin:         0 0 20px;
+    color:          var(--color-black, #111319);
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -0.084px;
+    text-transform: uppercase;
+}
+
+// Description
+.ah2-description {
+    width:         428px;
+    max-width:     100%;
+    margin:        0 0 32px;
+    color:         var(--color-black, #111319);
+    font-family:   var(--font-primary);
+    font-size:     18px;
+    font-weight:   var(--font-weight-medium, 500);
+    line-height:   1.3;
+}
+
+// Author
+.ah2-author {
+    display:     flex;
+    align-items: center;
+    gap:         14px;
+    width:       275px;
+}
+
+.ah2-author__photo {
+    flex-shrink:  0;
+    width:        67px;
+    height:       67px;
+    border-radius: 100px;
+    object-fit:   cover;
+    display:      block;
+}
+
+.ah2-author__info {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+}
+
+.ah2-author__name {
+    display:     block;
+    color:       #110A03;
+    font-family: var(--font-primary);
+    font-size:   18px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.3;
+}
+
+.ah2-author__position {
+    display:     block;
+    color:       #848588;
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+}
+
+// CTA banner — margin-top: auto pushes it to the bottom of the left col
+.ah2-cta {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             20px;
+    width:           630px;
+    max-width:       100%;
+    min-height:      110px;
+    padding:         20px 30px;
+    border-radius:   20px;
+    background:      var(--color-primary, #C83030);
+    box-sizing:      border-box;
+    margin-top:      auto;
+}
+
+.ah2-cta__text {
+    width:       347px;
+    flex-shrink: 1;
+    margin:      0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+.ah2-cta__btn {
+    display:         inline-flex;
+    height:          55px;
+    padding:         20px 30px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   100px;
+    background:      #F7F7F7;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    white-space:     nowrap;
+    flex-shrink:     0;
+    transition:      background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        background: var(--color-black, #111319);
+        color:      #F7F7F7;
+    }
+}
+
+// =============================================================================
+// Right column — image
+// =============================================================================
+
+.ah2-col--right {
+    align-self: stretch;
+}
+
+.ah2-image-wrap {
+    position:      relative;
+    width:         100%;
+    height:        660px;
+    border-radius: 20px;
+    overflow:      hidden;
+}
+
+.ah2-image {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+}
+
+// Category badges — top-left of image
+.ah2-badges {
+    position: absolute;
+    top:      16px;
+    left:     16px;
+    display:  flex;
+    flex-wrap: wrap;
+    gap:      8px;
+    z-index:  2;
+}
+
+.ah2-badge {
+    display:         inline-flex;
+    padding:         4px 14px 5px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   28px;
+    background:      rgba(255, 255, 255, 0.80);
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+
+    &:hover {
+        background: #F7F7F7;
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1400px) {
+    .ah2-cta {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .ah2-title {
+        font-size: clamp(32px, 4.5vw, 56px);
+    }
+
+    .ah2-image-wrap {
+        height: 560px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ah2-section {
+        padding-top:    var(--ah2-pt-mob, 20px);
+        padding-bottom: var(--ah2-pb-mob, 100px);
+    }
+
+    .ah2-row {
+        flex-direction: column;
+        gap:            40px;
+    }
+
+    .ah2-col {
+        flex:  none;
+        width: 100%;
+    }
+
+    .ah2-col--left {
+        align-self: auto; // remove stretch — stacked layout, height is content-based
+    }
+
+    .ah2-title {
+        font-size: clamp(28px, 7vw, 48px);
+    }
+
+    .ah2-description {
+        width: 100%;
+    }
+
+    // On mobile margin-top: auto collapses to 0 — give CTA explicit top gap
+    .ah2-cta {
+        margin-top: 40px;
+    }
+
+    .ah2-image-wrap {
+        height: 460px;
+    }
+}
+
+@media (max-width: 640px) {
+    .ah2-title {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .ah2-cta {
+        flex-direction: column;
+        align-items:    flex-start;
+        gap:            16px;
+        min-height:     auto;
+        margin-top:     32px;
+    }
+
+    .ah2-cta__text {
+        width:     100%;
+        font-size: 18px;
+    }
+
+    .ah2-cta__btn {
+        width:           100%;
+        justify-content: center;
+    }
+
+    .ah2-image-wrap {
+        height: 300px;
+    }
+}

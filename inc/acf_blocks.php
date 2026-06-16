@@ -100,6 +100,7 @@ function lionwood_register_acf_blocks() {
         'single_real_impact',
         'product_overview',
         'product_hero',
+        'article_hero',
     ];
 
     foreach ($blocks as $block_name) {
