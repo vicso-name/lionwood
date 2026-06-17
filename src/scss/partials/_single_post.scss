@@ -1,0 +1,486 @@
+// =============================================================================
+// Single Post Layout  (prefix: sp-)
+// Three-column: left sidebar | content 700px | right sidebar
+// =============================================================================
+
+.sp-main {
+    background:     #E9E9E9;
+    padding-top:    60px;
+    padding-bottom: 120px;
+}
+
+// ── Three-column grid ──────────────────────────────────────────────────────────
+.sp-layout {
+    display:      grid;
+    grid-template-columns: 1fr 700px 1fr;
+    grid-template-areas:   "left content right";
+    gap:          0;
+    max-width:    var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+    align-items:  start;
+}
+
+// Content column — 700px, block layout
+// Typography handled in _post_content.scss
+.sp-content {
+    grid-area: content;
+    min-width: 0;
+}
+
+// ── Sidebars ──────────────────────────────────────────────────────────────────
+.sp-sidebar {
+    display:        flex;
+    flex-direction: column;
+    gap:            16px;
+    position:       sticky;
+    top:            100px;
+}
+
+.sp-sidebar--left {
+    grid-area:    left;
+    padding-right: 70px; // gap between left sidebar and content
+    align-items:  stretch;
+}
+
+.sp-sidebar--right {
+    grid-area:     right;
+    padding-left:  60px; // gap between content and right sidebar
+    align-items:   stretch;
+}
+
+// =============================================================================
+// LEFT SIDEBAR — Subscribe box
+// =============================================================================
+
+.sp-subscribe {
+    display:        flex;
+    padding:        20px;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+    border-radius:  20px;
+    background:     var(--color-black, #111319);
+    box-sizing:     border-box;
+    min-height:     299px;
+}
+
+.sp-subscribe__text {
+    margin:      0 0 30px;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   24px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+    flex:        1;
+}
+
+.sp-subscribe__btn {
+    display:         flex;
+    height:          55px;
+    padding:         20px 32px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    align-self:      stretch;
+    border-radius:   100px;
+    background:      #F7F7F7;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    transition:      background 0.2s ease, color 0.2s ease;
+    box-sizing:      border-box;
+
+    &:hover {
+        background: var(--color-primary, #C83030);
+        color:      #F7F7F7;
+    }
+}
+
+// =============================================================================
+// LEFT SIDEBAR — AI Summary
+// =============================================================================
+
+.sp-ai {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            16px;
+    padding:        16px;
+    border-radius:  20px;
+    background:     #F7F7F7;
+    box-sizing:     border-box;
+}
+
+.sp-ai__title {
+    display:     block;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+    margin-bottom: 0; // gap handles spacing
+}
+
+.sp-ai__items {
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       8px;
+}
+
+.sp-ai__chip {
+    display:         inline-flex;
+    padding:         8px 12px;
+    justify-content: center;
+    align-items:     center;
+    gap:             6px;
+    border-radius:   28px;
+    border:          1px solid var(--color-black, #111319);
+    background:      var(--color-black, #111319);
+    color:           #F7F7F7;
+    font-family:     var(--font-primary);
+    font-size:       14px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.2;
+    text-align:      center;
+    width:           fit-content;
+    white-space:     nowrap;
+
+    img {
+        display:    block;
+        width:      20px;
+        height:     20px;
+        object-fit: contain;
+        border-radius: 0;
+    }
+}
+
+// =============================================================================
+// RIGHT SIDEBAR — Table of Contents
+// =============================================================================
+
+.sp-toc {
+    display:        flex;
+    flex-direction: column;
+    padding:        24px 32px 24px 24px;
+    border-radius:  20px;
+    background:     #F7F7F7;
+    box-sizing:     border-box;
+    max-height:     616px;
+    overflow:       hidden;
+    position:       relative;
+}
+
+.sp-toc__head {
+    display:       flex;
+    align-items:   center;
+    gap:           8px;
+    margin-bottom: 25px;
+    flex-shrink:   0;
+
+    svg { display: block; flex-shrink: 0; }
+}
+
+.sp-toc__label {
+    color:       #848588;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// Toggle button — hidden on desktop, visible on mobile
+.sp-toc__toggle {
+    display:    none;
+    background: none;
+    border:     none;
+    padding:    0;
+    cursor:     pointer;
+    margin-left: auto;
+    align-items: center;
+    flex-shrink: 0;
+
+    svg { display: block; }
+}
+
+.sp-toc__arrow--up { display: none; }
+
+// Scroll area with custom scrollbar
+.sp-toc__scroll-wrap {
+    display:    flex;
+    gap:        12px;
+    overflow:   hidden;
+    flex:       1;
+    min-height: 0;
+}
+
+.sp-toc__scrollbar {
+    order:       2; // scrollbar on the right side
+    flex-shrink: 0;
+    width:       2px;
+    background:  transparent;
+    position:    relative;
+}
+
+.sp-toc__nav {
+    order: 1; // nav on the left
+}
+
+.sp-toc__scrollbar-thumb {
+    width:         2px;
+    height:        80px;
+    border-radius: 3px;
+    background:    #3D3F43;
+    position:      absolute;
+    top:           0;
+    left:          0;
+    transition:    top 0.15s ease;
+}
+
+// Nav list — generated by JS
+.sp-toc__nav {
+    overflow-y: auto;
+    flex:       1;
+    scrollbar-width: none; // hide native scrollbar — we use custom
+
+    &::-webkit-scrollbar { display: none; }
+}
+
+.sp-toc__item {
+    display:         flex;
+    align-items:     center;
+    gap:             8px;
+    padding:         6px 0;
+    cursor:          pointer;
+    text-decoration: none;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.12;
+    transition:      color 0.2s ease;
+
+    .sp-toc__dot {
+        opacity:    0;
+        flex-shrink: 0;
+        transition: opacity 0.2s ease;
+        svg { display: block; }
+    }
+
+    &:hover,
+    &.is-active {
+        color: var(--color-primary, #C83030);
+
+        .sp-toc__dot { opacity: 1; }
+    }
+}
+
+// Gradient fade at bottom of TOC
+.sp-toc__fade {
+    position:   absolute;
+    bottom:     0;
+    left:       24px;
+    right:      32px;
+    height:     51px;
+    background: linear-gradient(180deg, rgba(247, 247, 247, 0.00) 0%, #F7F7F7 100%);
+    pointer-events: none;
+}
+
+// =============================================================================
+// RIGHT SIDEBAR — CTA
+// =============================================================================
+
+.sp-right-cta {
+    display:        flex;
+    flex-direction: column;
+    gap:            16px;
+    padding:        20px;
+    border-radius:  20px;
+    background:     var(--color-primary, #C83030);
+    box-sizing:     border-box;
+}
+
+.sp-right-cta__text {
+    margin:      0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   24px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+}
+
+.sp-right-cta__btn {
+    display:         flex;
+    width:           100%;
+    height:          55px;
+    padding:         20px 32px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   100px;
+    background:      #F7F7F7;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    box-sizing:      border-box;
+    transition:      background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        background: var(--color-black, #111319);
+        color:      #F7F7F7;
+    }
+}
+
+// =============================================================================
+// RIGHT SIDEBAR — Share
+// =============================================================================
+
+.sp-share {
+    display:        flex;
+    flex-direction: column;
+    gap:            16px;
+    padding:        16px;
+    border-radius:  20px;
+    background:     #F7F7F7;
+    box-sizing:     border-box;
+}
+
+.sp-share__title {
+    display:     block;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+}
+
+.sp-share__icons {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+}
+
+.sp-share__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           38px;
+    height:          38px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+    text-decoration: none;
+    transition:      background 0.2s ease;
+
+    svg { display: block; }
+
+    &:hover { background: darken(#C83030, 10%); }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1400px) {
+    .sp-layout {
+        grid-template-columns: 220px 700px 1fr;
+    }
+
+    .sp-sidebar--left {
+        padding-right: 40px;
+    }
+
+    .sp-sidebar--right {
+        padding-left: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sp-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "left"
+            "toc"
+            "content";
+    }
+
+    .sp-sidebar{
+        gap: 24px;
+    }
+
+    .sp-sidebar--left {
+        padding-inline: 0;
+        position:       static;
+    }
+
+    // Dissolve right sidebar — its children become direct grid items
+    // so TOC stays above content and CTA/Share fall below
+    .sp-sidebar--right {
+        display: contents;
+    }
+
+    .sp-toc {
+        grid-area: toc;
+    }
+
+    .sp-right-cta,
+    .sp-share {
+        margin-top: 16px;
+    }
+    .sp-sidebar--left{
+        margin-bottom: 24px;
+    }
+
+    .sp-main {
+        padding-top:    60px;
+        padding-bottom: 60px;
+    }
+
+    // TOC accordion
+    .sp-toc {
+        max-height: none;
+        margin-bottom: 30px;
+    }
+
+    .sp-toc__toggle {
+        display: flex;
+    }
+
+    .sp-toc__head {
+        margin-bottom: 0;
+    }
+
+    .sp-toc__scroll-wrap,
+    .sp-toc__fade {
+        display: none;
+    }
+
+    .sp-toc.is-open {
+        .sp-toc__head {
+            margin-bottom: 16px;
+        }
+
+        .sp-toc__scroll-wrap,
+        .sp-toc__fade {
+            display: flex;
+        }
+
+        .sp-toc__arrow--down { display: none; }
+        .sp-toc__arrow--up   { display: block; }
+    }
+}
+
+@media (max-width: 768px) {
+    .sp-main {
+        padding-top:    0;
+        padding-bottom: 40px;
+    }
+}

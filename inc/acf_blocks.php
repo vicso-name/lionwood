@@ -101,6 +101,9 @@ function lionwood_register_acf_blocks() {
         'product_overview',
         'product_hero',
         'article_hero',
+        'article_slider',
+        'article_numbered_list',
+        'about_author',
     ];
 
     foreach ($blocks as $block_name) {

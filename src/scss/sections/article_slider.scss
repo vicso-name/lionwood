@@ -1,0 +1,112 @@
+// =============================================================================
+// Block: Article Slider  (prefix: as-)
+// Desktop: arrows inside bottom-right | Mobile: arrows outside centered below
+// =============================================================================
+
+.as-wrap {
+    width:    100%;
+    position: relative;
+}
+
+// ── Slider ────────────────────────────────────────────────────────────────────
+
+.as-slider {
+    width:         700px;
+    max-width:     100%;
+    height:        442px;
+    border-radius: 16px;
+    margin-top:    24px;
+    overflow:      hidden;
+    position:      relative;
+}
+
+.as-slide {
+    width:  700px;
+    height: 442px;
+
+    img {
+        display:    block;
+        width:      100%;
+        height:     100%;
+        object-fit: cover;
+        border-radius: 0; // border-radius is on .as-slider
+    }
+}
+
+// ── Arrow button ──────────────────────────────────────────────────────────────
+
+.as-btn {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           40px;
+    height:          40px;
+    border-radius:   50%;
+    background:      #FFF;
+    border:          none;
+    cursor:          pointer;
+    padding:         0;
+    transition:      background var(--transition-fast, 0.15s) ease,
+                     transform  var(--transition-fast, 0.15s) ease;
+
+    svg { display: block; }
+
+    &:hover {
+        background: var(--color-background-alt, #E9E9E9);
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor:  default;
+    }
+}
+
+// ── Desktop nav — inside slide, bottom-right ──────────────────────────────────
+
+.as-nav--desktop {
+    position: absolute;
+    bottom:   16px;
+    right:    16px;
+    display:  flex;
+    gap:      8px;
+    z-index:  2;
+}
+
+// ── Mobile nav — outside, centered below slider ───────────────────────────────
+
+.as-nav--mobile {
+    display: none; // hidden on desktop
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 768px) {
+    .as-slider {
+        width:  100%;
+        height: auto;
+        aspect-ratio: 700 / 442;
+    }
+
+    .as-slide {
+        width:  100%;
+        height: auto;
+
+        img { height: auto; }
+    }
+
+    // Hide desktop nav, show mobile nav
+    .as-nav--desktop {
+        display: none;
+    }
+
+    .as-nav--mobile {
+        display:         flex;
+        justify-content: center;
+        align-items:     center;
+        gap:             16px;
+        margin-top:      20px;
+    }
+}

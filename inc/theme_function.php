@@ -300,3 +300,64 @@ add_action('init', function(){
         }, 100);
     }
 }, 20);
+
+
+/**
+ * Editor guide — single post structure reminder
+ */
+add_action( 'add_meta_boxes', function () {
+    add_meta_box(
+        'lionwood_post_guide',
+        '📋 Post Structure Guide',
+        function () { ?>
+            <div style="font-family: -apple-system, sans-serif; font-size: 13px; line-height: 1.6; color: #1e1e1e;">
+
+                <p style="margin: 0 0 12px; font-weight: 600; color: #c83030;">
+                    Follow this block order in the editor:
+                </p>
+
+                <ol style="margin: 0 0 16px; padding-left: 18px;">
+                    <li style="margin-bottom: 6px;">
+                        <strong>Article Hero</strong>
+                        <span style="color: #666;"> — always first, renders full-width above content</span>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>Article content</strong>
+                        <span style="color: #666;"> — paragraphs, headings, images, sliders, numbered lists</span>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>─── Bottom Sections ───</strong>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>About Author</strong>
+                        <span style="color: #666;"> — renders full-width below article</span>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>Insights Articles</strong>
+                        <span style="color: #666;"> — latest posts section</span>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>FAQ Section</strong>
+                        <span style="color: #666;"> — accordion questions</span>
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>Contact Section</strong>
+                        <span style="color: #666;"> — always last</span>
+                    </li>
+                </ol>
+
+                <div style="background: #fff3cd; border-left: 3px solid #f0a500; padding: 8px 12px; border-radius: 4px; margin-bottom: 12px;">
+                    ⚠️ <strong>Important:</strong> Bottom sections (About Author → Contact) must be placed <em>after</em> all article content. They render outside the article column automatically.
+                </div>
+
+                <div style="background: #d4edda; border-left: 3px solid #28a745; padding: 8px 12px; border-radius: 4px;">
+                    ✅ <strong>Left sidebar</strong> (Subscribe, AI Summary) and <strong>right sidebar</strong> (Sections, Share) are managed in the <em>Post Sidebar Settings</em> Meta Box.
+                </div>
+
+            </div>
+        <?php },
+        'post',   // post type
+        'side',   // position
+        'high'    // priority — appears near top
+    );
+} );

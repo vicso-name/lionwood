@@ -1,0 +1,268 @@
+// =============================================================================
+// Post Content Typography  — applied inside .sp-content
+// Gutenberg outputs raw HTML so we style by element type
+// All values matched to design tokens from _tokens.scss
+// =============================================================================
+
+.sp-content {
+
+    // ── H2 → maps to design "H3" (32px Medium) ─────────────────────────────
+    h2 {
+        color:         #23252A;
+        font-family:   var(--font-primary);
+        font-size:     var(--font-size-h3, 32px);       // 32px
+        font-weight:   var(--font-weight-medium, 500);
+        line-height:   var(--line-height-h3, 120%);
+        margin-top:    32px;
+        margin-bottom: 20px;
+    }
+
+    // ── H3 → maps to design "B1" (18px Medium) ──────────────────────────────
+    h3 {
+        color:         var(--color-black, #111319);
+        font-family:   var(--font-primary);
+        font-size:     var(--font-size-body-1, 18px);   // 18px
+        font-weight:   var(--font-weight-medium, 500);
+        line-height:   var(--line-height-body-1, 130%);
+        margin-top:    28px;
+        margin-bottom: 16px;
+    }
+
+    // ── Paragraph ────────────────────────────────────────────────────────────
+    p {
+        color:         var(--color-text, #3D3F43);
+        font-family:   var(--font-primary);
+        font-size:     var(--font-size-body-2, 16px);   // 16px
+        font-weight:   var(--font-weight-regular, 400);
+        line-height:   120%;
+        margin-top:    16px;
+        margin-bottom: 0;
+    }
+
+    // ── Links ────────────────────────────────────────────────────────────────
+    a {
+        color:                    var(--color-primary, #C83030);
+        font-family:              var(--font-primary);
+        font-size:                inherit;
+        font-weight:              var(--font-weight-medium, 500);
+        line-height:              140%;
+        text-decoration-line:     underline;
+        text-decoration-style:    solid;
+        text-decoration-skip-ink: auto;
+        text-underline-offset:    auto;
+        text-underline-position:  from-font;
+        transition:               color var(--transition-fast, 0.15s) ease;
+
+        &:hover {
+            color: var(--color-primary-hover, #A82828);
+        }
+    }
+
+    // ── Bold ─────────────────────────────────────────────────────────────────
+    strong, b {
+        color:       var(--color-black, #111319);
+        font-family: var(--font-primary);
+        font-size:   inherit;
+        font-weight: var(--font-weight-medium, 500);
+        line-height: 140%;
+    }
+
+    // ── Italic ────────────────────────────────────────────────────────────────
+    em, i {
+        font-style: italic;
+    }
+
+    // ── Blockquote ───────────────────────────────────────────────────────────
+    blockquote {
+        width:         100%;
+        box-sizing:    border-box;
+        padding:       4px 0 4px 20px;
+        margin: 0;
+        margin-top:    16px;
+        margin-bottom: 0;
+        border-left:   2px solid var(--color-primary, #C83030);
+
+        p {
+            color:       var(--color-black, #111319);
+            font-size:   var(--font-size-body-2, 16px);
+            font-weight: var(--font-weight-medium, 500);
+            line-height: 140%;
+            margin:      0;
+        }
+    }
+
+    // ── Unordered list ───────────────────────────────────────────────────────
+    ul {
+        list-style: none;
+        margin-top:     16px;
+        margin-bottom:  0;
+        padding:    0;
+        display:    flex;
+        flex-direction: column;
+        gap:        4px; // 4px between items
+    }
+
+    ul li {
+        display:     flex;
+        align-items: flex-start;
+        gap:         10px;
+        color:       var(--color-text, #3D3F43);
+        font-family: var(--font-primary);
+        font-size:   var(--font-size-body-2, 16px);
+        font-weight: var(--font-weight-regular, 400);
+        line-height: 120%;
+
+        // Red circle bullet via pseudo-element
+        &::before {
+            content:       '';
+            display:       block;
+            flex-shrink:   0;
+            width:         6px;
+            height:        6px;
+            border-radius: 50%;
+            background:    var(--color-primary, #C83030);
+            margin-top:    6px; // optical vertical centering with 16px/120% text
+        }
+    }
+
+    // ── Ordered list ─────────────────────────────────────────────────────────
+    ol {
+        margin-top:    16px;
+        margin-bottom: 0;
+        padding:       0 0 0 20px;
+        display:       flex;
+        flex-direction: column;
+        gap:           4px;
+    }
+
+    ol li {
+        color:        var(--color-text, #3D3F43);
+        font-family:  var(--font-primary);
+        font-size:    var(--font-size-body-2, 16px);
+        font-weight:  var(--font-weight-regular, 400);
+        line-height:  120%;
+        padding-left: 4px;
+    }
+
+    // ── Images ───────────────────────────────────────────────────────────────
+    figure,
+    .wp-block-image {
+        margin-top:    26px;
+        margin-bottom: 16px;
+        width:         100%;
+
+        img {
+            display:       block;
+            width:         100%;
+            height:        auto;
+            border-radius: 16px;
+            object-fit:    cover;
+        }
+
+        figcaption {
+            margin-top:  8px;
+            color:       var(--color-text-muted, #848588);
+            font-family: var(--font-primary);
+            font-size:   var(--font-size-body-3, 14px);
+            font-weight: var(--font-weight-regular, 400);
+            line-height: var(--line-height-body-3, 120%);
+            text-align:  center;
+        }
+    }
+
+    // ── Video ─────────────────────────────────────────────────────────────────
+    .wp-block-video {
+        position: relative;
+
+        video {
+            display:       block;
+            width:         100%;
+            height:        auto;
+            border-radius: 16px;
+        }
+
+        // Custom play button overlay — added via JS, hidden when playing
+        .as-play-btn {
+            position:        absolute;
+            top:             50%;
+            left:            50%;
+            transform:       translate(-50%, -50%);
+            display:         flex;
+            align-items:     center;
+            justify-content: center;
+            width:           64px;
+            height:          64px;
+            border-radius:   50%;
+            background:      #F7F7F7;
+            border:          none;
+            cursor:          pointer;
+            pointer-events:  all;
+            transition:      opacity var(--transition-fast, 0.15s) ease,
+                             transform var(--transition-fast, 0.15s) ease;
+            z-index:         2;
+
+            svg { display: block; }
+
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+
+            &.is-hidden {
+                opacity:        0;
+                pointer-events: none;
+            }
+        }
+
+        figcaption,
+        .wp-element-caption {
+            margin-top:  10px;
+            color:       var(--color-black, #111319);
+            font-family: var(--font-primary);
+            font-size:   var(--font-size-body-3, 14px);
+            font-weight: var(--font-weight-medium, 500);
+            line-height: var(--line-height-body-3, 120%);
+            opacity:     0.6;
+            text-align:  left;
+        }
+    }
+
+    // ── Horizontal rule ──────────────────────────────────────────────────────
+    hr {
+        border:     none;
+        height:     1px;
+        background: var(--color-background-alt, #E9E9E9);
+        margin-top:    24px;
+        margin-bottom: 0;
+    }
+
+    // ── Code ─────────────────────────────────────────────────────────────────
+    code {
+        font-family:   'Courier New', Courier, monospace;
+        font-size:     14px;
+        background:    var(--color-background-alt, #E9E9E9);
+        border-radius: 4px;
+        padding:       2px 6px;
+        color:         var(--color-black, #111319);
+    }
+
+    pre {
+        background:    var(--color-black, #111319);
+        border-radius: 12px;
+        padding:       20px;
+        overflow-x:    auto;
+        margin-top:    16px;
+        margin-bottom: 0;
+
+        code {
+            background: none;
+            color:      #F7F7F7;
+            padding:    0;
+            font-size:  14px;
+        }
+    }
+
+    // First element in content has no top margin
+    > *:first-child {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,324 @@
+{
+    "key": "group_single_post_sidebar",
+    "title": "Post Sidebar Settings",
+    "fields": [
+        {
+            "key": "field_sp_subscribe_show",
+            "label": "Show Subscribe Box",
+            "name": "sidebar_subscribe_show",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show the dark subscribe box in the left sidebar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_sp_subscribe_text",
+            "label": "Subscribe Box Text",
+            "name": "sidebar_subscribe_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Text inside the dark subscribe box.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_subscribe_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "new_lines": "br",
+            "default_value": "Discover innovative strategies and forward-thinking ideas to enhance your digital products.",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_sp_subscribe_label",
+            "label": "Subscribe Button Label",
+            "name": "sidebar_subscribe_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_subscribe_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Subscribe",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sp_subscribe_link",
+            "label": "Subscribe Button Link",
+            "name": "sidebar_subscribe_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_subscribe_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_sp_ai_show",
+            "label": "Show AI Summary",
+            "name": "sidebar_ai_show",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show the AI Summary chip list in the left sidebar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_sp_ai_title",
+            "label": "AI Summary Title",
+            "name": "sidebar_ai_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_ai_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "AI Summary",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sp_ai_items",
+            "label": "AI Tool Chips",
+            "name": "sidebar_ai_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "AI tool chips shown in the summary box (icon + name).",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_ai_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_sp_ai_item_name",
+            "button_label": "Add AI Tool",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_sp_ai_item_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "20×20px icon.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "preview_size": "thumbnail",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_sp_ai_items"
+                },
+                {
+                    "key": "field_sp_ai_item_name",
+                    "label": "Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. ChatGPT, Perplexity",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "ChatGPT",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_sp_ai_items"
+                }
+            ]
+        },
+        {
+            "key": "field_sp_cta_show",
+            "label": "Show Right CTA",
+            "name": "sidebar_cta_show",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show the red CTA block in the right sidebar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_sp_cta_text",
+            "label": "Right CTA Text",
+            "name": "sidebar_cta_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Text in the red CTA box. e.g. 'Build load planning software…'",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_cta_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "new_lines": "br",
+            "default_value": "Build load planning software with logistics tech experts",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_sp_cta_link",
+            "label": "Right CTA Button",
+            "name": "sidebar_cta_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sp_cta_show",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Single post sidebar — subscribe box, AI chips, right CTA. Appears in post meta panel.",
+    "show_in_rest": 0,
+    "modified": 1781694542
+}

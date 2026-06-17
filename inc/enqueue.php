@@ -156,6 +156,21 @@ add_action('wp_enqueue_scripts', function () {
 }, 5);
 
 /* -----------------------------------------------------------
+ * Single post assets
+ * ----------------------------------------------------------- */
+add_action('wp_enqueue_scripts', function () {
+    if (!is_singular('post')) return;
+
+    wp_enqueue_script(
+        'btf-single-post',
+        lionwood_asset_url('build/js/sections/single_post.min.js'),
+        [],
+        lionwood_asset_ver('build/js/sections/single_post.min.js'),
+        true
+    );
+}, 6);
+
+/* -----------------------------------------------------------
  * Editor (block editor) assets
  * ----------------------------------------------------------- */
 add_action('enqueue_block_editor_assets', function () {
