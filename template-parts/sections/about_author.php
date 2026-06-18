@@ -51,7 +51,14 @@ $all_posts_lbl  = ! empty( $all_posts_url['title'] ) ? esc_html( $all_posts_url[
 $all_posts_tgt  = ! empty( $all_posts_url['target'] ) ? $all_posts_url['target'] : '_self';
 
 // ── Rating ────────────────────────────────────────────────────────────────────
-$show_rating    = get_field( 'show_rating' );
+$show_rating = get_field( 'show_rating' );
+$post_id     = get_the_ID();
+
+if ( $show_rating !== false ) {
+    $rating_count = (int) get_post_meta( $post_id, '_aa_rating_count', true );
+    $rating_sum   = (int) get_post_meta( $post_id, '_aa_rating_sum',   true );
+    $rating_avg   = $rating_count > 0 ? round( $rating_sum / $rating_count, 1 ) : 5.0;
+}
 
 $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
     <path d="M10.8702 3.30215C10.9686 3.4006 11.0239 3.53411 11.0239 3.67333C11.0239 3.81254 10.9686 3.94605 10.8702 4.0445L5.62019 9.2945C5.52174 9.39292 5.38823 9.44821 5.24902 9.44821C5.10981 9.44821 4.97629 9.39292 4.87784 9.2945L2.25284 6.6695C2.15721 6.57048 2.10429 6.43787 2.10549 6.30021C2.10668 6.16256 2.1619 6.03088 2.25924 5.93355C2.35658 5.83621 2.48825 5.78099 2.62591 5.7798C2.76356 5.7786 2.89618 5.83152 2.99519 5.92715L5.24902 8.18098L10.1278 3.30215C10.2263 3.20373 10.3598 3.14844 10.499 3.14844C10.6382 3.14844 10.7717 3.20373 10.8702 3.30215Z" fill="#F7F7F7"/>
@@ -67,13 +74,6 @@ $linkedin_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
     <defs><clipPath id="clip_li"><rect width="20" height="20" fill="white"/></clipPath></defs>
 </svg>';
 
-$star_filled = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 26 25" fill="none" aria-hidden="true">
-    <path d="M11.8178 0.615876C12.1595 -0.204987 13.3224 -0.204972 13.6641 0.6159L16.4619 7.33619C16.6059 7.68216 16.9313 7.91856 17.3048 7.94863L24.5606 8.53271C25.4469 8.60406 25.8063 9.71 25.1312 10.2887L19.6046 15.0264C19.3201 15.2703 19.1958 15.6528 19.2826 16.0173L20.9691 23.0985C21.1751 23.9635 20.2344 24.647 19.4754 24.1838L13.2619 20.3916C12.9421 20.1963 12.5399 20.1963 12.22 20.3916L6.00632 24.1838C5.24734 24.647 4.30656 23.9635 4.5126 23.0985L6.19932 16.0173C6.28616 15.6528 6.16188 15.2703 5.87736 15.0264L0.350521 10.2887C-0.324566 9.71002 0.0348001 8.60405 0.921106 8.5327L8.17684 7.94863C8.55037 7.91856 8.87574 7.68218 9.01978 7.33622L11.8178 0.615876Z" fill="#C83030"/>
-</svg>';
-
-$star_empty = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 26 25" fill="none" aria-hidden="true">
-    <path d="M11.8178 0.615876C12.1595 -0.204987 13.3224 -0.204972 13.6641 0.6159L16.4619 7.33619C16.6059 7.68216 16.9313 7.91856 17.3048 7.94863L24.5606 8.53271C25.4469 8.60406 25.8063 9.71 25.1312 10.2887L19.6046 15.0264C19.3201 15.2703 19.1958 15.6528 19.2826 16.0173L20.9691 23.0985C21.1751 23.9635 20.2344 24.647 19.4754 24.1838L13.2619 20.3916C12.9421 20.1963 12.5399 20.1963 12.22 20.3916L6.00632 24.1838C5.24734 24.647 4.30656 23.9635 4.5126 23.0985L6.19932 16.0173C6.28616 15.6528 6.16188 15.2703 5.87736 15.0264L0.350521 10.2887C-0.324566 9.71002 0.0348001 8.60405 0.921106 8.5327L8.17684 7.94863C8.55037 7.91856 8.87574 7.68218 9.01978 7.33622L11.8178 0.615876Z" fill="#E9E9E9"/>
-</svg>';
 ?>
 
 <section class="aa-section">
@@ -159,17 +159,30 @@ $star_empty = '<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" vi
 
         <?php /* ── Rating widget ── */ ?>
         <?php if ( $show_rating !== false ) : ?>
-            <div class="aa-rating">
+            <div class="aa-rating"
+                 data-post-id="<?php echo esc_attr( $post_id ); ?>"
+                 data-rest-url="<?php echo esc_url( rest_url( 'lionwood/v1/rating' ) ); ?>"
+                 data-nonce="<?php echo wp_create_nonce( 'wp_rest' ); ?>">
                 <div class="aa-rating__left">
                     <span class="aa-rating__label"><?php esc_html_e( 'Rate this article', 'theme' ); ?></span>
-                    <span class="aa-rating__count"><?php esc_html_e( '1394 ratings, average: 4.5 out of 5', 'theme' ); ?></span>
+                    <span class="aa-rating__count">
+                        <?php printf(
+                            /* translators: 1: vote count, 2: average score */
+                            esc_html__( '%1$s ratings, average: %2$s out of 5', 'theme' ),
+                            number_format_i18n( $rating_count ),
+                            number_format( $rating_avg, 1 )
+                        ); ?>
+                    </span>
                 </div>
-                <div class="aa-rating__stars" aria-label="4.5 out of 5 stars">
-                    <?php echo $star_filled; ?>
-                    <?php echo $star_filled; ?>
-                    <?php echo $star_filled; ?>
-                    <?php echo $star_filled; ?>
-                    <?php echo $star_empty; ?>
+                <div class="aa-rating__stars" role="group" aria-label="<?php esc_attr_e( 'Rate this article', 'theme' ); ?>">
+                    <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
+                        <button
+                            class="aa-star"
+                            type="button"
+                            data-value="<?php echo $i; ?>"
+                            aria-label="<?php printf( esc_attr__( '%d out of 5 stars', 'theme' ), $i ); ?>"
+                        ><svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none" aria-hidden="true"><path d="M11.8176 0.615874C12.1593 -0.204993 13.3222 -0.205007 13.664 0.615852L16.4619 7.33622C16.606 7.68217 16.9314 7.91856 17.3049 7.94863L24.5607 8.53271C25.447 8.60406 25.8064 9.71 25.1313 10.2887L19.6046 15.0264C19.3201 15.2703 19.1959 15.6528 19.2827 16.0173L20.9692 23.0986C21.1752 23.9635 20.2345 24.6471 19.4755 24.1838L13.2617 20.3916C12.9418 20.1963 12.5397 20.1963 12.2198 20.3916L6.00632 24.1838C5.24735 24.647 4.30657 23.9635 4.51257 23.0985L6.19904 16.0173C6.28586 15.6528 6.16158 15.2703 5.87708 15.0264L0.350441 10.2887C-0.324627 9.71 0.034743 8.60405 0.92104 8.53271L8.17682 7.94863C8.55036 7.91856 8.87574 7.68217 9.01977 7.3362L11.8176 0.615874Z" fill="white"/></svg></button>
+                    <?php endfor; ?>
                 </div>
             </div>
         <?php endif; ?>

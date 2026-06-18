@@ -48,11 +48,8 @@ function lionwood_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'lionwood' ),
-		)
-	);
+	register_nav_menus(['primary' => __('Primary Menu', 'theme')]);
+
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -119,3 +116,5 @@ require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';
 require_once get_template_directory() . '/inc/careers-cpt.php';
 require_once get_template_directory() . '/inc/career_template_manager.php';
+require_once get_template_directory() . '/inc/class-mega-menu-walker.php';
+require_once get_template_directory() . '/inc/class-mobile-menu-walker.php';

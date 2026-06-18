@@ -1,0 +1,934 @@
+// =============================================================================
+// Header  (prefix: hdr-)
+// Sticky header, mega dropdown, language switcher
+// =============================================================================
+
+.hdr {
+    position:         sticky;
+    top:              0;
+    left:             0;
+    right:            0;
+    z-index:          1000;
+    background:       var(--color-background, #F7F7F7);
+    border-bottom:    1px solid rgba(0, 0, 0, 0.06);
+    transition:       box-shadow var(--transition-base, 0.25s) ease;
+
+    &.is-scrolled {
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.hdr__inner {
+    display:               grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items:           center;
+    max-width:             var(--container-max-width);
+    margin-inline:         auto;
+    padding-inline:        var(--container-padding);
+    height:                72px;
+    position:              relative;
+}
+
+// Logo and controls pushed to edges
+.hdr__logo {
+    display:         flex;
+    align-items:     center;
+    text-decoration: none;
+
+    img {
+        display:    block;
+        width:      120px;
+        height:     36px;
+        object-fit: contain;
+    }
+}
+
+.hdr__controls {
+    display:      flex;
+    align-items:  center;
+    gap:          0;
+    justify-self: end;
+}
+
+.hdr__logo-text {
+    font-family: var(--font-primary);
+    font-size:   20px;
+    font-weight: var(--font-weight-medium, 500);
+    color:       var(--color-black, #111319);
+}
+
+// =============================================================================
+// Nav
+// =============================================================================
+
+.hdr__menu {
+    display:     flex;
+    align-items: center;
+    gap:         8px;
+    list-style:  none;
+    margin:      0;
+    padding:     0;
+}
+
+.hdr__menu-link {
+    display:         inline-flex;
+    align-items:     center;
+    gap:             4px;
+    padding:         8px 12px;
+    border:          none;
+    background:      none;
+    cursor:          pointer;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-2, 16px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    text-decoration: none;
+    border-radius:   8px;
+    transition:      background var(--transition-fast, 0.15s) ease,
+                     color      var(--transition-fast, 0.15s) ease;
+    white-space:     nowrap;
+
+    svg {
+        display:    block;
+        flex-shrink: 0;
+        transition: transform var(--transition-fast, 0.15s) ease;
+    }
+
+    &:hover,
+    &.is-active {
+        color: var(--color-primary, #C83030);
+    }
+
+    .hdr__menu-item--has-drop:hover & svg,
+    &[aria-expanded="true"] svg {
+        transform: rotate(180deg);
+    }
+}
+
+// =============================================================================
+// Mega dropdown
+// =============================================================================
+
+.hdr__drop {
+    position:   absolute;
+    top:        calc(100% + 8px);
+    left:       50%;
+    transform:  translateX(-50%);
+    width:      min(1360px, 96vw);
+    z-index:    999;
+    // Invisible bridge fills the gap so mouse doesn't lose hover
+    padding-top: 12px;
+    margin-top:  -12px;
+
+    // Hidden state
+    opacity:          0;
+    pointer-events:   none;
+    transform:        translateX(-50%) translateY(-8px);
+    transition:       opacity    var(--transition-base, 0.25s) ease,
+                      transform  var(--transition-base, 0.25s) ease;
+
+    .hdr__menu-item--has-drop:hover &,
+    .hdr__menu-item--has-drop.is-open &,
+    .hdr__menu-item--has-drop.is-hovered & {
+        opacity:        1;
+        pointer-events: all;
+        transform:      translateX(-50%) translateY(0);
+    }
+}
+
+.hdr__drop-inner {
+    display:        flex;
+    flex-direction: column;
+    gap:            40px;
+    padding:        36px 36px 40px;
+    border-radius:  20px;
+    background:     #FFF;
+    box-shadow:     0 4px 30px 0 rgba(0, 0, 0, 0.10);
+
+    // Row layouts: group(s) left, flat items right
+    &[data-mega-layout="one-group"],
+    &[data-mega-layout="two-groups-side"] {
+        flex-direction: row;
+        align-items:    stretch;
+        gap:            32px;
+    }
+}
+
+// ── Groups zone ───────────────────────────────────────────────────────────────
+
+// Base: flex row — works for one-group and two-groups-side
+.hdr__drop-groups {
+    display:     flex;
+    gap:         16px;
+    align-items: start;
+}
+
+// two-groups-stacked: 2-col grid at the top
+.hdr__drop-inner[data-mega-layout="two-groups-stacked"] .hdr__drop-groups {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   40px 32px;
+    align-items:           start;
+}
+
+// one-group: fixed-width panel on the left
+.hdr__drop-inner[data-mega-layout="one-group"] .hdr__drop-groups {
+    flex: 0 0 425px;
+}
+
+// two-groups-side: auto width (each group inside carries its own width)
+.hdr__drop-inner[data-mega-layout="two-groups-side"] .hdr__drop-groups {
+    flex: 0 0 auto;
+}
+
+// ── Group column ──────────────────────────────────────────────────────────────
+
+.hdr__drop-group {
+    display:        flex;
+    flex-direction: column;
+    gap:            12px;
+}
+
+// Background panel — applied in one-group and two-groups-side layouts
+.hdr__drop-group--bg {
+    width:          100%;
+    padding:       9px 12px 16px 16px;
+    gap:           10px;
+    align-self:    stretch;
+    align-items:   flex-start;
+    border-radius: 6px;
+    background:    var(--color-background, #F7F7F7);
+}
+
+// In two-groups-side each panel has a fixed width so both columns are equal
+.hdr__drop-inner[data-mega-layout="two-groups-side"] .hdr__drop-group--bg {
+    width: 425px;
+}
+
+// Parent title
+.hdr__drop-parent {
+    display:         block;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-h4, 21px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover { color: var(--color-primary, #C83030); }
+}
+
+// Children list
+.hdr__drop-children {
+    width:          95%;
+    list-style:     none;
+    margin:         0;
+    padding:        0;
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+}
+
+.hdr__drop-child-link {
+    display:         flex;
+    align-items:     center;
+    gap:             8px;
+    padding:         4px 0;
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover .hdr__drop-child-text {
+        color: var(--color-primary, #C83030);
+    }
+}
+
+// Small icon placeholder (22×22 circle)
+.hdr__drop-child-icon {
+    flex-shrink:   0;
+    width:         22px;
+    height:        22px;
+    border-radius: 50%;
+    background:    var(--color-background-alt, #E9E9E9);
+}
+
+.hdr__drop-child-text {
+    flex:        1;
+    color:       #3D3F43;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    transition:  color var(--transition-fast, 0.15s) ease;
+}
+
+// ── Flat pills zone — items without children ──────────────────────────────────
+
+// Base: 3-col grid — default for two-groups-stacked and flat-only
+.hdr__drop-flat {
+    display:               grid;
+    gap:                   8px;
+    grid-template-columns: repeat(3, 1fr);
+    align-content:         start;
+}
+
+// 4+ flat items in stacked/flat-only layout → single row of 4 columns
+// Row layouts (one-group, two-groups-side) override this via higher specificity
+.hdr__drop-flat[data-flat-count="4"],
+.hdr__drop-flat[data-flat-count="5"],
+.hdr__drop-flat[data-flat-count="6"],
+.hdr__drop-flat[data-flat-count="7"],
+.hdr__drop-flat[data-flat-count="8"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+// one-group: 2-col grid filling remaining width on the right
+.hdr__drop-inner[data-mega-layout="one-group"] .hdr__drop-flat {
+    flex:                  1;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+// two-groups-side: single column filling remaining width on the right
+.hdr__drop-inner[data-mega-layout="two-groups-side"] .hdr__drop-flat {
+    flex:                  1;
+    grid-template-columns: 1fr;
+}
+
+.hdr__drop-pill {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    height:          48px;
+    padding:         0 16px;
+    border-radius:   6px;
+    background:      var(--color-background, #F7F7F7);
+    text-decoration: none;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    span {
+        color:       var(--color-black, #111319);
+        font-family: var(--font-primary);
+        font-size:   var(--font-size-h4, 21px);
+        font-weight: var(--font-weight-medium, 500);
+        line-height: 1.4;
+    }
+
+    svg { flex-shrink: 0; }
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.06);
+    }
+}
+
+// ── Language switcher ─────────────────────────────────────────────────────────
+
+.hdr__lang {
+    position: relative;
+    margin-right: 30px; // 30px gap before CTA
+}
+
+.hdr__lang-btn {
+    display:     inline-flex;
+    align-items: center;
+    gap:         6px;
+    padding:     8px 10px;
+    border:      none;
+    background:  none;
+    cursor:      pointer;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-3, 14px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.2;
+    border-radius: 8px;
+    transition:  background var(--transition-fast, 0.15s) ease;
+
+    svg:last-child { transition: transform var(--transition-fast, 0.15s) ease; }
+
+    &:hover { background: rgba(0, 0, 0, 0.05); }
+
+    &[aria-expanded="true"] svg:last-child {
+        transform: rotate(180deg);
+    }
+}
+
+.hdr__lang-current {
+    text-transform: uppercase;
+}
+
+.hdr__lang-drop {
+    position:      absolute;
+    top:           calc(100% + 6px);
+    right:         0;
+    min-width:     80px;
+    list-style:    none;
+    margin:        0;
+    padding:       8px;
+    border-radius: 12px;
+    background:    #FFF;
+    box-shadow:    0 4px 20px rgba(0, 0, 0, 0.10);
+    opacity:       0;
+    pointer-events: none;
+    transform:     translateY(-6px);
+    transition:    opacity    var(--transition-fast, 0.15s) ease,
+                   transform  var(--transition-fast, 0.15s) ease;
+
+    &.is-open {
+        opacity:        1;
+        pointer-events: all;
+        transform:      translateY(0);
+    }
+}
+
+.hdr__lang-item {
+    display:         block;
+    padding:         8px 12px;
+    border-radius:   8px;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-3, 14px);
+    font-weight:     var(--font-weight-medium, 500);
+    text-decoration: none;
+    text-transform:  uppercase;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover,
+    &.is-active { background: rgba(0, 0, 0, 0.05); }
+}
+
+// ── CTA button ────────────────────────────────────────────────────────────────
+
+.hdr__cta {
+    display:         inline-flex;
+    padding:         16px 30px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   69px;
+    background:      var(--color-black, #111319);
+    color:           #F7F7F7;
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-3, 14px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    white-space:     nowrap;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover { background: #2a2c33; }
+}
+
+// ── Burger — mobile only ──────────────────────────────────────────────────────
+
+.hdr__burger {
+    display:        none;
+    flex-direction: column;
+    justify-content: center;
+    gap:            5px;
+    width:          40px;
+    height:         40px;
+    padding:        0;
+    border:         none;
+    background:     none;
+    cursor:         pointer;
+    margin-left:    16px;
+
+    span {
+        display:      block;
+        height:       2px;
+        background:   var(--color-black, #111319);
+        border-radius: 2px;
+        transition:   transform var(--transition-base, 0.25s) ease,
+                      opacity   var(--transition-base, 0.25s) ease;
+
+        &:nth-child(1) { width: 24px; }
+        &:nth-child(2) { width: 18px; }
+        &:nth-child(3) { width: 24px; }
+    }
+
+    &[aria-expanded="true"] {
+        span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
+        span:nth-child(2) { opacity: 0; }
+        span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
+    }
+}
+
+// =============================================================================
+// Mobile menu  (prefix: mob-)
+// Full-screen drawer that slides in from the right.
+// Shown only on ≤1023px — hidden above via display:none.
+// =============================================================================
+
+// ── Overlay wrapper ───────────────────────────────────────────────────────────
+
+.mob {
+    display:        none; // shown only in the responsive block below
+    position:       fixed;
+    inset:          0;
+    z-index:        1100;
+    visibility:     hidden;
+    pointer-events: none;
+
+    &.is-open {
+        visibility:     visible;
+        pointer-events: all;
+    }
+}
+
+// ── Dim backdrop ──────────────────────────────────────────────────────────────
+
+.mob__backdrop {
+    position:   absolute;
+    inset:      0;
+    background: rgba(0, 0, 0, 0.40);
+    opacity:    0;
+    transition: opacity 0.35s ease;
+    cursor:     pointer;
+
+    .mob.is-open & { opacity: 1; }
+}
+
+// ── Slide-in panel ────────────────────────────────────────────────────────────
+
+.mob__panel {
+    position:       absolute;
+    top:            0;
+    right:          0;
+    bottom:         0;
+    width:          100%;
+    background:     var(--color-background, #F7F7F7); // 1. panel bg
+    display:        flex;
+    flex-direction: column;
+    overflow:       hidden;
+    transform:      translateX(100%);
+    transition:     transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .mob.is-open & { transform: translateX(0); }
+}
+
+// ── Panel header ──────────────────────────────────────────────────────────────
+
+.mob__hdr {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    height:          72px;
+    padding:         0 var(--container-padding, 20px);
+    flex-shrink:     0;
+    border-bottom:   1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mob__hdr-logo {
+    display:         flex;
+    align-items:     center;
+    text-decoration: none;
+
+    img {
+        display:    block;
+        width:      100px;
+        height:     30px;
+        object-fit: contain;
+    }
+}
+
+.mob__hdr-logo-text {
+    font-family: var(--font-primary);
+    font-size:   18px;
+    font-weight: var(--font-weight-medium, 500);
+    color:       var(--color-black, #111319);
+}
+
+.mob__hdr-right {
+    display:     flex;
+    align-items: center;
+    gap:         4px;
+}
+
+.mob__close {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           40px;
+    height:          40px;
+    flex-shrink:     0;
+    border:          none;
+    background:      none;
+    cursor:          pointer;
+    border-radius:   8px;
+    color:           var(--color-black, #111319);
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover { background: rgba(0, 0, 0, 0.05); }
+
+    svg { display: block; }
+}
+
+// ── Language switcher (mobile variant) ───────────────────────────────────────
+
+.mob__lang { position: relative; }
+
+.mob__lang-btn {
+    display:      inline-flex;
+    align-items:  center;
+    gap:          6px;
+    padding:      8px 10px;
+    border:       none;
+    background:   none;
+    cursor:       pointer;
+    color:        var(--color-black, #111319);
+    font-family:  var(--font-primary);
+    font-size:    var(--font-size-body-3, 14px);
+    font-weight:  var(--font-weight-medium, 500);
+    line-height:  1.2;
+    border-radius: 8px;
+    transition:   background var(--transition-fast, 0.15s) ease;
+
+    svg:last-child { transition: transform var(--transition-fast, 0.15s) ease; }
+
+    &:hover { background: rgba(0, 0, 0, 0.05); }
+
+    &[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+}
+
+.mob__lang-drop {
+    position:       absolute;
+    top:            calc(100% + 4px);
+    right:          0;
+    min-width:      80px;
+    list-style:     none;
+    margin:         0;
+    padding:        8px;
+    border-radius:  12px;
+    background:     #FFF;
+    box-shadow:     0 4px 20px rgba(0, 0, 0, 0.12);
+    opacity:        0;
+    pointer-events: none;
+    transform:      translateY(-6px);
+    transition:     opacity   var(--transition-fast, 0.15s) ease,
+                    transform var(--transition-fast, 0.15s) ease;
+    z-index:        10;
+
+    &.is-open {
+        opacity:        1;
+        pointer-events: all;
+        transform:      translateY(0);
+    }
+}
+
+.mob__lang-item {
+    display:         block;
+    padding:         8px 12px;
+    border-radius:   8px;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-3, 14px);
+    font-weight:     var(--font-weight-medium, 500);
+    text-decoration: none;
+    text-transform:  uppercase;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover,
+    &.is-active { background: rgba(0, 0, 0, 0.05); }
+}
+
+// ── Scrollable nav body ───────────────────────────────────────────────────────
+
+.mob__body {
+    flex:                      1;
+    overflow-y:                auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mob__list {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+}
+
+// ── Depth-0 items ─────────────────────────────────────────────────────────────
+
+// Direct link (no children)
+.mob__link {
+    display:         flex;
+    align-items:     center;
+    height:          56px;
+    padding:         0 var(--container-padding, 20px);
+    color:           var(--color-black, #111319); // 3.
+    font-family:     var(--font-primary);
+    font-size:       20px;                        // 3.
+    font-weight:     500;                         // 3.
+    line-height:     1.4;                         // 3.
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover      { color: var(--color-primary, #C83030); }
+    .is-active & { color: var(--color-primary, #C83030); }
+}
+
+// Accordion toggle button
+.mob__toggle {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    width:           100%;
+    height:          56px;
+    padding:         0 var(--container-padding, 20px);
+    border:          none;
+    background:      none;
+    cursor:          pointer;
+    color:           var(--color-black, #111319); // 3.
+    font-family:     var(--font-primary);
+    font-size:       20px;                        // 3.
+    font-weight:     500;                         // 3.
+    line-height:     1.4;                         // 3.
+    text-align:      left;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    svg {
+        flex-shrink: 0;
+        transition:  transform var(--transition-fast, 0.15s) ease,
+                     color     var(--transition-fast, 0.15s) ease;
+    }
+
+    // 4. Open state: title + chevron both go red (SVG uses currentColor)
+    .mob__item.is-open & {
+        color: var(--color-primary, #C83030);
+
+        svg { transform: rotate(180deg); }
+    }
+}
+
+// ── Depth-0 accordion panel ───────────────────────────────────────────────────
+// 5. White card with rounded corners + inner flex layout.
+//    padding animates from 0→30px alongside max-height for smooth reveal.
+
+.mob__sub {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            16px;
+    border-radius:  12px;
+    background:     #FFF;
+    overflow:       hidden;
+    max-height:     0;
+    padding:        0 20px;
+    transition:     max-height 0.35s ease, padding 0.35s ease;
+
+    .mob__item.is-open & {
+        max-height: 2000px;
+        padding:    30px 20px;
+    }
+}
+
+// ── Depth-1: sub-section (has children) ──────────────────────────────────────
+
+.mob__sub-item {
+    width: 100%; // stretch inside the flex parent
+}
+
+.mob__sub-item-hdr {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    height:          44px;
+}
+
+// 6. Depth-1 sub-group title link
+.mob__sub-group-link {
+    flex:            1;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1.4;
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover { color: var(--color-primary, #C83030); }
+}
+
+.mob__sub-toggle {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           32px;
+    height:          32px;
+    flex-shrink:     0;
+    border:          none;
+    background:      none;
+    cursor:          pointer;
+    border-radius:   6px;
+    color:           #848588;
+    transition:      background var(--transition-fast, 0.15s) ease,
+                     color     var(--transition-fast, 0.15s) ease;
+
+    svg { transition: transform var(--transition-fast, 0.15s) ease; }
+
+    &:hover { background: rgba(0, 0, 0, 0.05); }
+
+    .mob__sub-item.is-open & {
+        color: var(--color-primary, #C83030);
+
+        svg { transform: rotate(180deg); }
+    }
+}
+
+// ── Depth-2 children list ─────────────────────────────────────────────────────
+// 8. Visually differentiated: thin top separator + slight indent.
+
+.mob__sub-children {
+    list-style:     none;
+    margin:         0;
+    padding:        0;
+    width:          100%;
+    overflow:       hidden;
+    max-height:     0;
+    border-top:     1px solid transparent;
+    transition:     max-height 0.25s ease, border-color 0.25s ease;
+
+    .mob__sub-item.is-open & {
+        max-height:   600px;
+        border-color: rgba(0, 0, 0, 0.08);
+        padding-top:  8px;
+    }
+}
+
+.mob__sub-child { list-style: none; }
+
+.mob__sub-child-link {
+    display:         flex;
+    align-items:     center;
+    gap:             10px;
+    padding:         9px 0;
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover .mob__sub-child-text { color: var(--color-primary, #C83030); }
+}
+
+.mob__sub-child-icon {
+    flex-shrink:   0;
+    width:         20px;
+    height:        20px;
+    border-radius: 50%;
+    background:    var(--color-background-alt, #E9E9E9);
+}
+
+.mob__sub-child-text {
+    color:       #3D3F43;
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition:  color var(--transition-fast, 0.15s) ease;
+}
+
+// ── Depth-1: flat link (no children) ─────────────────────────────────────────
+// 6. Same font style as sub-group-link; no arrow icon (removed from PHP walker).
+
+.mob__sub-link {
+    display:         flex;
+    align-items:     center;
+    width:           100%;
+    height:          40px;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1.4;
+    text-decoration: none;
+    transition:      color var(--transition-fast, 0.15s) ease;
+
+    &:hover { color: var(--color-primary, #C83030); }
+}
+
+// ── Bottom CTA ────────────────────────────────────────────────────────────────
+
+.mob__foot {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+    flex-shrink:    0;
+    padding:        20px 20px max(24px, env(safe-area-inset-bottom, 24px));
+    border-radius:  16px 16px 0 0;
+    background:     #F7F7F7;
+    box-shadow:     0 -3px 40px 0 rgba(0, 0, 0, 0.20);
+}
+
+.mob__cta {
+    display:         flex;
+    align-self:      stretch;
+    align-items:     center;
+    justify-content: center;
+    gap:             10px;
+    padding:         20px 32px;
+    border-radius:   100px;
+    background:      var(--color-primary, #C83030);
+    color:           var(--color-background, #F7F7F7);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+    text-decoration: none;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover { background: #a82828; }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    // Stacked layout: collapse groups to single column
+    .hdr__drop-inner[data-mega-layout="two-groups-stacked"] .hdr__drop-groups {
+        grid-template-columns: 1fr;
+    }
+
+    // Stacked / flat-only: flat pills go to 2 cols
+    .hdr__drop-flat {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    // Row layouts: shrink fixed-width group panels
+    .hdr__drop-inner[data-mega-layout="one-group"] .hdr__drop-groups {
+        flex: 0 0 320px;
+    }
+
+    .hdr__drop-inner[data-mega-layout="two-groups-side"] .hdr__drop-group--bg {
+        width: 280px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .hdr__nav {
+        display: none; // hidden — mobile menu takes over
+    }
+
+    // Force controls into col 3: when nav is display:none it leaves the grid
+    // flow and controls would auto-place into col 2 (center) without this.
+    .hdr__controls {
+        grid-column: 3;
+    }
+
+    // Keep lang switcher visible next to the burger; shrink its desktop margin
+    .hdr__lang {
+        margin-right: 8px;
+    }
+
+    .hdr__burger {
+        display: flex;
+    }
+
+    .hdr__cta {
+        display: none; // shown in mobile menu instead
+    }
+
+    .mob {
+        display: block; // enabled at mobile breakpoint
+    }
+}

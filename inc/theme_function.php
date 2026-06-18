@@ -361,3 +361,91 @@ add_action( 'add_meta_boxes', function () {
         'high'    // priority — appears near top
     );
 } );
+
+// =============================================================================
+// Article Rating — seed initial values on post save
+// Runs on create (first save) and on update of posts that predate the feature.
+// Never overwrites an existing rating.
+// =============================================================================
+
+add_action( 'save_post', function ( $post_id, $post, $update ) {
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if ( wp_is_post_revision( $post_id ) ) return;
+    if ( $post->post_type !== 'post' ) return;
+    if ( get_post_meta( $post_id, '_aa_rating_count', true ) !== '' ) return;
+
+    $count = wp_rand( 75, 160 );
+    $avg   = wp_rand( 490, 500 ) / 100; // 4.90–5.00
+    $sum   = (int) round( $avg * $count );
+
+    update_post_meta( $post_id, '_aa_rating_count', $count );
+    update_post_meta( $post_id, '_aa_rating_sum',   $sum );
+}, 10, 3 );
+
+// =============================================================================
+// Article Rating REST API
+// POST /wp-json/lionwood/v1/rating  { post_id: int, stars: 1-5 }
+// Returns { count: int, average: float }
+// =============================================================================
+
+add_action( 'rest_api_init', function () {
+    register_rest_route( 'lionwood/v1', '/rating', [
+        'methods'             => WP_REST_Server::CREATABLE,
+        'callback'            => 'lionwood_handle_rating',
+        'permission_callback' => '__return_true',
+        'args'                => [
+            'post_id' => [
+                'required'          => true,
+                'type'              => 'integer',
+                'minimum'           => 1,
+                'sanitize_callback' => 'absint',
+            ],
+            'stars' => [
+                'required'          => true,
+                'type'              => 'integer',
+                'minimum'           => 1,
+                'maximum'           => 5,
+                'sanitize_callback' => 'absint',
+            ],
+        ],
+    ] );
+} );
+
+function lionwood_handle_rating( WP_REST_Request $request ) {
+    $post_id = (int) $request->get_param( 'post_id' );
+    $stars   = (int) $request->get_param( 'stars' );
+
+    if ( get_post_type( $post_id ) !== 'post' ) {
+        return new WP_Error( 'invalid_post', 'Invalid post ID', [ 'status' => 400 ] );
+    }
+
+    // Server-side duplicate vote guard — keyed by IP + post, expires in 24h
+    $ip       = $_SERVER['REMOTE_ADDR'] ?? '';
+    $vote_key = 'aa_vote_' . md5( $ip . '_' . $post_id );
+    if ( get_transient( $vote_key ) ) {
+        return new WP_Error( 'already_voted', 'Already rated', [ 'status' => 429 ] );
+    }
+
+    // Initialize meta if this is the first interaction with this post
+    $count = get_post_meta( $post_id, '_aa_rating_count', true );
+    if ( $count === '' ) {
+        $count    = wp_rand( 75, 160 );
+        $avg_seed = wp_rand( 490, 500 ) / 100;
+        $sum      = (int) round( $avg_seed * $count );
+        update_post_meta( $post_id, '_aa_rating_count', $count );
+        update_post_meta( $post_id, '_aa_rating_sum',   $sum );
+    }
+
+    $count = (int) $count + 1;
+    $sum   = (int) get_post_meta( $post_id, '_aa_rating_sum', true ) + $stars;
+
+    update_post_meta( $post_id, '_aa_rating_count', $count );
+    update_post_meta( $post_id, '_aa_rating_sum',   $sum );
+
+    set_transient( $vote_key, 1, DAY_IN_SECONDS );
+
+    return rest_ensure_response( [
+        'count'   => $count,
+        'average' => round( $sum / $count, 1 ),
+    ] );
+}

@@ -269,8 +269,36 @@
     align-items: center;
     gap:         4px;
     flex-shrink: 0;
+}
+
+.aa-star {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           43px;
+    height:          43px;
+    border-radius:   50%;
+    background:      #E9E9E9;
+    border:          none;
+    padding:         0;
+    cursor:          pointer;
+    transition:      background var(--transition-fast, 0.15s) ease;
 
     svg { display: block; }
+
+    &.is-active {
+        background: var(--color-primary, #C83030);
+    }
+}
+
+.aa-rating:not(.is-voted) .aa-star:hover {
+    background: var(--color-primary, #C83030);
+}
+
+.aa-rating.is-voted .aa-star {
+    cursor:         default;
+    pointer-events: none;
 }
 
 // =============================================================================
