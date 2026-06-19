@@ -13,7 +13,7 @@ html {
   letter-spacing: -0.16px;
   -webkit-tap-highlight-color: transparent;
 }
-  
+
 body {
   margin: 0;
   position: relative;
@@ -61,7 +61,7 @@ textarea, input, select{
   -moz-appearance: none;
   -webkit-appearance: none;
 }
-  
+
 textarea {
   resize: vertical;
 }
@@ -95,7 +95,7 @@ i{
   margin-right: auto;
   text-align: center;
 }
-  
+
 .grid-flex {
   display: flex;
   flex-wrap: wrap;
@@ -129,7 +129,7 @@ i{
     margin: 0 0 -6px;
   }
 }
-  
+
 .grid-item-2 {
   width: calc(100% / 2 - 16px);
   margin: 0 8px 16px;
@@ -143,7 +143,7 @@ i{
     }
   }
 }
-  
+
 .grid-item-3 {
   width: calc(100% / 3 - 16px);
   margin: 0 8px 16px;
@@ -156,7 +156,7 @@ i{
     margin: 0 0 12px;
   }
 }
-  
+
 .grid-item-4 {
   width: calc(100% / 4 - 16px);
   margin: 0 8px 16px;
@@ -169,21 +169,21 @@ i{
     width: calc(100% / 2 - 12px);
   }
 }
-  
+
 section{
     padding: 60px 0;
     @media screen and (max-width: variables.$small) {
         padding: 30px 0;
     }
 }
-  
+
 .section-first{
   padding: 140px 0 60px;
   @media screen and (max-width: variables.$medium) {
       padding: 120px 0 60px;
   }
 }
-  
+
 .container {
   max-width: 1288px;
   width: 100%;
@@ -194,15 +194,15 @@ section{
       padding: 0 16px;
   }
 }
-  
+
 .container-large{
   max-width: 956px;
 }
-  
+
 .container-small{
   max-width: 800px;
 }
-  
+
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   font-family: variables.$font;
@@ -210,7 +210,7 @@ h1, h2, h3, h4, h5,
   color: var(--c-text);
   margin: 0;
 }
-  
+
 h1, .h1 {
   font-size: 64px;
   line-height: 104%;
@@ -222,7 +222,7 @@ h1, .h1 {
     font-size: 42px;
   }
 }
-  
+
 h2, .h2 {
   font-size: 48px;
   line-height: 118%;
@@ -234,71 +234,71 @@ h2, .h2 {
     font-size: 32px;
   }
 }
-  
+
 h3, .h3 {
   font-size: 24px;
-  line-height: 134%; 
+  line-height: 134%;
   letter-spacing: -0.264px;
   @media screen and (max-width: variables.$small) {
     font-size: 20px;
   }
 }
-  
+
 h4, .h4 {
   font-size: 18px;
   font-weight: 400;
   letter-spacing: -0.36px;
 }
-  
+
   h5, .h5 {
     font-size: 14px;
   }
-  
+
 .small-text{
   font-size: 14px;
 }
-  
+
 a {
   color: var(--c-color);
   text-decoration: none;
   transition: .3s;
 }
-  
+
 p, figure {
   margin: 0 0 16px;
 }
-  
+
 .m-top{
   margin-top: 50px;
   @media screen and (max-width: variables.$small) {
     margin-top: 35px;
   }
 }
-  
+
 .m-top-m{
   margin-top: 36px;
   @media screen and (max-width: variables.$small) {
     margin-top: 24px;
   }
 }
-  
+
 .m-top-s{
   margin-top: 24px;
   @media screen and (max-width: variables.$small) {
     margin-top: 12px;
   }
 }
-  
+
 ul, ol{
   padding-left: 25px;
-      
+
 }
-  
+
 .background{
   background-size: cover;
   background-position: center;
 }
-  
+
 .button, input[type="submit"]{
   padding: 17px 59px;
   text-align: center;
@@ -311,7 +311,7 @@ ul, ol{
   cursor: pointer;
   border-radius: 8px;
 }
-  
+
 .button-primari{
   background-color: var(--c-color);
   &:hover{
@@ -319,50 +319,50 @@ ul, ol{
     border-color: var(--c-color);
   }
 }
-  
+
 .no-margin{
   margin: 0!important;
 }
-  
+
 .medium{
   display: none!important;
   @media screen and (max-width: variables.$medium) {
     display: block!important;
   }
   }
-  
+
 .no-medium{
   @media screen and (max-width: variables.$medium) {
     display: none!important;
   }
 }
-  
+
 .small{
   display: none;
   @media screen and (max-width: variables.$small) {
     display: block;
   }
 }
-  
+
 .no-small{
   @media screen and (max-width: variables.$small) {
     display: none;
   }
 }
-  
+
 .mobile{
   display: none;
   @media screen and (max-width: variables.$mobile) {
     display: block;
   }
 }
-  
+
 .no-mobile{
   @media screen and (max-width: variables.$mobile) {
     display: none;
   }
 }
-  
+
 #shadow-host-companion{
   padding: 0;
 }
@@ -370,7 +370,7 @@ ul, ol{
 // ── Decorative bottom arc (reusable across sections) ──────────────────────────
 .decor-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
   height: 60px;

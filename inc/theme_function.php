@@ -449,3 +449,37 @@ function lionwood_handle_rating( WP_REST_Request $request ) {
         'average' => round( $sum / $count, 1 ),
     ] );
 }
+
+/**
+ * Hide unused default WP user profile fields.
+ * We use ACF fields instead for photo, bio, name.
+ * Display Name dropdown is intentionally kept — editors need it for the author byline.
+ */
+add_action( 'admin_head-profile.php',   'lionwood_hide_user_fields' );
+add_action( 'admin_head-user-edit.php', 'lionwood_hide_user_fields' );
+
+function lionwood_hide_user_fields() {
+    echo '<style>
+        .user-profile-picture  { display: none !important; }
+        .user-description-wrap { display: none !important; }
+        .user-first-name-wrap,
+        .user-last-name-wrap   { display: none !important; }
+        .user-admin-color-wrap { display: none !important; }
+        .user-url-wrap         { display: none !important; }
+    </style>';
+
+    echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("#your-profile h2").forEach(function(h2) {
+                var text = h2.textContent.trim();
+                if (text === "About Yourself" || text === "About the user") {
+                    h2.style.display = "none";
+                    var next = h2.nextElementSibling;
+                    if (next && next.tagName === "TABLE") {
+                        next.style.display = "none";
+                    }
+                }
+            });
+        });
+    </script>';
+}

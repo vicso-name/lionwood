@@ -171,6 +171,28 @@ add_action('wp_enqueue_scripts', function () {
 }, 6);
 
 /* -----------------------------------------------------------
+ * Author archive assets
+ * ----------------------------------------------------------- */
+add_action('wp_enqueue_scripts', function () {
+    if (!is_author()) return;
+
+    wp_enqueue_style(
+        'btf-contact-section-styles',
+        lionwood_asset_url('build/css/sections/contact_section.min.css'),
+        ['btf-main-styles'],
+        lionwood_asset_ver('build/css/sections/contact_section.min.css')
+    );
+
+    wp_enqueue_script(
+        'btf-author-archive',
+        lionwood_asset_url('build/js/sections/author_archive.min.js'),
+        [],
+        lionwood_asset_ver('build/js/sections/author_archive.min.js'),
+        true
+    );
+}, 6);
+
+/* -----------------------------------------------------------
  * Editor (block editor) assets
  * ----------------------------------------------------------- */
 add_action('enqueue_block_editor_assets', function () {

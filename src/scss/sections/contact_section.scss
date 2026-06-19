@@ -10,6 +10,7 @@
 .cs-section {
   position: relative;
   background-color: var(--color-primary); // #C83030
+  border-radius: 60px 60px 0 0;
   overflow: hidden;
   // padding-top / padding-bottom injected via inline style from ACF
 }
@@ -182,6 +183,28 @@
 // Form internals — fallback markup + CF7 normalisation
 // -----------------------------------------------------------------------------
 
+// CF7 root wrapper — must fill .cs-form height so margin-top:auto works
+.wpcf7 {
+  display: block;
+  height: 100%;
+}
+
+// CF7 inserts <br> after each field span — hide them
+.wpcf7-form br {
+  display: none;
+}
+
+// CF7 wraps each input in this span — needs block + full width
+.wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+// CF7 spinner shown during submission
+.wpcf7-spinner {
+  display: none !important;
+}
+
 .cs-form__fields,
 .wpcf7-form {
   display: flex;
@@ -197,6 +220,7 @@
   gap: 6px;
   margin: 0;
 }
+
 
 // Inputs & select
 .cs-form__input,
@@ -239,16 +263,18 @@
   }
 }
 
-// Form section labels
+// Form section labels (fallback + CF7 label elements)
 .cs-form__label,
-.wpcf7-form .cs-form__label {
-  margin: 0;
+.wpcf7-form .cs-form__label,
+.wpcf7-form label {
+  margin: 0 0 4px;
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 140%;
   color: #111319;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 // Custom select wrapper
@@ -285,7 +311,7 @@
   border: 1px solid rgba(255, 255, 255, 0.20);
   background: #fff;
   backdrop-filter: blur(15px);
-  resize: vertical;
+  resize: none;
   min-height: 100px;
   outline: none;
   box-sizing: border-box;
@@ -401,6 +427,10 @@
 // =============================================================================
 
 @media (max-width: 1023px) {
+  .cs-section {
+    border-radius: 30px 30px 0 0;
+  }
+
   .cs-section__content {
     width: 100%;
     margin-left: 0;

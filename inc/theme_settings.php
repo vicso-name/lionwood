@@ -165,6 +165,13 @@ if (function_exists('acf_add_options_page')) {
         'menu_slug'   => 'acf-options-footer',
         'parent_slug' => 'theme-options',
     ]);
+
+    acf_add_options_sub_page([
+        'page_title'  => 'Contact',
+        'menu_title'  => 'Contact',
+        'menu_slug'   => 'acf-options-contact',
+        'parent_slug' => 'theme-options',
+    ]);
 }
 
 // =============================================================================

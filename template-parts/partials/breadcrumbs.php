@@ -84,6 +84,20 @@ if ( is_singular() ) {
         'current' => true,
     ];
 
+} elseif ( is_author() ) {
+    $blog_page_id = (int) get_option( 'page_for_posts' );
+    if ( $blog_page_id ) {
+        $items[] = [
+            'label'   => esc_html( get_the_title( $blog_page_id ) ),
+            'url'     => esc_url( get_permalink( $blog_page_id ) ),
+            'current' => false,
+        ];
+    }
+    $items[] = [
+        'label'   => esc_html( get_the_author_meta( 'display_name', get_queried_object_id() ) ),
+        'url'     => '',
+        'current' => true,
+    ];
 } elseif ( is_archive() ) {
     $items[] = [
         'label'   => esc_html( get_the_archive_title() ),

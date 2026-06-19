@@ -3,12 +3,30 @@
     "title": "About Author",
     "fields": [
         {
+            "key": "field_aa_info_message",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "ℹ️ <strong>Author data is pulled automatically from the user profile.<\/strong><br>To update the author's photo, name, role, LinkedIn, bio or experience — go to <a href=\"\/wp-admin\/users.php\" target=\"_blank\">Users → Edit User<\/a> and fill in the <strong>Author Profile<\/strong> fields.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_aa_section_title",
             "label": "Section Title",
             "name": "section_title",
             "aria-label": "",
             "type": "text",
-            "instructions": "Default: 'About Author'.",
+            "instructions": "Default: 'About Author'. Leave empty to use default.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -21,136 +39,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_aa_photo_override",
-            "label": "Author Photo Override",
-            "name": "author_photo_override",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "Leave empty to use the WordPress user avatar (Gravatar).",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "preview_size": "thumbnail",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_aa_name_override",
-            "label": "Author Name Override",
-            "name": "author_name_override",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Leave empty to use WordPress display name.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "37",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_aa_role",
-            "label": "Author Role \/ Position",
-            "name": "author_role",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "e.g. 'Head of Business Development'.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "38",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "Head of Business Development",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_aa_experience_items",
-            "label": "Experience Items",
-            "name": "experience_items",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "Key experience bullet points shown with red checkmark.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Item",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_aa_exp_text",
-                    "label": "Text",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "5+ years in revenue growth and partnerships",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_aa_experience_items"
-                }
-            ]
-        },
-        {
-            "key": "field_aa_bio",
-            "label": "Author Bio Override",
-            "name": "author_bio",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "Leave empty to use WordPress user biographical info.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "rows": 4,
-            "new_lines": "br",
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": ""
         },
         {
             "key": "field_aa_all_posts_link",
@@ -205,7 +93,7 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "About author section — pulls from WP user profile with ACF overrides. Includes rating widget.",
+    "description": "About author block — author data pulled from user profile (ACF). Only section title, all posts link and rating widget configurable here.",
     "show_in_rest": 0,
-    "modified": 1781693864
+    "modified": 1781857010
 }

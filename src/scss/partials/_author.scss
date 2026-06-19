@@ -1,0 +1,779 @@
+// =============================================================================
+// Author Archive  (prefix: auh-)
+// =============================================================================
+
+// =============================================================================
+// SECTION 1 — Hero
+// =============================================================================
+
+.auh-section {
+    background:     var(--color-black, #111319);
+    border-radius:  60px 60px 0 0;
+    padding-top:    55px;
+    padding-bottom: 0;
+    position:       relative;
+}
+
+.auh-section__inner {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+    display:        flex;
+    align-items:    center;
+    gap:            60px;
+    min-height:     600px;
+}
+
+// ── Load-in animation ─────────────────────────────────────────────────────────
+// JS adds .is-loaded to .auh-section; each .auh-anim gets --anim-delay from data-delay attr
+
+.auh-anim {
+    opacity:    0;
+    transform:  translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--anim-delay, 0ms);
+
+    .auh-section.is-loaded & {
+        opacity:   1;
+        transform: translateY(0);
+    }
+}
+
+// ── Left: text ────────────────────────────────────────────────────────────────
+
+.auh-col--text {
+    flex:           1;
+    min-width:      0; // prevent flex item from refusing to shrink below content size
+    display:        flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+    z-index:        2;
+}
+
+// Heading block
+.auh-heading {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    margin-bottom:  80px;
+}
+
+.auh-heading__position {
+    display:        block;
+    width:          630px;
+    max-width:      100%;
+    color:          #F7F7F7;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+    text-align:     right;
+    opacity:        0.6;
+}
+
+.auh-pos-line--lower {
+    display:  inline-block;
+    position: relative;
+    right:    -5%;
+}
+
+.auh-heading__name-row {
+    display:     flex;
+    align-items: center;
+    gap:         16px;
+}
+
+.auh-heading__name {
+    margin:         0;
+    color:          #F7F7F7;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+}
+
+// LinkedIn button
+.auh-linkedin {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+    text-decoration: none;
+    transition:      background var(--transition-fast, 0.15s) ease;
+
+    &:hover { background: darken(#C83030, 10%); }
+    svg { display: block; }
+}
+
+// Bio — shifted 10% right
+.auh-bio {
+    width:       556px;
+    max-width:   90%; // 100% − 10% margin-left = no overflow at any column width
+    margin:      0;
+    margin-left: 10%;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// ── Right: photo ──────────────────────────────────────────────────────────────
+
+.auh-col--photo {
+    flex-shrink: 0;
+    width:       550px;
+    align-self:  flex-end;
+    position:    relative;
+    top:         -140px; // overflows ~40px above the dark section background
+}
+
+.auh-photo {
+    display:    block;
+    width:      550px;
+    height:     701px;
+    object-fit: cover;
+    object-position: center top;
+    // Photo goes from bottom of section upward, can overflow top
+    margin-bottom: -85px; // pulls photo down to bleed into next section
+}
+
+// =============================================================================
+// SECTION 2 — Highlights strip (cvs- clone, prefix auh-highlights)
+// =============================================================================
+
+.auh-highlights {
+    background:  var(--color-primary, #C83030);
+    overflow:    hidden;
+    padding-top: 80px;
+    padding-bottom: 0;
+    position:    relative;
+    border-radius: 60px 60px 0 0;
+    margin-top: -55px;
+}
+
+.auh-highlights__row {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             0;
+    padding-inline:  var(--container-padding);
+    max-width:       var(--container-max-width);
+    margin-inline:   auto;
+}
+
+.auh-highlights__item {
+    display:     flex;
+    align-items: center;
+    gap:         16px;
+    padding:     0 48px;
+}
+
+.auh-highlights__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           36px;
+    height:          36px;
+    background:      #F7F7F7;
+    border-radius:   50%;
+
+    svg, img {
+        display:    block;
+        width:      25px;
+        height:     25px;
+        object-fit: contain;
+    }
+}
+
+.auh-highlights__text {
+    width:       265px;
+    margin:      0;
+    color:       #F7F7F7;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    opacity:     0.8;
+}
+
+.auh-highlights__divider {
+    flex-shrink: 0;
+    width:       1px;
+    height:      36px;
+    background:  #F7F7F7;
+    opacity:     0.2;
+}
+
+// Animated bars
+.auh-bars {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    margin-top:     80px;
+}
+
+.auh-bar {
+    display:    block;
+    background: #F7F7F7;
+    will-change: width;
+    &:not(:last-child) { margin-bottom: 4px; }
+}
+
+.auh-bar:nth-child(1) { width: 51.8%; height: 2px;  }
+.auh-bar:nth-child(2) { width: 70.1%; height: 4px;  }
+.auh-bar:nth-child(3) { width: 83.2%; height: 6px;  }
+.auh-bar:nth-child(4) { width: 92.6%; height: 8px;  }
+.auh-bar:nth-child(5) { width: 97.9%; height: 40px; }
+
+// =============================================================================
+// SECTION 3 — Posts Grid
+// =============================================================================
+
+.auh-posts {
+    background:     var(--color-background, #F7F7F7);
+    padding-top:    100px;
+    padding-bottom: 120px;
+}
+
+.auh-posts__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// Heading block
+.auh-posts__heading {
+    margin-bottom: 80px;
+}
+
+.auh-posts__heading-name {
+    display:        block;
+    margin-left:    8%;
+    color:          #848588;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+}
+
+.auh-posts__heading-bottom {
+    display:         flex;
+    align-items:     baseline;
+    justify-content: space-between;
+    gap:             16px;
+}
+
+.auh-posts__heading-label {
+    margin:         0;
+    color:          var(--color-black, #111319);
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+}
+
+.auh-posts__count {
+    flex-shrink: 0;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align:  right;
+    white-space: nowrap;
+}
+
+// Grid — 3 cols
+.auh-posts__grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   24px;
+    margin-bottom:         40px;
+}
+
+// Hidden card wrap (Load More JS reveals these)
+.apc-card-wrap--hidden {
+    display: none;
+}
+
+// Post card (mirrors ccg-card visuals)
+.apc-card {
+    display:        flex;
+    flex-direction: column;
+}
+
+.apc-card__link {
+    display:         flex;
+    flex-direction:  column;
+    text-decoration: none;
+    height:          100%;
+}
+
+.apc-card__image {
+    width:         100%;
+    height:        460px;
+    border-radius: 20px;
+    background:    #D1D1D1;
+    margin-bottom: 16px;
+    position:      relative;
+    overflow:      hidden;
+    flex-shrink:   0;
+}
+
+.apc-card__img {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+
+    .apc-card__link:hover & {
+        transform: scale(1.04);
+    }
+}
+
+.apc-card__tags {
+    position:  absolute;
+    top:       16px;
+    left:      16px;
+    display:   flex;
+    flex-wrap: wrap;
+    gap:       6px;
+}
+
+.apc-card__tag {
+    display:         inline-flex;
+    padding:         4px 14px 5px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   28px;
+    background:      rgba(255, 255, 255, 0.80);
+    font-family:     var(--font-primary);
+    font-size:       var(--font-size-body-2, 16px);
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    color:           #111319;
+    white-space:     nowrap;
+    backdrop-filter: blur(4px);
+}
+
+.apc-card__meta {
+    display:       flex;
+    align-items:   center;
+    gap:           8px;
+    margin-bottom: 10px;
+}
+
+.apc-card__meta-date {
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-regular, 400);
+    line-height: 1.2;
+    color:       #111319;
+}
+
+.apc-card__title {
+    margin:      0 0 6px;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-h4, 21px);
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+    color:       #111319;
+}
+
+.apc-card__excerpt {
+    margin:      0;
+    font-family: var(--font-primary);
+    font-size:   var(--font-size-body-2, 16px);
+    font-weight: var(--font-weight-regular, 400);
+    line-height: 1.2;
+    color:       #111319;
+    opacity:     0.7;
+}
+
+// Load More button
+.auh-load-more {
+    display:         flex;
+    padding:         20px 40px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    width:           fit-content;
+    border-radius:   100px;
+    border:          1px solid var(--color-black, #111319);
+    background:      transparent;
+    cursor:          pointer;
+    margin:          0 auto;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1;
+    text-transform:  uppercase;
+
+    transition: background var(--transition-base, 0.3s) ease,
+                color      var(--transition-base, 0.3s) ease;
+
+    &:hover {
+        background: var(--color-black, #111319);
+        color:      #F7F7F7;
+    }
+}
+
+.auh-posts__empty {
+    color:       #848588;
+    font-family: var(--font-primary);
+    font-size:   18px;
+    text-align:  center;
+    padding:     60px 0;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1360px) {
+    .auh-highlights__item {
+        padding: 0 24px;
+    }
+}
+
+// ── Tablet: shrink photo column, reduce top offset proportionally ─────────────
+
+@media (max-width: 1200px) {
+    .auh-col--photo {
+        width: 400px;
+        top:   -100px;
+    }
+
+    .auh-photo {
+        width:  400px;
+        height: 560px;
+    }
+}
+
+// ── Mobile: single column, text above, photo flush at bottom ──────────────────
+
+@media (max-width: 1023px) {
+    .auh-section {
+        border-radius:  30px 30px 0 0;
+        padding-top:    60px;
+        padding-bottom: 0; // photo sits flush at bottom, highlights overlaps via margin-top
+    }
+
+    .auh-highlights{
+        border-radius: 32px 32px 0 0;
+    }
+
+    .auh-section__inner {
+        flex-direction: column;
+        align-items:    stretch;
+        min-height:     0; // explicit reset — 'auto' doesn't reliably override 600px
+        gap:            0;
+    }
+
+    .auh-col--text {
+        flex:           none; // prevent flex-grow from expanding the column in column direction
+        padding-bottom: 40px;
+    }
+
+    .auh-col--photo {
+        width:      100%;
+        flex:       none;
+        position:   static;
+        align-self: auto;
+    }
+
+    .auh-photo {
+        margin-bottom: 0;
+        left: 50%;
+        position: relative;
+        transform: translate(-50%, 0);
+    }
+
+    .auh-heading__position,
+    .auh-heading__name {
+        font-size: clamp(28px, 7vw, 48px);
+    }
+
+    .auh-pos-line--lower {
+        right: 0;
+    }
+
+    .auh-bio {
+        width:       100%;
+        margin-left: 0;
+    }
+
+    .auh-heading {
+        margin-bottom: 40px;
+    }
+
+    // Highlights
+    .auh-highlights {
+        padding-top: 60px;
+    }
+
+    .auh-highlights__row {
+        flex-direction:  column;
+        align-items:     flex-start;
+        justify-content: flex-start;
+        gap:             0;
+    }
+
+    .auh-highlights__item {
+        flex-direction: row;
+        align-items:    center;
+        gap:            25px;
+        padding:        0;
+    }
+
+    .auh-highlights__divider {
+        width:       100%;
+        height:      1px;
+        margin:      28px 0;
+        flex-shrink: 0;
+    }
+
+    .auh-bars {
+        margin-top: 48px;
+    }
+
+    .auh-bar:nth-child(1) { width: 60%;  height: 1px;  }
+    .auh-bar:nth-child(2) { width: 75%;  height: 2px;  }
+    .auh-bar:nth-child(3) { width: 87%;  height: 3px;  }
+    .auh-bar:nth-child(4) { width: 95%;  height: 5px;  }
+    .auh-bar:nth-child(5) { width: 99%;  height: 24px; }
+
+    .auh-posts__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .apc-card__image {
+        height: 320px;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .auh-posts{
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+    .auh-posts__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auh-posts__heading-name,
+    .auh-posts__heading-label {
+        font-size: clamp(28px, 8vw, 40px);
+    }
+
+    .auh-posts__heading{
+        margin-bottom: 60px;
+    }
+
+    .auh-posts__heading-name {
+        margin-left: 0;
+    }
+
+    .auh-photo{
+        height: 450px;
+    }
+}
+
+@media (max-width: 440px) {
+
+    .auh-posts__heading-bottom{
+        flex-direction: column;
+    }
+
+    .auh-load-more{
+        width: 100%;
+    }
+
+    .auh-photo{
+        height: 370px;
+    }
+}
+
+// =============================================================================
+// SECTION 4 — External Resources
+// =============================================================================
+
+.auh-ext {
+    background:     #E9E9E9;
+    border-radius:  60px 60px 0 0;
+    padding-top:    100px;
+    padding-bottom: 100px;
+}
+
+.auh-ext__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+.auh-ext__heading {
+    margin-bottom: 80px;
+}
+
+.auh-ext__heading-top {
+    display:        block;
+    margin-left:    8%;
+    color:          #848588;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+}
+
+.auh-ext__heading-bottom {
+    color:          var(--color-black, #111319);
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.12px;
+    text-transform: uppercase;
+}
+
+.auh-ext__divider {
+    width:      100%;
+    height:     1px;
+    background: #000000;
+    opacity:    0.2;
+}
+
+.auh-ext__item--hidden {
+    display: none;
+}
+
+.auh-ext__link {
+    display:         flex;
+    align-items:     center;
+    gap:             40px;
+    padding:         24px 0;
+    text-decoration: none;
+    transition:      opacity var(--transition-base, 0.3s) ease;
+
+    &:hover { opacity: 0.75; }
+}
+
+.auh-ext__thumb {
+    flex-shrink:    0;
+    width:          230px;
+    height:         138px;
+    border-radius:  12px;
+    background:     var(--color-primary, #C83030);
+    overflow:       hidden;
+
+    img {
+        display:    block;
+        width:      100%;
+        height:     100%;
+        object-fit: cover;
+    }
+}
+
+.auh-ext__content {
+    flex:           1;
+    min-width:      0;
+    display:        flex;
+    flex-direction: column;
+    gap:            8px;
+}
+
+.auh-ext__type {
+    display:     block;
+    color:       #111319;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 500;
+    line-height: 1.4;
+    opacity: 0.4;
+}
+
+.auh-ext__title {
+    margin:      0;
+    color:       #111319;
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.auh-ext__icon {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+    width:           50px;
+    height:          50px;
+    border-radius:   50%;
+    background:      var(--color-primary, #C83030);
+}
+
+.auh-ext__load-more {
+    margin-top: 80px;
+}
+
+// ── Ext responsive ────────────────────────────────────────────────────────────
+
+@media (max-width: 1023px) {
+    .auh-ext__link {
+        gap: 24px;
+    }
+    .auh-ext__link{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .auh-ext {
+        padding-top:    70px;
+        padding-bottom: 70px;
+        border-radius:  30px 30px 0 0;
+    }
+
+    .auh-ext__heading {
+        margin-bottom: 60px;
+    }
+
+    .auh-ext__heading-top,
+    .auh-ext__heading-bottom {
+        font-size: clamp(28px, 8vw, 40px);
+    }
+
+    .auh-ext__heading-top {
+        margin-left: 0;
+    }
+
+    .auh-ext__link {
+        flex-wrap: wrap;
+        gap:       16px;
+    }
+
+    .auh-ext__load-more {
+        margin-top: 48px;
+    }
+}
