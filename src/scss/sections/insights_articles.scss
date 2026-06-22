@@ -10,6 +10,10 @@
 .ia-section {
   background-color: var(--color-background);
   padding-block: var(--section-padding-y);
+
+  &--dark {
+    background-color: #111319;
+  }
 }
 
 .ia-section__container {
@@ -34,6 +38,10 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-h2);  // 110%
   color: var(--color-black);
+
+  .ia-section--dark & {
+    color: #F7F7F7;
+  }
 }
 
 .ia-section__heading-top {
@@ -144,6 +152,10 @@
     line-height: var(--line-height-h4);   // 140%
     color: var(--color-black);
     margin: 0 0 var(--space-2);           // 8px bottom margin
+
+    .ia-section--dark & {
+      color: #F7F7F7;
+    }
   }
 
   &__excerpt {
@@ -154,6 +166,10 @@
     color: #000;
     margin: 0;
     opacity: 0.7;
+
+    .ia-section--dark & {
+      color: #F7F7F7;
+    }
   }
 }
 

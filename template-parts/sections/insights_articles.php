@@ -15,10 +15,12 @@
 defined( 'ABSPATH' ) || exit;
 
 // ── Field values ────────────────────────────────────────────────────────────
-$title_top    = get_field( 'title_top' )    ?: __( 'Latest', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'Insights & Articles', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Latest', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'Insights & Articles', 'lionwood' );
 $posts        = get_field( 'articles' )     ?: [];
 $explore_raw  = get_field( 'explore_link' );
+$bg_style     = get_field( 'background_style' ) ?: 'light';
+$is_dark      = 'dark' === $bg_style;
 
 $explore_url    = ! empty( $explore_raw['url'] )    ? esc_url( $explore_raw['url'] )       : esc_url( home_url( '/blog/' ) );
 $explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] )    : __( 'Explore More', 'theme' );
@@ -47,7 +49,11 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 	 * @param int     $length Number of words.
 	 * @return string
 	 */
-	function ia_get_excerpt( WP_Post $post, int $length = 20 ): string {
+	function ia_get_excerpt( $post, int $length = 20 ): string {
+		if ( ! $post instanceof WP_Post ) {
+			$post = get_post( (int) $post );
+		}
+		if ( ! $post instanceof WP_Post ) return '';
 		if ( $post->post_excerpt ) {
 			return esc_html( wp_trim_words( $post->post_excerpt, $length, '…' ) );
 		}
@@ -56,7 +62,7 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 }
 ?>
 
-<section class="ia-section">
+<section class="ia-section<?php echo $is_dark ? ' ia-section--dark' : ''; ?>">
 	<div class="ia-section__container">
 
 		<?php /* ── Heading ──────────────────────────────────────────────────── */ ?>
@@ -73,6 +79,12 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 		<?php if ( ! empty( $posts ) ) : ?>
 			<div class="ia-section__grid">
 				<?php foreach ( $posts as $index => $post ) :
+					// Normalise: relationship field may return WP_Post objects or raw IDs.
+					if ( ! $post instanceof WP_Post ) {
+						$post = get_post( (int) $post );
+					}
+					if ( ! $post instanceof WP_Post ) continue;
+
 					$is_featured = ( 0 === $index );
 					$post_id     = $post->ID;
 					$permalink   = esc_url( get_permalink( $post_id ) );

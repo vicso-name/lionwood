@@ -21,6 +21,9 @@ add_action('acf/init', 'lionwood_register_acf_blocks');
 function lionwood_register_acf_blocks() {
     $blocks = [
         'hero_section',
+        'awards_hero',
+        'publications_about',
+        'industry_associations',
         // 'core_benefits',
         // 'call_to_action',
         // ...

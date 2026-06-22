@@ -1,0 +1,299 @@
+// =============================================================================
+// Block: Awards and Certifications Hero  (prefix: awh-)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.awh-section {
+  background-color: var(--color-background);
+  padding-top: 80px;
+  padding-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.awh-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .awh-section; each .awh-anim uses --anim-delay
+// -----------------------------------------------------------------------------
+
+.awh-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .awh-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.awh-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 120px;
+  margin-top: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.awh-heading__line {
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.awh-heading__line--1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.awh-heading__start-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.awh-heading__arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 4px;
+  margin-bottom: -8px;
+
+  svg {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.awh-heading__word--end {
+  margin-left: auto;
+}
+
+.awh-heading__line--2 {
+  display: flex;
+  justify-content: center;
+}
+
+.awh-heading__gray {
+  color: var(--Gray, #848588);
+  font-family: var(--font-primary);
+  font-size: 120px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+}
+
+
+// -----------------------------------------------------------------------------
+// Bottom row: description + CTAs
+// -----------------------------------------------------------------------------
+
+.awh-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 60px;
+}
+
+.awh-description {
+  width: 410px;
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+.awh-ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+
+.awh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 32px;
+  border-radius: 100px;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  transition: background-color var(--transition-base) ease,
+              color var(--transition-base) ease,
+              border-color var(--transition-base) ease;
+
+  &--primary {
+    background: var(--color-primary);
+    color: #F7F7F7;
+    border: 2px solid transparent;
+
+    &:hover { background: var(--color-primary-hover); }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--color-black);
+    border: 2px solid var(--color-black);
+
+    &:hover {
+      background: var(--color-black);
+      color: #fff;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Certifications row
+// -----------------------------------------------------------------------------
+
+.awh-certs {
+  padding-bottom: 100px;
+}
+
+.awh-certs__icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: flex-start;
+}
+
+.awh-certs__item {
+  flex-shrink: 0;
+
+  img {
+    display: block;
+    width: 188px;
+    height: 74px;
+    object-fit: contain;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .awh-heading__line,
+  .awh-heading__gray {
+    font-size: clamp(60px, 9vw, 120px);
+    letter-spacing: -1.5px;
+  }
+
+  .awh-heading {
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .awh-section {
+    padding-top: 48px;
+  }
+
+  .awh-heading {
+    margin-bottom: 60px;
+  }
+
+  .awh-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-bottom: 48px;
+  }
+
+  .awh-description {
+    width: 100%;
+  }
+
+  .awh-ctas {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .awh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .awh-certs {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 70px;
+  }
+
+  .awh-certs__icons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .awh-heading__line,
+  .awh-heading__gray {
+    font-size: clamp(36px, 10vw, 72px);
+    letter-spacing: -1px;
+  }
+
+  .awh-heading__line--1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .awh-heading__word--end {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+
+  .awh-heading__line--2 {
+    justify-content: flex-start;
+  }
+
+  .awh-heading__arrow svg {
+    width: 32px;
+    height: 24px;
+  }
+
+  .awh-certs__item img {
+    width: 140px;
+    height: 56px;
+  }
+}

@@ -1,0 +1,211 @@
+// =============================================================================
+// Block: Publications About  (prefix: pab-)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.pab-section {
+  background:    #E9E9E9;
+  border-radius: 60px 60px 0 0;
+  position:      relative;
+  overflow:      hidden;
+  padding-top:    var(--pab-pt,     100px);
+  padding-bottom: var(--pab-pb,     200px);
+}
+
+.pab-section__container {
+  max-width:      var(--container-max-width);
+  margin-inline:  auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.pab-heading {
+  margin-bottom: 80px;
+}
+
+.pab-heading__top {
+  display:        block;
+  margin-left:    8%;
+  color:          #848588;
+  font-family:    var(--font-primary);
+  font-size:      var(--font-size-h2, 56px);
+  font-weight:    500;
+  line-height:    1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+.pab-heading__bottom {
+  color:          var(--color-black, #111319);
+  font-family:    var(--font-primary);
+  font-size:      var(--font-size-h2, 56px);
+  font-weight:    500;
+  line-height:    1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+
+// -----------------------------------------------------------------------------
+// List
+// -----------------------------------------------------------------------------
+
+.pab-divider {
+  width:      100%;
+  height:     1px;
+  background: #000000;
+  opacity:    0.2;
+}
+
+.pab-item--hidden {
+  display: none;
+}
+
+.pab-link {
+  display:         flex;
+  align-items:     center;
+  gap:             40px;
+  padding:         24px 0;
+  text-decoration: none;
+  transition:      opacity var(--transition-base, 0.3s) ease;
+  justify-content: space-between;
+  &:hover { opacity: 0.75; }
+}
+
+.pab-thumb {
+  flex-shrink:    0;
+  width:          230px;
+  height:         138px;
+  border-radius:  12px;
+  background:     var(--color-primary, #C83030);
+  overflow:       hidden;
+
+  img {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+  }
+}
+
+.pab-content {
+  flex:           1;
+  min-width:      0;
+  display:        flex;
+  flex-direction: column;
+  gap:            8px;
+  max-width:    600px;
+}
+
+.pab-type {
+  display:     block;
+  color:       #111319;
+  font-family: var(--font-primary);
+  font-size:   16px;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.48;
+}
+
+.pab-title {
+  margin:      0;
+  color:       #111319;
+  font-family: var(--font-primary);
+  font-size:   21px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.pab-icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  width:           50px;
+  height:          50px;
+  border-radius:   50%;
+  background:      var(--color-primary, #C83030);
+}
+
+
+// -----------------------------------------------------------------------------
+// Load More button
+// -----------------------------------------------------------------------------
+
+.pab-load-more {
+  display:         flex;
+  padding:         20px 40px;
+  justify-content: center;
+  align-items:     center;
+  gap:             10px;
+  width:           fit-content;
+  margin:          80px auto 0;
+  border-radius:   100px;
+  border:          1px solid var(--color-black, #111319);
+  background:      transparent;
+  cursor:          pointer;
+  color:           var(--color-black, #111319);
+  font-family:     var(--font-primary);
+  font-size:       16px;
+  font-weight:     500;
+  line-height:     1;
+  text-transform:  uppercase;
+  transition: background var(--transition-base, 0.3s) ease,
+              color      var(--transition-base, 0.3s) ease;
+
+  &:hover {
+    background: var(--color-black, #111319);
+    color:      #F7F7F7;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .pab-section {
+    border-radius: 30px 30px 0 0;
+    padding-top:    var(--pab-pt-mob,  70px);
+    padding-bottom: var(--pab-pb-mob, 140px);
+  }
+
+  .pab-heading {
+    margin-bottom: 60px;
+  }
+
+  .pab-heading__top,
+  .pab-heading__bottom {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .pab-heading__top {
+    margin-left: 0;
+  }
+
+  // Thumb jumps to its own top row, keeps original 230×138 size
+  .pab-link {
+    flex-wrap: wrap;
+    gap:       16px;
+  }
+
+  .pab-load-more {
+    margin-top:    48px;
+    margin-inline: auto;
+  }
+}
+
+// At narrow screens: content takes full row → icon drops below title
+@media (max-width: 576px) {
+  .pab-content {
+    flex: 0 0 100%;
+  }
+}

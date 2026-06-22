@@ -1,0 +1,234 @@
+// =============================================================================
+// Block: Industry Associations  (prefix: ina-)
+// =============================================================================
+
+.ina-section {
+  background:     #F7F7F7;
+  border-radius:  60px 60px 0 0;
+  position:       relative;
+  overflow:       hidden;
+  padding-top:    var(--ina-pt,     100px);
+  padding-bottom: var(--ina-pb,     200px);
+}
+
+.ina-section__container {
+  max-width:      var(--container-max-width);
+  margin-inline:  auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.ina-heading {
+  margin-bottom: 80px;
+}
+
+.ina-heading__top {
+  display:        block;
+  margin-left:    8%;
+  color:          #848588;
+  font-family:    var(--font-primary);
+  font-size:      var(--font-size-h2, 56px);
+  font-weight:    500;
+  line-height:    1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+.ina-heading__bottom {
+  color:          var(--color-black, #111319);
+  font-family:    var(--font-primary);
+  font-size:      var(--font-size-h2, 56px);
+  font-weight:    500;
+  line-height:    1.1;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+
+// -----------------------------------------------------------------------------
+// List
+// -----------------------------------------------------------------------------
+
+.ina-divider {
+  width:      100%;
+  height:     1px;
+  background: #000000;
+  opacity:    0.2;
+}
+
+.ina-item--hidden {
+  display: none;
+}
+
+.ina-link {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             40px;
+  padding:         24px 0;
+  text-decoration: none;
+  transition:      opacity var(--transition-base, 0.3s) ease;
+
+  &:hover { opacity: 0.75; }
+}
+
+// num + thumb grouped together
+.ina-link__meta {
+  display:     flex;
+  align-items: center;
+  gap:         40px;
+  flex-shrink: 0;
+}
+
+// Number / 01
+.ina-num {
+  flex-shrink: 0;
+  width:       48px;
+  color:       var(--color-black, #111319);
+  font-family: var(--font-primary);
+  font-size:   16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+// Thumbnail
+.ina-thumb {
+  flex-shrink:     0;
+  width:           230px;
+  height:          90px;
+  border-radius:   12px;
+  overflow:        hidden;
+  display:         flex;
+  justify-content: flex-start;
+
+  img {
+    display:    block;
+    width:      auto;
+    height:     100%;
+    object-fit: contain;
+  }
+}
+
+// Content: title + description
+.ina-content {
+  flex:           1;
+  min-width:      0;
+  display:        flex;
+  flex-direction: column;
+  gap:            6px;
+  max-width:      300px;
+}
+
+.ina-title {
+  margin:      0;
+  color:       var(--color-black, #111319);
+  font-family: var(--font-primary);
+  font-size:   21px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.ina-desc {
+  margin:      0;
+  color:       var(--color-black, #111319);
+  font-family: var(--font-primary);
+  font-size:   16px;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity:     0.8;
+}
+
+// Arrow icon
+.ina-icon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  width:           50px;
+  height:          50px;
+  border-radius:   50%;
+  background:      var(--color-primary, #C83030);
+}
+
+
+// -----------------------------------------------------------------------------
+// Load More — red filled
+// -----------------------------------------------------------------------------
+
+.ina-load-more {
+  display:         flex;
+  padding:         20px 40px;
+  justify-content: center;
+  align-items:     center;
+  gap:             10px;
+  width:           fit-content;
+  margin:          80px auto 0;
+  border-radius:   100px;
+  border:          none;
+  background:      var(--color-primary, #C83030);
+  cursor:          pointer;
+
+  color:           #fff;
+  font-family:     var(--font-primary);
+  font-size:       16px;
+  font-weight:     500;
+  line-height:     1;
+  text-transform:  uppercase;
+
+  transition: background var(--transition-base, 0.3s) ease;
+
+  &:hover { background: var(--color-primary-hover, #a82828); }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ina-section {
+    border-radius:  30px 30px 0 0;
+    padding-top:    var(--ina-pt-mob,  70px);
+    padding-bottom: var(--ina-pb-mob, 140px);
+  }
+
+  .ina-heading {
+    margin-bottom: 60px;
+  }
+
+  .ina-heading__top,
+  .ina-heading__bottom {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .ina-heading__top {
+    margin-left: 0;
+  }
+
+  // Num + thumb jump to top row, keep original sizes
+  .ina-link {
+    flex-wrap: wrap;
+    gap:       16px;
+  }
+
+  .ina-load-more {
+    margin-top:    48px;
+    margin-inline: auto;
+  }
+}
+
+// Icon drops below content on narrow screens
+@media (max-width: 576px) {
+  .ina-content {
+    flex: 0 0 100%;
+  }
+  .ina-link__meta{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

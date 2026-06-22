@@ -29,13 +29,13 @@ $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 $title_top    = get_field( 'title_top' )    ?: 'Partners';
 $title_bottom = get_field( 'title_bottom' ) ?: 'and Associations';
 
-$logo_1 = get_field( 'logo_1' );
-$logo_2 = get_field( 'logo_2' );
-$logo_3 = get_field( 'logo_3' );
-$logo_4 = get_field( 'logo_4' );
-$logo_5 = get_field( 'logo_5' );
-$logo_6 = get_field( 'logo_6' );
-$logo_7 = get_field( 'logo_7' );
+$logo_1 = get_field( 'logo_1' ) ?: null;
+$logo_2 = get_field( 'logo_2' ) ?: null;
+$logo_3 = get_field( 'logo_3' ) ?: null;
+$logo_4 = get_field( 'logo_4' ) ?: null;
+$logo_5 = get_field( 'logo_5' ) ?: null;
+$logo_6 = get_field( 'logo_6' ) ?: null;
+$logo_7 = get_field( 'logo_7' ) ?: null;
 
 $allowed = [ 'br' => [] ];
 $text_1  = get_field( 'text_1' ) ? wp_kses( get_field( 'text_1' ), $allowed ) : '';

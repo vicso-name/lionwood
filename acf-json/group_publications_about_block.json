@@ -1,0 +1,278 @@
+{
+    "key": "group_publications_about_block",
+    "title": "Publications About",
+    "fields": [
+        {
+            "key": "field_pab_pt",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Default: 100",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_pab_pb",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Default: 200",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 200,
+            "min": 0,
+            "max": 300,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_pab_pt_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Default: 70",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 70,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_pab_pb_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Default: 140",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 140,
+            "min": 0,
+            "max": 200,
+            "step": 4,
+            "append": "px",
+            "placeholder": "",
+            "prepend": ""
+        },
+        {
+            "key": "field_pab_title_top",
+            "label": "Heading — Top Line",
+            "name": "title_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Gray line, shifted 8% right. Leave empty to hide.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Explore author's posts",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_pab_title_bottom",
+            "label": "Heading — Bottom Line",
+            "name": "title_bottom",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Black main heading line.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "In the external resources",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_pab_decor_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Show decorative arc at the bottom of the section.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_pab_decor_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Background color of the decorative arc.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#F7F7F7",
+            "enable_opacity": 0,
+            "return_format": "string"
+        },
+        {
+            "key": "field_pab_resources",
+            "label": "Resources",
+            "name": "resources",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Publication links. First 3 shown on load; rest revealed via Load More.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Add Resource",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_pab_res_image",
+                    "label": "Thumbnail",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Recommended: 230×138px.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_pab_resources",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_pab_res_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_pab_resources"
+                },
+                {
+                    "key": "field_pab_res_type",
+                    "label": "Content Type",
+                    "name": "content_type",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g. Press Release, Expert Opinion",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "Press Release",
+                    "parent_repeater": "field_pab_resources",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/publications-about"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Publications \/ external resources list with Load More and optional bottom decoration.",
+    "show_in_rest": false,
+    "modified": 1782142277
+}
