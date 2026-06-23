@@ -1,0 +1,340 @@
+{
+    "key": "group_whitepaper_download_block",
+    "title": "Whitepaper Download",
+    "fields": [
+        {
+            "key": "field_wpd_padding_top",
+            "label": "Padding Top (px)",
+            "name": "padding_top",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 120,
+            "min": 0,
+            "max": 300,
+            "step": 1,
+            "append": "px",
+            "prepend": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_wpd_padding_bottom",
+            "label": "Padding Bottom (px)",
+            "name": "padding_bottom",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 200,
+            "min": 0,
+            "max": 400,
+            "step": 1,
+            "append": "px",
+            "prepend": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_wpd_padding_top_mob",
+            "label": "Padding Top Mobile (px)",
+            "name": "padding_top_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 80,
+            "min": 0,
+            "max": 200,
+            "step": 1,
+            "append": "px",
+            "prepend": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_wpd_padding_bottom_mob",
+            "label": "Padding Bottom Mobile (px)",
+            "name": "padding_bottom_mob",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 140,
+            "min": 0,
+            "max": 300,
+            "step": 1,
+            "append": "px",
+            "prepend": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_wpd_image",
+            "label": "Book Cover Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Left column: whitepaper book cover (ideal size ~650×896px).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_wpd_title_line_1",
+            "label": "Title — Line 1",
+            "name": "title_line_1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First heading line, no indent.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Fill in the form to download",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_title_line_2",
+            "label": "Title — Line 2",
+            "name": "title_line_2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second heading line, indented 3% right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "The Whitepaper",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_title_line_3",
+            "label": "Title — Line 3 (gray)",
+            "name": "title_line_3",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Third heading line, indented 35% right, gray color.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "In PDF format",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_button_label",
+            "label": "Button Label",
+            "name": "button_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Submit button label. Default: \"Get Whitepaper\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get Whitepaper",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_terms_link",
+            "label": "Terms & Conditions Link",
+            "name": "terms_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Link for \"Terms & Conditions\" in the form disclaimer.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_wpd_pdf_file",
+            "label": "Whitepaper PDF",
+            "name": "pdf_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "PDF file users receive after submitting the form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf"
+        },
+        {
+            "key": "field_wpd_hubspot_form_id_override",
+            "label": "HubSpot Form GUID (override)",
+            "name": "hubspot_form_id_override",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Leave empty to use the default form from Settings → HubSpot. Fill in only if this whitepaper needs its own separate HubSpot form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_success_message",
+            "label": "Success Message",
+            "name": "success_message",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shown after successful form submission.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Thank you! Your whitepaper is ready.",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_wpd_decor_bottom_enabled",
+            "label": "Enable Bottom Decoration",
+            "name": "decor_bottom_enabled",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1,
+            "ui": 1,
+            "message": "",
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_wpd_decor_bottom_color",
+            "label": "Decoration Color",
+            "name": "decor_bottom_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_wpd_decor_bottom_enabled",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#C83030",
+            "enable_opacity": 0,
+            "return_format": "string"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/whitepaper-download"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Lead-gate form block for whitepaper download. Validates and submits to a configurable endpoint, then reveals PDF download link.",
+    "show_in_rest": 0,
+    "modified": 1782218531
+}

@@ -1,16 +1,17 @@
 /**
- * Choose Cases Grid
- * - Tab switching (Industries / Services)
- * - Filter pills — multi-select AJAX filter
- * - Load More — AJAX pagination (respects active filters)
+ * Choose Cases Grid — hybrid rendering
  *
- * File: blocks/choose-cases-grid/choose-cases-grid.js
+ * Direct URL access  → server-side rendered (PHP, no JS involvement)
+ * Pill click         → AJAX filter + history.pushState (no full page reload)
+ * Browser back/fwd   → location.reload() (re-runs server-side render)
+ * Load More          → AJAX pagination, always reads current state
  */
 
 (function () {
   'use strict';
 
-  var ajaxUrl = (window.ccgAjax && window.ccgAjax.url) || '/wp-admin/admin-ajax.php';
+  var ajaxUrl    = (window.ccgAjax && window.ccgAjax.url)        || '/wp-admin/admin-ajax.php';
+  var archiveUrl = (window.ccgAjax && window.ccgAjax.archiveUrl) || '/case-study/';
 
   function initSection(section) {
     var grid         = section.querySelector('[data-grid]');
@@ -21,18 +22,23 @@
 
     if (!grid) return;
 
-    var nonce   = loadmoreBtn ? loadmoreBtn.getAttribute('data-nonce') : '';
+    // Nonce: globally localized (always available) or from load-more button attribute
+    var nonce   = (window.ccgAjax && window.ccgAjax.nonce)
+                || (loadmoreBtn ? loadmoreBtn.getAttribute('data-nonce') : '');
     var perPage = parseInt(grid.getAttribute('data-per-page') || '6', 10);
 
-    // State — termIds is now an array for multi-select
+    // State seeded from PHP-rendered DOM so server-side filtered pages
+    // (direct URL access) are correctly reflected for subsequent Load More calls.
+    var activeTermId = parseInt(grid.getAttribute('data-active-term-id') || '0', 10);
+
     var state = {
       offset:   parseInt(grid.getAttribute('data-offset') || '6', 10),
       total:    parseInt(grid.getAttribute('data-total')  || '0', 10),
-      taxonomy: '',
-      termIds:  [],   // array of selected term IDs
+      taxonomy: grid.getAttribute('data-active-taxonomy') || '',
+      termIds:  activeTermId ? [activeTermId] : [],
     };
 
-    // ── Helpers ──────────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────────
 
     function setLoading(on) {
       grid.classList.toggle('is-loading', on);
@@ -51,7 +57,6 @@
       data.append('per_page', perPage);
       Object.keys(params).forEach(function (k) {
         var v = params[k];
-        // Send arrays as JSON string
         data.append(k, Array.isArray(v) ? JSON.stringify(v) : v);
       });
 
@@ -61,7 +66,77 @@
         .catch(function () { setLoading(false); });
     }
 
-    // ── Tab switching ─────────────────────────────────────────────────────────
+    // ── AJAX filter ───────────────────────────────────────────────────────────
+    // Called on pill click. Replaces grid content without a page reload,
+    // then pushes the pill's canonical URL into the browser history.
+
+    function doFilter(taxonomy, termId, pushUrl) {
+      setLoading(true);
+
+      var termIds = termId ? [termId] : [];
+
+      request({
+        action_type: 'filter',
+        taxonomy:    taxonomy,
+        term_ids:    termIds,
+      }, function (data) {
+        grid.innerHTML = data.html || '';
+
+        // Update state for subsequent Load More calls
+        state.taxonomy = taxonomy;
+        state.termIds  = termIds;
+        state.offset   = data.offset;
+        state.total    = data.total;
+
+        // Mirror state onto DOM attributes
+        grid.setAttribute('data-active-taxonomy', taxonomy);
+        grid.setAttribute('data-active-term-id',  termId || '0');
+
+        setLoading(false);
+        updateLoadMore(data.has_more);
+
+        if (pushUrl) {
+          history.pushState(null, '', pushUrl);
+        }
+      });
+    }
+
+    // ── Pill active state ─────────────────────────────────────────────────────
+
+    function setActivePill(activePill) {
+      section.querySelectorAll('.ccg-pill').forEach(function (p) {
+        p.classList.remove('is-active');
+        p.removeAttribute('aria-current');
+      });
+      if (activePill) {
+        activePill.classList.add('is-active');
+        activePill.setAttribute('aria-current', 'page');
+      }
+    }
+
+    // ── Pills — intercept href, run AJAX filter, pushState ───────────────────
+
+    section.querySelectorAll('.ccg-pill').forEach(function (pill) {
+      pill.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var termId   = parseInt(pill.getAttribute('data-term-id') || '0', 10);
+        var taxonomy = pill.getAttribute('data-taxonomy') || '';
+        var url      = pill.getAttribute('href') || archiveUrl;
+
+        // Clicking the already-active pill resets to the unfiltered archive
+        if (pill.classList.contains('is-active')) {
+          setActivePill(null);
+          doFilter('', 0, archiveUrl);
+          return;
+        }
+
+        setActivePill(pill);
+        doFilter(taxonomy, termId, url);
+      });
+    });
+
+    // ── Tab switching — show/hide pill groups, no AJAX ───────────────────────
 
     tabs.forEach(function (tab) {
       tab.addEventListener('click', function () {
@@ -73,72 +148,20 @@
         tab.setAttribute('aria-selected', 'true');
 
         var activeGroup = tab.getAttribute('data-tab');
-        var taxonomy    = tab.getAttribute('data-taxonomy');
-
         pillsWraps.forEach(function (wrap) {
           wrap.classList.toggle('ccg-pills--hidden', wrap.getAttribute('data-pills') !== activeGroup);
         });
-
-        // Reset all pills and filter state
-        section.querySelectorAll('.ccg-pill').forEach(function (p) {
-          p.classList.remove('is-active');
-        });
-
-        state.taxonomy = taxonomy || '';
-        state.termIds  = [];
-        doFilter();
       });
     });
 
-    // ── Filter pills — multi-select ───────────────────────────────────────────
+    // ── popstate — browser back / forward ────────────────────────────────────
+    // Reload lets the server render the correct filtered state for the URL
+    // the browser navigated back to — simpler and more reliable than
+    // re-parsing location.pathname in JS.
 
-    section.querySelectorAll('.ccg-pill').forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        var termId   = parseInt(pill.getAttribute('data-term-id') || '0', 10);
-        var taxonomy = pill.getAttribute('data-taxonomy') || '';
-        var isActive = pill.classList.contains('is-active');
-
-        // Set taxonomy from the pill (all pills in same group share taxonomy)
-        state.taxonomy = taxonomy;
-
-        if (isActive) {
-          // Deselect
-          pill.classList.remove('is-active');
-          state.termIds = state.termIds.filter(function (id) { return id !== termId; });
-        } else {
-          // Select
-          pill.classList.add('is-active');
-          if (state.termIds.indexOf(termId) === -1) {
-            state.termIds.push(termId);
-          }
-        }
-
-        // If no terms selected, clear taxonomy too
-        if (state.termIds.length === 0) {
-          state.taxonomy = '';
-        }
-
-        doFilter();
-      });
+    window.addEventListener('popstate', function () {
+      location.reload();
     });
-
-    // ── Filter: replace grid ──────────────────────────────────────────────────
-
-    function doFilter() {
-      setLoading(true);
-
-      request({
-        action_type: 'filter',
-        taxonomy:    state.taxonomy,
-        term_ids:    state.termIds,
-      }, function (data) {
-        grid.innerHTML = data.html || '';
-        state.offset   = data.offset;
-        state.total    = data.total;
-        setLoading(false);
-        updateLoadMore(data.has_more);
-      });
-    }
 
     // ── Load More ─────────────────────────────────────────────────────────────
 

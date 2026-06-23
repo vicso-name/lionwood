@@ -1,0 +1,305 @@
+// =============================================================================
+// Block: Whitepaper Download
+// =============================================================================
+
+.wpd-section {
+  background-color: #E9E9E9;
+  padding-top:    var(--wpd-pt, 120px);
+  padding-bottom: var(--wpd-pb, 200px);
+  position: relative;
+}
+
+.wpd-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Layout: image col (fixed) + content col (flex-grow)
+// -----------------------------------------------------------------------------
+
+.wpd-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.wpd-col--image {
+  flex-shrink: 0;
+}
+
+.wpd-col--content {
+  flex: 0.9;
+  min-width: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Book cover image
+// -----------------------------------------------------------------------------
+
+.wpd-book {
+  width: 325px;
+  height: 448px;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+
+// -----------------------------------------------------------------------------
+// Staggered heading
+// -----------------------------------------------------------------------------
+
+.wpd-heading {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 75px;
+}
+
+.wpd-heading__line {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  color: var(--color-black);
+
+  &--1 {
+    padding-left: 0;
+  }
+
+  &--2 {
+    padding-left: 20%;
+  }
+
+  &--3 {
+    padding-left: 35%;
+    color: #848588;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Form
+// -----------------------------------------------------------------------------
+
+.wpd-gate{
+    display: flex;
+    justify-content: center;
+}
+
+.wpd-form {
+  max-width: 555px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wpd-input {
+  display: flex;
+  height: 54px;
+  width: 100%;
+  padding: 16px 20px;
+  align-items: center;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: #FFF;
+  backdrop-filter: blur(15px);
+  margin-bottom: 12px;
+  outline: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 140%;
+  color: #4B4D51;
+
+  &::placeholder {
+    color: #4B4D51;
+    opacity: 1;
+  }
+
+  &:focus {
+    border-color: rgba(200, 48, 48, 0.4);
+  }
+
+  &--last {
+    margin-bottom: 42px;
+  }
+
+  &.is-invalid {
+    border-color: #C83030;
+  }
+}
+
+.wpd-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.wpd-form__terms {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  line-height: 140%;
+  color: var(--color-black);
+  opacity: 0.6;
+  max-width: 220px;
+  text-transform: uppercase;
+}
+
+.wpd-form__terms-link {
+  color: inherit;
+  text-decoration: underline;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.wpd-form__error {
+  margin: 12px 0 0;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: #C83030;
+}
+
+// Submit / download button
+.wpd-submit {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: var(--color-primary); // #C83030
+  color: #FFF;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+
+  transition: opacity var(--transition-base) ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  svg { flex-shrink: 0; }
+}
+
+
+// -----------------------------------------------------------------------------
+// Success state
+// -----------------------------------------------------------------------------
+
+.wpd-success {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.wpd-success__message {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .wpd-heading__line {
+    font-size: clamp(36px, 4.5vw, 56px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .wpd-section {
+    padding-top:    var(--wpd-pt-mob, 80px);
+    padding-bottom: var(--wpd-pb-mob, 140px);
+  }
+
+  .wpd-row {
+    flex-direction: column;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .wpd-book {
+    width: 220px;
+    height: 300px;
+  }
+
+  .wpd-heading {
+    margin-bottom: 48px;
+  }
+
+  .wpd-heading__line {
+    font-size: clamp(28px, 7vw, 56px);
+
+    &--3 {
+      padding-left: 20%;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .wpd-section{
+    padding-top: 30px;
+   }
+
+  .wpd-form__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .wpd-submit{
+    width: 100%;
+  }
+
+  .wpd-form__terms {
+    max-width: 100%;
+  }
+
+  .wpd-heading__line--2 {
+    padding-left: 0;
+  }
+
+  .wpd-heading__line--3 {
+    padding-left: 10%;
+  }
+}

@@ -105,12 +105,15 @@ $block_id = 'ccg-' . uniqid();
             <?php /* Filter pills — Industries */ ?>
             <?php if ( ! empty( $industry_terms ) && ! is_wp_error( $industry_terms ) ) : ?>
                 <div class="ccg-pills" data-pills="industries">
-                    <?php foreach ( $industry_terms as $term ) : ?>
-                        <button
+                    <?php foreach ( $industry_terms as $term ) :
+                        $term_url = get_term_link( $term );
+                    ?>
+                        <a
                             class="ccg-pill"
+                            href="<?php echo esc_url( is_wp_error( $term_url ) ? '#' : $term_url ); ?>"
                             data-term-id="<?php echo esc_attr( $term->term_id ); ?>"
                             data-taxonomy="case_study_category"
-                        ><?php echo esc_html( $term->name ); ?></button>
+                        ><?php echo esc_html( $term->name ); ?></a>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
@@ -118,12 +121,15 @@ $block_id = 'ccg-' . uniqid();
             <?php /* Filter pills — Services */ ?>
             <?php if ( ! empty( $service_terms ) && ! is_wp_error( $service_terms ) ) : ?>
                 <div class="ccg-pills ccg-pills--hidden" data-pills="services">
-                    <?php foreach ( $service_terms as $term ) : ?>
-                        <button
+                    <?php foreach ( $service_terms as $term ) :
+                        $term_url = get_term_link( $term );
+                    ?>
+                        <a
                             class="ccg-pill"
+                            href="<?php echo esc_url( is_wp_error( $term_url ) ? '#' : $term_url ); ?>"
                             data-term-id="<?php echo esc_attr( $term->term_id ); ?>"
                             data-taxonomy="case_study_service"
-                        ><?php echo esc_html( $term->name ); ?></button>
+                        ><?php echo esc_html( $term->name ); ?></a>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>

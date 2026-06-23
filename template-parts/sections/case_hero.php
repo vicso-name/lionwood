@@ -10,18 +10,20 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$pt     = absint( get_field( 'padding_top' )        ?: 100 );
-$pb     = absint( get_field( 'padding_bottom' )     ?: 100 );
-$pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
-$pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
+// $args takes priority over ACF block fields — used by archive/taxonomy templates
+// to pass values from the Options Page without an ACF block context.
+$pt     = absint( $args['padding_top']        ?? get_field( 'padding_top' )        ?? 100 );
+$pb     = absint( $args['padding_bottom']     ?? get_field( 'padding_bottom' )     ?? 100 );
+$pt_mob = absint( $args['padding_top_mob']    ?? get_field( 'padding_top_mob' )    ?? 70 );
+$pb_mob = absint( $args['padding_bottom_mob'] ?? get_field( 'padding_bottom_mob' ) ?? 70 );
 
-$title_dark  = get_field( 'title_dark' )  ?: __( 'Case', 'theme' );
-$title_gray  = get_field( 'title_gray' )  ?: __( 'Studies', 'theme' );
-$desc_raw    = get_field( 'description' );
+$title_dark  = $args['title_dark']  ?? get_field( 'title_dark' )  ?? __( 'Case', 'theme' );
+$title_gray  = $args['title_gray']  ?? get_field( 'title_gray' )  ?? __( 'Studies', 'theme' );
+$desc_raw    = $args['description'] ?? get_field( 'description' ) ?? '';
 $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
-$decor_enabled = get_field( 'decor_bottom_enabled' );
-$decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
+$decor_enabled = $args['decor_bottom_enabled'] ?? get_field( 'decor_bottom_enabled' ) ?? false;
+$decor_color   = $args['decor_bottom_color']   ?? get_field( 'decor_bottom_color' )   ?? '#ffffff';
 
 // Auto-count published case studies
 $case_count = wp_count_posts( 'case_study' )->publish ?? 0;

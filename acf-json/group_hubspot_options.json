@@ -1,0 +1,56 @@
+{
+    "key": "group_hubspot_options",
+    "title": "HubSpot Settings",
+    "fields": [
+        {
+            "key": "field_hs_portal_id",
+            "label": "Portal ID (Hub ID)",
+            "name": "hs_portal_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Found in HubSpot → Settings → Account defaults → Hub ID. Same for all forms on this site.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "12345678",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hs_default_form_id",
+            "label": "Default Whitepaper Form GUID",
+            "name": "hs_default_form_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Default HubSpot form GUID used for all whitepaper download blocks. Can be overridden per block. Found in HubSpot → Marketing → Forms → share / embed → Form ID.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "hubspot-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Global HubSpot integration settings.",
+    "show_in_rest": 0
+}

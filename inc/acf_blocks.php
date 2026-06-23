@@ -24,6 +24,9 @@ function lionwood_register_acf_blocks() {
         'awards_hero',
         'publications_about',
         'industry_associations',
+        'achievements_by_years',
+        'product_list',
+        'products_hero',
         // 'core_benefits',
         // 'call_to_action',
         // ...
@@ -107,6 +110,9 @@ function lionwood_register_acf_blocks() {
         'article_slider',
         'article_numbered_list',
         'about_author',
+        'whitepaper_hero',
+        'whitepaper_download',
+        'insights_grid',
     ];
 
     foreach ($blocks as $block_name) {
@@ -139,6 +145,30 @@ function lionwood_custom_block_category($categories, $post) {
         'title' => __('SMLFY Blocks', 'lionwood'),
         'icon'  => null,
     ]]);
+}
+
+add_action('wp_enqueue_scripts', 'lionwood_enqueue_case_archive_assets', 6);
+function lionwood_enqueue_case_archive_assets() {
+    if (is_admin()) return;
+    if (!is_post_type_archive('case_study') && !is_tax('case_study_category') && !is_tax('case_study_service')) return;
+
+    $theme_uri = get_template_directory_uri();
+    $theme_dir = get_template_directory();
+    $ver       = wp_get_theme()->get('Version');
+
+    foreach (['case_hero', 'choose_cases_grid', 'cta_section'] as $slug) {
+        $css_handle = 'block-acf-' . str_replace('_', '-', $slug) . '-css';
+        $js_handle  = 'block-acf-' . str_replace('_', '-', $slug) . '-js';
+        $css_rel    = "build/css/sections/{$slug}.min.css";
+        $js_rel     = "build/js/sections/{$slug}.min.js";
+
+        if (file_exists("{$theme_dir}/{$css_rel}") && !wp_style_is($css_handle, 'enqueued')) {
+            wp_enqueue_style($css_handle, "{$theme_uri}/{$css_rel}", [], $ver);
+        }
+        if (file_exists("{$theme_dir}/{$js_rel}") && !wp_script_is($js_handle, 'enqueued')) {
+            wp_enqueue_script($js_handle, "{$theme_uri}/{$js_rel}", [], $ver, true);
+        }
+    }
 }
 
 add_action('wp_enqueue_scripts', 'lionwood_enqueue_detected_block_assets', 6);
@@ -180,6 +210,11 @@ function lionwood_enqueue_detected_block_assets() {
         if (!empty($b['innerBlocks'])) foreach ($b['innerBlocks'] as $ib) $stack[] = $ib;
     }
 
+    // Blocks that need additional CSS/JS from other blocks (class reuse).
+    $block_css_deps = [
+        'insights_grid' => ['choose_cases_grid', 'insights_articles'],
+    ];
+
     $found_any = false;
     foreach ($map as $slug => $cfg) {
         $block_name = 'acf/' . str_replace('_','-',$slug);
@@ -194,6 +229,17 @@ function lionwood_enqueue_detected_block_assets() {
             wp_enqueue_script($js_handle, "{$theme_uri}/{$js_rel}", [], $ver, true);
         }
         $found_any = true;
+
+        // Enqueue CSS dependencies for blocks that reuse classes from other blocks
+        if (isset($block_css_deps[$slug])) {
+            foreach ($block_css_deps[$slug] as $dep_slug) {
+                if (!isset($map[$dep_slug])) continue;
+                list($dep_css_handle, $dep_css_rel) = $map[$dep_slug];
+                if ($dep_css_rel && !wp_style_is($dep_css_handle, 'enqueued')) {
+                    wp_enqueue_style($dep_css_handle, "{$theme_uri}/{$dep_css_rel}", [], $ver);
+                }
+            }
+        }
     }
 
     if (!$found_any) {

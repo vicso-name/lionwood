@@ -84,7 +84,11 @@ if ( ! function_exists( 'smplfy_ccg_localize' ) ) {
     function smplfy_ccg_localize(): void {
         wp_add_inline_script(
             'theme-main',
-            'window.ccgAjax = ' . wp_json_encode( [ 'url' => admin_url( 'admin-ajax.php' ) ] ) . ';',
+            'window.ccgAjax = ' . wp_json_encode( [
+                'url'        => admin_url( 'admin-ajax.php' ),
+                'nonce'      => wp_create_nonce( 'ccg_ajax' ),
+                'archiveUrl' => get_post_type_archive_link( 'case_study' ) ?: '/case-study/',
+            ] ) . ';',
             'before'
         );
     }

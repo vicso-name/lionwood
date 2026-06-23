@@ -18,25 +18,30 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$pt       = absint( get_field( 'padding_top' )        ?: 100 );
-$pb       = absint( get_field( 'padding_bottom' )     ?: 100 );
-$pt_mob   = absint( get_field( 'padding_top_mob' )    ?: 70 );
-$pb_mob   = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
+// $args takes priority over ACF block fields — used by archive/taxonomy templates
+// to pass values from the Options Page without an ACF block context.
+$pt     = absint( $args['padding_top']        ?? get_field( 'padding_top' )        ?? 100 );
+$pb     = absint( $args['padding_bottom']     ?? get_field( 'padding_bottom' )     ?? 100 );
+$pt_mob = absint( $args['padding_top_mob']    ?? get_field( 'padding_top_mob' )    ?? 70 );
+$pb_mob = absint( $args['padding_bottom_mob'] ?? get_field( 'padding_bottom_mob' ) ?? 70 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Ready to Accelerate', 'theme' );
-$title_bot_raw = get_field( 'title_bottom' );
+$title_top     = $args['title_top'] ?? get_field( 'title_top' ) ?? __( 'Ready to Accelerate', 'theme' );
+$title_bot_raw = $args['title_bottom'] ?? get_field( 'title_bottom' ) ?? '';
 $title_bottom  = $title_bot_raw ? wp_kses( $title_bot_raw, [ 'br' => [] ] ) : 'Your Business Growth?<br>Contact Us.';
 
-$text1 = get_field( 'grid_text_1' ) ?: '';
-$text2 = get_field( 'grid_text_2' ) ?: '';
-$text3 = get_field( 'grid_text_3' ) ?: '';
+$text1 = $args['grid_text_1'] ?? get_field( 'grid_text_1' ) ?? '';
+$text2 = $args['grid_text_2'] ?? get_field( 'grid_text_2' ) ?? '';
+$text3 = $args['grid_text_3'] ?? get_field( 'grid_text_3' ) ?? '';
 
-$card_bg   = get_field( 'card_bg' );
-$card_text = get_field( 'card_text' ) ?: '';
-$card_link = get_field( 'card_link' );
+$card_bg   = $args['card_bg']   ?? get_field( 'card_bg' )   ?? null;
+$card_text = $args['card_text'] ?? get_field( 'card_text' ) ?? '';
+$card_link = $args['card_link'] ?? get_field( 'card_link' ) ?? null;
 $link_url  = ! empty( $card_link['url'] )    ? esc_url( $card_link['url'] )    : '';
 $link_lbl  = ! empty( $card_link['title'] )  ? esc_html( $card_link['title'] ) : __( 'Fill the Form', 'theme' );
 $link_tgt  = ! empty( $card_link['target'] ) ? $card_link['target']             : '_self';
+
+$decor_enabled = $args['decor_bottom_enabled'] ?? get_field( 'decor_bottom_enabled' ) ?? false;
+$decor_color   = $args['decor_bottom_color']   ?? get_field( 'decor_bottom_color' )   ?? '#ffffff';
 
 // Grid: 14 cols × 4 rows = 56 cells
 // Rectangle positions (1-indexed, col range inclusive):
@@ -138,6 +143,8 @@ $skip_cells = [
 
     </div><!-- .cta-section__container -->
 
-    <?php get_template_part('template-parts/partials/decor-bottom'); ?>
+    <?php if ( $decor_enabled ) : ?>
+        <?php get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] ); ?>
+    <?php endif; ?>
 
 </section>

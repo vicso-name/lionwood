@@ -8,7 +8,6 @@
 
 .pab-section {
   background:    #E9E9E9;
-  border-radius: 60px 60px 0 0;
   position:      relative;
   overflow:      hidden;
   padding-top:    var(--pab-pt,     100px);
@@ -173,7 +172,6 @@
 
 @media (max-width: 1023px) {
   .pab-section {
-    border-radius: 30px 30px 0 0;
     padding-top:    var(--pab-pt-mob,  70px);
     padding-bottom: var(--pab-pb-mob, 140px);
   }

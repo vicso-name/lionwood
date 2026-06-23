@@ -38,7 +38,7 @@ if ( ! function_exists( 'theme_register_cpt_cases' ) ) {
 			'taxonomies'          => [ 'case_study_category', 'case_study_service' ],
 			'menu_icon'           => 'dashicons-portfolio',
 			'has_archive'         => true,
-			'rewrite'             => [ 'slug' => 'cases' ],
+			'rewrite'             => [ 'slug' => 'case-study' ],
 			'query_var'           => true,
 			'capability_type'     => 'post',
 		] );
@@ -71,7 +71,7 @@ if ( ! function_exists( 'theme_register_tax_industry' ) ) {
 			'show_ui'           => true,
 			'show_in_rest'      => true,   // visible in Gutenberg sidebar
 			'show_admin_column' => true,
-			'rewrite'           => [ 'slug' => 'case-study-category' ],
+			'rewrite'           => [ 'slug' => 'case-study/industry' ],
 		] );
 	}
 }
@@ -102,8 +102,55 @@ if ( ! function_exists( 'theme_register_tax_case_service' ) ) {
 			'show_ui'           => true,
 			'show_in_rest'      => true,
 			'show_admin_column' => true,
-			'rewrite'           => [ 'slug' => 'case-study-service' ],
+			'rewrite'           => [ 'slug' => 'case-study/service' ],
 		] );
 	}
 }
 add_action( 'init', 'theme_register_tax_case_service' );
+
+
+// ── Explicit rewrite rules for taxonomy term archives ─────────────────────────
+// Needed because WordPress does not generate correct rules for hierarchical
+// taxonomies when the rewrite slug contains a slash (e.g. 'case-study/industry').
+if ( ! function_exists( 'theme_cases_rewrite_rules' ) ) {
+	function theme_cases_rewrite_rules(): void {
+		add_rewrite_rule(
+			'^case-study/industry/([^/]+)/?$',
+			'index.php?case_study_category=$matches[1]',
+			'top'
+		);
+		add_rewrite_rule(
+			'^case-study/service/([^/]+)/?$',
+			'index.php?case_study_service=$matches[1]',
+			'top'
+		);
+	}
+}
+add_action( 'init', 'theme_cases_rewrite_rules' );
+
+
+// ── 301 redirects for legacy case study URLs ──────────────────────────────────
+if ( ! function_exists( 'theme_cases_legacy_redirects' ) ) {
+	function theme_cases_legacy_redirects(): void {
+		$path = trailingslashit( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
+
+		// /cases/ → /case-study/
+		if ( $path === '/cases/' ) {
+			wp_redirect( home_url( '/case-study/' ), 301 );
+			exit;
+		}
+
+		// /case-study-category/{term}/ → /case-study/industry/{term}/
+		if ( preg_match( '#^/case-study-category/([^/]+)/?$#', $path, $m ) ) {
+			wp_redirect( home_url( '/case-study/industry/' . $m[1] . '/' ), 301 );
+			exit;
+		}
+
+		// /case-study-service/{term}/ → /case-study/service/{term}/
+		if ( preg_match( '#^/case-study-service/([^/]+)/?$#', $path, $m ) ) {
+			wp_redirect( home_url( '/case-study/service/' . $m[1] . '/' ), 301 );
+			exit;
+		}
+	}
+}
+add_action( 'template_redirect', 'theme_cases_legacy_redirects' );

@@ -1,0 +1,50 @@
+{
+    "key": "group_product_meta",
+    "title": "Product — Meta",
+    "fields": [
+        {
+            "key": "field_pm_logo",
+            "label": "Product Logo",
+            "name": "product_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Logo or label image shown in the Product List block and product hero. Recommended height: 60px, transparent PNG.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Meta fields for the Product CPT — logo used in listings and hero.",
+    "show_in_rest": false,
+    "modified": 1782193992
+}

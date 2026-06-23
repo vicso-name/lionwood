@@ -9,7 +9,9 @@
 
 .ia-section {
   background-color: var(--color-background);
-  padding-block: var(--section-padding-y);
+  padding-top:    var(--ia-pt, 100px);
+  padding-bottom: var(--ia-pb, 100px);
+  position:       relative;
 
   &--dark {
     background-color: #111319;
@@ -271,6 +273,13 @@
 }
 
 // ── Large desktop: cap container & fine-tune ─────────────────────────────────
+@media (max-width: 1023px) {
+  .ia-section {
+    padding-top:    var(--ia-pt-mob, 70px);
+    padding-bottom: var(--ia-pb-mob, 70px);
+  }
+}
+
 @media (min-width: 1400px) {
   .ia-section__heading {
     margin-bottom: var(--space-16); // 64px — more breathing room

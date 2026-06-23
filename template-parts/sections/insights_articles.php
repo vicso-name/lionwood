@@ -22,6 +22,17 @@ $explore_raw  = get_field( 'explore_link' );
 $bg_style     = get_field( 'background_style' ) ?: 'light';
 $is_dark      = 'dark' === $bg_style;
 
+// ── Padding ───────────────────────────────────────────────────────────────────
+$pt     = absint( get_field( 'padding_top' )        ?: 100 );
+$pb     = absint( get_field( 'padding_bottom' )     ?: 100 );
+$pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70  );
+$pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70  );
+
+$section_style = sprintf(
+    '--ia-pt:%dpx; --ia-pb:%dpx; --ia-pt-mob:%dpx; --ia-pb-mob:%dpx;',
+    $pt, $pb, $pt_mob, $pb_mob
+);
+
 $explore_url    = ! empty( $explore_raw['url'] )    ? esc_url( $explore_raw['url'] )       : esc_url( home_url( '/blog/' ) );
 $explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] )    : __( 'Explore More', 'theme' );
 $explore_target = ! empty( $explore_raw['target'] ) ? $explore_raw['target']               : '_self';
@@ -62,7 +73,7 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 }
 ?>
 
-<section class="ia-section<?php echo $is_dark ? ' ia-section--dark' : ''; ?>">
+<section class="ia-section<?php echo $is_dark ? ' ia-section--dark' : ''; ?>" style="<?php echo esc_attr( $section_style ); ?>">
 	<div class="ia-section__container">
 
 		<?php /* ── Heading ──────────────────────────────────────────────────── */ ?>
@@ -150,4 +161,5 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 		</div>
 
 	</div>
+    <?php get_template_part( 'template-parts/partials/decor-bottom' ); ?>
 </section>

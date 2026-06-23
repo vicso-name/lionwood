@@ -30,14 +30,17 @@ if ( is_singular() ) {
     $post_type = get_post_type();
     $pt_obj    = get_post_type_object( $post_type );
 
-    if ( $pt_obj && $post_type !== 'post' && $post_type !== 'page' ) {
-        // CPTs that use a custom page as their archive instead of a native CPT archive.
-        // The page is identified by its page template, so renaming its slug is safe.
+    if ( $pt_obj && $post_type !== 'page' ) {
+        // Post types that use a custom page as their archive.
+        // Identified by page template — renaming the page slug requires no code changes.
         $custom_archive_templates = [
+            'post'        => 'page-templates/insights-page.php',
             'industry'    => 'page-templates/industries-archive.php',
             'service'     => 'page-templates/services-archive.php',
             'sub_service' => 'page-templates/services-archive.php',
             'career'      => 'page-templates/careers-page.php',
+            'whitepaper'  => 'page-templates/insights-page.php',
+            'news'        => 'page-templates/insights-page.php',
         ];
 
         if ( isset( $custom_archive_templates[ $post_type ] ) ) {

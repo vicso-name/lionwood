@@ -1,0 +1,269 @@
+// =============================================================================
+// Block: Product List  (prefix: pl-)
+// Three-column sticky-scroll product showcase
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell — light gray, NO overflow:hidden (breaks sticky)
+// -----------------------------------------------------------------------------
+
+.pl-section {
+  background: #E9E9E9;
+  position:   relative;
+}
+
+// Pin wrapper — JS sets total height; no extra padding
+
+// Sticky inner — fills viewport, content centered vertically
+.pl-pin-inner {
+  position:    sticky;
+  top:         0;
+  height:      100dvh;
+  display:     flex;
+  align-items: center;
+  overflow:    hidden;
+}
+
+
+// -----------------------------------------------------------------------------
+// Three-column grid
+// 330 | 95 | 480 | 95 | 345  =  1345px total
+// -----------------------------------------------------------------------------
+
+.pl-grid {
+  display:               grid;
+  grid-template-columns: 330px 480px 345px;
+  column-gap:            95px;
+  max-width:             1345px;
+  margin-inline:         auto;
+  padding-inline:        var(--container-padding);
+  width:                 100%;
+  align-items:           center;
+}
+
+
+// -----------------------------------------------------------------------------
+// LEFT: Product navigation list
+// -----------------------------------------------------------------------------
+
+.pl-nav {
+  display:        flex;
+  flex-direction: column;
+}
+
+.pl-nav__item {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         16px 0;
+  border-top:      1px solid #D6D7D9;
+  cursor:          pointer;
+  transition:      opacity 0.2s ease;
+
+  &:last-child { border-bottom: 1px solid #D6D7D9; }
+
+  &:hover:not(&--active) { opacity: 0.7; }
+}
+
+.pl-nav__name {
+  color:          #848588;
+  font-family:    var(--font-primary);
+  font-size:      16px;
+  font-weight:    500;
+  line-height:    1.4;
+  text-transform: uppercase;
+  transition:     color 0.3s ease;
+
+  .pl-nav__item--active & {
+    color: #111319;
+  }
+}
+
+.pl-nav__dot {
+  opacity:    0;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+
+  .pl-nav__item--active & { opacity: 1; }
+
+  svg { display: block; }
+}
+
+
+// -----------------------------------------------------------------------------
+// CENTER: Feature image (slides)
+// -----------------------------------------------------------------------------
+
+.pl-visual {
+  position:      relative;
+  width:         480px;
+  height:        555px;
+  border-radius: 20px;
+  overflow:      hidden;
+  flex-shrink:   0;
+}
+
+.pl-visual__slide {
+  position:   absolute;
+  inset:      0;
+  opacity:    0;
+  transition: opacity 0.5s ease;
+
+  img {
+    display:    block;
+    width:      100%;
+    height:     100%;
+    object-fit: cover;
+  }
+
+  &--active { opacity: 1; }
+}
+
+
+// -----------------------------------------------------------------------------
+// RIGHT: Product info (slides)
+// -----------------------------------------------------------------------------
+
+.pl-info {
+  position: relative;
+  width:    345px;
+}
+
+.pl-info__slide {
+  position:   absolute;
+  top:        50%;
+  left:       0;
+  right:      0;
+  transform:  translateY(-50%) translateY(16px);
+  opacity:    0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+
+  &--active {
+    opacity:        1;
+    transform:      translateY(-50%);
+    pointer-events: auto;
+    position:       relative;
+    top:            auto;
+    transform:      none;
+  }
+}
+
+.pl-info__logo {
+  margin-bottom: 80px;
+
+  img {
+    display:    block;
+    height:     60px;
+    width:      auto;
+    object-fit: contain;
+  }
+}
+
+.pl-info__title {
+  margin:         0 0 8px;
+  color:          #111319;
+  font-family:    var(--font-primary);
+  font-size:      32px;
+  font-weight:    500;
+  line-height:    1.2;
+}
+
+.pl-info__excerpt {
+  margin:         0 0 24px;
+  color:          #111319;
+  font-family:    var(--font-primary);
+  font-size:      16px;
+  font-weight:    500;
+  line-height:    1.4;
+}
+
+.pl-info__btn {
+  display:         inline-flex;
+  padding:         20px 40px;
+  justify-content: center;
+  align-items:     center;
+  gap:             10px;
+  border-radius:   100px;
+  background:      var(--color-primary, #C83030);
+  text-decoration: none;
+  transition:      background var(--transition-base, 0.3s) ease;
+
+  color:          #fff;
+  font-family:    var(--font-primary);
+  font-size:      16px;
+  font-weight:    500;
+  line-height:    1;
+  text-transform: uppercase;
+
+  &:hover { background: var(--color-primary-hover, #a82828); }
+}
+
+
+// =============================================================================
+// Responsive — no sticky on tablet/mobile, vertical stack
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .pl-section {
+    padding-top:    var(--pl-pt-mob, 80px);
+    padding-bottom: var(--pl-pb-mob, 140px);
+  }
+
+  // Disable sticky
+  .pl-pin-wrapper {
+    padding-top: 0;
+  }
+
+  .pl-pin-inner {
+    position: static;
+    height:   auto;
+    overflow: visible;
+  }
+
+  .pl-grid {
+    display:        flex;
+    flex-direction: column;
+    gap:            60px;
+  }
+
+  .pl-nav {
+    width: 100%;
+    order: 1;
+  }
+
+  .pl-visual {
+    width:  100%;
+    height: 320px;
+    order:  2;
+  }
+
+  .pl-info {
+    width: 100%;
+    order: 3;
+  }
+
+  // On mobile, show all slides — no absolute positioning
+  .pl-info__slide {
+    position:   static;
+    opacity:    1;
+    transform:  none;
+    display:    none;
+
+    &--active { display: block; }
+  }
+
+  .pl-visual__slide {
+    &--active { opacity: 1; }
+  }
+
+  .pl-info__logo { margin-bottom: 32px; }
+}
+
+@media (max-width: 640px) {
+  .pl-visual { height: 260px; }
+
+  .pl-info__title { font-size: 24px; }
+
+  .pl-info__btn { width: 100%; justify-content: center; }
+}

@@ -33,13 +33,13 @@
 
 .ccg-marquee {
   overflow: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .ccg-marquee__track {
   display: flex;
   width: max-content;
-  animation: ccg-marquee 24s linear infinite;
+  animation: ccg-marquee 50s linear infinite;
   will-change: transform;
 }
 
@@ -53,7 +53,7 @@
   color: #848588;
   opacity: 0.3;
   white-space: nowrap;
-  padding-right: 40px;
+  padding-right: 20px;
 }
 
 
@@ -70,12 +70,14 @@
   display: flex;
   gap: 60px;
   margin-bottom: 0;
+  justify-content: center;
 }
 
 .ccg-tab {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex: 1;
   padding: 0 0 16px;
   background: none;
   border: none;
@@ -89,7 +91,7 @@
   text-transform: uppercase;
   color: var(--color-black);
   transition: opacity var(--transition-base) ease;
-
+  justify-content: center;
   // Active underline
   &::after {
     content: '';
@@ -103,12 +105,18 @@
     transition: opacity var(--transition-base) ease;
   }
 
+  opacity: 0.4;
+
   &.is-active {
     opacity: 1;
 
     &::after {
       opacity: 1;
     }
+  }
+
+  &:hover:not(.is-active) {
+    opacity: 0.7;
   }
 
   &:focus-visible {
@@ -136,7 +144,7 @@
 .ccg-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 
   &--hidden {
     display: none;
@@ -148,7 +156,7 @@
   padding: 8px 18px 9px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 2px;
   border-radius: 28px;
   border: 1px solid #111319;
   background: transparent;
@@ -369,6 +377,9 @@
 }
 
 @media (max-width: 640px) {
+  .ccg-marquee{
+    margin-bottom: 60px;
+  }
   .ccg-grid {
     grid-template-columns: 1fr;
   }
