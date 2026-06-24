@@ -164,16 +164,17 @@
 
 // Form card
 .cs-form {
+  position: relative;
   width: 100%;
   max-width: 620px;
   border-radius: 20px;
   background: #E9E9E9; // hardcoded — var(--color-gray-light) may not resolve
+  overflow: hidden;
   padding: 40px;
   box-sizing: border-box;
 
   @media (min-width: 1024px) {
-    height: 626px;
-    overflow-y: auto;
+    height: auto;
   }
 }
 
@@ -193,10 +194,11 @@
   display: none;
 }
 
-// CF7 wraps each input in this span — needs block + full width
+// CF7 wraps each input in this span — anchor for absolute-positioned tip
 .wpcf7-form-control-wrap {
   display: block;
   width: 100%;
+  position: relative;
 }
 
 // CF7 spinner shown during submission
@@ -208,7 +210,7 @@
 .wpcf7-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 22px;
   height: 100%;
 }
 
@@ -341,12 +343,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: auto; // push to bottom inside flex column
+  margin-top: auto;
   padding-top: 16px;
 }
 
 .cs-form__terms {
-  width: 246px;
+  width: 160px;
   margin: 0;
   opacity: 0.6;
   font-family: Inter, var(--font-primary), sans-serif;
@@ -387,7 +389,8 @@
   text-transform: uppercase;
 
   transition: background-color var(--transition-base) ease,
-              transform 0.15s ease;
+              transform 0.15s ease,
+              opacity var(--transition-base) ease;
 
   &:hover,
   &:focus-visible {
@@ -402,22 +405,40 @@
   &:focus-visible {
     box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.35);
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    pointer-events: none;
+  }
+}
+
+// CF7 adds .submitting to the form during request — dim button via CSS too
+.wpcf7-form.submitting input[type="submit"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 // CF7 validation
+// Absolute — sits in the 22px gap between fields, never pushes layout
 .wpcf7-not-valid-tip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 3px;
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1;
   color: var(--color-primary);
-  margin-top: 4px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
+// CF7 response output — replaced by custom overlay; hide the default element
 .wpcf7-response-output {
-  font-family: var(--font-primary);
-  font-size: 14px;
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-top: 12px;
+  display: none !important;
 }
 
 
@@ -485,4 +506,101 @@
         padding-top:    var(--cs-pt-mob, 70px);
         padding-bottom: var(--cs-pb-mob, 140px);
     }
+}
+
+
+// =============================================================================
+// Success overlay
+// =============================================================================
+
+// Blur the form content behind the overlay when submitted
+.cs-form.is-sent .wpcf7-form {
+  filter: blur(8px);
+  transition: filter 0.45s ease;
+}
+
+// Overlay itself — covers the entire form card
+.cs-form__success {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  border-radius: 20px; // same as .cs-form
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(233, 233, 233, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.cs-form.is-sent .cs-form__success {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cs-form__success-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-10);
+  text-align: center;
+}
+
+// Animations only trigger when .is-sent is active — not on page load
+.cs-form.is-sent .cs-form__success-inner {
+  animation: cs-success-enter 0.55s ease 0.1s both;
+}
+
+@keyframes cs-success-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cs-form__success-icon {
+  color: var(--color-primary);
+  line-height: 0;
+}
+
+.cs-form.is-sent .cs-form__success-icon {
+  animation: cs-icon-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s both;
+}
+
+@keyframes cs-icon-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cs-form__success-title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h3);     // 32px
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h3);
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.cs-form__success-text {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-1); // 18px
+  font-weight: 350;
+  line-height: var(--line-height-body-1);
+  color: var(--color-text);
 }
