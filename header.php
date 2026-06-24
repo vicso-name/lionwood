@@ -22,8 +22,12 @@ $svg_globe = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" vie
 
 $svg_lang_chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.52819 8.77064L1.75685 4.99931L2.69952 4.05664L5.99952 7.35664L9.29952 4.05664L10.2422 4.99931L6.47085 8.77064C6.34584 8.89562 6.1763 8.96583 5.99952 8.96583C5.82275 8.96583 5.65321 8.89562 5.52819 8.77064Z" fill="#111319"/></svg>';
 
-// ── ACF Options: CTA button ───────────────────────────────────────────────────
-$cta_link  = function_exists('get_field') ? get_field( 'header_cta_link', 'option' ) : null;
+// ── ACF Options: CTA button (language-aware) ──────────────────────────────────
+$hdr_lang  = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+$hdr_lang  = in_array( $hdr_lang, [ 'en', 'uk' ], true ) ? $hdr_lang : 'en';
+$cta_link  = function_exists( 'get_field' )
+    ? ( get_field( 'header_cta_link_' . $hdr_lang, 'option' ) ?: get_field( 'header_cta_link', 'option' ) )
+    : null;
 $cta_url   = ! empty( $cta_link['url'] )    ? esc_url( $cta_link['url'] )    : '#';
 $cta_label = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'Contact Us', 'lionwood' );
 $cta_tgt   = ! empty( $cta_link['target'] ) ? $cta_link['target']             : '_self';

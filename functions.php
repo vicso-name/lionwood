@@ -114,6 +114,7 @@ require_once get_template_directory() . '/inc/cig-load-more.php';
 require_once get_template_directory() . '/inc/theme_function.php';
 require_once get_template_directory() . '/inc/theme_settings.php';
 require_once get_template_directory() . '/inc/acf-ai-fields.php';
+require_once get_template_directory() . '/inc/acf-header-fields.php';
 require_once get_template_directory() . '/inc/acf-error-page-fields.php';
 require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
