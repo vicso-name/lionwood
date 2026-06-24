@@ -109,7 +109,7 @@
     text-decoration: none;
     transition:      background var(--transition-fast, 0.15s) ease;
 
-    &:hover { background: darken(#C83030, 10%); }
+    &:hover { background: var(--color-primary-hover); }
     svg { display: block; }
 }
 

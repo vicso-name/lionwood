@@ -96,6 +96,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                             placeholder="<?php esc_attr_e( 'Full Name *', 'lionwood' ); ?>"
                             required
                             autocomplete="name"
+                            maxlength="100"
                         >
                         <input
                             class="wpd-input wpd-input--last"
@@ -104,6 +105,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                             placeholder="<?php esc_attr_e( 'Business Email *', 'lionwood' ); ?>"
                             required
                             autocomplete="email"
+                            maxlength="254"
                         >
 
                         <div class="wpd-form__row">

@@ -420,7 +420,7 @@
 
     svg { display: block; }
 
-    &:hover { background: darken(#C83030, 10%); }
+    &:hover { background: var(--color-primary-hover); }
 }
 
 // =============================================================================

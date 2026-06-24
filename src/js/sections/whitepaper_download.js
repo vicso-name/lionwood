@@ -27,10 +27,11 @@
 
     if (!form) return;
 
-    var portalId  = form.getAttribute('data-hs-portal') || '';
-    var formId    = form.getAttribute('data-hs-form')   || '';
-    var pdfUrl    = section.getAttribute('data-pdf-url') || '';
-    var origLabel = btnLabel ? btnLabel.textContent : '';
+    var portalId     = form.getAttribute('data-hs-portal') || '';
+    var formId       = form.getAttribute('data-hs-form')   || '';
+    var pdfUrl       = section.getAttribute('data-pdf-url') || '';
+    var origLabel    = btnLabel ? btnLabel.textContent : '';
+    var isSubmitting = false;
 
     var inputName  = form.querySelector('[name="full_name"]');
     var inputEmail = form.querySelector('[name="email"]');
@@ -78,6 +79,7 @@
     // ── UI helpers ─────────────────────────────────────────────────────────────
 
     function setLoading(on) {
+      isSubmitting = on;
       submitBtn.classList.toggle('is-loading', on);
       submitBtn.disabled = on;
       if (btnLabel) btnLabel.textContent = on ? 'Sending…' : origLabel;
@@ -150,6 +152,7 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (isSubmitting) return;
       hideError();
 
       var errors = validate();
