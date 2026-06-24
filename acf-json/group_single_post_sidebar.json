@@ -44,11 +44,11 @@
                 "class": "",
                 "id": ""
             },
-            "rows": 3,
-            "new_lines": "br",
             "default_value": "Discover innovative strategies and forward-thinking ideas to enhance your digital products.",
             "maxlength": "",
-            "placeholder": ""
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": "br"
         },
         {
             "key": "field_sp_subscribe_label",
@@ -56,7 +56,7 @@
             "name": "sidebar_subscribe_label",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Label displayed on the subscribe button",
             "required": 0,
             "conditional_logic": [
                 [
@@ -77,30 +77,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_sp_subscribe_link",
-            "label": "Subscribe Button Link",
-            "name": "sidebar_subscribe_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_sp_subscribe_show",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
         },
         {
             "key": "field_sp_ai_show",
@@ -213,5 +189,5 @@
     "active": true,
     "description": "Single post sidebar — subscribe box, AI chips, right CTA. Appears in post meta panel.",
     "show_in_rest": 0,
-    "modified": 1782281840
+    "modified": 1782322317
 }

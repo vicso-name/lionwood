@@ -26,14 +26,14 @@ $services_str  = implode( ', ', array_map( fn( $t ) => esc_html( $t->name ), $te
 ?>
 
 <article class="sg-card">
-    <a class="sg-card__link" href="<?php echo $permalink; ?>" aria-label="<?php echo $title; ?>">
+    <a class="sg-card__link" href="<?php echo esc_url( $permalink ); ?>" aria-label="<?php echo esc_attr( $title ); ?>">
 
         <div class="sg-card__image-wrap">
             <?php if ( $thumb_url ) : ?>
                 <img
                     class="sg-card__image"
-                    src="<?php echo $thumb_url; ?>"
-                    alt="<?php echo $thumb_alt; ?>"
+                    src="<?php echo esc_url( $thumb_url ); ?>"
+                    alt="<?php echo esc_attr( $thumb_alt ); ?>"
                     loading="lazy"
                 >
             <?php else : ?>
@@ -51,11 +51,11 @@ $services_str  = implode( ', ', array_map( fn( $t ) => esc_html( $t->name ), $te
 
         <div class="sg-card__body">
             <?php if ( $country ) : ?>
-                <span class="sg-card__country"><?php echo $country; ?></span>
+                <span class="sg-card__country"><?php echo esc_html( $country ); ?></span>
             <?php endif; ?>
-            <h3 class="sg-card__title"><?php echo $title; ?></h3>
+            <h3 class="sg-card__title"><?php echo esc_html( $title ); ?></h3>
             <?php if ( $services_str ) : ?>
-                <p class="sg-card__services"><?php echo $services_str; ?></p>
+                <p class="sg-card__services"><?php echo esc_html( $services_str ); ?></p>
             <?php endif; ?>
         </div>
 

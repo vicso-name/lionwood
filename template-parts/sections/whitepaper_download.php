@@ -20,14 +20,9 @@ $title_1       = esc_html( get_field( 'title_line_1' ) ?: '' );
 $title_2       = esc_html( get_field( 'title_line_2' ) ?: '' );
 $title_3       = esc_html( get_field( 'title_line_3' ) ?: '' );
 
-// HubSpot: Portal ID and default Form GUID come from global options.
-// Block field "hubspot_form_id_override" overrides the default Form GUID if set.
+// HubSpot credentials come exclusively from global options (Theme Settings).
 $hs_portal_id = esc_attr( get_field( 'hs_portal_id', 'option' ) ?: '' );
-$hs_form_id   = esc_attr( get_field( 'hubspot_form_id_override' ) ?: get_field( 'hs_default_form_id', 'option' ) ?: '' );
-$terms_link_raw  = get_field( 'terms_link' );
-$terms_url       = ! empty( $terms_link_raw['url'] )   ? esc_url( $terms_link_raw['url'] )    : '#';
-$terms_label     = ! empty( $terms_link_raw['title'] ) ? esc_html( $terms_link_raw['title'] ) : __( 'Terms & Conditions', 'lionwood' );
-$terms_target    = ! empty( $terms_link_raw['target'] ) ? $terms_link_raw['target'] : '_self';
+$hs_form_id   = esc_attr( get_field( 'hs_default_form_id', 'option' ) ?: '' );
 
 $pdf_file        = get_field( 'pdf_file' );
 $pdf_url         = ! empty( $pdf_file['url'] ) ? esc_url( $pdf_file['url'] ) : '';
@@ -43,6 +38,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
 ?>
 
 <section
+    id="wpd-section"
     class="wpd-section"
     style="
         --wpd-pt: <?php echo $pt; ?>px;
@@ -50,7 +46,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
         --wpd-pt-mob: <?php echo $pt_mob; ?>px;
         --wpd-pb-mob: <?php echo $pb_mob; ?>px;
     "
-    <?php if ( $pdf_url ) : ?>data-pdf-url="<?php echo $pdf_url; ?>"<?php endif; ?>
+    <?php if ( $pdf_url ) : ?>data-pdf-url="<?php echo esc_url( $pdf_url ); ?>"<?php endif; ?>
 >
     <div class="wpd-section__container">
         <div class="wpd-row">
@@ -89,8 +85,8 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                     <form
                         class="wpd-form"
                         data-wpd-form
-                        <?php if ( $hs_portal_id ) : ?>data-hs-portal="<?php echo $hs_portal_id; ?>"<?php endif; ?>
-                        <?php if ( $hs_form_id ) : ?>data-hs-form="<?php echo $hs_form_id; ?>"<?php endif; ?>
+                        <?php if ( $hs_portal_id ) : ?>data-hs-portal="<?php echo esc_attr( $hs_portal_id ); ?>"<?php endif; ?>
+                        <?php if ( $hs_form_id ) : ?>data-hs-form="<?php echo esc_attr( $hs_form_id ); ?>"<?php endif; ?>
                         novalidate
                     >
                         <input
@@ -114,16 +110,14 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                             <p class="wpd-form__terms">
                                 <?php esc_html_e( 'By clicking the button, I agree to the', 'lionwood' ); ?>
                                 <a
-                                    href="<?php echo $terms_url; ?>"
-                                    target="<?php echo esc_attr( $terms_target ); ?>"
-                                    <?php echo '_blank' === $terms_target ? 'rel="noopener noreferrer"' : ''; ?>
+                                    href="<?php echo esc_url( home_url( '/policy-policy/' ) ); ?>"
                                     class="wpd-form__terms-link"
-                                ><?php echo $terms_label; ?></a>
+                                ><?php esc_html_e( 'Terms & Conditions', 'lionwood' ); ?></a>
                             </p>
 
                             <button type="submit" class="wpd-submit" data-wpd-submit disabled>
                                 <?php echo $download_svg; ?>
-                                <span data-wpd-btn-label><?php echo $btn_label; ?></span>
+                                <span data-wpd-btn-label><?php echo esc_html( $btn_label ); ?></span>
                             </button>
                         </div>
 
@@ -132,7 +126,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
 
                     <?php /* Success state — shown after HubSpot submit + auto-download */ ?>
                     <div class="wpd-success" data-wpd-success hidden>
-                        <p class="wpd-success__message"><?php echo $success_message; ?></p>
+                        <p class="wpd-success__message"><?php echo esc_html( $success_message ); ?></p>
                     </div>
 
                 </div><!-- .wpd-gate -->

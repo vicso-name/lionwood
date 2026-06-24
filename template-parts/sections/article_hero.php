@@ -120,7 +120,7 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#E9E9E9';
                         <?php if ( $author_avatar ) : ?>
                             <img
                                 class="ah2-author__photo"
-                                src="<?php echo $author_avatar; ?>"
+                                src="<?php echo esc_url( $author_avatar ); ?>"
                                 alt="<?php echo esc_attr( $author_name ); ?>"
                                 width="67"
                                 height="67"
@@ -143,15 +143,15 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#E9E9E9';
                 <?php if ( $cta_text_out || $cta_url ) : ?>
                     <div class="ah2-cta">
                         <?php if ( $cta_text_out ) : ?>
-                            <p class="ah2-cta__text"><?php echo $cta_text_out; ?></p>
+                            <p class="ah2-cta__text"><?php echo esc_html( $cta_text_out ); ?></p>
                         <?php endif; ?>
                         <?php if ( $cta_url && $cta_label ) : ?>
                             <a
                                 class="ah2-cta__btn"
-                                href="<?php echo $cta_url; ?>"
+                                href="<?php echo esc_url( $cta_url ); ?>"
                                 target="<?php echo esc_attr( $cta_target ); ?>"
                                 <?php echo $cta_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
-                            ><?php echo $cta_label; ?></a>
+                            ><?php echo esc_html( $cta_label ); ?></a>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
@@ -175,8 +175,8 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#E9E9E9';
                         <?php endif; ?>
                         <img
                             class="ah2-image"
-                            src="<?php echo $image_url; ?>"
-                            alt="<?php echo $image_alt; ?>"
+                            src="<?php echo esc_url( $image_url ); ?>"
+                            alt="<?php echo esc_attr( $image_alt ); ?>"
                             width="670"
                             height="660"
                             loading="eager"

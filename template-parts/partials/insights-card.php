@@ -83,7 +83,7 @@ $card_class = 'ia-card ig-card' . ( $featured ? ' ia-card--featured ig-card--fea
                     src="<?php echo esc_url( $thumb_src[0] ); ?>"
                     width="<?php echo esc_attr( $thumb_src[1] ); ?>"
                     height="<?php echo esc_attr( $thumb_src[2] ); ?>"
-                    alt="<?php echo $thumb_alt; ?>"
+                    alt="<?php echo esc_attr( $thumb_alt ); ?>"
                     loading="<?php echo $featured ? 'eager' : 'lazy'; ?>"
                 >
             <?php else : ?>
@@ -91,15 +91,15 @@ $card_class = 'ia-card ig-card' . ( $featured ? ' ia-card--featured ig-card--fea
             <?php endif; ?>
 
             <?php if ( $tag_name ) : ?>
-                <span class="ia-card__tag">#<?php echo $tag_name; ?></span>
+                <span class="ia-card__tag">#<?php echo esc_html( $tag_name ); ?></span>
             <?php endif; ?>
 
         </div>
 
         <div class="ia-card__body">
-            <h3 class="ia-card__title"><?php echo $title; ?></h3>
+            <h3 class="ia-card__title"><?php echo esc_html( $title ); ?></h3>
             <?php if ( $excerpt ) : ?>
-                <p class="ia-card__excerpt"><?php echo $excerpt; ?></p>
+                <p class="ia-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
             <?php endif; ?>
             <div class="ia-card__meta">
                 <span class="ia-card__meta-date"><?php echo esc_html( $post_date ); ?></span>

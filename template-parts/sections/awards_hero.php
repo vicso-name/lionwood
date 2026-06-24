@@ -81,14 +81,14 @@ $certifications = get_field( 'certifications' ) ?: [];
             <div class="awh-ctas awh-anim" data-delay="700">
                 <a
                     class="awh-btn awh-btn--primary"
-                    href="<?php echo $est_url; ?>"
+                    href="<?php echo esc_url( $est_url ); ?>"
                     target="<?php echo esc_attr( $est_target ); ?>"
                     <?php echo '_blank' === $est_target ? 'rel="noopener noreferrer"' : ''; ?>
-                ><?php echo $est_label; ?></a>
+                ><?php echo esc_html( $est_label ); ?></a>
 
                 <a
                     class="awh-btn awh-btn--outline"
-                    href="<?php echo $mtg_url; ?>"
+                    href="<?php echo esc_url( $mtg_url ); ?>"
                     target="<?php echo esc_attr( $mtg_target ); ?>"
                     <?php echo '_blank' === $mtg_target ? 'rel="noopener noreferrer"' : ''; ?>
                 >
@@ -98,7 +98,7 @@ $certifications = get_field( 'certifications' ) ?: [];
                         <path d="M6 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
                         <path d="M12 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
                     </svg>
-                    <?php echo $mtg_label; ?>
+                    <?php echo esc_html( $mtg_label ); ?>
                 </a>
             </div>
 

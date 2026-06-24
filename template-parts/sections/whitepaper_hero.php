@@ -51,14 +51,14 @@ $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" vie
             <?php /* ── Left column ──────────────────────────────────────── */ ?>
             <div class="wph-col wph-col--left">
 
-                <h1 class="wph-title wph-anim" data-delay="0"><?php echo $title; ?></h1>
+                <h1 class="wph-title wph-anim" data-delay="0"><?php echo esc_html( $title ); ?></h1>
 
                 <?php if ( $description ) : ?>
                     <p class="wph-description wph-anim" data-delay="120"><?php echo $description; ?></p>
                 <?php endif; ?>
 
                 <?php if ( $subtitle ) : ?>
-                    <p class="wph-subtitle wph-anim" data-delay="220"><?php echo $subtitle; ?></p>
+                    <p class="wph-subtitle wph-anim" data-delay="220"><?php echo esc_html( $subtitle ); ?></p>
                 <?php endif; ?>
 
                 <?php if ( ! empty( $outcomes ) ) : ?>
@@ -83,11 +83,11 @@ $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" vie
                 <?php if ( $cta_url ) : ?>
                     <a
                         class="wph-cta wph-anim"
-                        href="<?php echo $cta_url; ?>"
+                        href="<?php echo esc_url( $cta_url ); ?>"
                         target="<?php echo esc_attr( $cta_target ); ?>"
                         <?php echo '_blank' === $cta_target ? 'rel="noopener noreferrer"' : ''; ?>
                         data-delay="520"
-                    ><?php echo $cta_label; ?></a>
+                    ><?php echo esc_html( $cta_label ); ?></a>
                 <?php endif; ?>
 
             </div><!-- .wph-col--left -->

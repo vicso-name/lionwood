@@ -67,10 +67,10 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#F7F7F7';
                                     data-target="<?php echo esc_attr( $numeric ); ?>"
                                     data-suffix="<?php echo esc_attr( $suffix ); ?>"
                                     aria-label="<?php echo esc_attr( $value . $suffix ); ?>"
-                                >0<?php echo $suffix; ?></span>
+                                >0<?php echo esc_html( $suffix ); ?></span>
                             </div>
                             <?php if ( $descriptor ) : ?>
-                                <span class="ams-stats__descriptor"><?php echo $descriptor; ?></span>
+                                <span class="ams-stats__descriptor"><?php echo esc_html( $descriptor ); ?></span>
                             <?php endif; ?>
                         </li>
                         <?php endforeach; ?>

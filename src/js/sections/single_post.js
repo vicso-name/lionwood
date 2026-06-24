@@ -79,9 +79,169 @@
         });
     }
 
+    // ── Subscribe popup ───────────────────────────────────────────────────────────
+
+    function initSubscribePopup() {
+        var popup     = document.getElementById('sp-popup');
+        if (!popup) return;
+
+        var form      = popup.querySelector('[data-sp-popup-form]');
+        var success   = popup.querySelector('[data-sp-popup-success]');
+        var submitBtn = popup.querySelector('[data-sp-popup-submit]');
+        var errorEl   = popup.querySelector('[data-sp-popup-error]');
+        var openBtns  = document.querySelectorAll('[data-sp-subscribe-open]');
+        var closeBtns = popup.querySelectorAll('[data-sp-popup-close]');
+
+        var portalId  = form ? form.getAttribute('data-hs-portal') || '' : '';
+        var formId    = form ? form.getAttribute('data-hs-form')   || '' : '';
+
+        var inputName  = form ? form.querySelector('[name="full_name"]') : null;
+        var inputEmail = form ? form.querySelector('[name="email"]')     : null;
+
+        // ── Open / close ──────────────────────────────────────────────────────
+
+        function openPopup() {
+            popup.hidden = false;
+            document.body.classList.add('has-popup');
+            if (inputName) setTimeout(function () { inputName.focus(); }, 80);
+        }
+
+        function closePopup() {
+            popup.hidden = true;
+            document.body.classList.remove('has-popup');
+        }
+
+        Array.prototype.forEach.call(openBtns, function (btn) {
+            btn.addEventListener('click', openPopup);
+        });
+
+        Array.prototype.forEach.call(closeBtns, function (btn) {
+            btn.addEventListener('click', closePopup);
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (!popup.hidden && e.key === 'Escape') closePopup();
+        });
+
+        // ── Validation ────────────────────────────────────────────────────────
+
+        function isEmail(v) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        }
+
+        function validate() {
+            var errors = [];
+            if (inputName) inputName.classList.remove('is-invalid');
+            if (inputEmail) inputEmail.classList.remove('is-invalid');
+
+            if (!inputName || !inputName.value.trim()) {
+                if (inputName) inputName.classList.add('is-invalid');
+                errors.push('Please enter your full name.');
+            }
+            if (!inputEmail || !inputEmail.value.trim() || !isEmail(inputEmail.value.trim())) {
+                if (inputEmail) inputEmail.classList.add('is-invalid');
+                errors.push('Please enter a valid business email.');
+            }
+            return errors;
+        }
+
+        // ── UI helpers ────────────────────────────────────────────────────────
+
+        var origLabel = submitBtn ? submitBtn.textContent : '';
+
+        function setLoading(on) {
+            if (!submitBtn) return;
+            submitBtn.classList.toggle('is-loading', on);
+            submitBtn.disabled = on;
+            submitBtn.textContent = on ? 'Sending…' : origLabel;
+        }
+
+        function showError(msg) {
+            if (!errorEl) return;
+            errorEl.textContent = msg;
+            errorEl.hidden = false;
+        }
+
+        function hideError() {
+            if (!errorEl) return;
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+        }
+
+        function showSuccess() {
+            if (form) form.hidden = true;
+            if (success) success.hidden = false;
+        }
+
+        if (inputName)  inputName.addEventListener('input',  function () { inputName.classList.remove('is-invalid');  hideError(); });
+        if (inputEmail) inputEmail.addEventListener('input', function () { inputEmail.classList.remove('is-invalid'); hideError(); });
+
+        // ── HubSpot submission ────────────────────────────────────────────────
+
+        function submitToHubspot(name, email) {
+            if (!portalId || !formId) {
+                return Promise.resolve({ success: true });
+            }
+            var endpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/'
+                         + portalId + '/' + formId;
+            var payload = {
+                fields: [
+                    { name: 'firstname', value: name },
+                    { name: 'email',     value: email },
+                ],
+                context: {
+                    pageUri:  window.location.href,
+                    pageName: document.title,
+                },
+            };
+            return fetch(endpoint, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(payload),
+            }).then(function (r) {
+                if (!r.ok) return r.json().then(function (d) {
+                    return { success: false, message: d.message || 'HubSpot error.' };
+                });
+                return { success: true };
+            });
+        }
+
+        // ── Submit ────────────────────────────────────────────────────────────
+
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                hideError();
+
+                var errors = validate();
+                if (errors.length) { showError(errors[0]); return; }
+
+                setLoading(true);
+
+                var name  = inputName.value.trim();
+                var email = inputEmail.value.trim();
+
+                submitToHubspot(name, email)
+                    .then(function (res) {
+                        setLoading(false);
+                        if (res && res.success) {
+                            showSuccess();
+                        } else {
+                            showError(res.message || 'Something went wrong. Please try again.');
+                        }
+                    })
+                    .catch(function () {
+                        setLoading(false);
+                        showError('Network error. Please try again.');
+                    });
+            });
+        }
+    }
+
     function init() {
         initVideos();
         initAiChips();
+        initSubscribePopup();
 
         var tocWrap   = document.getElementById('sp-toc');
         var tocToggle = document.querySelector('.sp-toc__toggle');

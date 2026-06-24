@@ -21,8 +21,8 @@ if ( empty( $items ) ) return;
         <div class="anl-item">
             <?php if ( $title ) : ?>
                 <h3 class="anl-item__head">
-                    <span class="anl-item__num"><?php echo $number; ?></span>
-                    <span class="anl-item__title"><?php echo $title; ?></span>
+                    <span class="anl-item__num"><?php echo esc_html( $number ); ?></span>
+                    <span class="anl-item__title"><?php echo esc_html( $title ); ?></span>
                 </h3>
             <?php endif; ?>
             <?php if ( $content ) : ?>

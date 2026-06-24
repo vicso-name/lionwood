@@ -52,7 +52,7 @@ if ( $bg_image ) {
 >
     <div class="ban-section__container">
 
-        <div class="ban-banner" style="<?php echo $bg_style; ?>">
+        <div class="ban-banner" style="<?php echo esc_attr( $bg_style ); ?>">
             <?php if ( $bg_image ) : ?>
                 <div class="ban-banner__overlay" aria-hidden="true"></div>
             <?php endif; ?>
@@ -64,12 +64,12 @@ if ( $bg_image ) {
             <?php if ( $link_url ) : ?>
                 <a
                     class="ban-banner__btn"
-                    href="<?php echo $link_url; ?>"
+                    href="<?php echo esc_url( $link_url ); ?>"
                     target="<?php echo esc_attr( $link_tgt ); ?>"
                     <?php echo '_blank' === $link_tgt ? 'rel="noopener noreferrer"' : ''; ?>
                 >
                     <?php echo $cal_icon; ?>
-                    <?php echo $link_lbl; ?>
+                    <?php echo esc_html( $link_lbl ); ?>
                 </a>
             <?php endif; ?>
         </div>

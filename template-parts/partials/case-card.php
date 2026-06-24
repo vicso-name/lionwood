@@ -36,16 +36,16 @@ $industries = ( $industries && ! is_wp_error( $industries ) ) ? $industries : []
 // Service taxonomy (case_study_service) — comma-joined
 $services = get_the_terms( $case_id, 'case_study_service' );
 $services = ( $services && ! is_wp_error( $services ) ) ? $services : [];
-$services_str = implode( ', ', array_map( fn( $t ) => $t->name, $services ) );
+$services_str = implode( ', ', array_map( fn( $t ) => esc_html( $t->name ), $services ) );
 ?>
 
 <article class="ccg-card">
-    <a class="ccg-card__link" href="<?php echo $permalink; ?>" aria-label="<?php echo $title; ?>">
+    <a class="ccg-card__link" href="<?php echo esc_url( $permalink ); ?>" aria-label="<?php echo esc_attr( $title ); ?>">
 
         <?php /* ── Image area ─────────────────────────────────────────── */ ?>
         <div class="ccg-card__image">
             <?php if ( $thumb_url ) : ?>
-                <div class="ccg-card__image-bg" style="background-image: url('<?php echo $thumb_url; ?>');"></div>
+                <div class="ccg-card__image-bg" style="background-image: url('<?php echo esc_url( $thumb_url ); ?>');"></div>
             <?php else : ?>
                 <div class="ccg-card__image-bg"></div>
             <?php endif; ?>
@@ -63,19 +63,19 @@ $services_str = implode( ', ', array_map( fn( $t ) => $t->name, $services ) );
         <?php if ( $date_str || $country ) : ?>
             <div class="ccg-card__meta">
                 <?php if ( $date_str ) : ?>
-                    <span class="ccg-card__meta-date"><?php echo $date_str; ?></span>
+                    <span class="ccg-card__meta-date"><?php echo esc_html( $date_str ); ?></span>
                 <?php endif; ?>
                 <?php if ( $date_str && $country ) : ?>
                     <span class="ccg-card__meta-sep" aria-hidden="true"></span>
                 <?php endif; ?>
                 <?php if ( $country ) : ?>
-                    <span class="ccg-card__meta-country"><?php echo $country; ?></span>
+                    <span class="ccg-card__meta-country"><?php echo esc_html( $country ); ?></span>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
 
         <?php /* ── Title ────────────────────────────────────────────────── */ ?>
-        <h3 class="ccg-card__title"><?php echo $title; ?></h3>
+        <h3 class="ccg-card__title"><?php echo esc_html( $title ); ?></h3>
 
         <?php /* ── Services ─────────────────────────────────────────────── */ ?>
         <?php if ( $services_str ) : ?>

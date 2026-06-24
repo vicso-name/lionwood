@@ -196,22 +196,6 @@
             "append": ""
         },
         {
-            "key": "field_wpd_terms_link",
-            "label": "Terms & Conditions Link",
-            "name": "terms_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "Link for \"Terms & Conditions\" in the form disclaimer.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_wpd_pdf_file",
             "label": "Whitepaper PDF",
             "name": "pdf_file",
@@ -230,26 +214,6 @@
             "min_size": "",
             "max_size": "",
             "mime_types": "pdf"
-        },
-        {
-            "key": "field_wpd_hubspot_form_id_override",
-            "label": "HubSpot Form GUID (override)",
-            "name": "hubspot_form_id_override",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Leave empty to use the default form from Settings → HubSpot. Fill in only if this whitepaper needs its own separate HubSpot form.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_wpd_success_message",
@@ -336,5 +300,5 @@
     "active": true,
     "description": "Lead-gate form block for whitepaper download. Validates and submits to a configurable endpoint, then reveals PDF download link.",
     "show_in_rest": 0,
-    "modified": 1782218531
+    "modified": 1782321361
 }

@@ -52,10 +52,10 @@ $check_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" vie
             <div class="chs-col chs-col--left">
 
                 <?php if ( $client_name ) : ?>
-                    <p class="chs-client chs-anim" data-delay="0"><?php echo $client_name; ?></p>
+                    <p class="chs-client chs-anim" data-delay="0"><?php echo esc_html( $client_name ); ?></p>
                 <?php endif; ?>
 
-                <h1 class="chs-title chs-anim" data-delay="100"><?php echo $title; ?></h1>
+                <h1 class="chs-title chs-anim" data-delay="100"><?php echo esc_html( $title ); ?></h1>
 
                 <?php if ( $description ) : ?>
                     <p class="chs-description chs-anim" data-delay="220"><?php echo $description; ?></p>

@@ -36,9 +36,10 @@ while ( have_posts() ) :
     $sub_show       = get_field( 'sidebar_subscribe_show' );
     $sub_text       = get_field( 'sidebar_subscribe_text' )   ?: 'Discover innovative strategies and forward-thinking ideas to enhance your digital products.';
     $sub_btn_label  = get_field( 'sidebar_subscribe_label' )  ?: 'Subscribe';
-    $sub_btn_link   = get_field( 'sidebar_subscribe_link' );
-    $sub_url        = ! empty( $sub_btn_link['url'] ) ? esc_url( $sub_btn_link['url'] ) : '#';
-    $sub_target     = ! empty( $sub_btn_link['target'] ) ? $sub_btn_link['target'] : '_self';
+
+    // HubSpot credentials for subscribe popup — from global options (Theme Settings)
+    $hs_portal_id        = esc_attr( get_field( 'hs_portal_id', 'option' ) ?: '' );
+    $hs_subscribe_form   = esc_attr( get_field( 'hs_default_form_id', 'option' ) ?: '' );
 
     $ai_show        = get_field( 'sidebar_ai_show' );
 
@@ -113,12 +114,11 @@ foreach ( $hero_blocks as $block ) {
             <?php if ( $sub_show !== false ) : ?>
             <div class="sp-subscribe">
                 <p class="sp-subscribe__text"><?php echo esc_html( $sub_text ); ?></p>
-                <a
+                <button
+                    type="button"
                     class="sp-subscribe__btn"
-                    href="<?php echo $sub_url; ?>"
-                    target="<?php echo esc_attr( $sub_target ); ?>"
-                    <?php echo $sub_target === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>
-                ><?php echo esc_html( $sub_btn_label ); ?></a>
+                    data-sp-subscribe-open
+                ><?php echo esc_html( $sub_btn_label ); ?></button>
             </div>
             <?php endif; ?>
 
@@ -230,6 +230,78 @@ foreach ( $hero_blocks as $block ) {
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
+
+<?php /* ── Subscribe popup ─────────────────────────────────────────────── */ ?>
+<div
+    class="sp-popup"
+    id="sp-popup"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-label="<?php esc_attr_e( 'Subscribe to newsletter', 'lionwood' ); ?>"
+>
+    <div class="sp-popup__overlay" data-sp-popup-close aria-hidden="true"></div>
+    <div class="sp-popup__card">
+
+        <button
+            class="sp-popup__close"
+            type="button"
+            data-sp-popup-close
+            aria-label="<?php esc_attr_e( 'Close', 'lionwood' ); ?>"
+        >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <p class="sp-popup__title"><?php esc_html_e( 'Stay in the Loop', 'lionwood' ); ?></p>
+        <p class="sp-popup__desc"><?php esc_html_e( 'Get fresh insights and forward-thinking ideas delivered straight to your inbox.', 'lionwood' ); ?></p>
+
+        <form
+            class="sp-popup__form"
+            data-sp-popup-form
+            <?php if ( $hs_portal_id ) : ?>data-hs-portal="<?php echo $hs_portal_id; ?>"<?php endif; ?>
+            <?php if ( $hs_subscribe_form ) : ?>data-hs-form="<?php echo $hs_subscribe_form; ?>"<?php endif; ?>
+            novalidate
+        >
+            <input
+                class="sp-popup__input"
+                type="text"
+                name="full_name"
+                placeholder="<?php esc_attr_e( 'Full Name *', 'lionwood' ); ?>"
+                required
+                autocomplete="name"
+            >
+            <input
+                class="sp-popup__input"
+                type="email"
+                name="email"
+                placeholder="<?php esc_attr_e( 'Business Email *', 'lionwood' ); ?>"
+                required
+                autocomplete="email"
+            >
+            <p class="sp-popup__terms">
+                <?php esc_html_e( 'By clicking the button, I agree to the', 'lionwood' ); ?>
+                <a href="<?php echo esc_url( home_url( '/policy-policy/' ) ); ?>" class="sp-popup__terms-link"><?php esc_html_e( 'Terms & Conditions', 'lionwood' ); ?></a>
+            </p>
+            <button type="submit" class="sp-popup__submit" data-sp-popup-submit>
+                <?php esc_html_e( 'Subscribe', 'lionwood' ); ?>
+            </button>
+            <p class="sp-popup__error" data-sp-popup-error hidden></p>
+        </form>
+
+        <div class="sp-popup__success" data-sp-popup-success hidden>
+            <div class="sp-popup__success-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 16L13 23L26 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <p class="sp-popup__success-title"><?php esc_html_e( "You're Subscribed!", 'lionwood' ); ?></p>
+            <p class="sp-popup__success-text"><?php esc_html_e( 'Thanks for joining. Fresh insights are on their way.', 'lionwood' ); ?></p>
+        </div>
+
+    </div>
+</div>
 
 <?php
 endwhile;

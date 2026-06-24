@@ -85,12 +85,12 @@ $panels = [
             <button class="aby-tab aby-tab--active"
                     data-target="aby-panel-awards"
                     role="tab" aria-selected="true">
-                <?php echo $awards_label; ?>
+                <?php echo esc_html( $awards_label ); ?>
             </button>
             <button class="aby-tab"
                     data-target="aby-panel-certs"
                     role="tab" aria-selected="false">
-                <?php echo $certs_label; ?>
+                <?php echo esc_html( $certs_label ); ?>
             </button>
         </nav>
 
@@ -107,10 +107,10 @@ $panels = [
 
                 <div class="aby-heading">
                     <?php if ( $panel['title_1'] ) : ?>
-                        <span class="aby-heading__line1"><?php echo $panel['title_1']; ?></span>
+                        <span class="aby-heading__line1"><?php echo esc_html( $panel['title_1'] ); ?></span>
                     <?php endif; ?>
                     <?php if ( $panel['title_2'] ) : ?>
-                        <span class="aby-heading__line2"><?php echo $panel['title_2']; ?></span>
+                        <span class="aby-heading__line2"><?php echo esc_html( $panel['title_2'] ); ?></span>
                     <?php endif; ?>
                 </div>
 
@@ -153,23 +153,23 @@ $panels = [
 
                         <div class="aby-item__logo-card">
                             <?php if ( $logo_url ) : ?>
-                                <img src="<?php echo $logo_url; ?>" alt="<?php echo $logo_alt; ?>" loading="lazy">
+                                <img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" loading="lazy">
                             <?php endif; ?>
                         </div>
 
                         <div class="aby-item__detail">
                             <?php if ( $title_r ) : ?>
-                                <h3 class="aby-item__title"><?php echo $title_r; ?></h3>
+                                <h3 class="aby-item__title"><?php echo esc_html( $title_r ); ?></h3>
                             <?php endif; ?>
                             <?php if ( $desc ) : ?>
-                                <p class="aby-item__desc"><?php echo $desc; ?></p>
+                                <p class="aby-item__desc"><?php echo esc_html( $desc ); ?></p>
                             <?php endif; ?>
                             <?php if ( $link_url ) : ?>
                                 <a class="aby-item__link"
-                                   href="<?php echo $link_url; ?>"
+                                   href="<?php echo esc_url( $link_url ); ?>"
                                    target="<?php echo esc_attr( $link_target ); ?>"
                                    <?php echo $link_rel ? 'rel="' . esc_attr( $link_rel ) . '"' : ''; ?>>
-                                    <?php echo $link_label; ?>
+                                    <?php echo esc_html( $link_label ); ?>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none" aria-hidden="true"><path d="M5.92753 16.4891L16.4935 5.92318M8.56902 5.92318L16.4935 5.92318L16.4935 13.8477" stroke="#F7F7F7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             <?php endif; ?>
@@ -190,7 +190,7 @@ $panels = [
                                 data-item="<?php echo $grid_i; ?>"
                                 aria-label="<?php echo esc_attr( $item['title'] ?? '' ); ?>">
                             <?php if ( $logo_url ) : ?>
-                                <img src="<?php echo $logo_url; ?>" alt="<?php echo $logo_alt; ?>" loading="lazy">
+                                <img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $logo_alt ); ?>" loading="lazy">
                             <?php endif; ?>
                         </button>
                     <?php endforeach; ?>

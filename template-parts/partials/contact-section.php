@@ -172,7 +172,7 @@ $section_style = sprintf(
                                 <p class="cs-form__terms">
                                     <?php esc_html_e( 'By clicking the button, I agree to the', 'lionwood' ); ?>
                                     <a href="<?php echo $terms_url; ?>"
-                                        target="<?php echo $terms_target; ?>"
+                                        target="<?php echo esc_attr( $terms_target ); ?>"
                                         <?php echo '_blank' === $terms_target ? 'rel="noopener noreferrer"' : ''; ?>
                                         class="cs-form__terms-link"
                                     ><?php esc_html_e( 'Terms & Conditions', 'lionwood' ); ?></a>

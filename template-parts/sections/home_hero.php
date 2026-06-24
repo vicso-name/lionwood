@@ -118,14 +118,14 @@ $first_img      = $first_industry['image'] ?? null;
             <div class="hh-ctas hh-anim" data-delay="1000">
                 <a
                     class="hh-btn hh-btn--primary"
-                    href="<?php echo $est_url; ?>"
+                    href="<?php echo esc_url( $est_url ); ?>"
                     target="<?php echo esc_attr( $est_target ); ?>"
                     <?php echo '_blank' === $est_target ? 'rel="noopener noreferrer"' : ''; ?>
-                ><?php echo $est_label; ?></a>
+                ><?php echo esc_html( $est_label ); ?></a>
 
                 <a
                     class="hh-btn hh-btn--outline js-book-meeting"
-                    href="<?php echo $mtg_url; ?>"
+                    href="<?php echo esc_url( $mtg_url ); ?>"
                     target="<?php echo esc_attr( $mtg_target ); ?>"
                     <?php echo '_blank' === $mtg_target ? 'rel="noopener noreferrer"' : ''; ?>
                 >
@@ -136,7 +136,7 @@ $first_img      = $first_industry['image'] ?? null;
                         <path d="M6 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
                         <path d="M12 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
                     </svg>
-                    <?php echo $mtg_label; ?>
+                    <?php echo esc_html( $mtg_label ); ?>
                 </a>
             </div>
 
@@ -148,7 +148,7 @@ $first_img      = $first_industry['image'] ?? null;
 <?php /* ── Sticky Book a Meeting clone (appears on scroll) ──────────── */ ?>
 <a
     class="hh-sticky-btn js-sticky-meeting"
-    href="<?php echo $mtg_url; ?>"
+    href="<?php echo esc_url( $mtg_url ); ?>"
     target="<?php echo esc_attr( $mtg_target ); ?>"
     <?php echo '_blank' === $mtg_target ? 'rel="noopener noreferrer"' : ''; ?>
     aria-label="<?php echo esc_attr( $mtg_label ); ?>"
@@ -159,5 +159,5 @@ $first_img      = $first_industry['image'] ?? null;
         <path d="M6 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
         <path d="M12 1.5V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
     </svg>
-    <?php echo $mtg_label; ?>
+    <?php echo esc_html( $mtg_label ); ?>
 </a>

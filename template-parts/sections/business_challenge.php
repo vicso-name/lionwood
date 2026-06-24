@@ -66,8 +66,8 @@ if ( ! function_exists( 'smplfy_bc_card' ) ) {
         <?php /* ── Header: heading + description ────────────────────────── */ ?>
         <div class="bc-header">
             <div class="bc-heading">
-                <span class="bc-heading__line-1"><?php echo $title_line_1; ?></span>
-                <span class="bc-heading__line-2"><?php echo $title_line_2; ?></span>
+                <span class="bc-heading__line-1"><?php echo esc_html( $title_line_1 ); ?></span>
+                <span class="bc-heading__line-2"><?php echo esc_html( $title_line_2 ); ?></span>
             </div>
             <?php if ( $description ) : ?>
                 <p class="bc-description"><?php echo $description; ?></p>

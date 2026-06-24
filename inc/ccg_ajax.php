@@ -17,6 +17,11 @@ if ( ! function_exists( 'smplfy_ccg_ajax' ) ) {
         $offset      = absint( $_POST['offset']   ?? 0 );
         $taxonomy    = sanitize_key( $_POST['taxonomy'] ?? '' );
 
+        $allowed_taxonomies = [ 'case_study_category', 'case_study_service' ];
+        if ( $taxonomy && ! in_array( $taxonomy, $allowed_taxonomies, true ) ) {
+            wp_send_json_error( [ 'message' => 'invalid_taxonomy' ], 400 );
+        }
+
         // term_ids comes as JSON array string
         $term_ids_raw = sanitize_text_field( $_POST['term_ids'] ?? '[]' );
         $term_ids     = json_decode( $term_ids_raw, true );

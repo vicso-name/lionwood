@@ -79,25 +79,25 @@ $f = $panels[0];
 
                     <?php /* ── Funnel card (left column) ── */ ?>
                     <div class="abt-funnel" data-field="funnel">
-                        <span class="abt-funnel__label" data-field="funnel_label"><?php echo $f['funnel_label']; ?></span>
+                        <span class="abt-funnel__label" data-field="funnel_label"><?php echo esc_html( $f['funnel_label'] ); ?></span>
                         <div class="abt-funnel__rows">
                             <div class="abt-funnel__row abt-funnel__row--1">
                                 <svg viewBox="0 0 267 83" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M254.819 0C262.376 1.05967e-05 268.053 6.90212 266.593 14.3174L254.057 78H12.766L0.22987 14.3174C-1.22961 6.90222 4.44589 0.00024713 12.0033 0H254.819Z" fill="white"/>
                                 </svg>
-                                <span data-field="funnel_row_1"><?php echo $f['funnel_row_1']; ?></span>
+                                <span data-field="funnel_row_1"><?php echo esc_html( $f['funnel_row_1'] ); ?></span>
                             </div>
                             <div class="abt-funnel__row abt-funnel__row--2">
                                 <svg viewBox="0 83 267 88" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path opacity="0.5" d="M237.001 166H30.3545L15 88H252.355L237.001 166Z" fill="white"/>
                                 </svg>
-                                <span data-field="funnel_row_2"><?php echo $f['funnel_row_2']; ?></span>
+                                <span data-field="funnel_row_2"><?php echo esc_html( $f['funnel_row_2'] ); ?></span>
                             </div>
                             <div class="abt-funnel__row abt-funnel__row--3">
                                 <svg viewBox="0 171 267 83" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path opacity="0.2" d="M221.261 244.317C220.153 249.943 215.22 254 209.486 254H57.2227C51.4888 254 46.5557 249.943 45.4482 244.317L32 176H234.709L221.261 244.317Z" fill="white"/>
                                 </svg>
-                                <span data-field="funnel_row_3"><?php echo $f['funnel_row_3']; ?></span>
+                                <span data-field="funnel_row_3"><?php echo esc_html( $f['funnel_row_3'] ); ?></span>
                             </div>
                         </div>
                     </div>
@@ -107,10 +107,10 @@ $f = $panels[0];
 
                         <?php /* Stat card */ ?>
                         <div class="abt-stat" data-field="stat">
-                            <span class="abt-stat__label" data-field="stat_label"><?php echo $f['stat_label']; ?></span>
+                            <span class="abt-stat__label" data-field="stat_label"><?php echo esc_html( $f['stat_label'] ); ?></span>
                             <div class="abt-stat__bottom">
-                                <p class="abt-stat__value" data-field="stat_value" data-target="<?php echo esc_attr( preg_replace('/[^0-9.]/', '', $f['stat_value']) ); ?>" data-suffix="<?php echo esc_attr( $f['stat_suffix'] ); ?>">0<?php echo $f['stat_suffix']; ?></p>
-                                <p class="abt-stat__desc" data-field="stat_desc"><?php echo $f['stat_desc']; ?></p>
+                                <p class="abt-stat__value" data-field="stat_value" data-target="<?php echo esc_attr( preg_replace('/[^0-9.]/', '', $f['stat_value']) ); ?>" data-suffix="<?php echo esc_attr( $f['stat_suffix'] ); ?>">0<?php echo esc_html( $f['stat_suffix'] ); ?></p>
+                                <p class="abt-stat__desc" data-field="stat_desc"><?php echo esc_html( $f['stat_desc'] ); ?></p>
                             </div>
                         </div>
 
@@ -123,8 +123,8 @@ $f = $panels[0];
                                 </svg>
                             </div>
                             <div class="abt-gender__badges">
-                                <span class="abt-gender__badge abt-gender__badge--light" data-field="badge_1_text"><?php echo $f['badge_1_text']; ?></span>
-                                <span class="abt-gender__badge abt-gender__badge--red"   data-field="badge_2_text"><?php echo $f['badge_2_text']; ?></span>
+                                <span class="abt-gender__badge abt-gender__badge--light" data-field="badge_1_text"><?php echo esc_html( $f['badge_1_text'] ); ?></span>
+                                <span class="abt-gender__badge abt-gender__badge--red"   data-field="badge_2_text"><?php echo esc_html( $f['badge_2_text'] ); ?></span>
                             </div>
                         </div>
 
@@ -155,7 +155,7 @@ $f = $panels[0];
                         aria-expanded="<?php echo $is_first ? 'true' : 'false'; ?>"
                         aria-controls="<?php echo esc_attr( $svc_id ); ?>"
                     >
-                        <span class="abt-accordion__title"><?php echo $title; ?></span>
+                        <span class="abt-accordion__title"><?php echo esc_html( $title ); ?></span>
                         <span class="abt-accordion__icon" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
                                 <path d="M9.12534 3.04484L9.12534 15.2187M13.6906 10.6535L9.12534 15.2187L4.56012 10.6535" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -168,7 +168,7 @@ $f = $panels[0];
                         <?php endif; ?>
                         <?php if ( $link_url ) : ?>
                             <div class="abt-accordion__cta-row">
-                                <a class="abt-accordion__cta-btn" href="<?php echo $link_url; ?>" target="<?php echo esc_attr( $link_tgt ); ?>"><?php echo $link_lbl; ?></a>
+                                <a class="abt-accordion__cta-btn" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_tgt ); ?>"><?php echo esc_html( $link_lbl ); ?></a>
                             </div>
                         <?php endif; ?>
                     </div>
