@@ -116,13 +116,16 @@ $skip_cells = [
 
             <?php /* CTA Card overlaid on grid ─────────────────────────── */ ?>
             <div class="cta-card">
-                <?php if ( $card_bg ) : ?>
-                    <div
-                        class="cta-card__bg"
-                        style="background-image: url('<?php echo esc_url( $card_bg['url'] ); ?>');"
-                        aria-hidden="true"
-                    ></div>
-                <?php endif; ?>
+                <?php
+                $bg_url = $card_bg
+                    ? esc_url( $card_bg['url'] )
+                    : esc_url( THEME_URI . '/assets/img/cta_block_bg.webp' );
+                ?>
+                <div
+                    class="cta-card__bg"
+                    style="background-image: url('<?php echo $bg_url; ?>');"
+                    aria-hidden="true"
+                ></div>
                 <div class="cta-card__gradient" aria-hidden="true"></div>
 
                 <?php if ( $card_text ) : ?>
