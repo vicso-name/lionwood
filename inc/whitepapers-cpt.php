@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Custom Post Type: Whitepapers
  * Taxonomy: Whitepaper Category (hierarchical)

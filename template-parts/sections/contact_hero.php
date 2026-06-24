@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Contact Hero Section
  * Slug: acf/contact-hero

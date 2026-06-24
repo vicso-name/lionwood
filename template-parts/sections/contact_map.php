@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Contact Map Section
  * Slug: acf/contact-map

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Call to Action
  *

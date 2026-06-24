@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Article Slider
  * Slug: acf/article-slider

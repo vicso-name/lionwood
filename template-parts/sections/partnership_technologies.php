@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Partnership Technologies Section
  * Slug: acf/partnership-technologies

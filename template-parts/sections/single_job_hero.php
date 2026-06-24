@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Single Job Hero
  * Slug: acf/single-job-hero

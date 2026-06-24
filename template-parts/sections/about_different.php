@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: About Different (What Makes Us Different)
  * Slug: acf/about-different

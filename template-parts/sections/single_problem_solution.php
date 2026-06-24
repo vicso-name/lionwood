@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Single Problem Solution
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Career Hero Section
  * Slug: acf/career-hero

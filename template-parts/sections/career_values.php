@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Career Values Section
  * Slug: acf/career-values

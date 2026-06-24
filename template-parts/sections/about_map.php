@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: About Map Section
  * Slug: acf/about-map

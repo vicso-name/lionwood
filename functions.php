@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * lionwood functions and definitions

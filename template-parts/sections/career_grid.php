@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Career Grid
  * Slug: acf/career-grid

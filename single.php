@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template: Single Post
  * Three-column layout: left sidebar | content | right sidebar

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Career Possibilities
  * Slug: acf/career-possibilities

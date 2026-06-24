@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template: Case Study — Service taxonomy archive
  *

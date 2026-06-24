@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: About Our Talent
  * Slug: acf/about-talent

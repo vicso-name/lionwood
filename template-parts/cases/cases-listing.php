@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shared partial: Cases listing grid with filter pills
  *

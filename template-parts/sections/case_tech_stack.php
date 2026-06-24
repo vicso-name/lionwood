@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Case Tech Stack Section
  *

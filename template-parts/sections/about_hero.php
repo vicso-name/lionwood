@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: About Hero Section
  *

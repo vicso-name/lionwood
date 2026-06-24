@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Partial: Insights Card
  *

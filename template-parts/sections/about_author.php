@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: About Author
  * Slug: acf/about-author

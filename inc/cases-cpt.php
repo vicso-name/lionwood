@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Custom Post Type: Cases (Case Studies)
  * Taxonomies: Industry, Service (hierarchical — like categories)

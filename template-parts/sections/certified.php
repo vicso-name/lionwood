@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Certified Section
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Block: Choose Cases Grid
  *
