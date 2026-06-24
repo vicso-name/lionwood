@@ -27,7 +27,7 @@ $label_articles    = esc_html( get_field( 'label_articles' )    ?: __( 'Articles
 $label_news        = esc_html( get_field( 'label_news' )        ?: __( 'News', 'lionwood' ) );
 $label_whitepapers = esc_html( get_field( 'label_whitepapers' ) ?: __( 'Whitepapers', 'lionwood' ) );
 
-$per_page = absint( get_field( 'per_page' ) ?: 6 );
+$per_page = absint( get_field( 'per_page' ) ?: 8 );
 
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
@@ -170,7 +170,7 @@ foreach ( $type_map as $key => $cfg ) {
             <?php foreach ( $posts as $i => $post ) :
                 get_template_part( 'template-parts/partials/insights-card', null, [
                     'post_id'  => $post->ID,
-                    'featured' => ( $i === 0 ),
+                    'featured' => ( $i === 0 && ! $active_cat_id ),
                 ] );
             endforeach; ?>
         </div><!-- .ig-grid -->

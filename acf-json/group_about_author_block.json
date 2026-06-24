@@ -41,22 +41,6 @@
             "append": ""
         },
         {
-            "key": "field_aa_all_posts_link",
-            "label": "All Posts Button Link",
-            "name": "all_posts_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "Leave empty to auto-link to author archive page.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_aa_show_rating",
             "label": "Show Rating Widget",
             "name": "show_rating",
@@ -95,5 +79,5 @@
     "active": true,
     "description": "About author block — author data pulled from user profile (ACF). Only section title, all posts link and rating widget configurable here.",
     "show_in_rest": 0,
-    "modified": 1781857010
+    "modified": 1782292081
 }

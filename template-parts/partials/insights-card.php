@@ -36,6 +36,16 @@ if ( $post ) {
         : esc_html( wp_trim_words( strip_shortcodes( $post->post_content ), 20, '…' ) );
 }
 
+// Date
+$post_date = get_the_date( 'j M, Y', $post_id );
+
+// Read time (~200 words/min)
+$content    = get_post_field( 'post_content', $post_id );
+$word_count = str_word_count( wp_strip_all_tags( $content ) );
+$read_min   = max( 1, (int) ceil( $word_count / 200 ) );
+/* translators: %d = number of minutes */
+$read_time  = sprintf( _n( '%d min read', '%d min read', $read_min, 'lionwood' ), $read_min );
+
 // Category tag — handles all three post types
 $tax_map  = [
     'post'       => 'category',
@@ -91,6 +101,11 @@ $card_class = 'ia-card ig-card' . ( $featured ? ' ia-card--featured ig-card--fea
             <?php if ( $excerpt ) : ?>
                 <p class="ia-card__excerpt"><?php echo $excerpt; ?></p>
             <?php endif; ?>
+            <div class="ia-card__meta">
+                <span class="ia-card__meta-date"><?php echo esc_html( $post_date ); ?></span>
+                <span class="ia-card__meta-sep" aria-hidden="true">|</span>
+                <span class="ia-card__meta-read"><?php echo esc_html( $read_time ); ?></span>
+            </div>
         </div>
 
     </a>

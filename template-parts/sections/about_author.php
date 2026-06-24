@@ -10,7 +10,7 @@
  *  - LinkedIn:   ACF user field 'author_linkedin_url' (shared, no lang suffix)
  *  - Experience: ACF block override repeater          → ACF user 'author_expertise_{lang}'
  *  - Bio:        ACF block override                   → ACF user 'author_bio_short_{lang}'
- *  - All posts:  ACF block link override              → get_author_posts_url()
+ *  - All posts:  get_author_posts_url() — auto-generated, no ACF field needed
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -55,15 +55,10 @@ $author_bio = get_field( "author_bio_short_{$lang_safe}", $user_key )
            ?: get_field( 'author_bio_short_en', $user_key )
            ?: get_the_author_meta( 'description' );
 
-// ── All posts link — block override → author archive ─────────────────────────
-$all_posts_link = get_field( 'all_posts_link' );
-$all_posts_href = ! empty( $all_posts_link['url'] )
-    ? esc_url( $all_posts_link['url'] )
-    : esc_url( get_author_posts_url( $author_id ) );
-$all_posts_lbl  = ! empty( $all_posts_link['title'] )
-    ? esc_html( $all_posts_link['title'] )
-    : __( 'All articles by author', 'lionwood' );
-$all_posts_tgt  = ! empty( $all_posts_link['target'] ) ? $all_posts_link['target'] : '_self';
+// ── All posts link — author archive (auto) ───────────────────────────────────
+$all_posts_href = esc_url( get_author_posts_url( $author_id ) );
+$all_posts_lbl  = __( 'All articles by author', 'lionwood' );
+$all_posts_tgt  = '_self';
 
 // ── Rating ────────────────────────────────────────────────────────────────────
 $show_rating  = get_field( 'show_rating' );

@@ -76,7 +76,7 @@ if ( ! function_exists( 'smplfy_ig_ajax' ) ) {
         foreach ( $posts as $i => $post ) {
             get_template_part( 'template-parts/partials/insights-card', null, [
                 'post_id'  => $post->ID,
-                'featured' => ( 'filter' === $action_type && $i === 0 ),
+                'featured' => ( 'filter' === $action_type && $i === 0 && empty( $term_ids ) ),
             ] );
         }
         $html = ob_get_clean();

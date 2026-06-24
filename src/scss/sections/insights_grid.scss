@@ -65,3 +65,84 @@
     margin-top: 48px;
   }
 }
+
+// ── Grid layout override for ig-grid ─────────────────────────────────────────
+// Overrides the asymmetric 1.9fr layout from insights_articles.scss.
+// Default: first card spans 2 cols, second card fills col 3.
+// Filtered: all cards equal (no .ia-card--featured present).
+
+@media (min-width: 1024px) {
+  .ia-section__grid.ig-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+
+    .ia-card--featured {
+      grid-column: span 2;
+    }
+
+    .ia-card {
+      .ia-card__image-wrap {
+        height: 460px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ia-section__grid.ig-grid {
+    .ia-card--featured {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+// ── Mobile: horizontal scroll for tabs + pills (no scrollbar) ────────────────
+
+@media (max-width: 767px) {
+  .ig-filter {
+    .ccg-tabs {
+      overflow-x:          auto;
+      flex-wrap:           nowrap;
+      justify-content:     flex-start;
+      scrollbar-width:     none;
+      -ms-overflow-style:  none;
+      padding-bottom:      2px; // keep active underline visible
+
+      &::-webkit-scrollbar { display: none; }
+    }
+    .ccg-tab{
+        font-size: 18px;
+    }
+    .ccg-pills {
+      overflow-x:         auto;
+      flex-wrap:          nowrap;
+      scrollbar-width:    none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar { display: none; }
+
+      .ccg-pill {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+// ── Card meta: date + read time ───────────────────────────────────────────────
+
+.ia-card__meta {
+  display:     flex;
+  align-items: center;
+  gap:         8px;
+  margin-top:  10px;
+  color:       var(--color-black, #111319);
+  font-family: var(--font-primary);
+  font-size:   16px;
+  font-weight: 400;
+  line-height: 120%;
+  opacity:     0.7;
+}
+
+.ia-card__meta-sep {
+  opacity: 0.5;
+}

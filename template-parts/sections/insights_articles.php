@@ -33,9 +33,12 @@ $section_style = sprintf(
     $pt, $pb, $pt_mob, $pb_mob
 );
 
-$explore_url    = ! empty( $explore_raw['url'] )    ? esc_url( $explore_raw['url'] )       : esc_url( home_url( '/blog/' ) );
-$explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] )    : __( 'Explore More', 'lionwood' );
-$explore_target = ! empty( $explore_raw['target'] ) ? $explore_raw['target']               : '_self';
+$_insights_page_id = lionwood_get_template_page_id( 'page-templates/insights-page.php' );
+$_insights_url     = $_insights_page_id ? get_permalink( $_insights_page_id ) : home_url( '/blog/' );
+
+$explore_url    = ! empty( $explore_raw['url'] )    ? esc_url( $explore_raw['url'] )    : esc_url( $_insights_url );
+$explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] ) : __( 'Explore More', 'lionwood' );
+$explore_target = ! empty( $explore_raw['target'] ) ? $explore_raw['target']            : '_self';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
