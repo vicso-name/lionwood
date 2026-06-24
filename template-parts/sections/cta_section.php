@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Call to Action
  *
@@ -25,7 +25,7 @@ $pb     = absint( $args['padding_bottom']     ?? get_field( 'padding_bottom' )  
 $pt_mob = absint( $args['padding_top_mob']    ?? get_field( 'padding_top_mob' )    ?? 70 );
 $pb_mob = absint( $args['padding_bottom_mob'] ?? get_field( 'padding_bottom_mob' ) ?? 70 );
 
-$title_top     = $args['title_top'] ?? get_field( 'title_top' ) ?? __( 'Ready to Accelerate', 'theme' );
+$title_top     = $args['title_top'] ?? get_field( 'title_top' ) ?? __( 'Ready to Accelerate', 'lionwood' );
 $title_bot_raw = $args['title_bottom'] ?? get_field( 'title_bottom' ) ?? '';
 $title_bottom  = $title_bot_raw ? wp_kses( $title_bot_raw, [ 'br' => [] ] ) : 'Your Business Growth?<br>Contact Us.';
 
@@ -37,7 +37,7 @@ $card_bg   = $args['card_bg']   ?? get_field( 'card_bg' )   ?? null;
 $card_text = $args['card_text'] ?? get_field( 'card_text' ) ?? '';
 $card_link = $args['card_link'] ?? get_field( 'card_link' ) ?? null;
 $link_url  = ! empty( $card_link['url'] )    ? esc_url( $card_link['url'] )    : '';
-$link_lbl  = ! empty( $card_link['title'] )  ? esc_html( $card_link['title'] ) : __( 'Fill the Form', 'theme' );
+$link_lbl  = ! empty( $card_link['title'] )  ? esc_html( $card_link['title'] ) : __( 'Fill the Form', 'lionwood' );
 $link_tgt  = ! empty( $card_link['target'] ) ? $card_link['target']             : '_self';
 
 $decor_enabled = $args['decor_bottom_enabled'] ?? get_field( 'decor_bottom_enabled' ) ?? false;

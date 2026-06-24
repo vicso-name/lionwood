@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Whitepaper Hero
  *
@@ -25,7 +25,7 @@ $body_raw      = get_field( 'body_text' );
 $body_text     = $body_raw ? wp_kses( $body_raw, [ 'br' => [] ] ) : '';
 $cta_link      = get_field( 'cta_link' );
 $cta_url       = ! empty( $cta_link['url'] )    ? esc_url( $cta_link['url'] )    : '';
-$cta_label     = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'Download Whitepaper', 'theme' );
+$cta_label     = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'Download Whitepaper', 'lionwood' );
 $cta_target    = ! empty( $cta_link['target'] ) ? $cta_link['target']             : '_self';
 $image         = get_field( 'image' );
 $decor_enabled = get_field( 'decor_bottom_enabled' ) ?? true;

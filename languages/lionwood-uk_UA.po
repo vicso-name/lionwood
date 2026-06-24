@@ -1,0 +1,1215 @@
+# Ukrainian translation of lionwood theme
+# Copyright (C) 2026 Lionwood
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lionwood 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 09:00+0000\n"
+"PO-Revision-Date: 2026-06-24 09:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Ukrainian\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+# ── Frontend: navigation & layout ──────────────────────────────────────────────
+
+msgid "Main navigation"
+msgstr "Головна навігація"
+
+msgid "Primary Navigation"
+msgstr "Головна навігація"
+
+msgid "Primary Menu"
+msgstr "Головне меню"
+
+msgid "Footer Navigation"
+msgstr "Навігація у футері"
+
+msgid "Industry navigation"
+msgstr "Навігація по галузях"
+
+msgid "Select language"
+msgstr "Оберіть мову"
+
+msgid "Open menu"
+msgstr "Відкрити меню"
+
+msgid "Close menu"
+msgstr "Закрити меню"
+
+msgid "Toggle %s submenu"
+msgstr "Переключити підменю %s"
+
+msgid "Breadcrumb"
+msgstr "Навігаційний шлях"
+
+msgid "Home"
+msgstr "Головна"
+
+msgid "Search: %s"
+msgstr "Пошук: %s"
+
+msgid "404 Not Found"
+msgstr "404 Не знайдено"
+
+msgid "Sidebar"
+msgstr "Бічна панель"
+
+msgid "Add widgets here."
+msgstr "Додайте віджети тут."
+
+# ── Frontend: single post ────────────────────────────────────────────────────
+
+msgid "AI Summary"
+msgstr "AI Підсумок"
+
+msgid "SECTIONS"
+msgstr "РОЗДІЛИ"
+
+msgid "Table of contents"
+msgstr "Зміст"
+
+msgid "Toggle sections"
+msgstr "Показати/сховати розділи"
+
+msgid "Share this article"
+msgstr "Поділитися статтею"
+
+msgid "Rate this article"
+msgstr "Оцінити статтю"
+
+msgid "%d out of 5 stars"
+msgstr "%d з 5 зірок"
+
+msgid "%1$s ratings, average: %2$s out of 5"
+msgstr "%1$s оцінок, середнє: %2$s з 5"
+
+msgid "Play video"
+msgstr "Відтворити відео"
+
+msgid "All articles by author"
+msgstr "Всі статті автора"
+
+msgid "Explore author's posts"
+msgstr "Публікації автора"
+
+msgid "Published works"
+msgstr "Публікації"
+
+msgid "No publications yet."
+msgstr "Публікацій поки що немає."
+
+msgid "in the external resources"
+msgstr "у зовнішніх ресурсах"
+
+msgid "posts"
+msgstr "публікацій"
+
+# ── Frontend: buttons & CTAs ────────────────────────────────────────────────
+
+msgid "Load More"
+msgstr "Завантажити ще"
+
+msgid "Load More (+%d)"
+msgstr "Завантажити ще (+%d)"
+
+msgid "Load more"
+msgstr "Завантажити ще"
+
+msgid "Load more (+%d)"
+msgstr "Завантажити ще (+%d)"
+
+msgid "Read More"
+msgstr "Читати далі"
+
+msgid "See More"
+msgstr "Дивитися більше"
+
+msgid "Learn More"
+msgstr "Дізнатися більше"
+
+msgid "Learn more about %s"
+msgstr "Дізнатися більше про %s"
+
+msgid "More"
+msgstr "Більше"
+
+msgid "more"
+msgstr "ще"
+
+msgid "View now"
+msgstr "Переглянути"
+
+msgid "Explore"
+msgstr "Дослідити"
+
+msgid "Explore More"
+msgstr "Дізнатися більше"
+
+msgid "Contact Us"
+msgstr "Зв'язатися з нами"
+
+msgid "Book a Meeting"
+msgstr "Записатися на зустріч"
+
+msgid "Book Consultation"
+msgstr "Замовити консультацію"
+
+msgid "Back to Home"
+msgstr "На головну"
+
+msgid "Apply Now"
+msgstr "Подати заявку"
+
+msgid "Fill the Form"
+msgstr "Заповнити форму"
+
+msgid "Send Request"
+msgstr "Надіслати запит"
+
+msgid "Get Estimate"
+msgstr "Отримати оцінку"
+
+msgid "Get"
+msgstr "Отримати"
+
+msgid "Let's Get Started"
+msgstr "Почнімо"
+
+msgid "Download Whitepaper"
+msgstr "Завантажити вайтпейпер"
+
+msgid "Get Whitepaper"
+msgstr "Отримати вайтпейпер"
+
+msgid "Watch Webinar"
+msgstr "Дивитися вебінар"
+
+msgid "Next"
+msgstr "Наступний"
+
+msgid "Previous"
+msgstr "Попередній"
+
+msgid "Next slide"
+msgstr "Наступний слайд"
+
+msgid "Previous slide"
+msgstr "Попередній слайд"
+
+msgid "Next testimonial"
+msgstr "Наступний відгук"
+
+msgid "Previous testimonial"
+msgstr "Попередній відгук"
+
+msgid "Slider progress"
+msgstr "Прогрес слайдера"
+
+# ── Frontend: forms ──────────────────────────────────────────────────────────
+
+msgid "Business Email *"
+msgstr "Корпоративна електронна пошта *"
+
+msgid "Full Name *"
+msgstr "Повне ім'я *"
+
+msgid "Company / Business name"
+msgstr "Компанія / назва бізнесу"
+
+msgid "I am interested in"
+msgstr "Мене цікавить"
+
+msgid "Your message..."
+msgstr "Ваше повідомлення..."
+
+msgid "By clicking the button, I agree to the"
+msgstr "Натискаючи кнопку, я погоджуюся з"
+
+msgid "Terms & Conditions"
+msgstr "Умовами та положеннями"
+
+msgid "Thank you! Your whitepaper is ready."
+msgstr "Дякуємо! Ваш вайтпейпер готовий."
+
+# ── Frontend: content sections ───────────────────────────────────────────────
+
+msgid "AI-Driven Solutions"
+msgstr "Рішення на основі AI"
+
+msgid "About & Results"
+msgstr "Про нас та результати"
+
+msgid "About Hero"
+msgstr "Головний банер"
+
+msgid "About Author"
+msgstr "Про автора"
+
+msgid "About the"
+msgstr "Про"
+
+msgid "Approach"
+msgstr "Підхід"
+
+msgid "Article"
+msgstr "Стаття"
+
+msgid "Articles"
+msgstr "Статті"
+
+msgid "Asked Questions"
+msgstr "Запитання"
+
+msgid "Awards"
+msgstr "Нагороди"
+
+msgid "Awards &"
+msgstr "Нагороди та"
+
+msgid "& Timeline"
+msgstr "та хронологія"
+
+msgid "Awards and Certifications"
+msgstr "Нагороди та сертифікати"
+
+msgid "Become Our"
+msgstr "Станьте нашим"
+
+msgid "Business"
+msgstr "Бізнес"
+
+msgid "Business challenges"
+msgstr "Бізнес-виклики"
+
+msgid "Capabilities"
+msgstr "Можливості"
+
+msgid "Career Values"
+msgstr "Цінності команди"
+
+msgid "Certifications"
+msgstr "Сертифікати"
+
+msgid "Certified"
+msgstr "Сертифіковані"
+
+msgid "Challenge"
+msgstr "Виклик"
+
+msgid "Choose Your Industry"
+msgstr "Оберіть галузь"
+
+msgid "Choose Your Service"
+msgstr "Оберіть послугу"
+
+msgid "Client"
+msgstr "Клієнт"
+
+msgid "Client Story In"
+msgstr "Клієнтська історія в"
+
+msgid "Client's problem"
+msgstr "Проблема клієнта"
+
+msgid "Clients Say"
+msgstr "Відгуки клієнтів"
+
+msgid "Core System"
+msgstr "Основна система"
+
+msgid "Didn't find your industry or solution?"
+msgstr "Не знайшли свою галузь або рішення?"
+
+msgid "Domain:"
+msgstr "Домен:"
+
+msgid "Employment Type"
+msgstr "Тип зайнятості"
+
+msgid "Expert Team &"
+msgstr "Команда експертів та"
+
+msgid "Expertise"
+msgstr "Експертиза"
+
+msgid "Experts You Trust"
+msgstr "Експерти, яким ви довіряєте"
+
+msgid "Find"
+msgstr "Знайдіть"
+
+msgid "Frequently"
+msgstr "Часто"
+
+msgid "From Concept to Growth"
+msgstr "Від концепції до зростання"
+
+msgid "Hero"
+msgstr "Герой"
+
+msgid "Hide social links"
+msgstr "Приховати соцмережі"
+
+msgid "How We"
+msgstr "Як ми"
+
+msgid "How it works"
+msgstr "Як це працює"
+
+msgid "Includes:"
+msgstr "Включає:"
+
+msgid "Insights & Articles"
+msgstr "Матеріали та статті"
+
+msgid "Key decisions:"
+msgstr "Ключові рішення:"
+
+msgid "Key features"
+msgstr "Ключові особливості"
+
+msgid "Latest"
+msgstr "Останні"
+
+msgid "Meet Our"
+msgstr "Знайомтеся"
+
+msgid "Mobile Development"
+msgstr "Мобільна розробка"
+
+msgid "No items yet."
+msgstr "Поки що нічого немає."
+
+msgid "Other"
+msgstr "Інше"
+
+msgid "Our"
+msgstr "Наші"
+
+msgid "Our Awards"
+msgstr "Наші нагороди"
+
+msgid "Our Cases:"
+msgstr "Наші кейси:"
+
+msgid "Our Industry"
+msgstr "Наша галузь"
+
+msgid "Our Partners"
+msgstr "Наші партнери"
+
+msgid "Our Services:"
+msgstr "Наші послуги:"
+
+msgid "Our Values"
+msgstr "Наші цінності"
+
+msgid "Partnership Hero"
+msgstr "Партнерство"
+
+msgid "Partnership Partners"
+msgstr "Партнери"
+
+msgid "Perfect"
+msgstr "Ідеально"
+
+msgid "Process"
+msgstr "Процес"
+
+msgid "Product Strategy"
+msgstr "Стратегія продукту"
+
+msgid "Project Details"
+msgstr "Деталі проєкту"
+
+msgid "Project Location"
+msgstr "Розташування"
+
+msgid "Project Overview"
+msgstr "Огляд проєкту"
+
+msgid "Rating on Clutch"
+msgstr "Рейтинг на Clutch"
+
+msgid "Rating on Clutch [ 31 reviews ]"
+msgstr "Рейтинг на Clutch [ 31 відгук ]"
+
+msgid "Read full review on Clutch"
+msgstr "Читати повний відгук на Clutch"
+
+msgid "Ready to Accelerate"
+msgstr "Готові прискоритися"
+
+msgid "Ready to work\ntogether?"
+msgstr "Готові працювати\nразом?"
+
+msgid "Real Impact, Real Results"
+msgstr "Реальний вплив, реальні результати"
+
+msgid "SMLFY Blocks"
+msgstr "Блоки SMLFY"
+
+msgid "Senior Experts"
+msgstr "Старші експерти"
+
+msgid "Show more social links"
+msgstr "Показати більше соцмереж"
+
+msgid "Slider progress"
+msgstr "Прогрес слайдера"
+
+msgid "Software For"
+msgstr "Програмне забезпечення для"
+
+msgid "Solution"
+msgstr "Рішення"
+
+msgid "Solutions"
+msgstr "Рішення"
+
+msgid "Started"
+msgstr "Почніть"
+
+msgid "Studies"
+msgstr "Кейси"
+
+msgid "Summary"
+msgstr "Підсумок"
+
+msgid "Team Of"
+msgstr "Команда"
+
+msgid "Tech Stack"
+msgstr "Технологічний стек"
+
+msgid "Technologies"
+msgstr "Технології"
+
+msgid "Technology categories"
+msgstr "Категорії технологій"
+
+msgid "Their Own Words"
+msgstr "Їхніми словами"
+
+msgid "Together"
+msgstr "Разом"
+
+msgid "Trust"
+msgstr "Довіра"
+
+msgid "User challenges"
+msgstr "Виклики користувачів"
+
+msgid "View All Technologies"
+msgstr "Всі технології"
+
+msgid "Web Development"
+msgstr "Веброзробка"
+
+msgid "What Our"
+msgstr "Що наш"
+
+msgid "When Do You Need"
+msgstr "Коли вам потрібно"
+
+msgid "Why choose us"
+msgstr "Чому обирають нас"
+
+msgid "With the Right"
+msgstr "З правильним"
+
+msgid "World map"
+msgstr "Карта світу"
+
+msgid "%d cases"
+msgstr "%d кейсів"
+
+# ── Admin: system ────────────────────────────────────────────────────────────
+
+msgid "Incorrect credentials. Please try again."
+msgstr "Невірні дані. Будь ласка, спробуйте ще раз."
+
+msgid "Please log in with your email address."
+msgstr "Будь ласка, увійдіть за допомогою email."
+
+# ── Admin: block templates ───────────────────────────────────────────────────
+
+msgid "Block Template"
+msgstr "Шаблон блоків"
+
+msgid "Block Template Settings"
+msgstr "Налаштування шаблону блоків"
+
+msgid "Default Block Template"
+msgstr "Типовий шаблон блоків"
+
+msgid "Open Template in Block Editor →"
+msgstr "Відкрити шаблон у редакторі блоків →"
+
+msgid "Edit template"
+msgstr "Редагувати шаблон"
+
+msgid "Reset template"
+msgstr "Скинути шаблон"
+
+msgid "Reset template to default? This cannot be undone."
+msgstr "Скинути шаблон до початкового? Цю дію не можна скасувати."
+
+msgid "Reset to Default"
+msgstr "Скинути до початкового"
+
+msgid "Template reset to default."
+msgstr "Шаблон скинуто до початкового."
+
+msgid "Restore the built-in block order in the template editor."
+msgstr "Відновити вбудований порядок блоків у редакторі шаблону."
+
+msgid "Use \"Reset to Default\" to restore the original block order in the editor."
+msgstr "Використовуйте «Скинути до початкового», щоб відновити оригінальний порядок блоків."
+
+msgid "Click \"Open Template in Block Editor\" and arrange the blocks you want."
+msgstr "Натисніть «Відкрити шаблон у редакторі блоків» та розташуйте блоки."
+
+msgid "Posts that already have content are never touched automatically."
+msgstr "Публікації, які вже мають вміст, не змінюються автоматично."
+
+msgid "Posts that already have content will not be touched."
+msgstr "Публікації з вмістом не будуть змінені."
+
+msgid "Apply Template to Existing Posts"
+msgstr "Застосувати шаблон до існуючих публікацій"
+
+msgid "Apply Template to %d Post(s)"
+msgstr "Застосувати шаблон до %d публікацій"
+
+msgid "Fix Block Edit Mode"
+msgstr "Виправити режим редагування блоків"
+
+msgid "Fix Edit Mode on %d Post(s)"
+msgstr "Виправити режим редагування для %d публікацій"
+
+# ── Admin: careers CPT ───────────────────────────────────────────────────────
+
+msgid "Careers"
+msgstr "Вакансії"
+
+msgid "Career"
+msgstr "Вакансія"
+
+msgid "Add New Career"
+msgstr "Додати вакансію"
+
+msgid "Edit Career"
+msgstr "Редагувати вакансію"
+
+msgid "New Career"
+msgstr "Нова вакансія"
+
+msgid "View Career"
+msgstr "Переглянути вакансію"
+
+msgid "Search Careers"
+msgstr "Пошук вакансій"
+
+msgid "No careers found"
+msgstr "Вакансій не знайдено"
+
+msgid "No careers found in trash"
+msgstr "В кошику немає вакансій"
+
+msgid "Career Template"
+msgstr "Шаблон вакансії"
+
+msgid "Career Templates"
+msgstr "Шаблони вакансій"
+
+msgid "Career — Default Block Template"
+msgstr "Вакансія — типовий шаблон блоків"
+
+msgid "Careers — Block Template Settings"
+msgstr "Вакансії — налаштування шаблону блоків"
+
+msgid "All NEW career posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ вакансії починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW career posts only."
+msgstr "Додавайте, видаляйте або змінюйте порядок блоків. Зміни застосовуються лише до НОВИХ вакансій."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Career post. Edit the template in the block editor."
+msgstr "Визначте, які блоки Gutenberg завантажуються при створенні нової вакансії."
+
+msgid "Apply template to all empty career posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх вакансій? Цю дію не можна скасувати."
+
+msgid "All existing career posts already have content. Nothing to migrate."
+msgstr "Всі існуючі вакансії вже мають вміст. Нічого мігрувати."
+
+msgid "Done. %d career post(s) updated with the block template."
+msgstr "Готово. Оновлено %d вакансій із шаблоном блоків."
+
+msgid "%d career post(s) have no content yet and will receive the block template."
+msgstr "%d вакансій ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d career post(s)."
+msgstr "Готово. Режим редагування виправлено для %d вакансій."
+
+msgid "%d career post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d вакансій мають блоки у режимі перегляду замість режиму редагування."
+
+# ── Admin: cases CPT ─────────────────────────────────────────────────────────
+
+msgid "Cases"
+msgstr "Кейси"
+
+msgid "Case"
+msgstr "Кейс"
+
+msgid "All Cases"
+msgstr "Всі кейси"
+
+msgid "Add New Case"
+msgstr "Додати кейс"
+
+msgid "Edit Case"
+msgstr "Редагувати кейс"
+
+msgid "New Case"
+msgstr "Новий кейс"
+
+msgid "View Case"
+msgstr "Переглянути кейс"
+
+msgid "Search Cases"
+msgstr "Пошук кейсів"
+
+msgid "No cases found"
+msgstr "Кейсів не знайдено"
+
+msgid "No cases found in trash"
+msgstr "В кошику немає кейсів"
+
+msgid "Case Template"
+msgstr "Шаблон кейсу"
+
+msgid "Case Templates"
+msgstr "Шаблони кейсів"
+
+msgid "Case — Default Block Template"
+msgstr "Кейс — типовий шаблон блоків"
+
+msgid "Cases — Block Template Settings"
+msgstr "Кейси — налаштування шаблону блоків"
+
+msgid "All NEW case posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ кейси починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW case posts only."
+msgstr "Додавайте, видаляйте або змінюйте порядок блоків. Зміни застосовуються лише до НОВИХ кейсів."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Case post. Edit the template in the block editor."
+msgstr "Визначте, які блоки Gutenberg завантажуються при створенні нового кейсу."
+
+msgid "Apply template to all empty case posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх кейсів? Цю дію не можна скасувати."
+
+msgid "All existing case posts already have content. Nothing to migrate."
+msgstr "Всі існуючі кейси вже мають вміст. Нічого мігрувати."
+
+msgid "Done. %d case post(s) updated with the block template."
+msgstr "Готово. Оновлено %d кейсів із шаблоном блоків."
+
+msgid "%d case post(s) have no content yet and will receive the block template."
+msgstr "%d кейсів ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d case post(s)."
+msgstr "Готово. Режим редагування виправлено для %d кейсів."
+
+msgid "%d case post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d кейсів мають блоки у режимі перегляду замість режиму редагування."
+
+# ── Admin: industries CPT ────────────────────────────────────────────────────
+
+msgid "Industries"
+msgstr "Галузі"
+
+msgid "Industry"
+msgstr "Галузь"
+
+msgid "All Industries"
+msgstr "Всі галузі"
+
+msgid "Add New Industry"
+msgstr "Додати галузь"
+
+msgid "Edit Industry"
+msgstr "Редагувати галузь"
+
+msgid "New Industry"
+msgstr "Нова галузь"
+
+msgid "New Industry Name"
+msgstr "Назва нової галузі"
+
+msgid "View Industry"
+msgstr "Переглянути галузь"
+
+msgid "Update Industry"
+msgstr "Оновити галузь"
+
+msgid "Search Industries"
+msgstr "Пошук галузей"
+
+msgid "No industries found"
+msgstr "Галузей не знайдено"
+
+msgid "No industries found in trash"
+msgstr "В кошику немає галузей"
+
+msgid "Parent Industry"
+msgstr "Батьківська галузь"
+
+msgid "Parent Industry:"
+msgstr "Батьківська галузь:"
+
+msgid "Industry Template"
+msgstr "Шаблон галузі"
+
+msgid "Industry Templates"
+msgstr "Шаблони галузей"
+
+msgid "Industry — Default Block Template"
+msgstr "Галузь — типовий шаблон блоків"
+
+msgid "Industries — Block Template Settings"
+msgstr "Галузі — налаштування шаблону блоків"
+
+msgid "All NEW industry posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ галузі починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW industry posts only."
+msgstr "Змінюйте порядок блоків. Зміни застосовуються лише до НОВИХ галузей."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Industry post. Edit the template in the block editor."
+msgstr "Визначте, які блоки завантажуються при створенні нової галузі."
+
+msgid "Apply template to all empty industry posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх галузей? Цю дію не можна скасувати."
+
+msgid "All existing industry posts already have content. Nothing to migrate."
+msgstr "Всі існуючі галузі вже мають вміст."
+
+msgid "Done. %d industry post(s) updated with the block template."
+msgstr "Готово. Оновлено %d галузей із шаблоном блоків."
+
+msgid "%d industry post(s) have no content yet and will receive the block template."
+msgstr "%d галузей ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d industry post(s)."
+msgstr "Готово. Режим редагування виправлено для %d галузей."
+
+msgid "%d industry post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d галузей мають блоки у режимі перегляду."
+
+# ── Admin: services CPT ───────────────────────────────────────────────────────
+
+msgid "Services"
+msgstr "Послуги"
+
+msgid "Service"
+msgstr "Послуга"
+
+msgid "All Services"
+msgstr "Всі послуги"
+
+msgid "Add New Service"
+msgstr "Додати послугу"
+
+msgid "Edit Service"
+msgstr "Редагувати послугу"
+
+msgid "New Service"
+msgstr "Нова послуга"
+
+msgid "New Service Name"
+msgstr "Назва нової послуги"
+
+msgid "View Service"
+msgstr "Переглянути послугу"
+
+msgid "Update Service"
+msgstr "Оновити послугу"
+
+msgid "Search Services"
+msgstr "Пошук послуг"
+
+msgid "No services found"
+msgstr "Послуг не знайдено"
+
+msgid "No services found in trash"
+msgstr "В кошику немає послуг"
+
+msgid "Parent Service"
+msgstr "Батьківська послуга"
+
+msgid "Parent Service:"
+msgstr "Батьківська послуга:"
+
+msgid "Service:"
+msgstr "Послуга:"
+
+msgid "Service Template"
+msgstr "Шаблон послуги"
+
+msgid "Service Templates"
+msgstr "Шаблони послуг"
+
+msgid "Service — Default Block Template"
+msgstr "Послуга — типовий шаблон блоків"
+
+msgid "Services — Block Template Settings"
+msgstr "Послуги — налаштування шаблону блоків"
+
+msgid "All NEW service posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ послуги починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW service posts only."
+msgstr "Змінюйте порядок блоків. Зміни лише для НОВИХ послуг."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Service post. Edit the template in the block editor."
+msgstr "Визначте, які блоки завантажуються при створенні нової послуги."
+
+msgid "Apply template to all empty service posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх послуг? Цю дію не можна скасувати."
+
+msgid "All existing service posts already have content. Nothing to migrate."
+msgstr "Всі існуючі послуги вже мають вміст."
+
+msgid "Done. %d service post(s) updated with the block template."
+msgstr "Готово. Оновлено %d послуг із шаблоном блоків."
+
+msgid "%d service post(s) have no content yet and will receive the block template."
+msgstr "%d послуг ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d service post(s)."
+msgstr "Готово. Режим редагування виправлено для %d послуг."
+
+msgid "%d service post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d послуг мають блоки у режимі перегляду."
+
+# ── Admin: sub-services CPT ───────────────────────────────────────────────────
+
+msgid "Sub-Services"
+msgstr "Підпослуги"
+
+msgid "Subservices"
+msgstr "Підпослуги"
+
+msgid "Sub-Service"
+msgstr "Підпослуга"
+
+msgid "Add New Sub-Service"
+msgstr "Додати підпослугу"
+
+msgid "Edit Sub-Service"
+msgstr "Редагувати підпослугу"
+
+msgid "New Sub-Service"
+msgstr "Нова підпослуга"
+
+msgid "View Sub-Service"
+msgstr "Переглянути підпослугу"
+
+msgid "Search Sub-Services"
+msgstr "Пошук підпослуг"
+
+msgid "No sub-services found"
+msgstr "Підпослуг не знайдено"
+
+msgid "No sub-services found in trash"
+msgstr "В кошику немає підпослуг"
+
+msgid "Sub-Service Settings"
+msgstr "Налаштування підпослуги"
+
+msgid "Select the service this sub-service belongs to."
+msgstr "Оберіть послугу, до якої належить ця підпослуга."
+
+msgid "Sub-Service Template"
+msgstr "Шаблон підпослуги"
+
+msgid "Sub-Service Templates"
+msgstr "Шаблони підпослуг"
+
+msgid "Sub-Service — Default Block Template"
+msgstr "Підпослуга — типовий шаблон блоків"
+
+msgid "Sub-Services — Block Template Settings"
+msgstr "Підпослуги — налаштування шаблону блоків"
+
+msgid "All NEW sub-service posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ підпослуги починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW sub-service posts only."
+msgstr "Змінюйте порядок блоків. Зміни лише для НОВИХ підпослуг."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Sub-Service post. Edit the template in the block editor."
+msgstr "Визначте, які блоки завантажуються при створенні нової підпослуги."
+
+msgid "Apply template to all empty sub-service posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх підпослуг? Цю дію не можна скасувати."
+
+msgid "All existing sub-service posts already have content. Nothing to migrate."
+msgstr "Всі існуючі підпослуги вже мають вміст."
+
+msgid "Done. %d sub-service post(s) updated with the block template."
+msgstr "Готово. Оновлено %d підпослуг із шаблоном блоків."
+
+msgid "%d sub-service post(s) have no content yet and will receive the block template."
+msgstr "%d підпослуг ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d sub-service post(s)."
+msgstr "Готово. Режим редагування виправлено для %d підпослуг."
+
+msgid "%d sub-service post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d підпослуг мають блоки у режимі перегляду."
+
+# ── Admin: testimonials CPT ───────────────────────────────────────────────────
+
+msgid "Testimonials"
+msgstr "Відгуки"
+
+msgid "Testimonial"
+msgstr "Відгук"
+
+msgid "Add New Testimonial"
+msgstr "Додати відгук"
+
+msgid "Edit Testimonial"
+msgstr "Редагувати відгук"
+
+msgid "New Testimonial"
+msgstr "Новий відгук"
+
+msgid "View Testimonial"
+msgstr "Переглянути відгук"
+
+msgid "Search Testimonials"
+msgstr "Пошук відгуків"
+
+msgid "No testimonials found"
+msgstr "Відгуків не знайдено"
+
+msgid "No testimonials found in trash"
+msgstr "В кошику немає відгуків"
+
+# ── Admin: news CPT ───────────────────────────────────────────────────────────
+
+msgid "News"
+msgstr "Новини"
+
+msgid "Add New News"
+msgstr "Додати новину"
+
+msgid "Edit News"
+msgstr "Редагувати новину"
+
+msgid "New News"
+msgstr "Нова новина"
+
+msgid "View News"
+msgstr "Переглянути новину"
+
+msgid "Search News"
+msgstr "Пошук новин"
+
+msgid "No news found"
+msgstr "Новин не знайдено"
+
+msgid "No news found in trash"
+msgstr "В кошику немає новин"
+
+msgid "News Categories"
+msgstr "Категорії новин"
+
+msgid "News Category"
+msgstr "Категорія новин"
+
+msgid "Add New News Category"
+msgstr "Додати категорію новин"
+
+msgid "Edit News Category"
+msgstr "Редагувати категорію новин"
+
+msgid "New News Category Name"
+msgstr "Назва нової категорії новин"
+
+msgid "Search News Categories"
+msgstr "Пошук категорій новин"
+
+msgid "All News Categories"
+msgstr "Всі категорії новин"
+
+msgid "Parent Category"
+msgstr "Батьківська категорія"
+
+msgid "Parent Category:"
+msgstr "Батьківська категорія:"
+
+msgid "Update News Category"
+msgstr "Оновити категорію новин"
+
+# ── Admin: products CPT ───────────────────────────────────────────────────────
+
+msgid "Products"
+msgstr "Продукти"
+
+msgid "Product"
+msgstr "Продукт"
+
+msgid "Add New Product"
+msgstr "Додати продукт"
+
+msgid "Edit Product"
+msgstr "Редагувати продукт"
+
+msgid "New Product"
+msgstr "Новий продукт"
+
+msgid "View Product"
+msgstr "Переглянути продукт"
+
+msgid "Search Products"
+msgstr "Пошук продуктів"
+
+msgid "No products found"
+msgstr "Продуктів не знайдено"
+
+msgid "No products in trash"
+msgstr "В кошику немає продуктів"
+
+# ── Admin: whitepapers CPT ────────────────────────────────────────────────────
+
+msgid "Whitepapers"
+msgstr "Вайтпейпери"
+
+msgid "Whitepaper"
+msgstr "Вайтпейпер"
+
+msgid "Add New Whitepaper"
+msgstr "Додати вайтпейпер"
+
+msgid "Edit Whitepaper"
+msgstr "Редагувати вайтпейпер"
+
+msgid "New Whitepaper"
+msgstr "Новий вайтпейпер"
+
+msgid "View Whitepaper"
+msgstr "Переглянути вайтпейпер"
+
+msgid "Search Whitepapers"
+msgstr "Пошук вайтпейперів"
+
+msgid "No whitepapers found"
+msgstr "Вайтпейперів не знайдено"
+
+msgid "No whitepapers found in trash"
+msgstr "В кошику немає вайтпейперів"
+
+msgid "Whitepaper Categories"
+msgstr "Категорії вайтпейперів"
+
+msgid "Whitepaper Category"
+msgstr "Категорія вайтпейперів"
+
+msgid "Add New Whitepaper Category"
+msgstr "Додати категорію вайтпейперів"
+
+msgid "Edit Whitepaper Category"
+msgstr "Редагувати категорію вайтпейперів"
+
+msgid "New Whitepaper Category Name"
+msgstr "Назва нової категорії вайтпейперів"
+
+msgid "Search Whitepaper Categories"
+msgstr "Пошук категорій вайтпейперів"
+
+msgid "All Whitepaper Categories"
+msgstr "Всі категорії вайтпейперів"
+
+msgid "Update Whitepaper Category"
+msgstr "Оновити категорію вайтпейперів"
+
+msgid "Whitepaper Template"
+msgstr "Шаблон вайтпейпера"
+
+msgid "Whitepaper Templates"
+msgstr "Шаблони вайтпейперів"
+
+msgid "Whitepaper — Default Block Template"
+msgstr "Вайтпейпер — типовий шаблон блоків"
+
+msgid "Whitepapers — Block Template Settings"
+msgstr "Вайтпейпери — налаштування шаблону блоків"
+
+msgid "All NEW whitepaper posts will start with these blocks pre-loaded."
+msgstr "Всі НОВІ вайтпейпери починатимуться з цими блоками."
+
+msgid "Add, remove, or reorder blocks. Changes apply to all NEW whitepaper posts only."
+msgstr "Змінюйте порядок блоків. Зміни лише для НОВИХ вайтпейперів."
+
+msgid "Define which Gutenberg blocks are pre-loaded when creating a new Whitepaper post. Edit the template in the block editor."
+msgstr "Визначте, які блоки завантажуються при створенні нового вайтпейпера."
+
+msgid "Apply template to all empty whitepaper posts? This cannot be undone."
+msgstr "Застосувати шаблон до всіх порожніх вайтпейперів? Цю дію не можна скасувати."
+
+msgid "All existing whitepaper posts already have content. Nothing to migrate."
+msgstr "Всі існуючі вайтпейпери вже мають вміст."
+
+msgid "Done. %d whitepaper post(s) updated with the block template."
+msgstr "Готово. Оновлено %d вайтпейперів із шаблоном блоків."
+
+msgid "%d whitepaper post(s) have no content yet and will receive the block template."
+msgstr "%d вайтпейперів ще не мають вмісту та отримають шаблон блоків."
+
+msgid "Done. Edit mode fixed on %d whitepaper post(s)."
+msgstr "Готово. Режим редагування виправлено для %d вайтпейперів."
+
+msgid "%d whitepaper post(s) have blocks displayed in Preview mode instead of Edit mode."
+msgstr "%d вайтпейперів мають блоки у режимі перегляду."
+
+# ── Admin: misc ───────────────────────────────────────────────────────────────
+
+msgid "Add New"
+msgstr "Додати новий"
+
+msgid "Categories"
+msgstr "Категорії"
+
+msgid "Category"
+msgstr "Категорія"
+
+msgid "Successful Products"
+msgstr "Успішні продукти"
+
+# ── 404 / Error page ─────────────────────────────────────────────────────────
+
+msgid "The page you're looking for isn't here.\nBut we can still help you build something great."
+msgstr "Сторінку, яку ви шукаєте, не знайдено.\nАле ми все одно можемо допомогти вам побудувати щось чудове."
+
+msgid "На головну"
+msgstr "На головну"
+
+# ── Contact options ───────────────────────────────────────────────────────────
+
+msgid "Ready to Accelerate"
+msgstr "Готові прискоритися"
+
+msgid "Your Business Growth?\nContact Us."
+msgstr "Ваш бізнес-розвиток?\nЗв'яжіться з нами."

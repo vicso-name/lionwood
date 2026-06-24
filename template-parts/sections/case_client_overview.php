@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Client Overview
  *
@@ -12,10 +12,10 @@ $pt            = absint( get_field( 'padding_top' )        ?: 50 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 20 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 100 );
-$marquee_text  = esc_html( get_field( 'marquee_text' ) ?: __( 'Project Overview', 'theme' ) );
+$marquee_text  = esc_html( get_field( 'marquee_text' ) ?: __( 'Project Overview', 'lionwood' ) );
 
-$about_top     = esc_html( get_field( 'about_title_top' )    ?: __( 'About the', 'theme' ) );
-$about_bottom  = esc_html( get_field( 'about_title_bottom' ) ?: __( 'Client', 'theme' ) );
+$about_top     = esc_html( get_field( 'about_title_top' )    ?: __( 'About the', 'lionwood' ) );
+$about_bottom  = esc_html( get_field( 'about_title_bottom' ) ?: __( 'Client', 'lionwood' ) );
 $about_content = get_field( 'about_content' ) ?: '';
 
 $summary_content = get_field( 'summary_content' ) ?: '';
@@ -95,7 +95,7 @@ $arrow_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" vie
         <div class="cco-row cco-row--summary">
             <div class="cco-col cco-col--left">
                 <div class="cco-heading">
-                    <span class="cco-heading__top cco-heading__top--single"><?php esc_html_e( 'Summary', 'theme' ); ?></span>
+                    <span class="cco-heading__top cco-heading__top--single"><?php esc_html_e( 'Summary', 'lionwood' ); ?></span>
                 </div>
             </div>
             <div class="cco-col cco-col--right">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Single Service Explore
  *
@@ -12,7 +12,7 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_top     = get_field( 'title_top' )    ?: __( 'Explore', 'theme' );
+$title_top     = get_field( 'title_top' )    ?: __( 'Explore', 'lionwood' );
 $title_bottom  = get_field( 'title_bottom' ) ?: '';
 $initial_count = absint( get_field( 'initial_count' ) ?: 3 );
 $items         = get_field( 'items' ) ?: [];
@@ -95,7 +95,7 @@ $arrow_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" vie
                     <?php
                     printf(
                         /* translators: %d: number of hidden items */
-                        esc_html__( 'Load More (+%d)', 'theme' ),
+                        esc_html__( 'Load More (+%d)', 'lionwood' ),
                         $hidden
                     );
                     ?>

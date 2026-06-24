@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Frequently Asked Questions
  *
@@ -18,8 +18,8 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_line_1  = get_field( 'title_line_1' ) ?: __( 'Frequently', 'theme' );
-$title_line_2  = get_field( 'title_line_2' ) ?: __( 'Asked Questions', 'theme' );
+$title_line_1  = get_field( 'title_line_1' ) ?: __( 'Frequently', 'lionwood' );
+$title_line_2  = get_field( 'title_line_2' ) ?: __( 'Asked Questions', 'lionwood' );
 $items         = get_field( 'items' )        ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';

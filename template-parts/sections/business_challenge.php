@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Business Challenge Section
  *
@@ -12,13 +12,13 @@ $pt            = absint( get_field( 'padding_top' )        ?: 80 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 50 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 50 );
-$title_line_1  = esc_html( get_field( 'title_line_1' ) ?: __( 'Business', 'theme' ) );
-$title_line_2  = esc_html( get_field( 'title_line_2' ) ?: __( 'Challenge', 'theme' ) );
+$title_line_1  = esc_html( get_field( 'title_line_1' ) ?: __( 'Business', 'lionwood' ) );
+$title_line_2  = esc_html( get_field( 'title_line_2' ) ?: __( 'Challenge', 'lionwood' ) );
 $desc_raw      = get_field( 'description' );
 $description   = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
-$left_title    = esc_html( get_field( 'col_left_title' )  ?: __( 'User challenges', 'theme' ) );
+$left_title    = esc_html( get_field( 'col_left_title' )  ?: __( 'User challenges', 'lionwood' ) );
 $left_items    = get_field( 'col_left_items' )  ?: [];
-$right_title   = esc_html( get_field( 'col_right_title' ) ?: __( 'Business challenges', 'theme' ) );
+$right_title   = esc_html( get_field( 'col_right_title' ) ?: __( 'Business challenges', 'lionwood' ) );
 $right_items   = get_field( 'col_right_items' ) ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';

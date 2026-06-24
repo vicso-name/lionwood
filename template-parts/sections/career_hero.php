@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Career Hero Section
  * Slug: acf/career-hero
@@ -89,12 +89,12 @@ if ( $show_count ) {
                             <?php endforeach; ?>
 
                             <?php if ( count( $socials ) > 2 ) : ?>
-                                <button class="crh-socials__more" aria-label="<?php esc_attr_e( 'Show more social links', 'theme' ); ?>" data-crh-more>
+                                <button class="crh-socials__more" aria-label="<?php esc_attr_e( 'Show more social links', 'lionwood' ); ?>" data-crh-more>
                                     <span class="crh-socials__dot"></span>
                                     <span class="crh-socials__dot"></span>
                                     <span class="crh-socials__dot"></span>
                                 </button>
-                                <button class="crh-socials__close" aria-label="<?php esc_attr_e( 'Hide social links', 'theme' ); ?>" data-crh-close>
+                                <button class="crh-socials__close" aria-label="<?php esc_attr_e( 'Hide social links', 'lionwood' ); ?>" data-crh-close>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                                         <path d="M6.41797 6.41602L15.5846 15.5827M6.41797 15.5827L15.5846 6.41602" stroke="#C83030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>

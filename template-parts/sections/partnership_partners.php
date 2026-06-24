@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Partnership Partners
  * Slug: acf/partnership-partners
@@ -32,7 +32,7 @@ $uid = 'pp-' . uniqid();
         --pp-pb-mob: <?php echo $pb_mob; ?>px;
         --pp-speed: <?php echo $speed; ?>s;
     "
-    aria-label="<?php esc_attr_e( 'Partnership Partners', 'theme' ); ?>"
+    aria-label="<?php esc_attr_e( 'Partnership Partners', 'lionwood' ); ?>"
 >
     <?php if ( ! empty( $logos ) ) : ?>
         <div class="pp-marquee-wrap">

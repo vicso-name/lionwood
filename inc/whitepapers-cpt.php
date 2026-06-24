@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Whitepapers
  * Taxonomy: Whitepaper Category (hierarchical)
@@ -10,17 +10,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_whitepaper' ) ) {
 	function theme_register_cpt_whitepaper(): void {
 		$labels = [
-			'name'               => __( 'Whitepapers', 'theme' ),
-			'singular_name'      => __( 'Whitepaper', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Whitepaper', 'theme' ),
-			'edit_item'          => __( 'Edit Whitepaper', 'theme' ),
-			'new_item'           => __( 'New Whitepaper', 'theme' ),
-			'view_item'          => __( 'View Whitepaper', 'theme' ),
-			'search_items'       => __( 'Search Whitepapers', 'theme' ),
-			'not_found'          => __( 'No whitepapers found', 'theme' ),
-			'not_found_in_trash' => __( 'No whitepapers found in trash', 'theme' ),
-			'menu_name'          => __( 'Whitepapers', 'theme' ),
+			'name'               => __( 'Whitepapers', 'lionwood' ),
+			'singular_name'      => __( 'Whitepaper', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Whitepaper', 'lionwood' ),
+			'edit_item'          => __( 'Edit Whitepaper', 'lionwood' ),
+			'new_item'           => __( 'New Whitepaper', 'lionwood' ),
+			'view_item'          => __( 'View Whitepaper', 'lionwood' ),
+			'search_items'       => __( 'Search Whitepapers', 'lionwood' ),
+			'not_found'          => __( 'No whitepapers found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No whitepapers found in trash', 'lionwood' ),
+			'menu_name'          => __( 'Whitepapers', 'lionwood' ),
 		];
 
 		register_post_type( 'whitepaper', [
@@ -47,17 +47,17 @@ add_action( 'init', 'theme_register_cpt_whitepaper' );
 if ( ! function_exists( 'theme_register_tax_whitepaper_category' ) ) {
 	function theme_register_tax_whitepaper_category(): void {
 		$labels = [
-			'name'              => __( 'Whitepaper Categories', 'theme' ),
-			'singular_name'     => __( 'Whitepaper Category', 'theme' ),
-			'search_items'      => __( 'Search Whitepaper Categories', 'theme' ),
-			'all_items'         => __( 'All Whitepaper Categories', 'theme' ),
-			'parent_item'       => __( 'Parent Category', 'theme' ),
-			'parent_item_colon' => __( 'Parent Category:', 'theme' ),
-			'edit_item'         => __( 'Edit Whitepaper Category', 'theme' ),
-			'update_item'       => __( 'Update Whitepaper Category', 'theme' ),
-			'add_new_item'      => __( 'Add New Whitepaper Category', 'theme' ),
-			'new_item_name'     => __( 'New Whitepaper Category Name', 'theme' ),
-			'menu_name'         => __( 'Categories', 'theme' ),
+			'name'              => __( 'Whitepaper Categories', 'lionwood' ),
+			'singular_name'     => __( 'Whitepaper Category', 'lionwood' ),
+			'search_items'      => __( 'Search Whitepaper Categories', 'lionwood' ),
+			'all_items'         => __( 'All Whitepaper Categories', 'lionwood' ),
+			'parent_item'       => __( 'Parent Category', 'lionwood' ),
+			'parent_item_colon' => __( 'Parent Category:', 'lionwood' ),
+			'edit_item'         => __( 'Edit Whitepaper Category', 'lionwood' ),
+			'update_item'       => __( 'Update Whitepaper Category', 'lionwood' ),
+			'add_new_item'      => __( 'Add New Whitepaper Category', 'lionwood' ),
+			'new_item_name'     => __( 'New Whitepaper Category Name', 'lionwood' ),
+			'menu_name'         => __( 'Categories', 'lionwood' ),
 		];
 
 		register_taxonomy( 'whitepaper_category', [ 'whitepaper' ], [

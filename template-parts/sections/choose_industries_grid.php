@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Choose Industries Grid
  *
@@ -12,7 +12,7 @@ $pt          = absint( get_field( 'padding_top' )        ?: 100 );
 $pb          = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob      = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob      = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$marquee_raw = get_field( 'marquee_text' ) ?: __( 'Choose Your Industry', 'theme' );
+$marquee_raw = get_field( 'marquee_text' ) ?: __( 'Choose Your Industry', 'lionwood' );
 $marquee     = esc_html( $marquee_raw );
 $mode        = get_field( 'mode' ) ?: 'auto';
 $manual_ids  = get_field( 'industries' ) ?: [];
@@ -108,7 +108,7 @@ $block_id = 'cig-' . uniqid();
 					class="cig-loadmore-btn"
 					data-loadmore
 					data-nonce="<?php echo esc_attr( wp_create_nonce( 'cig_load_more' ) ); ?>"
-				><?php esc_html_e( 'Load More', 'theme' ); ?></button>
+				><?php esc_html_e( 'Load More', 'lionwood' ); ?></button>
 			</div>
 		<?php endif; ?>
 

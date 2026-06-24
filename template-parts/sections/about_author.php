@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: About Author
  * Slug: acf/about-author
@@ -24,7 +24,7 @@ $author_id  = get_the_author_meta( 'ID' );
 $user_key   = 'user_' . $author_id;
 
 // ── Section title ─────────────────────────────────────────────────────────────
-$section_title = get_field( 'section_title' ) ?: __( 'About Author', 'theme' );
+$section_title = get_field( 'section_title' ) ?: __( 'About Author', 'lionwood' );
 
 // ── Photo — ACF user field → Gravatar ─────────────────────────────────────────
 $user_photo = get_field( 'author_photo', $user_key );
@@ -62,7 +62,7 @@ $all_posts_href = ! empty( $all_posts_link['url'] )
     : esc_url( get_author_posts_url( $author_id ) );
 $all_posts_lbl  = ! empty( $all_posts_link['title'] )
     ? esc_html( $all_posts_link['title'] )
-    : __( 'All articles by author', 'theme' );
+    : __( 'All articles by author', 'lionwood' );
 $all_posts_tgt  = ! empty( $all_posts_link['target'] ) ? $all_posts_link['target'] : '_self';
 
 // ── Rating ────────────────────────────────────────────────────────────────────
@@ -157,18 +157,18 @@ $linkedin_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
                  data-rest-url="<?php echo esc_url( rest_url( 'lionwood/v1/rating' ) ); ?>"
                  data-nonce="<?php echo wp_create_nonce( 'wp_rest' ); ?>">
                 <div class="aa-rating__left">
-                    <span class="aa-rating__label"><?php esc_html_e( 'Rate this article', 'theme' ); ?></span>
+                    <span class="aa-rating__label"><?php esc_html_e( 'Rate this article', 'lionwood' ); ?></span>
                     <span class="aa-rating__count">
                         <?php printf(
-                            esc_html__( '%1$s ratings, average: %2$s out of 5', 'theme' ),
+                            esc_html__( '%1$s ratings, average: %2$s out of 5', 'lionwood' ),
                             number_format_i18n( $rating_count ),
                             number_format( $rating_avg, 1 )
                         ); ?>
                     </span>
                 </div>
-                <div class="aa-rating__stars" role="group" aria-label="<?php esc_attr_e( 'Rate this article', 'theme' ); ?>">
+                <div class="aa-rating__stars" role="group" aria-label="<?php esc_attr_e( 'Rate this article', 'lionwood' ); ?>">
                     <?php for ( $i = 1; $i <= 5; $i++ ) : ?>
-                        <button class="aa-star" type="button" data-value="<?php echo $i; ?>" aria-label="<?php printf( esc_attr__( '%d out of 5 stars', 'theme' ), $i ); ?>">
+                        <button class="aa-star" type="button" data-value="<?php echo $i; ?>" aria-label="<?php printf( esc_attr__( '%d out of 5 stars', 'lionwood' ), $i ); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none" aria-hidden="true"><path d="M11.8176 0.615874C12.1593 -0.204993 13.3222 -0.205007 13.664 0.615852L16.4619 7.33622C16.606 7.68217 16.9314 7.91856 17.3049 7.94863L24.5607 8.53271C25.447 8.60406 25.8064 9.71 25.1313 10.2887L19.6046 15.0264C19.3201 15.2703 19.1959 15.6528 19.2827 16.0173L20.9692 23.0986C21.1752 23.9635 20.2345 24.6471 19.4755 24.1838L13.2617 20.3916C12.9418 20.1963 12.5397 20.1963 12.2198 20.3916L6.00632 24.1838C5.24735 24.647 4.30657 23.9635 4.51257 23.0985L6.19904 16.0173C6.28586 15.6528 6.16158 15.2703 5.87708 15.0264L0.350441 10.2887C-0.324627 9.71 0.034743 8.60405 0.92104 8.53271L8.17682 7.94863C8.55036 7.91856 8.87574 7.68217 9.01977 7.3362L11.8176 0.615874Z" fill="white"/></svg>
                         </button>
                     <?php endfor; ?>

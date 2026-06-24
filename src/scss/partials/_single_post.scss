@@ -39,7 +39,7 @@
 
 .sp-sidebar--left {
     grid-area:    left;
-    padding-right: 70px; // gap between left sidebar and content
+    padding-right: 60px; // gap between left sidebar and content
     align-items:  stretch;
 }
 
@@ -149,6 +149,9 @@
     text-align:      center;
     width:           fit-content;
     white-space:     nowrap;
+    cursor:          pointer;
+    appearance:      none;
+    position:        relative;
 
     img {
         display:    block;
@@ -157,6 +160,38 @@
         object-fit: contain;
         border-radius: 0;
     }
+
+    &--copied::after {
+        content:      'Prompt copied!';
+        position:     absolute;
+        bottom:       calc(100% + 6px);
+        left:         50%;
+        transform:    translateX(-50%);
+        background:   #111319;
+        color:        #fff;
+        font-size:    12px;
+        white-space:  nowrap;
+        padding:      4px 10px;
+        border-radius: 6px;
+        pointer-events: none;
+        animation:    sp-chip-fade-in 0.15s ease;
+    }
+
+    &--copied::before {
+        content:      '';
+        position:     absolute;
+        bottom:       calc(100% + 2px);
+        left:         50%;
+        transform:    translateX(-50%);
+        border:       5px solid transparent;
+        border-top-color: #111319;
+        pointer-events: none;
+    }
+}
+
+@keyframes sp-chip-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 // =============================================================================

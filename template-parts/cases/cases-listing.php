@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Shared partial: Cases listing grid with filter pills
  *
@@ -65,7 +65,7 @@ $pt            = absint( $args['padding_top']          ?? 100 );
 $pb            = absint( $args['padding_bottom']       ?? 100 );
 $pt_mob        = absint( $args['padding_top_mob']      ?? 70 );
 $pb_mob        = absint( $args['padding_bottom_mob']   ?? 70 );
-$marquee_text  = esc_html( $args['marquee_text']       ?? __( 'Successful Products', 'theme' ) );
+$marquee_text  = esc_html( $args['marquee_text']       ?? __( 'Successful Products', 'lionwood' ) );
 $decor_enabled = $args['decor_bottom_enabled']         ?? false;
 $decor_color   = $args['decor_bottom_color']           ?? '#ffffff';
 ?>
@@ -97,7 +97,7 @@ $decor_color   = $args['decor_bottom_color']           ?? '#ffffff';
                     data-tab="industries"
                     data-taxonomy="case_study_category"
                 >
-                    <?php esc_html_e( 'Industries', 'theme' ); ?>
+                    <?php esc_html_e( 'Industries', 'lionwood' ); ?>
                     <span class="ccg-tab__plus" aria-hidden="true">+</span>
                 </button>
                 <button
@@ -107,7 +107,7 @@ $decor_color   = $args['decor_bottom_color']           ?? '#ffffff';
                     data-tab="services"
                     data-taxonomy="case_study_service"
                 >
-                    <?php esc_html_e( 'Services', 'theme' ); ?>
+                    <?php esc_html_e( 'Services', 'lionwood' ); ?>
                     <span class="ccg-tab__plus" aria-hidden="true">+</span>
                 </button>
             </div>
@@ -179,7 +179,7 @@ $decor_color   = $args['decor_bottom_color']           ?? '#ffffff';
                     class="ccg-loadmore-btn"
                     data-loadmore
                     data-nonce="<?php echo esc_attr( wp_create_nonce( 'ccg_ajax' ) ); ?>"
-                ><?php esc_html_e( 'Load More', 'theme' ); ?></button>
+                ><?php esc_html_e( 'Load More', 'lionwood' ); ?></button>
             </div>
         <?php endif; ?>
 

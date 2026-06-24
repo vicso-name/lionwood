@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Simple Hero Section
  *
@@ -18,8 +18,8 @@ $pb     = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
-$title_dark  = get_field( 'title_dark' )  ?: __( 'Our', 'theme' );
-$title_gray  = get_field( 'title_gray' )  ?: __( 'Services', 'theme' );
+$title_dark  = get_field( 'title_dark' )  ?: __( 'Our', 'lionwood' );
+$title_gray  = get_field( 'title_gray' )  ?: __( 'Services', 'lionwood' );
 $desc_raw    = get_field( 'description' );
 $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 

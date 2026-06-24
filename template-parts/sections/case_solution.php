@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Solution Section
  *
@@ -12,10 +12,10 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title         = esc_html( get_field( 'title' ) ?: __( 'Solution', 'theme' ) );
+$title         = esc_html( get_field( 'title' ) ?: __( 'Solution', 'lionwood' ) );
 $desc_raw      = get_field( 'description' );
 $description   = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
-$subtitle      = esc_html( get_field( 'subtitle' ) ?: __( 'Key decisions:', 'theme' ) );
+$subtitle      = esc_html( get_field( 'subtitle' ) ?: __( 'Key decisions:', 'lionwood' ) );
 $items         = get_field( 'items' ) ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';

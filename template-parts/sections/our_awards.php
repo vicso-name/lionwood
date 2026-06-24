@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Our Awards
  *
@@ -48,7 +48,7 @@ $section_classes = 'oa-section' . ( $is_dark ? ' oa-section--dark' : '' );
 		--oa-pb-mob: <?php echo $pb_mob; ?>px;
 		--oa-speed: <?php echo $speed; ?>s;
 	"
-	aria-label="<?php esc_attr_e( 'Our Awards', 'theme' ); ?>"
+	aria-label="<?php esc_attr_e( 'Our Awards', 'lionwood' ); ?>"
 >
 	<?php if ( $title_top || $title_bottom ) : ?>
 	<div class="oa-section__container">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Solutions Showcase
  *
@@ -18,14 +18,14 @@ $pb      = absint( get_field( 'padding_bottom' )     ?: 80 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 80 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 80 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Our Services:', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'From Concept to Growth', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Our Services:', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'From Concept to Growth', 'lionwood' );
 $description  = get_field( 'description' )  ?: '';
 $desc_escaped = $description ? wp_kses( $description, [ 'br' => [] ] ) : '';
 
 $all_link_raw   = get_field( 'all_services_link' );
 $all_link_url   = ! empty( $all_link_raw['url'] )    ? esc_url( $all_link_raw['url'] )    : '';
-$all_link_label = ! empty( $all_link_raw['title'] )  ? esc_html( $all_link_raw['title'] ) : __( 'All Services', 'theme' );
+$all_link_label = ! empty( $all_link_raw['title'] )  ? esc_html( $all_link_raw['title'] ) : __( 'All Services', 'lionwood' );
 $all_link_tgt   = ! empty( $all_link_raw['target'] ) ? $all_link_raw['target']             : '_self';
 
 $services = get_field( 'services' ) ?: [];
@@ -46,7 +46,7 @@ foreach ( $services as $i => $svc ) {
         'stat_icon_alt'   => $icon ? esc_attr( $icon['alt'] )   : '',
         'image_url'       => $img  ? esc_url( $img['url'] )     : '',
         'image_alt'       => $img  ? esc_attr( $img['alt'] )    : esc_html( $svc['title'] ?? '' ),
-        'includes_label'  => esc_html( $svc['includes_label']   ?? __( 'Includes:', 'theme' ) ),
+        'includes_label'  => esc_html( $svc['includes_label']   ?? __( 'Includes:', 'lionwood' ) ),
         'includes_items'  => array_map( fn( $it ) => esc_html( $it['text'] ?? '' ), $items ),
     ];
 }
@@ -151,7 +151,7 @@ $first = $panels[0];
                     $cta_text   = esc_html( $svc['cta_text']    ?? '' );
                     $link_raw   = $svc['cta_link']               ?? null;
                     $link_url   = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-                    $link_label = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Read More', 'theme' );
+                    $link_label = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Read More', 'lionwood' );
                     $link_tgt   = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
 
                     // Panel data for JS (already sanitised above)

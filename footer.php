@@ -177,7 +177,7 @@ $footer_copyright   = get_field('copyright', 'option');
                                 class="footer-section__office-learn"
                                 href="<?= esc_url($office['learn_more']['url']); ?>"
                                 <?= $office['learn_more']['target'] ? 'target="_blank" rel="noopener"' : ''; ?>
-                            ><?= esc_html($office['learn_more']['title'] ?: 'Learn More'); ?></a>
+                            ><?= esc_html( $office['learn_more']['title'] ?: __( 'Learn More', 'lionwood' ) ); ?></a>
                         <?php endif; ?>
 
                     </div><!-- .footer-section__office -->

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Insights Grid
  *
@@ -19,13 +19,13 @@ $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
 // ── Heading ───────────────────────────────────────────────────────────────────
-$title_top    = esc_html( get_field( 'title_top' )    ?: __( 'Latest', 'theme' ) );
-$title_bottom = esc_html( get_field( 'title_bottom' ) ?: __( 'Insights & Articles', 'theme' ) );
+$title_top    = esc_html( get_field( 'title_top' )    ?: __( 'Latest', 'lionwood' ) );
+$title_bottom = esc_html( get_field( 'title_bottom' ) ?: __( 'Insights & Articles', 'lionwood' ) );
 
 // ── Tab labels (configurable) ─────────────────────────────────────────────────
-$label_articles    = esc_html( get_field( 'label_articles' )    ?: __( 'Articles', 'theme' ) );
-$label_news        = esc_html( get_field( 'label_news' )        ?: __( 'News', 'theme' ) );
-$label_whitepapers = esc_html( get_field( 'label_whitepapers' ) ?: __( 'Whitepapers', 'theme' ) );
+$label_articles    = esc_html( get_field( 'label_articles' )    ?: __( 'Articles', 'lionwood' ) );
+$label_news        = esc_html( get_field( 'label_news' )        ?: __( 'News', 'lionwood' ) );
+$label_whitepapers = esc_html( get_field( 'label_whitepapers' ) ?: __( 'Whitepapers', 'lionwood' ) );
 
 $per_page = absint( get_field( 'per_page' ) ?: 6 );
 
@@ -179,7 +179,7 @@ foreach ( $type_map as $key => $cfg ) {
         <?php if ( $has_more ) : ?>
             <div class="ccg-loadmore-wrap" data-ig-loadmore-wrap>
                 <button class="ccg-loadmore-btn" data-ig-loadmore>
-                    <?php esc_html_e( 'Load More', 'theme' ); ?>
+                    <?php esc_html_e( 'Load More', 'lionwood' ); ?>
                 </button>
             </div>
         <?php endif; ?>

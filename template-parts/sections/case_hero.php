@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Hero
  *
@@ -17,8 +17,8 @@ $pb     = absint( $args['padding_bottom']     ?? get_field( 'padding_bottom' )  
 $pt_mob = absint( $args['padding_top_mob']    ?? get_field( 'padding_top_mob' )    ?? 70 );
 $pb_mob = absint( $args['padding_bottom_mob'] ?? get_field( 'padding_bottom_mob' ) ?? 70 );
 
-$title_dark  = $args['title_dark']  ?? get_field( 'title_dark' )  ?? __( 'Case', 'theme' );
-$title_gray  = $args['title_gray']  ?? get_field( 'title_gray' )  ?? __( 'Studies', 'theme' );
+$title_dark  = $args['title_dark']  ?? get_field( 'title_dark' )  ?? __( 'Case', 'lionwood' );
+$title_gray  = $args['title_gray']  ?? get_field( 'title_gray' )  ?? __( 'Studies', 'lionwood' );
 $desc_raw    = $args['description'] ?? get_field( 'description' ) ?? '';
 $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
@@ -45,7 +45,7 @@ $case_count = wp_count_posts( 'case_study' )->publish ?? 0;
             <span class="ch-heading__dark ch-anim" data-delay="0"><?php echo esc_html( $title_dark ); ?></span>
             <span class="ch-heading__gray ch-anim" data-delay="100"><?php echo esc_html( $title_gray ); ?></span>
             <?php if ( $case_count ) : ?>
-                <span class="ch-heading__count ch-anim" data-delay="180" aria-label="<?php echo esc_attr( sprintf( __( '%d cases', 'theme' ), $case_count ) ); ?>">
+                <span class="ch-heading__count ch-anim" data-delay="180" aria-label="<?php echo esc_attr( sprintf( __( '%d cases', 'lionwood' ), $case_count ) ); ?>">
                     (<?php echo esc_html( $case_count ); ?>)
                 </span>
             <?php endif; ?>

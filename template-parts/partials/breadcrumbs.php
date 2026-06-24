@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Partial: Breadcrumbs
  *
@@ -20,7 +20,7 @@ $items = [];
 
 // 1. Home
 $items[] = [
-    'label'   => __( 'Home', 'theme' ),
+    'label'   => __( 'Home', 'lionwood' ),
     'url'     => home_url( '/' ),
     'current' => false,
 ];
@@ -109,13 +109,13 @@ if ( is_singular() ) {
     ];
 } elseif ( is_search() ) {
     $items[] = [
-        'label'   => sprintf( __( 'Search: %s', 'theme' ), esc_html( get_search_query() ) ),
+        'label'   => sprintf( __( 'Search: %s', 'lionwood' ), esc_html( get_search_query() ) ),
         'url'     => '',
         'current' => true,
     ];
 } elseif ( is_404() ) {
     $items[] = [
-        'label'   => __( '404 Not Found', 'theme' ),
+        'label'   => __( '404 Not Found', 'lionwood' ),
         'url'     => '',
         'current' => true,
     ];
@@ -131,7 +131,7 @@ $arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox
 $last_index = count( $items ) - 1;
 ?>
 
-<nav class="breadcrumbs" aria-label="<?php esc_attr_e( 'Breadcrumb', 'theme' ); ?>">
+<nav class="breadcrumbs" aria-label="<?php esc_attr_e( 'Breadcrumb', 'lionwood' ); ?>">
 
     <?php /* Schema.org structured data */ ?>
     <script type="application/ld+json">

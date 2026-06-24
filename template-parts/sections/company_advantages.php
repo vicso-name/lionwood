@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Company Advantages
  *
@@ -16,7 +16,7 @@ $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 $title_raw     = get_field( 'title' ) ?: '';
-$badge_label   = get_field( 'badge_label' ) ?: __( 'Why choose us', 'theme' );
+$badge_label   = get_field( 'badge_label' ) ?: __( 'Why choose us', 'lionwood' );
 $items         = get_field( 'items' ) ?: [];
 $rating_value  = get_field( 'rating_value' ) ?: '4.9';
 $rating_stars  = absint( get_field( 'rating_stars' ) ?: 5 );
@@ -26,7 +26,7 @@ $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 
 $link_url   = ! empty( $rating_link['url'] )    ? esc_url( $rating_link['url'] )    : '';
-$link_label = ! empty( $rating_link['title'] )  ? esc_html( $rating_link['title'] ) : __( 'Rating on Clutch', 'theme' );
+$link_label = ! empty( $rating_link['title'] )  ? esc_html( $rating_link['title'] ) : __( 'Rating on Clutch', 'lionwood' );
 $link_tgt   = ! empty( $rating_link['target'] ) ? $rating_link['target']             : '_blank';
 
 // Split title: first word gets indent class, rest flows inline

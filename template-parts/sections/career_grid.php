@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Career Grid
  * Slug: acf/career-grid
@@ -111,7 +111,7 @@ $per_page = 6;
                             <li class="cg-card__meta-item">
                                 <span class="cg-card__meta-left">
                                     <?php echo $chevron_svg; ?>
-                                    <?php esc_html_e( 'Project Location', 'theme' ); ?>
+                                    <?php esc_html_e( 'Project Location', 'lionwood' ); ?>
                                 </span>
                                 <span class="cg-card__meta-right">
                                     <?php echo esc_html( $location ); ?>
@@ -132,7 +132,7 @@ $per_page = 6;
                             <li class="cg-card__meta-item">
                                 <span class="cg-card__meta-left">
                                     <?php echo $chevron_svg; ?>
-                                    <?php esc_html_e( 'Employment Type', 'theme' ); ?>
+                                    <?php esc_html_e( 'Employment Type', 'lionwood' ); ?>
                                 </span>
                                 <span class="cg-card__meta-right"><?php echo esc_html( $emp_type ); ?></span>
                             </li>
@@ -142,7 +142,7 @@ $per_page = 6;
                             <li class="cg-card__meta-item">
                                 <span class="cg-card__meta-left">
                                     <?php echo $chevron_svg; ?>
-                                    <?php esc_html_e( 'Domain:', 'theme' ); ?>
+                                    <?php esc_html_e( 'Domain:', 'lionwood' ); ?>
                                 </span>
                                 <span class="cg-card__meta-right"><?php echo esc_html( $domain ); ?></span>
                             </li>
@@ -157,7 +157,7 @@ $per_page = 6;
 
                     <?php /* ── View now link ── */ ?>
                     <a class="cg-card__link" href="<?php echo esc_url( $permalink ); ?>">
-                        <span><?php esc_html_e( 'View now', 'theme' ); ?></span>
+                        <span><?php esc_html_e( 'View now', 'lionwood' ); ?></span>
                         <span class="cg-card__link-icon"><?php echo $arrow_svg; ?></span>
                     </a>
 
@@ -169,7 +169,7 @@ $per_page = 6;
             <?php if ( count( $posts ) > $per_page ) : ?>
                 <div class="cg-loadmore-wrap">
                     <button class="cg-loadmore" data-cg-more data-per-page="<?php echo $per_page; ?>">
-                        <?php esc_html_e( 'Load More', 'theme' ); ?>
+                        <?php esc_html_e( 'Load More', 'lionwood' ); ?>
                     </button>
                 </div>
             <?php endif; ?>

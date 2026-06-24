@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Article Slider
  * Slug: acf/article-slider
@@ -46,15 +46,15 @@ $arrow_next = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" vi
 
         <?php /* Desktop arrows — inside slide, bottom-right */ ?>
         <div class="as-nav as-nav--desktop">
-            <button class="as-btn as-btn--prev" aria-label="<?php esc_attr_e( 'Previous', 'theme' ); ?>"><?php echo $arrow_prev; ?></button>
-            <button class="as-btn as-btn--next" aria-label="<?php esc_attr_e( 'Next', 'theme' ); ?>"><?php echo $arrow_next; ?></button>
+            <button class="as-btn as-btn--prev" aria-label="<?php esc_attr_e( 'Previous', 'lionwood' ); ?>"><?php echo $arrow_prev; ?></button>
+            <button class="as-btn as-btn--next" aria-label="<?php esc_attr_e( 'Next', 'lionwood' ); ?>"><?php echo $arrow_next; ?></button>
         </div>
     </div>
 
     <?php /* Mobile arrows — outside, below slider */ ?>
     <div class="as-nav as-nav--mobile">
-        <button class="as-btn as-btn--prev" aria-label="<?php esc_attr_e( 'Previous', 'theme' ); ?>"><?php echo $arrow_prev; ?></button>
-        <button class="as-btn as-btn--next" aria-label="<?php esc_attr_e( 'Next', 'theme' ); ?>"><?php echo $arrow_next; ?></button>
+        <button class="as-btn as-btn--prev" aria-label="<?php esc_attr_e( 'Previous', 'lionwood' ); ?>"><?php echo $arrow_prev; ?></button>
+        <button class="as-btn as-btn--next" aria-label="<?php esc_attr_e( 'Next', 'lionwood' ); ?>"><?php echo $arrow_next; ?></button>
     </div>
 
 </div>

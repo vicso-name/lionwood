@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Single Service Hero
  *
@@ -22,7 +22,7 @@ $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 $bg_image      = get_field( 'bg_image' );
 $bg_url        = $bg_image ? esc_url( $bg_image['url'] ) : '';
 
-$title_prefix  = get_field( 'title_prefix' ) ?: __( 'Service:', 'theme' );
+$title_prefix  = get_field( 'title_prefix' ) ?: __( 'Service:', 'lionwood' );
 // Title: ACF field or fallback to post title
 $title_raw     = get_field( 'title' );
 $title         = $title_raw ? esc_html( $title_raw ) : esc_html( get_the_title() );
@@ -31,7 +31,7 @@ $description   = get_field( 'description' ) ?: ''; // wysiwyg — safe HTML
 
 $cta_raw       = get_field( 'cta_link' );
 $cta_url       = ! empty( $cta_raw['url'] )    ? esc_url( $cta_raw['url'] )    : '';
-$cta_label     = ! empty( $cta_raw['title'] )  ? esc_html( $cta_raw['title'] ) : __( "Let's Get Started", 'theme' );
+$cta_label     = ! empty( $cta_raw['title'] )  ? esc_html( $cta_raw['title'] ) : __( "Let's Get Started", 'lionwood' );
 $cta_target    = ! empty( $cta_raw['target'] ) ? $cta_raw['target']             : '_self';
 
 $hero_image    = get_field( 'hero_image' );

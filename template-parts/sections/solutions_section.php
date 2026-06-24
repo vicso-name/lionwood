@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Solutions Section
  *
@@ -20,7 +20,7 @@ $pb      = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Solutions', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Solutions', 'lionwood' );
 $title_bottom_raw = get_field( 'title_bottom' );
 $title_bottom = $title_bottom_raw
     ? wp_kses( $title_bottom_raw, [ 'br' => [] ] )
@@ -31,7 +31,7 @@ $description  = get_field( 'description' ) ?: '';   // wysiwyg — already safe 
 $cta_text_raw = get_field( 'cta_text' ) ?: '';
 $cta_link_raw = get_field( 'cta_link' );
 $cta_url      = ! empty( $cta_link_raw['url'] )    ? esc_url( $cta_link_raw['url'] )    : '';
-$cta_label    = ! empty( $cta_link_raw['title'] )  ? esc_html( $cta_link_raw['title'] ) : __( 'Read More', 'theme' );
+$cta_label    = ! empty( $cta_link_raw['title'] )  ? esc_html( $cta_link_raw['title'] ) : __( 'Read More', 'lionwood' );
 $cta_target   = ! empty( $cta_link_raw['target'] ) ? $cta_link_raw['target']             : '_self';
 
 $items = get_field( 'items' ) ?: [];

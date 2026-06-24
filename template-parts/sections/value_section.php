@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Value Section
  *
@@ -30,7 +30,7 @@ $bg_color = get_field( 'bg_color' ) ?: '#C83030';
         --vs-pb-mob: <?php echo $pb_mob; ?>px;
         --vs-bg: <?php echo esc_attr( $bg_color ); ?>;
     "
-    aria-label="<?php esc_attr_e( 'Our Values', 'theme' ); ?>"
+    aria-label="<?php esc_attr_e( 'Our Values', 'lionwood' ); ?>"
 >
     <?php /* ── Value items row ────────────────────────────────────────────── */ ?>
     <?php if ( ! empty( $items ) ) : ?>

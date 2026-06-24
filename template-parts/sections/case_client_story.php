@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Client Story
  *
@@ -12,8 +12,8 @@ $pt            = absint( get_field( 'padding_top' )        ?: 20 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 150 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 10 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 110 );
-$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Client Story In', 'theme' ) );
-$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Their Own Words', 'theme' ) );
+$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Client Story In', 'lionwood' ) );
+$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Their Own Words', 'lionwood' ) );
 $preview_image = get_field( 'preview_image' );
 $video_url     = esc_url( get_field( 'video_url' ) ?: '' );
 $description   = get_field( 'description' ) ? wp_kses( get_field( 'description' ), [ 'br' => [] ] ) : '';
@@ -23,11 +23,11 @@ $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 
 $watch_url   = ! empty( $watch_link['url'] )    ? esc_url( $watch_link['url'] )    : $video_url;
-$watch_lbl   = ! empty( $watch_link['title'] )  ? esc_html( $watch_link['title'] ) : __( 'Watch Webinar', 'theme' );
+$watch_lbl   = ! empty( $watch_link['title'] )  ? esc_html( $watch_link['title'] ) : __( 'Watch Webinar', 'lionwood' );
 $watch_tgt   = ! empty( $watch_link['target'] ) ? $watch_link['target']             : '_blank';
 
 $more_url    = ! empty( $more_link['url'] )    ? esc_url( $more_link['url'] )    : '';
-$more_lbl    = ! empty( $more_link['title'] )  ? esc_html( $more_link['title'] ) : __( 'More', 'theme' );
+$more_lbl    = ! empty( $more_link['title'] )  ? esc_html( $more_link['title'] ) : __( 'More', 'lionwood' );
 $more_tgt    = ! empty( $more_link['target'] ) ? $more_link['target']             : '_self';
 
 // Play icon
@@ -79,7 +79,7 @@ $yt_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewB
                         href="<?php echo $video_url ?: $watch_url; ?>"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="<?php esc_attr_e( 'Play video', 'theme' ); ?>"
+                        aria-label="<?php esc_attr_e( 'Play video', 'lionwood' ); ?>"
                     ><?php echo $yt_icon; ?></a>
                 <?php else : ?>
                     <span class="cls-video__play" aria-hidden="true"><?php echo $yt_icon; ?></span>

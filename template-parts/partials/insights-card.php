@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Partial: Insights Card
  *
@@ -54,9 +54,9 @@ if ( $taxonomy === 'category' ) {
 
 // Post type label badge
 $type_labels = [
-    'post'       => __( 'Article', 'theme' ),
-    'news'       => __( 'News', 'theme' ),
-    'whitepaper' => __( 'Whitepaper', 'theme' ),
+    'post'       => __( 'Article', 'lionwood' ),
+    'news'       => __( 'News', 'lionwood' ),
+    'whitepaper' => __( 'Whitepaper', 'lionwood' ),
 ];
 $type_label = $type_labels[ $post_type ] ?? '';
 

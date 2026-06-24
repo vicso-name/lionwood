@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Technologies Section
  *
@@ -15,7 +15,7 @@ $pt          = absint( get_field( 'padding_top' )        ?: 100 );
 $pb          = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob      = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob      = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$marquee_raw = get_field( 'marquee_text' ) ?: __( 'Technologies', 'theme' );
+$marquee_raw = get_field( 'marquee_text' ) ?: __( 'Technologies', 'lionwood' );
 $marquee     = esc_html( $marquee_raw );
 $tabs        = get_field( 'tabs' ) ?: [];
 
@@ -66,7 +66,7 @@ foreach ( $tabs as $tab ) {
 
         <?php /* ── Tabs ─────────────────────────────────────────────────── */ ?>
         <div class="ts2-tabs-scroll">
-            <div class="ts2-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Technology categories', 'theme' ); ?>">
+            <div class="ts2-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Technology categories', 'lionwood' ); ?>">
                 <?php foreach ( $tabs as $i => $tab ) :
                     $is_first = ( 0 === $i );
                     $tab_id   = 'ts2-tab-' . $i;

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Contact Hero Section
  * Slug: acf/contact-hero
@@ -80,12 +80,12 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#F7F7F7';
                             <?php endforeach; ?>
 
                             <?php if ( count( $socials ) > 2 ) : ?>
-                                <button class="coh-socials__more" aria-label="<?php esc_attr_e( 'Show more social links', 'theme' ); ?>" data-coh-more>
+                                <button class="coh-socials__more" aria-label="<?php esc_attr_e( 'Show more social links', 'lionwood' ); ?>" data-coh-more>
                                     <span class="coh-socials__dot"></span>
                                     <span class="coh-socials__dot"></span>
                                     <span class="coh-socials__dot"></span>
                                 </button>
-                                <button class="coh-socials__close" aria-label="<?php esc_attr_e( 'Hide social links', 'theme' ); ?>" data-coh-close>
+                                <button class="coh-socials__close" aria-label="<?php esc_attr_e( 'Hide social links', 'lionwood' ); ?>" data-coh-close>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                                         <path d="M6.41797 6.41602L15.5846 15.5827M6.41797 15.5827L15.5846 6.41602" stroke="#C83030" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>

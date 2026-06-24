@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Choose Service Grid
  *
@@ -12,7 +12,7 @@ $pt          = absint( get_field( 'padding_top' )        ?: 100 );
 $pb          = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob      = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob      = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$marquee_raw    = get_field( 'marquee_text' ) ?: __( 'Choose Your Service', 'theme' );
+$marquee_raw    = get_field( 'marquee_text' ) ?: __( 'Choose Your Service', 'lionwood' );
 $marquee        = esc_html( $marquee_raw );
 $mode           = get_field( 'mode' ) ?: 'auto';
 $manual_ids     = get_field( 'services' ) ?: [];
@@ -119,7 +119,7 @@ $block_id = 'csg-' . uniqid();
 					class="csg-loadmore-btn"
 					data-loadmore
 					data-nonce="<?php echo esc_attr( wp_create_nonce( 'csg_load_more' ) ); ?>"
-				><?php esc_html_e( 'Load More', 'theme' ); ?></button>
+				><?php esc_html_e( 'Load More', 'lionwood' ); ?></button>
 			</div>
 		<?php endif; ?>
 

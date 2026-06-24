@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Partial: Service Card
  *
@@ -68,7 +68,7 @@ if ( $has_subs ) {
 	<?php /* ── Subservices plank ───────────────────────────────────────── */ ?>
 	<?php if ( $has_subs ) : ?>
 		<div class="csg-card__subs-plank" data-subs-toggle aria-expanded="false">
-			<span class="csg-card__subs-label"><?php esc_html_e( 'Subservices', 'theme' ); ?></span>
+			<span class="csg-card__subs-label"><?php esc_html_e( 'Subservices', 'lionwood' ); ?></span>
 			<span class="csg-card__subs-icon csg-card__subs-icon--plus" aria-hidden="true">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 					<path d="M15 8C15 8.55229 14.5523 9 14 9H9V14C9 14.5523 8.55228 15 8 15C7.44772 15 7 14.5523 7 14V9H2C1.44772 9 1 8.55229 1 8C1 7.44772 1.44772 7 2 7H7V2C7 1.44772 7.44772 1 8 1C8.55228 1 9 1.44772 9 2V7H14C14.5523 7 15 7.44772 15 8Z" fill="#848588"/>
@@ -92,7 +92,7 @@ if ( $has_subs ) {
 		<div class="csg-card__subs-panel" data-subs-panel aria-hidden="true">
 			<div class="csg-card__subs-panel-inner">
 				<div class="csg-card__subs-panel-header">
-					<span><?php esc_html_e( 'Subservices', 'theme' ); ?></span>
+					<span><?php esc_html_e( 'Subservices', 'lionwood' ); ?></span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
 						<g clip-path="url(#clip0_panel_close)">
 							<path d="M12.9497 12.9489C12.5592 13.3394 11.9261 13.3394 11.5355 12.9489L8 9.41332L4.46447 12.9489C4.07394 13.3394 3.44078 13.3394 3.05025 12.9489C2.65973 12.5583 2.65973 11.9252 3.05025 11.5346L6.58579 7.9991L3.05025 4.46357C2.65973 4.07305 2.65973 3.43988 3.05025 3.04936C3.44078 2.65883 4.07394 2.65883 4.46447 3.04936L8 6.58489L11.5355 3.04936C11.9261 2.65883 12.5592 2.65883 12.9497 3.04936C13.3403 3.43988 13.3403 4.07305 12.9497 4.46357L9.41421 7.9991L12.9497 11.5346C13.3403 11.9252 13.3403 12.5583 12.9497 12.9489Z" fill="#848588"/>

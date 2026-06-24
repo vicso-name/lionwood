@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Our Cases
  *
@@ -14,8 +14,8 @@ $pb      = absint( get_field( 'padding_bottom' )     ?: 80 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 80 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 80 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Our Cases:', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'Real Impact, Real Results', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Our Cases:', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'Real Impact, Real Results', 'lionwood' );
 $desc_raw     = get_field( 'description' );
 $description  = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
@@ -24,7 +24,7 @@ $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 $link_raw     = get_field( 'all_cases_link' );
 $link_url     = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-$link_label   = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'All Cases', 'theme' );
+$link_label   = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'All Cases', 'lionwood' );
 $link_target  = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
 
 // ── Fallback chart icon SVG ───────────────────────────────────────────────────

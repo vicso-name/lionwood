@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Partnership Technologies Section
  * Slug: acf/partnership-technologies
@@ -22,7 +22,7 @@ $label       = get_field( 'label' )        ?: '';
 $technologies = array_slice( get_field( 'technologies' ) ?: [], 0, 9 );
 $cta_link    = get_field( 'cta_link' );
 $cta_url     = ! empty( $cta_link['url'] )    ? esc_url( $cta_link['url'] )    : '';
-$cta_label   = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'View All Technologies', 'theme' );
+$cta_label   = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'View All Technologies', 'lionwood' );
 $cta_target  = ! empty( $cta_link['target'] ) ? $cta_link['target']             : '_self';
 
 $decor_enabled = get_field( 'decor_bottom_enabled' );

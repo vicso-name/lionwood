@@ -37,8 +37,51 @@
         });
     }
 
+    function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        // execCommand fallback — must run before window.open (needs page focus)
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        return Promise.resolve();
+    }
+
+    function initAiChips() {
+        var chips = document.querySelectorAll('.sp-ai__chip[data-url]');
+        if (!chips.length) return;
+
+        Array.prototype.forEach.call(chips, function (btn) {
+            btn.addEventListener('click', function () {
+                var url    = btn.dataset.url;
+                var prompt = btn.dataset.prompt;
+                if (!url) return;
+
+                // Copy first (execCommand needs page focus, before window.open)
+                copyToClipboard(prompt).then(function () {
+                    btn.classList.add('sp-ai__chip--copied');
+                    setTimeout(function () {
+                        btn.classList.remove('sp-ai__chip--copied');
+                    }, 2000);
+                });
+
+                // Open with ?q= param: works natively in Perplexity + ChatGPT (prefill).
+                // Gemini ignores it — user pastes from clipboard.
+                var sep     = url.indexOf('?') === -1 ? '?' : '&';
+                var fullUrl = url + sep + 'q=' + encodeURIComponent(prompt);
+                window.open(fullUrl, '_blank', 'noopener,noreferrer');
+            });
+        });
+    }
+
     function init() {
         initVideos();
+        initAiChips();
 
         var tocWrap   = document.getElementById('sp-toc');
         var tocToggle = document.querySelector('.sp-toc__toggle');

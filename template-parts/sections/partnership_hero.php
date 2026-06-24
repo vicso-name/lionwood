@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Partnership Hero Section
  *
@@ -20,9 +20,9 @@ $pb     = absint( get_field( 'padding_bottom' )     ?: 200 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 140 );
 
-$line1_start = get_field( 'title_line1_start' ) ?: __( 'Become Our', 'theme' );
-$line1_end   = get_field( 'title_line1_end' )   ?: __( 'Team Of', 'theme' );
-$line2       = get_field( 'title_line2' )        ?: __( 'Together', 'theme' );
+$line1_start = get_field( 'title_line1_start' ) ?: __( 'Become Our', 'lionwood' );
+$line1_end   = get_field( 'title_line1_end' )   ?: __( 'Team Of', 'lionwood' );
+$line2       = get_field( 'title_line2' )        ?: __( 'Together', 'lionwood' );
 $label_text  = get_field( 'label_text' ) ?: '';
 $desc_raw    = get_field( 'description' );
 
@@ -32,16 +32,16 @@ $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
 $est_raw    = get_field( 'cta_estimate' );
 $est_url    = ! empty( $est_raw['url'] )    ? esc_url( $est_raw['url'] )    : '#';
-$est_label  = ! empty( $est_raw['title'] )  ? esc_html( $est_raw['title'] ) : __( 'Get Estimate', 'theme' );
+$est_label  = ! empty( $est_raw['title'] )  ? esc_html( $est_raw['title'] ) : __( 'Get Estimate', 'lionwood' );
 $est_target = ! empty( $est_raw['target'] ) ? $est_raw['target']             : '_self';
 
 $mtg_raw    = get_field( 'cta_meeting' );
 $mtg_url    = ! empty( $mtg_raw['url'] )    ? esc_url( $mtg_raw['url'] )    : '#';
-$mtg_label  = ! empty( $mtg_raw['title'] )  ? esc_html( $mtg_raw['title'] ) : __( 'Book a Meeting', 'theme' );
+$mtg_label  = ! empty( $mtg_raw['title'] )  ? esc_html( $mtg_raw['title'] ) : __( 'Book a Meeting', 'lionwood' );
 $mtg_target = ! empty( $mtg_raw['target'] ) ? $mtg_raw['target']             : '_self';
 ?>
 
-<section class="ph-section" aria-label="<?php esc_attr_e( 'Partnership Hero', 'theme' ); ?>"
+<section class="ph-section" aria-label="<?php esc_attr_e( 'Partnership Hero', 'lionwood' ); ?>"
     style="
         --ph-pt: <?php echo $pt; ?>px;
         --ph-pb: <?php echo $pb; ?>px;

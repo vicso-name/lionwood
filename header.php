@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -25,7 +25,7 @@ $svg_lang_chevron = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="
 // ── ACF Options: CTA button ───────────────────────────────────────────────────
 $cta_link  = function_exists('get_field') ? get_field( 'header_cta_link', 'option' ) : null;
 $cta_url   = ! empty( $cta_link['url'] )    ? esc_url( $cta_link['url'] )    : '#';
-$cta_label = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'Contact Us', 'theme' );
+$cta_label = ! empty( $cta_link['title'] )  ? esc_html( $cta_link['title'] ) : __( 'Contact Us', 'lionwood' );
 $cta_tgt   = ! empty( $cta_link['target'] ) ? $cta_link['target']             : '_self';
 
 // ── Logo — ACF Options OR WordPress Customizer ────────────────────────────────
@@ -60,7 +60,7 @@ if ( ! $logo_url && has_custom_logo() ) {
         </a>
 
         <?php /* ── Main nav ── */ ?>
-        <nav class="hdr__nav" aria-label="<?php esc_attr_e( 'Main navigation', 'theme' ); ?>">
+        <nav class="hdr__nav" aria-label="<?php esc_attr_e( 'Main navigation', 'lionwood' ); ?>">
             <?php
             wp_nav_menu([
                 'theme_location'  => 'primary',
@@ -86,7 +86,7 @@ if ( ! $logo_url && has_custom_logo() ) {
                         </span>
                         <?php echo $svg_lang_chevron; ?>
                     </button>
-                    <ul class="hdr__lang-drop" role="listbox" aria-label="<?php esc_attr_e( 'Select language', 'theme' ); ?>">
+                    <ul class="hdr__lang-drop" role="listbox" aria-label="<?php esc_attr_e( 'Select language', 'lionwood' ); ?>">
                         <?php
                         $languages = pll_the_languages(['raw' => 1]);
                         foreach ( $languages as $lang ) :
@@ -113,7 +113,7 @@ if ( ! $logo_url && has_custom_logo() ) {
             ><?php echo $cta_label; ?></a>
 
             <?php /* Burger — mobile only */ ?>
-            <button class="hdr__burger" aria-label="<?php esc_attr_e( 'Open menu', 'theme' ); ?>" aria-expanded="false" data-hdr-burger>
+            <button class="hdr__burger" aria-label="<?php esc_attr_e( 'Open menu', 'lionwood' ); ?>" aria-expanded="false" data-hdr-burger>
                 <span></span><span></span><span></span>
             </button>
 

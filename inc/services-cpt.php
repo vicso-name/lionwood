@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Services
  *
@@ -12,18 +12,18 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_services' ) ) {
 	function theme_register_cpt_services(): void {
 		$labels = [
-			'name'               => __( 'Services', 'theme' ),
-			'singular_name'      => __( 'Service', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Service', 'theme' ),
-			'edit_item'          => __( 'Edit Service', 'theme' ),
-			'new_item'           => __( 'New Service', 'theme' ),
-			'view_item'          => __( 'View Service', 'theme' ),
-			'search_items'       => __( 'Search Services', 'theme' ),
-			'not_found'          => __( 'No services found', 'theme' ),
-			'not_found_in_trash' => __( 'No services found in trash', 'theme' ),
-			'parent_item_colon'  => __( 'Parent Service:', 'theme' ),
-			'menu_name'          => __( 'Services', 'theme' ),
+			'name'               => __( 'Services', 'lionwood' ),
+			'singular_name'      => __( 'Service', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Service', 'lionwood' ),
+			'edit_item'          => __( 'Edit Service', 'lionwood' ),
+			'new_item'           => __( 'New Service', 'lionwood' ),
+			'view_item'          => __( 'View Service', 'lionwood' ),
+			'search_items'       => __( 'Search Services', 'lionwood' ),
+			'not_found'          => __( 'No services found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No services found in trash', 'lionwood' ),
+			'parent_item_colon'  => __( 'Parent Service:', 'lionwood' ),
+			'menu_name'          => __( 'Services', 'lionwood' ),
 		];
 
 		register_post_type( 'service', [

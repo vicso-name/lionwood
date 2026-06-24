@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Certified Section
  *
@@ -13,8 +13,8 @@ $pb     = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Certified', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'Experts You Trust', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Certified', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'Experts You Trust', 'lionwood' );
 
 $logo_1 = get_field( 'logo_1' );
 $logo_2 = get_field( 'logo_2' );

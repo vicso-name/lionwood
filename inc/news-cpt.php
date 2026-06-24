@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: News
  * Taxonomy: News Category (hierarchical)
@@ -10,17 +10,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_news' ) ) {
 	function theme_register_cpt_news(): void {
 		$labels = [
-			'name'               => __( 'News', 'theme' ),
-			'singular_name'      => __( 'News', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New News', 'theme' ),
-			'edit_item'          => __( 'Edit News', 'theme' ),
-			'new_item'           => __( 'New News', 'theme' ),
-			'view_item'          => __( 'View News', 'theme' ),
-			'search_items'       => __( 'Search News', 'theme' ),
-			'not_found'          => __( 'No news found', 'theme' ),
-			'not_found_in_trash' => __( 'No news found in trash', 'theme' ),
-			'menu_name'          => __( 'News', 'theme' ),
+			'name'               => __( 'News', 'lionwood' ),
+			'singular_name'      => __( 'News', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New News', 'lionwood' ),
+			'edit_item'          => __( 'Edit News', 'lionwood' ),
+			'new_item'           => __( 'New News', 'lionwood' ),
+			'view_item'          => __( 'View News', 'lionwood' ),
+			'search_items'       => __( 'Search News', 'lionwood' ),
+			'not_found'          => __( 'No news found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No news found in trash', 'lionwood' ),
+			'menu_name'          => __( 'News', 'lionwood' ),
 		];
 
 		register_post_type( 'news', [
@@ -47,17 +47,17 @@ add_action( 'init', 'theme_register_cpt_news' );
 if ( ! function_exists( 'theme_register_tax_news_category' ) ) {
 	function theme_register_tax_news_category(): void {
 		$labels = [
-			'name'              => __( 'News Categories', 'theme' ),
-			'singular_name'     => __( 'News Category', 'theme' ),
-			'search_items'      => __( 'Search News Categories', 'theme' ),
-			'all_items'         => __( 'All News Categories', 'theme' ),
-			'parent_item'       => __( 'Parent Category', 'theme' ),
-			'parent_item_colon' => __( 'Parent Category:', 'theme' ),
-			'edit_item'         => __( 'Edit News Category', 'theme' ),
-			'update_item'       => __( 'Update News Category', 'theme' ),
-			'add_new_item'      => __( 'Add New News Category', 'theme' ),
-			'new_item_name'     => __( 'New News Category Name', 'theme' ),
-			'menu_name'         => __( 'Categories', 'theme' ),
+			'name'              => __( 'News Categories', 'lionwood' ),
+			'singular_name'     => __( 'News Category', 'lionwood' ),
+			'search_items'      => __( 'Search News Categories', 'lionwood' ),
+			'all_items'         => __( 'All News Categories', 'lionwood' ),
+			'parent_item'       => __( 'Parent Category', 'lionwood' ),
+			'parent_item_colon' => __( 'Parent Category:', 'lionwood' ),
+			'edit_item'         => __( 'Edit News Category', 'lionwood' ),
+			'update_item'       => __( 'Update News Category', 'lionwood' ),
+			'add_new_item'      => __( 'Add New News Category', 'lionwood' ),
+			'new_item_name'     => __( 'New News Category Name', 'lionwood' ),
+			'menu_name'         => __( 'Categories', 'lionwood' ),
 		];
 
 		register_taxonomy( 'news_category', [ 'news' ], [

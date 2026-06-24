@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Single Job Hero
  * Slug: acf/single-job-hero
@@ -28,7 +28,7 @@ $recruiter_name   = get_field( 'recruiter_name' )  ?: '';
 $recruiter_label  = get_field( 'recruiter_label' ) ?: 'Recruiter';
 $apply_link       = get_field( 'apply_link' );
 $apply_url        = ! empty( $apply_link['url'] )    ? esc_url( $apply_link['url'] )    : '';
-$apply_text       = ! empty( $apply_link['title'] )  ? esc_html( $apply_link['title'] ) : __( 'Apply Now', 'theme' );
+$apply_text       = ! empty( $apply_link['title'] )  ? esc_html( $apply_link['title'] ) : __( 'Apply Now', 'lionwood' );
 $apply_target     = ! empty( $apply_link['target'] ) ? $apply_link['target']             : '_self';
 
 $decor_enabled = get_field( 'decor_bottom_enabled' );

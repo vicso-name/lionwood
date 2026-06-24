@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Banner Section
  *
@@ -19,7 +19,7 @@ $text_raw      = get_field( 'text' ) ?: '';
 $text          = $text_raw ? wp_kses( $text_raw, [ 'br' => [] ] ) : '';
 $link_raw      = get_field( 'link' );
 $link_url      = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-$link_lbl      = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book a Meeting', 'theme' );
+$link_lbl      = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book a Meeting', 'lionwood' );
 $link_tgt      = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';

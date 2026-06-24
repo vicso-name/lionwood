@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Industries Section
  *
@@ -23,15 +23,15 @@ $pb      = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
-$title_top    = get_field( 'title_top' )    ?: __( 'Our Industry', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'Expertise', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'Our Industry', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'Expertise', 'lionwood' );
 $desc_raw     = get_field( 'description' );
 $description  = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
-$cta_label_raw = get_field( 'cta_label' ) ?: __( "Didn't find your industry or solution?", 'theme' );
+$cta_label_raw = get_field( 'cta_label' ) ?: __( "Didn't find your industry or solution?", 'lionwood' );
 $cta_link_raw  = get_field( 'cta_link' );
 $cta_url       = ! empty( $cta_link_raw['url'] )    ? esc_url( $cta_link_raw['url'] )    : '';
-$cta_label     = ! empty( $cta_link_raw['title'] )  ? esc_html( $cta_link_raw['title'] ) : __( 'Learn More', 'theme' );
+$cta_label     = ! empty( $cta_link_raw['title'] )  ? esc_html( $cta_link_raw['title'] ) : __( 'Learn More', 'lionwood' );
 $cta_target    = ! empty( $cta_link_raw['target'] ) ? $cta_link_raw['target']              : '_self';
 
 $industries = get_field( 'industries' ) ?: [];
@@ -150,7 +150,7 @@ if ( empty( $industries ) ) return;
                     <a
                         class="ind-slide__arrow"
                         href="<?php echo $permalink; ?>"
-                        aria-label="<?php echo esc_attr( sprintf( __( 'Learn more about %s', 'theme' ), $title ) ); ?>"
+                        aria-label="<?php echo esc_attr( sprintf( __( 'Learn more about %s', 'lionwood' ), $title ) ); ?>"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
                             <path d="M8.61056 17.2172L17.2188 8.60896M10.7626 8.60896L17.2188 8.60896L17.2188 15.0651" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -167,7 +167,7 @@ if ( empty( $industries ) ) return;
         <div class="ind-section__footer">
 
             <?php /* Thumbnails nav */ ?>
-            <div class="ind-thumbs" role="tablist" aria-label="<?php esc_attr_e( 'Industry navigation', 'theme' ); ?>">
+            <div class="ind-thumbs" role="tablist" aria-label="<?php esc_attr_e( 'Industry navigation', 'lionwood' ); ?>">
                 <?php foreach ( $industries as $i => $post ) :
                     $post_id   = $post->ID;
                     $title     = esc_html( get_the_title( $post_id ) );

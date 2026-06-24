@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Testimonials Section
  *
@@ -11,12 +11,12 @@
 defined( 'ABSPATH' ) || exit;
 
 // ── Block fields ─────────────────────────────────────────────────────────────
-$title_top    = get_field( 'title_top' )    ?: __( 'What Our', 'theme' );
-$title_bottom = get_field( 'title_bottom' ) ?: __( 'Clients Say', 'theme' );
+$title_top    = get_field( 'title_top' )    ?: __( 'What Our', 'lionwood' );
+$title_bottom = get_field( 'title_bottom' ) ?: __( 'Clients Say', 'lionwood' );
 
 $rating_score = get_field( 'rating_score' ) ?: '4.9';
 $rating_stars = (int) ( get_field( 'rating_stars' ) ?: 5 );
-$rating_label = get_field( 'rating_label' ) ?: __( 'Rating on Clutch [ 31 reviews ]', 'theme' );
+$rating_label = get_field( 'rating_label' ) ?: __( 'Rating on Clutch [ 31 reviews ]', 'lionwood' );
 
 $testimonials = get_field( 'testimonials' ) ?: [];
 
@@ -88,7 +88,7 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 							// Case link
 							$case_raw    = get_field( 'case_link', $post_id );
 							$case_url    = ! empty( $case_raw['url'] )    ? esc_url( $case_raw['url'] )    : '';
-							$case_label  = ! empty( $case_raw['title'] )  ? esc_html( $case_raw['title'] ) : __( 'View Case', 'theme' );
+							$case_label  = ! empty( $case_raw['title'] )  ? esc_html( $case_raw['title'] ) : __( 'View Case', 'lionwood' );
 							$case_target = ! empty( $case_raw['target'] ) ? $case_raw['target']             : '_self';
 
 							// Quote — trimmed to 283 chars at last word boundary (etalon length)
@@ -172,7 +172,7 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 										aria-controls="ts-accordion-<?php echo esc_attr( $post_id ); ?>"
 									>
 										<span class="ts-card__accordion-label">
-											<?php esc_html_e( 'About & Results', 'theme' ); ?>
+											<?php esc_html_e( 'About & Results', 'lionwood' ); ?>
 										</span>
 										<span class="ts-card__accordion-icon" aria-hidden="true">
 											<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
@@ -233,12 +233,12 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 
 				<?php /* Navigation — outside slider, bottom right */ ?>
 				<div class="ts-section__nav">
-					<button class="ts-nav-btn ts-nav-btn--prev" aria-label="<?php esc_attr_e( 'Previous testimonial', 'theme' ); ?>">
+					<button class="ts-nav-btn ts-nav-btn--prev" aria-label="<?php esc_attr_e( 'Previous testimonial', 'lionwood' ); ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
 							<path d="M16.6615 9.99903L3.32813 9.99902M8.32812 14.999L3.32813 9.99902L8.32812 4.99902" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
 					</button>
-					<button class="ts-nav-btn ts-nav-btn--next" aria-label="<?php esc_attr_e( 'Next testimonial', 'theme' ); ?>">
+					<button class="ts-nav-btn ts-nav-btn--next" aria-label="<?php esc_attr_e( 'Next testimonial', 'lionwood' ); ?>">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
 							<path d="M3.33854 10.001L16.6719 10.001M11.6719 5.00098L16.6719 10.001L11.6719 15.001" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>

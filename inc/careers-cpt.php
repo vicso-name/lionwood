@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Careers
  *
@@ -12,17 +12,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_career' ) ) {
 	function theme_register_cpt_career(): void {
 		$labels = [
-			'name'               => __( 'Careers', 'theme' ),
-			'singular_name'      => __( 'Career', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Career', 'theme' ),
-			'edit_item'          => __( 'Edit Career', 'theme' ),
-			'new_item'           => __( 'New Career', 'theme' ),
-			'view_item'          => __( 'View Career', 'theme' ),
-			'search_items'       => __( 'Search Careers', 'theme' ),
-			'not_found'          => __( 'No careers found', 'theme' ),
-			'not_found_in_trash' => __( 'No careers found in trash', 'theme' ),
-			'menu_name'          => __( 'Careers', 'theme' ),
+			'name'               => __( 'Careers', 'lionwood' ),
+			'singular_name'      => __( 'Career', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Career', 'lionwood' ),
+			'edit_item'          => __( 'Edit Career', 'lionwood' ),
+			'new_item'           => __( 'New Career', 'lionwood' ),
+			'view_item'          => __( 'View Career', 'lionwood' ),
+			'search_items'       => __( 'Search Careers', 'lionwood' ),
+			'not_found'          => __( 'No careers found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No careers found in trash', 'lionwood' ),
+			'menu_name'          => __( 'Careers', 'lionwood' ),
 		];
 
 		register_post_type( 'career', [

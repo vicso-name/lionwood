@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Cases (Case Studies)
  * Taxonomies: Industry, Service (hierarchical — like categories)
@@ -14,17 +14,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_cases' ) ) {
 	function theme_register_cpt_cases(): void {
 		$labels = [
-			'name'               => __( 'Cases', 'theme' ),
-			'singular_name'      => __( 'Case', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Case', 'theme' ),
-			'edit_item'          => __( 'Edit Case', 'theme' ),
-			'new_item'           => __( 'New Case', 'theme' ),
-			'view_item'          => __( 'View Case', 'theme' ),
-			'search_items'       => __( 'Search Cases', 'theme' ),
-			'not_found'          => __( 'No cases found', 'theme' ),
-			'not_found_in_trash' => __( 'No cases found in trash', 'theme' ),
-			'menu_name'          => __( 'Cases', 'theme' ),
+			'name'               => __( 'Cases', 'lionwood' ),
+			'singular_name'      => __( 'Case', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Case', 'lionwood' ),
+			'edit_item'          => __( 'Edit Case', 'lionwood' ),
+			'new_item'           => __( 'New Case', 'lionwood' ),
+			'view_item'          => __( 'View Case', 'lionwood' ),
+			'search_items'       => __( 'Search Cases', 'lionwood' ),
+			'not_found'          => __( 'No cases found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No cases found in trash', 'lionwood' ),
+			'menu_name'          => __( 'Cases', 'lionwood' ),
 		];
 
 		register_post_type( 'case_study', [
@@ -51,17 +51,17 @@ add_action( 'init', 'theme_register_cpt_cases' );
 if ( ! function_exists( 'theme_register_tax_industry' ) ) {
 	function theme_register_tax_industry(): void {
 		$labels = [
-			'name'              => __( 'Industries', 'theme' ),
-			'singular_name'     => __( 'Industry', 'theme' ),
-			'search_items'      => __( 'Search Industries', 'theme' ),
-			'all_items'         => __( 'All Industries', 'theme' ),
-			'parent_item'       => __( 'Parent Industry', 'theme' ),
-			'parent_item_colon' => __( 'Parent Industry:', 'theme' ),
-			'edit_item'         => __( 'Edit Industry', 'theme' ),
-			'update_item'       => __( 'Update Industry', 'theme' ),
-			'add_new_item'      => __( 'Add New Industry', 'theme' ),
-			'new_item_name'     => __( 'New Industry Name', 'theme' ),
-			'menu_name'         => __( 'Industries', 'theme' ),
+			'name'              => __( 'Industries', 'lionwood' ),
+			'singular_name'     => __( 'Industry', 'lionwood' ),
+			'search_items'      => __( 'Search Industries', 'lionwood' ),
+			'all_items'         => __( 'All Industries', 'lionwood' ),
+			'parent_item'       => __( 'Parent Industry', 'lionwood' ),
+			'parent_item_colon' => __( 'Parent Industry:', 'lionwood' ),
+			'edit_item'         => __( 'Edit Industry', 'lionwood' ),
+			'update_item'       => __( 'Update Industry', 'lionwood' ),
+			'add_new_item'      => __( 'Add New Industry', 'lionwood' ),
+			'new_item_name'     => __( 'New Industry Name', 'lionwood' ),
+			'menu_name'         => __( 'Industries', 'lionwood' ),
 		];
 
 		register_taxonomy( 'case_study_category', [ 'case_study' ], [
@@ -82,17 +82,17 @@ add_action( 'init', 'theme_register_tax_industry' );
 if ( ! function_exists( 'theme_register_tax_case_service' ) ) {
 	function theme_register_tax_case_service(): void {
 		$labels = [
-			'name'              => __( 'Services', 'theme' ),
-			'singular_name'     => __( 'Service', 'theme' ),
-			'search_items'      => __( 'Search Services', 'theme' ),
-			'all_items'         => __( 'All Services', 'theme' ),
-			'parent_item'       => __( 'Parent Service', 'theme' ),
-			'parent_item_colon' => __( 'Parent Service:', 'theme' ),
-			'edit_item'         => __( 'Edit Service', 'theme' ),
-			'update_item'       => __( 'Update Service', 'theme' ),
-			'add_new_item'      => __( 'Add New Service', 'theme' ),
-			'new_item_name'     => __( 'New Service Name', 'theme' ),
-			'menu_name'         => __( 'Services', 'theme' ),
+			'name'              => __( 'Services', 'lionwood' ),
+			'singular_name'     => __( 'Service', 'lionwood' ),
+			'search_items'      => __( 'Search Services', 'lionwood' ),
+			'all_items'         => __( 'All Services', 'lionwood' ),
+			'parent_item'       => __( 'Parent Service', 'lionwood' ),
+			'parent_item_colon' => __( 'Parent Service:', 'lionwood' ),
+			'edit_item'         => __( 'Edit Service', 'lionwood' ),
+			'update_item'       => __( 'Update Service', 'lionwood' ),
+			'add_new_item'      => __( 'Add New Service', 'lionwood' ),
+			'new_item_name'     => __( 'New Service Name', 'lionwood' ),
+			'menu_name'         => __( 'Services', 'lionwood' ),
 		];
 
 		register_taxonomy( 'case_study_service', [ 'case_study' ], [

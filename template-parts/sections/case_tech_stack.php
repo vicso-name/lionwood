@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Tech Stack Section
  *
@@ -12,8 +12,8 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Expert Team &', 'theme' ) );
-$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Tech Stack', 'theme' ) );
+$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Expert Team &', 'lionwood' ) );
+$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Tech Stack', 'lionwood' ) );
 $desc_raw      = get_field( 'description' );
 $description   = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 $team          = get_field( 'team' ) ?: [];

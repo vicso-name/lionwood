@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Contact Map Section
  * Slug: acf/contact-map
@@ -93,7 +93,7 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#F7F7F7';
                 <div class="cms-map">
                     <img
                         src="<?php echo esc_url( $map['url'] ); ?>"
-                        alt="<?php echo esc_attr( $map['alt'] ?: __( 'World map', 'theme' ) ); ?>"
+                        alt="<?php echo esc_attr( $map['alt'] ?: __( 'World map', 'lionwood' ) ); ?>"
                         width="968"
                         height="502"
                         loading="lazy"

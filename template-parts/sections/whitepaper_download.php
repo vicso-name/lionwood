@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Whitepaper Download
  *
@@ -26,13 +26,13 @@ $hs_portal_id = esc_attr( get_field( 'hs_portal_id', 'option' ) ?: '' );
 $hs_form_id   = esc_attr( get_field( 'hubspot_form_id_override' ) ?: get_field( 'hs_default_form_id', 'option' ) ?: '' );
 $terms_link_raw  = get_field( 'terms_link' );
 $terms_url       = ! empty( $terms_link_raw['url'] )   ? esc_url( $terms_link_raw['url'] )    : '#';
-$terms_label     = ! empty( $terms_link_raw['title'] ) ? esc_html( $terms_link_raw['title'] ) : __( 'Terms & Conditions', 'theme' );
+$terms_label     = ! empty( $terms_link_raw['title'] ) ? esc_html( $terms_link_raw['title'] ) : __( 'Terms & Conditions', 'lionwood' );
 $terms_target    = ! empty( $terms_link_raw['target'] ) ? $terms_link_raw['target'] : '_self';
 
 $pdf_file        = get_field( 'pdf_file' );
 $pdf_url         = ! empty( $pdf_file['url'] ) ? esc_url( $pdf_file['url'] ) : '';
-$success_message = esc_html( get_field( 'success_message' ) ?: __( 'Thank you! Your whitepaper is ready.', 'theme' ) );
-$btn_label       = esc_html( get_field( 'button_label' ) ?: __( 'Get Whitepaper', 'theme' ) );
+$success_message = esc_html( get_field( 'success_message' ) ?: __( 'Thank you! Your whitepaper is ready.', 'lionwood' ) );
+$btn_label       = esc_html( get_field( 'button_label' ) ?: __( 'Get Whitepaper', 'lionwood' ) );
 
 $decor_enabled = get_field( 'decor_bottom_enabled' ) ?? true;
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#C83030';
@@ -97,7 +97,7 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                             class="wpd-input"
                             type="text"
                             name="full_name"
-                            placeholder="<?php esc_attr_e( 'Full Name *', 'theme' ); ?>"
+                            placeholder="<?php esc_attr_e( 'Full Name *', 'lionwood' ); ?>"
                             required
                             autocomplete="name"
                         >
@@ -105,14 +105,14 @@ $download_svg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" 
                             class="wpd-input wpd-input--last"
                             type="email"
                             name="email"
-                            placeholder="<?php esc_attr_e( 'Business Email *', 'theme' ); ?>"
+                            placeholder="<?php esc_attr_e( 'Business Email *', 'lionwood' ); ?>"
                             required
                             autocomplete="email"
                         >
 
                         <div class="wpd-form__row">
                             <p class="wpd-form__terms">
-                                <?php esc_html_e( 'By clicking the button, I agree to the', 'theme' ); ?>
+                                <?php esc_html_e( 'By clicking the button, I agree to the', 'lionwood' ); ?>
                                 <a
                                     href="<?php echo $terms_url; ?>"
                                     target="<?php echo esc_attr( $terms_target ); ?>"

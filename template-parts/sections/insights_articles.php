@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Insights & Articles
  *
@@ -34,7 +34,7 @@ $section_style = sprintf(
 );
 
 $explore_url    = ! empty( $explore_raw['url'] )    ? esc_url( $explore_raw['url'] )       : esc_url( home_url( '/blog/' ) );
-$explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] )    : __( 'Explore More', 'theme' );
+$explore_label  = ! empty( $explore_raw['title'] )  ? esc_html( $explore_raw['title'] )    : __( 'Explore More', 'lionwood' );
 $explore_target = ! empty( $explore_raw['target'] ) ? $explore_raw['target']               : '_self';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -128,7 +128,7 @@ if ( ! function_exists( 'ia_get_excerpt' ) ) {
 								<?php endif; ?>
 
 								<?php if ( $category ) : ?>
-									<span class="ia-card__tag" aria-label="<?php esc_attr_e( 'Category', 'theme' ); ?>: <?php echo esc_attr( $category ); ?>">
+									<span class="ia-card__tag" aria-label="<?php esc_attr_e( 'Category', 'lionwood' ); ?>: <?php echo esc_attr( $category ); ?>">
 										#<?php echo $category; ?>
 									</span>
 								<?php endif; ?>

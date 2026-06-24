@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Single Service Definition
  *
@@ -15,7 +15,7 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 160 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_top     = get_field( 'title_top' )    ?: __( 'When Do You Need', 'theme' );
+$title_top     = get_field( 'title_top' )    ?: __( 'When Do You Need', 'lionwood' );
 $title_bottom  = get_field( 'title_bottom' ) ?: '';
 $items         = get_field( 'items' )        ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );

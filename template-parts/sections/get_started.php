@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Get Started Slider
  *
@@ -18,10 +18,10 @@ $pb     = absint( get_field( 'padding_bottom' )     ?: 160 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 
-$line_1 = get_field( 'title_line_1' ) ?: __( 'Get', 'theme' );
-$line_2 = get_field( 'title_line_2' ) ?: __( 'Started', 'theme' );
-$line_3 = get_field( 'title_line_3' ) ?: __( 'With the Right', 'theme' );
-$line_4 = get_field( 'title_line_4' ) ?: __( 'Approach', 'theme' );
+$line_1 = get_field( 'title_line_1' ) ?: __( 'Get', 'lionwood' );
+$line_2 = get_field( 'title_line_2' ) ?: __( 'Started', 'lionwood' );
+$line_3 = get_field( 'title_line_3' ) ?: __( 'With the Right', 'lionwood' );
+$line_4 = get_field( 'title_line_4' ) ?: __( 'Approach', 'lionwood' );
 
 $desc_raw    = get_field( 'description' );
 $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
@@ -73,12 +73,12 @@ $dark_bgs    = [ '#C83030', '#111319' ];
                     <p class="gs-description"><?php echo $description; ?></p>
                 <?php endif; ?>
                 <div class="gs-nav">
-                    <button class="gs-nav__btn gs-nav__btn--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'theme' ); ?>">
+                    <button class="gs-nav__btn gs-nav__btn--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'lionwood' ); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                             <path d="M16.6615 9.99903L3.32813 9.99902M8.32812 14.999L3.32813 9.99902L8.32812 4.99902" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <button class="gs-nav__btn gs-nav__btn--next" aria-label="<?php esc_attr_e( 'Next slide', 'theme' ); ?>">
+                    <button class="gs-nav__btn gs-nav__btn--next" aria-label="<?php esc_attr_e( 'Next slide', 'lionwood' ); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                             <path d="M3.33854 10.001L16.6719 10.001M11.6719 5.00098L16.6719 10.001L11.6719 15.001" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -96,7 +96,7 @@ $dark_bgs    = [ '#C83030', '#111319' ];
                         $sdesc_out = $sdesc ? wp_kses( $sdesc, [ 'br' => [] ] ) : '';
                         $link_raw  = $slide['link']        ?? null;
                         $link_url  = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-                        $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book Consultation', 'theme' );
+                        $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book Consultation', 'lionwood' );
                         $link_tgt  = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
 
                         // Background colour

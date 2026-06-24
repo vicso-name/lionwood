@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template: Single Post
  * Three-column layout: left sidebar | content | right sidebar
@@ -41,14 +41,43 @@ while ( have_posts() ) :
     $sub_target     = ! empty( $sub_btn_link['target'] ) ? $sub_btn_link['target'] : '_self';
 
     $ai_show        = get_field( 'sidebar_ai_show' );
-    $ai_title       = get_field( 'sidebar_ai_title' )  ?: 'AI Summary';
-    $ai_items       = get_field( 'sidebar_ai_items' )  ?: [];
+
+    // ── AI prompt: explicit _en / _uk fields (see inc/acf-ai-fields.php) ─────
+    $ai_lang     = function_exists( 'pll_current_language' ) ? pll_current_language() : 'en';
+    $ai_lang     = in_array( $ai_lang, [ 'en', 'uk' ], true ) ? $ai_lang : 'en';
+    $ai_fallbacks = [
+        'en' => 'Summarize the key insights from this article in 5 bullet points, then write a 2-sentence takeaway: {url}',
+        'uk' => 'Підсумуй головні думки з цієї статті у 5 пунктах, а потім напиши 2 речення з основним висновком: {url}',
+    ];
+    $ai_prompt = esc_attr( str_replace(
+        '{url}',
+        get_permalink(),
+        get_field( 'ai_summary_default_prompt_' . $ai_lang, 'option' ) ?: $ai_fallbacks[ $ai_lang ]
+    ) );
+
+    $ai_tools = [
+        [
+            'name' => 'ChatGPT',
+            'url'  => get_field( 'ai_chatgpt_url', 'option' ) ?: 'https://chatgpt.com',
+            'icon' => 'ChatGPT.svg',
+        ],
+        [
+            'name' => 'Perplexity',
+            'url'  => get_field( 'ai_perplexity_url', 'option' ) ?: 'https://www.perplexity.ai',
+            'icon' => 'Perplexity.svg',
+        ],
+        [
+            'name' => 'Google AI',
+            'url'  => get_field( 'ai_google_url', 'option' ) ?: 'https://gemini.google.com',
+            'icon' => 'Google_AI.svg',
+        ],
+    ];
 
     $cta_show       = get_field( 'sidebar_cta_show' );
     $cta_text       = get_field( 'sidebar_cta_text' )  ?: '';
     $cta_link       = get_field( 'sidebar_cta_link' );
     $cta_url        = ! empty( $cta_link['url'] ) ? esc_url( $cta_link['url'] ) : '#';
-    $cta_label      = ! empty( $cta_link['title'] ) ? esc_html( $cta_link['title'] ) : 'Book a Meeting';
+    $cta_label      = ! empty( $cta_link['title'] ) ? esc_html( $cta_link['title'] ) : esc_html__( 'Book a Meeting', 'lionwood' );
     $cta_target     = ! empty( $cta_link['target'] ) ? $cta_link['target'] : '_self';
 
     // Current URL for share buttons
@@ -94,27 +123,26 @@ foreach ( $hero_blocks as $block ) {
             <?php endif; ?>
 
             <?php /* ── AI Summary ── */ ?>
-            <?php if ( $ai_show !== false && ! empty( $ai_items ) ) : ?>
+            <?php if ( $ai_show !== false ) : ?>
             <div class="sp-ai">
-                <span class="sp-ai__title"><?php echo esc_html( $ai_title ); ?></span>
+                <span class="sp-ai__title"><?php esc_html_e( 'AI Summary', 'lionwood' ); ?></span>
                 <div class="sp-ai__items">
-                    <?php foreach ( $ai_items as $ai ) :
-                        $icon_img = $ai['icon'] ?? null;
-                        $name     = esc_html( $ai['name'] ?? '' );
-                        if ( ! $name ) continue;
-                    ?>
-                        <span class="sp-ai__chip">
-                            <?php if ( $icon_img ) : ?>
-                                <img
-                                    src="<?php echo esc_url( $icon_img['url'] ); ?>"
-                                    alt="<?php echo esc_attr( $icon_img['alt'] ?: $name ); ?>"
-                                    width="20"
-                                    height="20"
-                                    loading="lazy"
-                                >
-                            <?php endif; ?>
-                            <?php echo $name; ?>
-                        </span>
+                    <?php foreach ( $ai_tools as $ai ) : ?>
+                        <button
+                            class="sp-ai__chip"
+                            type="button"
+                            data-url="<?php echo esc_url( $ai['url'] ); ?>"
+                            data-prompt="<?php echo $ai_prompt; ?>"
+                        >
+                            <img
+                                src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/' . $ai['icon'] ); ?>"
+                                alt="<?php echo esc_attr( $ai['name'] ); ?>"
+                                width="20"
+                                height="20"
+                                loading="lazy"
+                            >
+                            <?php echo esc_html( $ai['name'] ); ?>
+                        </button>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -139,11 +167,11 @@ foreach ( $hero_blocks as $block ) {
         <aside class="sp-sidebar sp-sidebar--right">
 
             <?php /* ── Table of Contents (JS-generated) ── */ ?>
-            <div class="sp-toc" id="sp-toc" aria-label="<?php esc_attr_e( 'Table of contents', 'theme' ); ?>">
+            <div class="sp-toc" id="sp-toc" aria-label="<?php esc_attr_e( 'Table of contents', 'lionwood' ); ?>">
                 <div class="sp-toc__head">
                     <?php echo $icon_sections; ?>
-                    <span class="sp-toc__label"><?php esc_html_e( 'SECTIONS', 'theme' ); ?></span>
-                    <button class="sp-toc__toggle" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle sections', 'theme' ); ?>">
+                    <span class="sp-toc__label"><?php esc_html_e( 'SECTIONS', 'lionwood' ); ?></span>
+                    <button class="sp-toc__toggle" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle sections', 'lionwood' ); ?>">
                         <svg class="sp-toc__arrow sp-toc__arrow--down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M7.99561 2.66732L7.99561 13.334M11.9956 9.33399L7.99561 13.334L3.99561 9.33398" stroke="#111319" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -176,7 +204,7 @@ foreach ( $hero_blocks as $block ) {
 
             <?php /* ── Share ── */ ?>
             <div class="sp-share">
-                <span class="sp-share__title"><?php esc_html_e( 'Share this article', 'theme' ); ?></span>
+                <span class="sp-share__title"><?php esc_html_e( 'Share this article', 'lionwood' ); ?></span>
                 <div class="sp-share__icons">
                     <a class="sp-share__icon" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $share_url; ?>" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                         <?php echo $fb_svg; ?>

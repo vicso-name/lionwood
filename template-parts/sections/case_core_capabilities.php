@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Core Capabilities
  *
@@ -15,9 +15,9 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 35 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 120 );
-$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Core System', 'theme' ) );
-$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Capabilities', 'theme' ) );
-$panel_badge   = esc_html( get_field( 'panel_badge' )  ?: __( 'Key features', 'theme' ) );
+$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Core System', 'lionwood' ) );
+$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( 'Capabilities', 'lionwood' ) );
+$panel_badge   = esc_html( get_field( 'panel_badge' )  ?: __( 'Key features', 'lionwood' ) );
 $items         = get_field( 'items' ) ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';

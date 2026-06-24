@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Industries
  *
@@ -12,17 +12,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_industries' ) ) {
 	function theme_register_cpt_industries(): void {
 		$labels = [
-			'name'               => __( 'Industries', 'theme' ),
-			'singular_name'      => __( 'Industry', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Industry', 'theme' ),
-			'edit_item'          => __( 'Edit Industry', 'theme' ),
-			'new_item'           => __( 'New Industry', 'theme' ),
-			'view_item'          => __( 'View Industry', 'theme' ),
-			'search_items'       => __( 'Search Industries', 'theme' ),
-			'not_found'          => __( 'No industries found', 'theme' ),
-			'not_found_in_trash' => __( 'No industries found in trash', 'theme' ),
-			'menu_name'          => __( 'Industries', 'theme' ),
+			'name'               => __( 'Industries', 'lionwood' ),
+			'singular_name'      => __( 'Industry', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Industry', 'lionwood' ),
+			'edit_item'          => __( 'Edit Industry', 'lionwood' ),
+			'new_item'           => __( 'New Industry', 'lionwood' ),
+			'view_item'          => __( 'View Industry', 'lionwood' ),
+			'search_items'       => __( 'Search Industries', 'lionwood' ),
+			'not_found'          => __( 'No industries found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No industries found in trash', 'lionwood' ),
+			'menu_name'          => __( 'Industries', 'lionwood' ),
 		];
 
 		register_post_type( 'industry', [

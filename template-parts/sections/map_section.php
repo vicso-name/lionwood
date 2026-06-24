@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Map Section
  *
@@ -63,7 +63,7 @@ $map = get_field( 'map' );
                 <div class="ms-map">
                     <img
                         src="<?php echo esc_url( $map['url'] ); ?>"
-                        alt="<?php echo esc_attr( $map['alt'] ?: __( 'World map', 'theme' ) ); ?>"
+                        alt="<?php echo esc_attr( $map['alt'] ?: __( 'World map', 'lionwood' ) ); ?>"
                         width="968"
                         height="502"
                         loading="lazy"

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: About Hero Section
  *
@@ -15,24 +15,24 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$line1_start = get_field( 'title_line1_start' ) ?: __( 'Meet Our', 'theme' );
-$line1_end   = get_field( 'title_line1_end' )   ?: __( 'Team Of', 'theme' );
-$line2       = get_field( 'title_line2' )        ?: __( 'Senior Experts', 'theme' );
+$line1_start = get_field( 'title_line1_start' ) ?: __( 'Meet Our', 'lionwood' );
+$line1_end   = get_field( 'title_line1_end' )   ?: __( 'Team Of', 'lionwood' );
+$line2       = get_field( 'title_line2' )        ?: __( 'Senior Experts', 'lionwood' );
 $desc_raw    = get_field( 'description' );
 $description = $desc_raw ? wp_kses( $desc_raw, [ 'br' => [] ] ) : '';
 
 $est_raw    = get_field( 'cta_estimate' );
 $est_url    = ! empty( $est_raw['url'] )    ? esc_url( $est_raw['url'] )    : '#';
-$est_label  = ! empty( $est_raw['title'] )  ? esc_html( $est_raw['title'] ) : __( 'Get Estimate', 'theme' );
+$est_label  = ! empty( $est_raw['title'] )  ? esc_html( $est_raw['title'] ) : __( 'Get Estimate', 'lionwood' );
 $est_target = ! empty( $est_raw['target'] ) ? $est_raw['target']             : '_self';
 
 $mtg_raw    = get_field( 'cta_meeting' );
 $mtg_url    = ! empty( $mtg_raw['url'] )    ? esc_url( $mtg_raw['url'] )    : '#';
-$mtg_label  = ! empty( $mtg_raw['title'] )  ? esc_html( $mtg_raw['title'] ) : __( 'Book a Meeting', 'theme' );
+$mtg_label  = ! empty( $mtg_raw['title'] )  ? esc_html( $mtg_raw['title'] ) : __( 'Book a Meeting', 'lionwood' );
 $mtg_target = ! empty( $mtg_raw['target'] ) ? $mtg_raw['target']             : '_self';
 ?>
 
-<section class="ah-section" aria-label="<?php esc_attr_e( 'About Hero', 'theme' ); ?>">
+<section class="ah-section" aria-label="<?php esc_attr_e( 'About Hero', 'lionwood' ); ?>">
     <div class="ah-section__container">
 
         <?php /* ── Heading (h1 for SEO) ──────────────────────────────── */ ?>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * lionwood functions and definitions
@@ -48,7 +48,7 @@ function lionwood_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(['primary' => __('Primary Menu', 'theme')]);
+	register_nav_menus(['primary' => __('Primary Menu', 'lionwood')]);
 
 
 	/*
@@ -113,6 +113,8 @@ require_once get_template_directory() . '/inc/ig_ajax.php';
 require_once get_template_directory() . '/inc/cig-load-more.php';
 require_once get_template_directory() . '/inc/theme_function.php';
 require_once get_template_directory() . '/inc/theme_settings.php';
+require_once get_template_directory() . '/inc/acf-ai-fields.php';
+require_once get_template_directory() . '/inc/acf-error-page-fields.php';
 require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';

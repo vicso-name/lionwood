@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Our Partners
  *
@@ -34,7 +34,7 @@ $uid = 'op-' . uniqid();
         --op-pb-mob: <?php echo $pb_mob; ?>px;
         --op-speed: <?php echo $speed; ?>s;
     "
-    aria-label="<?php esc_attr_e( 'Our Partners', 'theme' ); ?>"
+    aria-label="<?php esc_attr_e( 'Our Partners', 'lionwood' ); ?>"
 >
     <?php /* ── Marquee ───────────────────────────────────────────────────── */ ?>
     <?php if ( ! empty( $logos ) ) : ?>

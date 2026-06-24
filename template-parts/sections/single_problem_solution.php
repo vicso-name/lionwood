@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Single Problem Solution
  *
@@ -18,13 +18,13 @@ $line_2          = get_field( 'title_line_2' ) ?: '';
 $line_3          = get_field( 'title_line_3' ) ?: '';
 $line_4          = get_field( 'title_line_4' ) ?: '';
 
-$prob_badge      = get_field( 'problem_badge' )  ?: __( "Client's problem", 'theme' );
+$prob_badge      = get_field( 'problem_badge' )  ?: __( "Client's problem", 'lionwood' );
 $prob_items      = get_field( 'problem_items' )  ?: [];
 $sol_badge       = get_field( 'solution_badge' ) ?: '';
 $sol_text        = get_field( 'solution_text' )  ?: '';
 $sol_link        = get_field( 'solution_link' );
 $sol_link_url    = ! empty( $sol_link['url'] )    ? esc_url( $sol_link['url'] )    : '';
-$sol_link_lbl    = ! empty( $sol_link['title'] )  ? esc_html( $sol_link['title'] ) : __( 'Get Estimate', 'theme' );
+$sol_link_lbl    = ! empty( $sol_link['title'] )  ? esc_html( $sol_link['title'] ) : __( 'Get Estimate', 'lionwood' );
 $sol_link_tgt    = ! empty( $sol_link['target'] ) ? $sol_link['target']             : '_self';
 
 $banner_enabled  = get_field( 'banner_enabled' );
@@ -33,7 +33,7 @@ $banner_text     = $banner_text_raw ? wp_kses( $banner_text_raw, [ 'br' => [] ] 
 $banner_link     = get_field( 'banner_link' );
 $banner_bg       = get_field( 'banner_bg' );
 $banner_link_url = ! empty( $banner_link['url'] )    ? esc_url( $banner_link['url'] )    : '';
-$banner_lbl      = ! empty( $banner_link['title'] )  ? esc_html( $banner_link['title'] ) : __( 'Book a Meeting', 'theme' );
+$banner_lbl      = ! empty( $banner_link['title'] )  ? esc_html( $banner_link['title'] ) : __( 'Book a Meeting', 'lionwood' );
 $banner_tgt      = ! empty( $banner_link['target'] ) ? $banner_link['target']             : '_self';
 
 $decor_enabled   = get_field( 'decor_bottom_enabled' );

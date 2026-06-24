@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Case Testimonial
  *
@@ -23,7 +23,7 @@ $decor_enabled = get_field( 'decor_bottom_enabled' );
 $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 
 $clutch_url    = ! empty( $clutch_link['url'] )    ? esc_url( $clutch_link['url'] )    : '';
-$clutch_lbl    = ! empty( $clutch_link['title'] )  ? esc_html( $clutch_link['title'] ) : __( 'Read full review on Clutch', 'theme' );
+$clutch_lbl    = ! empty( $clutch_link['title'] )  ? esc_html( $clutch_link['title'] ) : __( 'Read full review on Clutch', 'lionwood' );
 $clutch_tgt    = ! empty( $clutch_link['target'] ) ? $clutch_link['target']             : '_blank';
 
 // Star SVG

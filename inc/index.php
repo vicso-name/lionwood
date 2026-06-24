@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Custom Post Type: Testimonials
  *
@@ -11,17 +11,17 @@ defined( 'ABSPATH' ) || exit;
 if ( ! function_exists( 'theme_register_cpt_testimonials' ) ) {
 	function theme_register_cpt_testimonials(): void {
 		$labels = [
-			'name'               => __( 'Testimonials', 'theme' ),
-			'singular_name'      => __( 'Testimonial', 'theme' ),
-			'add_new'            => __( 'Add New', 'theme' ),
-			'add_new_item'       => __( 'Add New Testimonial', 'theme' ),
-			'edit_item'          => __( 'Edit Testimonial', 'theme' ),
-			'new_item'           => __( 'New Testimonial', 'theme' ),
-			'view_item'          => __( 'View Testimonial', 'theme' ),
-			'search_items'       => __( 'Search Testimonials', 'theme' ),
-			'not_found'          => __( 'No testimonials found', 'theme' ),
-			'not_found_in_trash' => __( 'No testimonials found in trash', 'theme' ),
-			'menu_name'          => __( 'Testimonials', 'theme' ),
+			'name'               => __( 'Testimonials', 'lionwood' ),
+			'singular_name'      => __( 'Testimonial', 'lionwood' ),
+			'add_new'            => __( 'Add New', 'lionwood' ),
+			'add_new_item'       => __( 'Add New Testimonial', 'lionwood' ),
+			'edit_item'          => __( 'Edit Testimonial', 'lionwood' ),
+			'new_item'           => __( 'New Testimonial', 'lionwood' ),
+			'view_item'          => __( 'View Testimonial', 'lionwood' ),
+			'search_items'       => __( 'Search Testimonials', 'lionwood' ),
+			'not_found'          => __( 'No testimonials found', 'lionwood' ),
+			'not_found_in_trash' => __( 'No testimonials found in trash', 'lionwood' ),
+			'menu_name'          => __( 'Testimonials', 'lionwood' ),
 		];
 
 		$args = [

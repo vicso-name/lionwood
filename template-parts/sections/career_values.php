@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Career Values Section
  * Slug: acf/career-values
@@ -32,7 +32,7 @@ $default_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" 
         --cvs-pb-mob: <?php echo $pb_mob; ?>px;
         --cvs-bg: <?php echo esc_attr( $bg_color ); ?>;
     "
-    aria-label="<?php esc_attr_e( 'Career Values', 'theme' ); ?>"
+    aria-label="<?php esc_attr_e( 'Career Values', 'lionwood' ); ?>"
 >
     <?php if ( ! empty( $items ) ) : ?>
         <div class="cvs-row">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: About Different (What Makes Us Different)
  * Slug: acf/about-different
@@ -64,12 +64,12 @@ $dark_bgs = [ '#C83030', '#111319' ];
                     <p class="adf-description"><?php echo $description; ?></p>
                 <?php endif; ?>
                 <div class="adf-nav">
-                    <button class="adf-nav__btn adf-nav__btn--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'theme' ); ?>">
+                    <button class="adf-nav__btn adf-nav__btn--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'lionwood' ); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                             <path d="M16.6615 9.99903L3.32813 9.99902M8.32812 14.999L3.32813 9.99902L8.32812 4.99902" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-                    <button class="adf-nav__btn adf-nav__btn--next" aria-label="<?php esc_attr_e( 'Next slide', 'theme' ); ?>">
+                    <button class="adf-nav__btn adf-nav__btn--next" aria-label="<?php esc_attr_e( 'Next slide', 'lionwood' ); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                             <path d="M3.33854 10.001L16.6719 10.001M11.6719 5.00098L16.6719 10.001L11.6719 15.001" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -87,7 +87,7 @@ $dark_bgs = [ '#C83030', '#111319' ];
                         $sdesc_out = $sdesc ? wp_kses( $sdesc, [ 'br' => [] ] ) : '';
                         $link_raw  = $slide['link']        ?? null;
                         $link_url  = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-                        $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book Consultation', 'theme' );
+                        $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Book Consultation', 'lionwood' );
                         $link_tgt  = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
 
                         $bg_override = $slide['bg_color'] ?? '';

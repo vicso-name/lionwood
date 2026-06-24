@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Process Timeline Section
  *
@@ -16,8 +16,8 @@ $pt            = absint( get_field( 'padding_top' )        ?: 100 );
 $pb            = absint( get_field( 'padding_bottom' )     ?: 100 );
 $pt_mob        = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob        = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
-$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Process', 'theme' ) );
-$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( '& Timeline', 'theme' ) );
+$title_top     = esc_html( get_field( 'title_top' )    ?: __( 'Process', 'lionwood' ) );
+$title_bottom  = esc_html( get_field( 'title_bottom' ) ?: __( '& Timeline', 'lionwood' ) );
 $items_per_row = absint( get_field( 'items_per_row' ) ?: 5 );
 $milestones    = get_field( 'milestones' ) ?: [];
 $decor_enabled = get_field( 'decor_bottom_enabled' );

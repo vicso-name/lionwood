@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: About Our Talent
  * Slug: acf/about-talent
@@ -142,7 +142,7 @@ $f = $panels[0];
                     $desc      = $svc['description'] ? wp_kses( $svc['description'], [ 'br' => [] ] ) : '';
                     $link_raw  = $svc['cta_link']               ?? null;
                     $link_url  = ! empty( $link_raw['url'] )    ? esc_url( $link_raw['url'] )    : '';
-                    $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Read More', 'theme' );
+                    $link_lbl  = ! empty( $link_raw['title'] )  ? esc_html( $link_raw['title'] ) : __( 'Read More', 'lionwood' );
                     $link_tgt  = ! empty( $link_raw['target'] ) ? $link_raw['target']             : '_self';
                     $panel_data = wp_json_encode( $panels[ $i ] );
                 ?>

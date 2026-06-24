@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Block: Career Possibilities
  * Slug: acf/career-possibilities
@@ -91,7 +91,7 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                         <ul class="cg-card__meta">
                             <?php if ( $location ) : ?>
                                 <li class="cg-card__meta-item">
-                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Project Location', 'theme' ); ?></span>
+                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Project Location', 'lionwood' ); ?></span>
                                     <span class="cg-card__meta-right">
                                         <?php echo esc_html( $location ); ?>
                                         <?php if ( $flag ) : ?><img src="<?php echo esc_url( $flag['url'] ); ?>" alt="<?php echo esc_attr( $flag['alt'] ); ?>" width="20" height="14" loading="lazy"><?php endif; ?>
@@ -100,13 +100,13 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                             <?php endif; ?>
                             <?php if ( $emp_type ) : ?>
                                 <li class="cg-card__meta-item">
-                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Employment Type', 'theme' ); ?></span>
+                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Employment Type', 'lionwood' ); ?></span>
                                     <span class="cg-card__meta-right"><?php echo esc_html( $emp_type ); ?></span>
                                 </li>
                             <?php endif; ?>
                             <?php if ( $domain ) : ?>
                                 <li class="cg-card__meta-item">
-                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Domain:', 'theme' ); ?></span>
+                                    <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Domain:', 'lionwood' ); ?></span>
                                     <span class="cg-card__meta-right"><?php echo esc_html( $domain ); ?></span>
                                 </li>
                             <?php endif; ?>
@@ -115,7 +115,7 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                             <div class="cg-card__desc"><?php echo $short_out; ?></div>
                         <?php endif; ?>
                         <a class="cg-card__link" href="<?php echo esc_url( $permalink ); ?>">
-                            <span><?php esc_html_e( 'View now', 'theme' ); ?></span>
+                            <span><?php esc_html_e( 'View now', 'lionwood' ); ?></span>
                             <span class="cg-card__link-icon"><?php echo $arrow_svg; ?></span>
                         </a>
                     </article>
@@ -152,7 +152,7 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                             <ul class="cg-card__meta">
                                 <?php if ( $location ) : ?>
                                     <li class="cg-card__meta-item">
-                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Project Location', 'theme' ); ?></span>
+                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Project Location', 'lionwood' ); ?></span>
                                         <span class="cg-card__meta-right">
                                             <?php echo esc_html( $location ); ?>
                                             <?php if ( $flag ) : ?><img src="<?php echo esc_url( $flag['url'] ); ?>" alt="<?php echo esc_attr( $flag['alt'] ); ?>" width="20" height="14" loading="lazy"><?php endif; ?>
@@ -161,13 +161,13 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                                 <?php endif; ?>
                                 <?php if ( $emp_type ) : ?>
                                     <li class="cg-card__meta-item">
-                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Employment Type', 'theme' ); ?></span>
+                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Employment Type', 'lionwood' ); ?></span>
                                         <span class="cg-card__meta-right"><?php echo esc_html( $emp_type ); ?></span>
                                     </li>
                                 <?php endif; ?>
                                 <?php if ( $domain ) : ?>
                                     <li class="cg-card__meta-item">
-                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Domain:', 'theme' ); ?></span>
+                                        <span class="cg-card__meta-left"><?php echo $chevron_svg; ?><?php esc_html_e( 'Domain:', 'lionwood' ); ?></span>
                                         <span class="cg-card__meta-right"><?php echo esc_html( $domain ); ?></span>
                                     </li>
                                 <?php endif; ?>
@@ -176,7 +176,7 @@ $arrow_svg   = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" v
                                 <div class="cg-card__desc"><?php echo $short_out; ?></div>
                             <?php endif; ?>
                             <a class="cg-card__link" href="<?php echo esc_url( $permalink ); ?>">
-                                <span><?php esc_html_e( 'View now', 'theme' ); ?></span>
+                                <span><?php esc_html_e( 'View now', 'lionwood' ); ?></span>
                                 <span class="cg-card__link-icon"><?php echo $arrow_svg; ?></span>
                             </a>
                         </article>
