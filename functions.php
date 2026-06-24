@@ -125,6 +125,7 @@ require_once get_template_directory() . '/inc/subservice_template_manager.php';
 require_once get_template_directory() . '/inc/solutions-cpt.php';
 require_once get_template_directory() . '/inc/careers-cpt.php';
 require_once get_template_directory() . '/inc/products-cpt.php';
+require_once get_template_directory() . '/inc/product_template_manager.php';
 require_once get_template_directory() . '/inc/news-cpt.php';
 require_once get_template_directory() . '/inc/whitepapers-cpt.php';
 require_once get_template_directory() . '/inc/whitepaper_template_manager.php';

@@ -207,9 +207,9 @@ function lionwood_get_or_create_whitepaper_template_post(): int {
 
 function lionwood_get_whitepaper_default_template_content(): string {
     return <<<'BLOCKS'
-<!-- wp:acf/whitepaper-hero /-->
-<!-- wp:acf/whitepaper-download /-->
-<!-- wp:acf/cta-section /-->
+<!-- wp:acf/whitepaper-hero {"mode":"edit"} /-->
+<!-- wp:acf/whitepaper-download {"mode":"edit"} /-->
+<!-- wp:acf/cta-section {"mode":"edit"} /-->
 BLOCKS;
 }
 
@@ -285,7 +285,39 @@ add_filter('allowed_block_types_all', function ($allowed, $ctx) {
 
 
 /* ─────────────────────────────────────────────
-   8. Restrict template editing to admins only
+   8. Force edit mode on every save of the template post
+   ───────────────────────────────────────────── */
+
+add_filter('wp_insert_post_data', function (array $data): array {
+    if ($data['post_type'] === 'whitepaper_template' && !empty($data['post_content'])) {
+        $data['post_content'] = lionwood_inject_edit_mode($data['post_content']);
+    }
+    return $data;
+}, 10, 1);
+
+
+/* ─────────────────────────────────────────────
+   8b. Auto-fix existing template post on admin init
+   ───────────────────────────────────────────── */
+
+add_action('admin_init', function (): void {
+    $tid = (int) get_option('lionwood_whitepaper_template_post_id', 0);
+    if (!$tid) return;
+
+    $post = get_post($tid);
+    if (!$post || empty($post->post_content)) return;
+
+    if (strpos($post->post_content, '"mode":"edit"') === false) {
+        wp_update_post([
+            'ID'           => $tid,
+            'post_content' => lionwood_inject_edit_mode($post->post_content),
+        ]);
+    }
+});
+
+
+/* ─────────────────────────────────────────────
+   9. Restrict template editing to admins only
    ───────────────────────────────────────────── */
 
 add_filter('user_has_cap', function (array $allcaps, array $caps, array $args): array {

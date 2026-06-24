@@ -207,25 +207,25 @@ function lionwood_get_or_create_case_template_post(): int {
 
 function lionwood_get_case_default_template_content(): string {
     return <<<'BLOCKS'
-<!-- wp:acf/case-hero-section /-->
-<!-- wp:acf/case-client-overview /-->
-<!-- wp:acf/case-results /-->
-<!-- wp:acf/two-column-images /-->
-<!-- wp:acf/business-challenge /-->
-<!-- wp:acf/two-column-images /-->
-<!-- wp:acf/case-solution /-->
-<!-- wp:acf/single-real-solutions /-->
-<!-- wp:acf/banner-section /-->
-<!-- wp:acf/case-core-capabilities /-->
-<!-- wp:acf/case-client-story /-->
-<!-- wp:acf/case-tech-stack /-->
-<!-- wp:acf/banner-section /-->
-<!-- wp:acf/process-timeline /-->
-<!-- wp:acf/case-testimonial /-->
-<!-- wp:acf/our-cases /-->
-<!-- wp:acf/single-problem-solution /-->
-<!-- wp:acf/cta-section /-->
-<!-- wp:acf/faq-section /-->
+<!-- wp:acf/case-hero-section {"mode":"edit"} /-->
+<!-- wp:acf/case-client-overview {"mode":"edit"} /-->
+<!-- wp:acf/case-results {"mode":"edit"} /-->
+<!-- wp:acf/two-column-images {"mode":"edit"} /-->
+<!-- wp:acf/business-challenge {"mode":"edit"} /-->
+<!-- wp:acf/two-column-images {"mode":"edit"} /-->
+<!-- wp:acf/case-solution {"mode":"edit"} /-->
+<!-- wp:acf/single-real-solutions {"mode":"edit"} /-->
+<!-- wp:acf/banner-section {"mode":"edit"} /-->
+<!-- wp:acf/case-core-capabilities {"mode":"edit"} /-->
+<!-- wp:acf/case-client-story {"mode":"edit"} /-->
+<!-- wp:acf/case-tech-stack {"mode":"edit"} /-->
+<!-- wp:acf/banner-section {"mode":"edit"} /-->
+<!-- wp:acf/process-timeline {"mode":"edit"} /-->
+<!-- wp:acf/case-testimonial {"mode":"edit"} /-->
+<!-- wp:acf/our-cases {"mode":"edit"} /-->
+<!-- wp:acf/single-problem-solution {"mode":"edit"} /-->
+<!-- wp:acf/cta-section {"mode":"edit"} /-->
+<!-- wp:acf/faq-section {"mode":"edit"} /-->
 BLOCKS;
 }
 
@@ -301,7 +301,39 @@ add_filter('allowed_block_types_all', function ($allowed, $ctx) {
 
 
 /* ─────────────────────────────────────────────
-   8. Restrict template editing to admins only
+   8. Force edit mode on every save of the template post
+   ───────────────────────────────────────────── */
+
+add_filter('wp_insert_post_data', function (array $data): array {
+    if ($data['post_type'] === 'case_template' && !empty($data['post_content'])) {
+        $data['post_content'] = lionwood_inject_edit_mode($data['post_content']);
+    }
+    return $data;
+}, 10, 1);
+
+
+/* ─────────────────────────────────────────────
+   8b. Auto-fix existing template post on admin init
+   ───────────────────────────────────────────── */
+
+add_action('admin_init', function (): void {
+    $tid = (int) get_option('lionwood_case_template_post_id', 0);
+    if (!$tid) return;
+
+    $post = get_post($tid);
+    if (!$post || empty($post->post_content)) return;
+
+    if (strpos($post->post_content, '"mode":"edit"') === false) {
+        wp_update_post([
+            'ID'           => $tid,
+            'post_content' => lionwood_inject_edit_mode($post->post_content),
+        ]);
+    }
+});
+
+
+/* ─────────────────────────────────────────────
+   9. Restrict template editing to admins only
    ───────────────────────────────────────────── */
 
 add_filter('user_has_cap', function (array $allcaps, array $caps, array $args): array {
