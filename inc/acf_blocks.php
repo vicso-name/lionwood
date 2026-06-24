@@ -27,6 +27,7 @@ function lionwood_register_acf_blocks() {
         'achievements_by_years',
         'product_list',
         'products_hero',
+        'solutions_hero',
         // 'core_benefits',
         // 'call_to_action',
         // ...
@@ -113,6 +114,7 @@ function lionwood_register_acf_blocks() {
         'whitepaper_hero',
         'whitepaper_download',
         'insights_grid',
+        'solutions_grid',
     ];
 
     foreach ($blocks as $block_name) {
@@ -212,7 +214,8 @@ function lionwood_enqueue_detected_block_assets() {
 
     // Blocks that need additional CSS/JS from other blocks (class reuse).
     $block_css_deps = [
-        'insights_grid' => ['choose_cases_grid', 'insights_articles'],
+        'insights_grid'  => ['choose_cases_grid', 'insights_articles'],
+        'solutions_grid' => ['choose_cases_grid', 'insights_articles'],
     ];
 
     $found_any = false;

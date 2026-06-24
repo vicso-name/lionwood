@@ -1198,6 +1198,35 @@ msgstr "Категорія"
 msgid "Successful Products"
 msgstr "Успішні продукти"
 
+# ── Solutions CPT ─────────────────────────────────────────────────────────────
+
+msgid "Solutions"
+msgstr "Рішення"
+
+msgid "Solution"
+msgstr "Рішення"
+
+msgid "Add New Solution"
+msgstr "Додати рішення"
+
+msgid "Edit Solution"
+msgstr "Редагувати рішення"
+
+msgid "New Solution"
+msgstr "Нове рішення"
+
+msgid "View Solution"
+msgstr "Переглянути рішення"
+
+msgid "Search Solutions"
+msgstr "Пошук рішень"
+
+msgid "No solutions found"
+msgstr "Рішень не знайдено"
+
+msgid "No solutions found in trash"
+msgstr "В кошику немає рішень"
+
 # ── 404 / Error page ─────────────────────────────────────────────────────────
 
 msgid "The page you're looking for isn't here.\nBut we can still help you build something great."

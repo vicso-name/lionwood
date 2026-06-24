@@ -43,12 +43,12 @@ $services_str = implode( ', ', array_map( fn( $t ) => $t->name, $services ) );
     <a class="ccg-card__link" href="<?php echo $permalink; ?>" aria-label="<?php echo $title; ?>">
 
         <?php /* ── Image area ─────────────────────────────────────────── */ ?>
-        <div
-            class="ccg-card__image"
+        <div class="ccg-card__image">
             <?php if ( $thumb_url ) : ?>
-                style="background-image: url('<?php echo $thumb_url; ?>');"
+                <div class="ccg-card__image-bg" style="background-image: url('<?php echo $thumb_url; ?>');"></div>
+            <?php else : ?>
+                <div class="ccg-card__image-bg"></div>
             <?php endif; ?>
-        >
             <?php /* Industry tags overlaid on image */ ?>
             <?php if ( ! empty( $industries ) ) : ?>
                 <div class="ccg-card__tags">

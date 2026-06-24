@@ -1,0 +1,113 @@
+[
+    {
+        "key": "group_solutions_hero_block",
+        "title": "Solutions Hero",
+        "fields": [
+            {
+                "key": "field_slh_pt",
+                "label": "Padding Top (px)",
+                "name": "padding_top",
+                "type": "number",
+                "wrapper": { "width": "25", "class": "", "id": "" },
+                "default_value": 100, "min": 0, "max": 300, "step": 4, "append": "px"
+            },
+            {
+                "key": "field_slh_pb",
+                "label": "Padding Bottom (px)",
+                "name": "padding_bottom",
+                "type": "number",
+                "wrapper": { "width": "25", "class": "", "id": "" },
+                "default_value": 100, "min": 0, "max": 300, "step": 4, "append": "px"
+            },
+            {
+                "key": "field_slh_pt_mob",
+                "label": "Padding Top Mobile (px)",
+                "name": "padding_top_mob",
+                "type": "number",
+                "wrapper": { "width": "25", "class": "", "id": "" },
+                "default_value": 70, "min": 0, "max": 200, "step": 4, "append": "px"
+            },
+            {
+                "key": "field_slh_pb_mob",
+                "label": "Padding Bottom Mobile (px)",
+                "name": "padding_bottom_mob",
+                "type": "number",
+                "wrapper": { "width": "25", "class": "", "id": "" },
+                "default_value": 70, "min": 0, "max": 200, "step": 4, "append": "px"
+            },
+            {
+                "key": "field_slh_title_line1",
+                "label": "Title — Line 1 (black)",
+                "name": "title_line1",
+                "type": "text",
+                "wrapper": { "width": "50", "class": "", "id": "" },
+                "default_value": "Our",
+                "placeholder": "Our"
+            },
+            {
+                "key": "field_slh_title_line2",
+                "label": "Title — Line 2 (gray)",
+                "name": "title_line2",
+                "type": "text",
+                "wrapper": { "width": "50", "class": "", "id": "" },
+                "default_value": "Solutions",
+                "placeholder": "Solutions"
+            },
+            {
+                "key": "field_slh_description",
+                "label": "Description",
+                "name": "description",
+                "type": "textarea",
+                "wrapper": { "width": "50", "class": "", "id": "" },
+                "rows": 3,
+                "new_lines": "br",
+                "placeholder": "Short description below the title."
+            },
+            {
+                "key": "field_slh_image",
+                "label": "Hero Image",
+                "name": "image",
+                "type": "image",
+                "instructions": "Right-column image. Recommended: 16:9 or portrait.",
+                "wrapper": { "width": "", "class": "", "id": "" },
+                "return_format": "array",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_slh_decor_enabled",
+                "label": "Enable Bottom Decoration",
+                "name": "decor_bottom_enabled",
+                "type": "true_false",
+                "wrapper": { "width": "50", "class": "", "id": "" },
+                "default_value": 0,
+                "ui": 1
+            },
+            {
+                "key": "field_slh_decor_color",
+                "label": "Decoration Color",
+                "name": "decor_bottom_color",
+                "type": "color_picker",
+                "wrapper": { "width": "50", "class": "", "id": "" },
+                "default_value": "#F7F7F7",
+                "enable_opacity": 0,
+                "return_format": "string"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": "acf\/solutions-hero"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "active": true,
+        "description": "Hero section for the Our Solutions page — based on products_hero, uses solution CPT count."
+    }
+]
