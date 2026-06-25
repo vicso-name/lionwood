@@ -26,7 +26,7 @@ add_filter( 'acf/load_field/key=field_cs_form_shortcode', function ( array $fiel
 
     $choices = [];
     foreach ( $forms as $form ) {
-        $shortcode            = sprintf( '[contact-form-7 id="%s" title="%s"]', $form->post_name, esc_attr( $form->post_title ) );
+        $shortcode            = sprintf( '[contact-form-7 id="%d" title="%s"]', $form->ID, esc_attr( $form->post_title ) );
         $choices[ $shortcode ] = $form->post_title;
     }
 

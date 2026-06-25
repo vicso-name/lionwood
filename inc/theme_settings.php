@@ -98,9 +98,6 @@ function lionwood_disable_comment_support(): void {
 }
 add_action('init', 'lionwood_disable_comment_support');
 
-// Force all comments and pings closed — delete this block to re-enable
-add_filter('comments_open',  '__return_false', 20, 2);
-add_filter('pings_open',     '__return_false', 20, 2);
 add_filter('comments_array', '__return_empty_array', 10, 2);
 
 // Remove Comments from admin sidebar — delete this block to re-enable
@@ -126,28 +123,7 @@ function lionwood_redirect_comments_admin(): void {
 add_action('admin_init', 'lionwood_redirect_comments_admin');
 
 // =============================================================================
-// 4. ACF local JSON
-// =============================================================================
-
-// Save field group JSON to /acf-json/ so it can be version-controlled
-add_filter('acf/settings/save_json', fn(): string =>
-    get_template_directory() . '/acf-json'
-);
-
-// Load field groups from /acf-json/ on theme activation and sync
-add_filter('acf/settings/load_json', function(array $paths): array {
-    $paths[] = get_template_directory() . '/acf-json';
-    return $paths;
-});
-
-// Create /acf-json/ directory if missing (fallback for fresh deployments without git)
-$lionwood_acf_dir = get_template_directory() . '/acf-json';
-if (!is_dir($lionwood_acf_dir)) {
-    wp_mkdir_p($lionwood_acf_dir);
-}
-
-// =============================================================================
-// 5. ACF Options pages
+// 4. ACF Options pages
 // =============================================================================
 
 if (function_exists('acf_add_options_page')) {
