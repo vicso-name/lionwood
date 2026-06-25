@@ -252,11 +252,11 @@
         },
         {
             "key": "field_cs_form_shortcode",
-            "label": "Form Shortcode",
+            "label": "Form (Contact Form 7)",
             "name": "form_shortcode",
             "aria-label": "",
-            "type": "textarea",
-            "instructions": "Paste your CF7 shortcode here.",
+            "type": "select",
+            "instructions": "Select a CF7 form. Leave empty to show the built-in fallback form.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -264,11 +264,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "rows": 2,
-            "new_lines": "",
-            "maxlength": "",
-            "placeholder": ""
+            "choices": {},
+            "default_value": "[contact-form-7 id=\"3b827c0\" title=\"Contact Form\"]",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "— select a form —"
         },
         {
             "key": "field_cs_terms_link",
@@ -343,5 +346,5 @@
     "active": true,
     "description": "Full-width contact section with decorative grid background, two-line heading, description, and a centred contact form.",
     "show_in_rest": 0,
-    "modified": 1781190964
+    "modified": 1782350000
 }

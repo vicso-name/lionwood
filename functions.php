@@ -119,6 +119,7 @@ require_once get_template_directory() . '/inc/acf-header-fields.php';
 require_once get_template_directory() . '/inc/acf-error-page-fields.php';
 require_once get_template_directory() . '/inc/acf-solutions-grid-fields.php';
 require_once get_template_directory() . '/inc/acf-solution-fields.php';
+require_once get_template_directory() . '/inc/acf-cf7-form-select.php';
 require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';
