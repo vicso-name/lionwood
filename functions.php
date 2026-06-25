@@ -123,6 +123,7 @@ require_once get_template_directory() . '/inc/service_template_manager.php';
 require_once get_template_directory() . '/inc/subservices-cpt.php';
 require_once get_template_directory() . '/inc/subservice_template_manager.php';
 require_once get_template_directory() . '/inc/solutions-cpt.php';
+require_once get_template_directory() . '/inc/solution_template_manager.php';
 require_once get_template_directory() . '/inc/careers-cpt.php';
 require_once get_template_directory() . '/inc/products-cpt.php';
 require_once get_template_directory() . '/inc/product_template_manager.php';

@@ -1,0 +1,264 @@
+// =============================================================================
+// Block: Sub Solutions Section
+// =============================================================================
+
+.ssol-section {
+  background: var(--color-background); // #F7F7F7
+  padding-top:    var(--ssol-pt, 100px);
+  padding-bottom: var(--ssol-pb, 200px);
+  position: relative;
+}
+
+.ssol-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — two-line, 481px wide
+// Line 1: gray, indented 24% right
+// Line 2: black, at base
+// -----------------------------------------------------------------------------
+
+.ssol-heading {
+  width: 481px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+.ssol-heading__line-1 {
+  display: block;
+  padding-left: 24%;
+  color: #848588;
+}
+
+.ssol-heading__line-2 {
+  display: block;
+  color: var(--color-black); // #111319
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop grid — 3 columns
+// -----------------------------------------------------------------------------
+
+.ssol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+// Card — shared between grid and swiper
+.ssol-card {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--color-background-alt); // #E9E9E9
+  height: 100%;
+  box-sizing: border-box;
+}
+
+// Red circle icon (36px) with white checkmark
+.ssol-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+
+  svg {
+    display: block;
+    width: 25.2px;
+    height: 25.2px;
+  }
+}
+
+// Body: title + description + badge
+.ssol-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ssol-card__title {
+  margin: 0 0 8px;
+  font-family: var(--font-primary);
+  font-size: 21px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: var(--color-black); // #111319
+}
+
+.ssol-card__description {
+  margin: 0 0 24px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #3D3F43;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// "Best for" badge
+.ssol-card__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--color-background); // #F7F7F7
+  align-self: stretch;
+  margin-top: auto;
+}
+
+.ssol-card__badge-label {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: #3D3F43;
+}
+
+.ssol-card__badge-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ssol-card__badge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+  color: #3D3F43;
+}
+
+// Red bullet dot 6×6
+.ssol-card__badge-dot {
+  flex-shrink: 0;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  margin-top: 5px;
+}
+
+
+// -----------------------------------------------------------------------------
+// Mobile Swiper — hidden on desktop
+// -----------------------------------------------------------------------------
+
+.ssol-swiper-wrap {
+  display: none;
+}
+
+.ssol-swiper {
+  overflow: visible !important; // show partial next slide peek
+}
+
+.ssol-slide {
+  width: 330px;
+  height: auto;
+}
+
+// Numeric counter: 01 / 07
+.ssol-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.ssol-counter__current {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black); // #111319
+}
+
+.ssol-counter__sep {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #848588;
+}
+
+.ssol-counter__total {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #848588;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .ssol-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ssol-section {
+    padding-top:    var(--ssol-pt-mob, 70px);
+    padding-bottom: var(--ssol-pb-mob, 140px);
+    overflow: hidden; // clip swiper's overflow:visible to prevent horizontal scroll
+  }
+
+  .ssol-heading {
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 48px;
+  }
+
+  // Hide desktop grid, show swiper
+  .ssol-grid {
+    display: none;
+  }
+
+  .ssol-swiper-wrap {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .ssol-heading {
+    width: auto;
+    font-size: clamp(28px, 9vw, 48px);
+  }
+}

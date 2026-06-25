@@ -1,0 +1,243 @@
+// =============================================================================
+// Block: Solutions For Who
+// =============================================================================
+
+@keyframes sfw-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.sfw-section {
+  background: var(--color-background-alt); // #E9E9E9
+  padding-top:    var(--sfw-pt, 100px);
+  padding-bottom: var(--sfw-pb, 200px);
+  position: relative;
+}
+
+.sfw-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Marquee
+// -----------------------------------------------------------------------------
+
+.sfw-marquee {
+  overflow: hidden;
+  margin-bottom: 90px;
+}
+
+.sfw-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: sfw-marquee 50s linear infinite;
+  will-change: transform;
+}
+
+.sfw-marquee__item {
+  font-family: var(--font-primary);
+  font-size: 76px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  letter-spacing: -2.28px;
+  text-transform: uppercase;
+  color: #848588;
+  opacity: 0.3;
+  white-space: nowrap;
+  padding-right: 20px;
+}
+
+
+// -----------------------------------------------------------------------------
+// Cards grid — 2 columns
+// -----------------------------------------------------------------------------
+
+.sfw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.sfw-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  background: var(--color-background); // #F7F7F7
+}
+
+
+// -----------------------------------------------------------------------------
+// Card header — image + title (left) + index number (right)
+// -----------------------------------------------------------------------------
+
+.sfw-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.sfw-card__header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+// Square image thumbnail
+.sfw-card__image {
+  flex-shrink: 0;
+  width: 86px;
+  height: 86px;
+  border-radius: 12px;
+  background-color: var(--color-background-alt); // fallback
+  background-size: cover;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+
+  &--empty {
+    background-color: var(--color-background-alt);
+  }
+}
+
+.sfw-card__title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: var(--color-black); // #111319
+}
+
+// Ordinal index "/ 01"
+.sfw-card__index {
+  flex-shrink: 0;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #848588;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+
+// -----------------------------------------------------------------------------
+// Problem / Solution sub-card row
+// -----------------------------------------------------------------------------
+
+.sfw-card__ps-row {
+  display: flex;
+  gap: 10px;
+}
+
+.sfw-ps-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--color-background-alt); // #E9E9E9
+  flex: 1 0 0;
+}
+
+// Icon circle (20px) with 14px SVG inside
+.sfw-ps-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-top: 2px;
+
+  svg { display: block; }
+
+  &--dark {
+    background: #111319; // Problem icon
+  }
+
+  &--red {
+    background: var(--color-primary); // #C83030 — Solution icon
+  }
+}
+
+.sfw-ps-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sfw-ps-card__label {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+.sfw-ps-card__desc {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #3D3F43;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .sfw-section {
+    padding-top:    var(--sfw-pt-mob, 70px);
+    padding-bottom: var(--sfw-pb-mob, 140px);
+  }
+
+  .sfw-marquee {
+    margin-bottom: 60px;
+  }
+
+  .sfw-marquee__item {
+    font-size: clamp(40px, 7vw, 76px);
+  }
+
+  .sfw-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .sfw-card__header-left {
+    gap: 16px;
+  }
+
+  .sfw-card__image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .sfw-card__title {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .sfw-card__ps-row {
+    flex-direction: column;
+  }
+
+  .sfw-marquee__item {
+    font-size: clamp(28px, 9vw, 56px);
+  }
+}

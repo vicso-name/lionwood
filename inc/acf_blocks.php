@@ -115,6 +115,11 @@ function lionwood_register_acf_blocks() {
         'whitepaper_download',
         'insights_grid',
         'solutions_grid',
+        'solution_comparison',
+        'sub_solutions',
+        'solutions_for_who',
+        'solution_compliance_requirements',
+        'solution_timeline',
     ];
 
     foreach ($blocks as $block_name) {

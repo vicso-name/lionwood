@@ -1,0 +1,182 @@
+// =============================================================================
+// Block: Solution Comparison Section
+// =============================================================================
+
+.sc-section {
+  background: #C83030;
+  padding-top:    var(--sc-pt, 100px);
+  padding-bottom: var(--sc-pb, 200px);
+  position: relative;
+}
+
+.sc-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — two-line staircase, white on red
+// -----------------------------------------------------------------------------
+
+.sc-heading {
+  width: 732px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.sc-heading__line-1 {
+  display: block;
+  opacity: 0.4;
+}
+
+.sc-heading__line-2 {
+  display: block;
+  padding-left: 10%;
+}
+
+
+// -----------------------------------------------------------------------------
+// Two comparison cards — equal columns
+// -----------------------------------------------------------------------------
+
+.sc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sc-card {
+  border-radius: 20px;
+  border: 1px solid #E9E9E9;
+  background: #F7F7F7;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+// Card header badge
+.sc-card__header {
+  border-radius: 14px;
+  min-height: 69px;
+  margin-bottom: 40px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+
+  &--dark {
+    background: #111319;
+  }
+
+  &--red {
+    background: var(--color-primary); // #C83030
+  }
+}
+
+.sc-card__title {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: 21px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+}
+
+// Checklist
+.sc-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sc-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+// Icon circle
+.sc-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-top: 2px;
+
+  svg { display: block; }
+
+  &--dark {
+    background: #111319;
+  }
+
+  &--red {
+    background: var(--color-primary); // #C83030
+  }
+}
+
+.sc-card__text {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: #111319;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+  .sc-heading {
+    width: auto;
+    font-size: clamp(36px, 5vw, 56px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .sc-section {
+    padding-top:    var(--sc-pt-mob, 70px);
+    padding-bottom: var(--sc-pb-mob, 140px);
+  }
+
+  .sc-heading {
+    font-size: clamp(28px, 8vw, 56px);
+    margin-bottom: 48px;
+  }
+
+  .sc-heading__line-2 {
+    padding-left: 6%;
+  }
+
+  .sc-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sc-heading {
+    font-size: clamp(24px, 10vw, 40px);
+  }
+
+  .sc-heading__line-2 {
+    padding-left: 4%;
+  }
+}

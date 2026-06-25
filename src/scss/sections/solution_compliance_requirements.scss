@@ -1,0 +1,152 @@
+// =============================================================================
+// Block: Solution Compliance Requirements
+// =============================================================================
+
+.scr-section {
+  background: var(--color-background); // #F7F7F7
+  padding-top:    var(--scr-pt, 100px);
+  padding-bottom: var(--scr-pb, 200px);
+  position: relative;
+}
+
+.scr-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — 777px, line 1 gray + 10% indent, line 2 black
+// -----------------------------------------------------------------------------
+
+.scr-heading {
+  width: 777px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+}
+
+.scr-heading__line-1 {
+  display: block;
+  padding-left: 10%;
+  color: #848588;
+}
+
+.scr-heading__line-2 {
+  display: block;
+  color: var(--color-black); // #111319
+}
+
+
+// -----------------------------------------------------------------------------
+// Items row — equal columns, top border, vertical dividers between items
+// -----------------------------------------------------------------------------
+
+.scr-items {
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.scr-item {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+
+  // Vertical divider between items
+  & + .scr-item {
+    border-left: 1px solid rgba(0, 0, 0, 0.20);
+  }
+}
+
+// Red compliance badge
+.scr-badge {
+  display: inline-flex;
+  padding: 5px 15px 6px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--color-primary); // #C83030
+  color: var(--color-background);   // #F7F7F7
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  white-space: nowrap;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .scr-section {
+    padding-top:    var(--scr-pt-mob, 70px);
+    padding-bottom: var(--scr-pb-mob, 140px);
+  }
+
+  .scr-heading {
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .scr-heading {
+    width: auto;
+    font-size: clamp(28px, 9vw, 48px);
+  }
+
+  .scr-items {
+    flex-wrap: wrap;
+  }
+
+  .scr-item {
+    flex: 0 0 50%;
+    padding: 32px 16px;
+
+    // Reset left border for every first item in a row
+    &:nth-child(odd) {
+      border-left: none;
+    }
+
+    // Top border for second row onwards
+    &:nth-child(n + 3) {
+      border-top: 1px solid rgba(0, 0, 0, 0.20);
+    }
+  }
+
+  .scr-badge {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .scr-item {
+    flex: 0 0 100%;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    & + .scr-item {
+      border-top: none;
+    }
+  }
+}

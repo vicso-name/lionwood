@@ -1,0 +1,348 @@
+// =============================================================================
+// Block: Solution Timeline Section  (prefix: slt-)
+// Dark #111319 background — snake timeline + embedded banner
+// =============================================================================
+
+.slt-section {
+  background: #111319;
+  padding-top:    var(--slt-pt, 100px);
+  padding-bottom: var(--slt-pb, 200px);
+  position: relative;
+}
+
+.slt-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+
+.slt-heading {
+  width: 473px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.slt-heading__top    { padding-left: 0; }
+.slt-heading__bottom { padding-left: 100px; opacity: 0.5; }
+
+
+// -----------------------------------------------------------------------------
+// Timeline wrapper
+// -----------------------------------------------------------------------------
+
+.slt-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.slt-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Rows
+// -----------------------------------------------------------------------------
+
+.slt-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--slt-row-gap, 24px);
+  padding: 40px 0 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.slt-row--reversed {
+  justify-content: flex-start;
+  padding-left: var(--slt-reversed-pl, 20%);
+
+  .slt-milestone {
+    flex: 1;
+    max-width: var(--slt-milestone-maxw, 220px);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Milestone
+// -----------------------------------------------------------------------------
+
+.slt-milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+  max-width: var(--slt-milestone-maxw, 220px);
+  position: relative;
+}
+
+.slt-milestone__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+// Pill — inactive
+.slt-milestone__pill {
+  display: inline-flex;
+  padding: 8px 18px 9px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 28px;
+  border: 1px solid rgba(247, 247, 247, 0.60);
+  background: #111319; // matches section bg — invisible until JS activates
+  cursor: default;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+  white-space: nowrap;
+  width: fit-content;
+
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+// Pill — active
+.slt-milestone__pill.is-active {
+  background: #F7F7F7;
+  border-color: #F7F7F7;
+  color: #111319;
+  opacity: 1;
+  transform: scale(1);
+}
+
+// Description
+.slt-milestone__desc {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 130%;
+  color: rgba(247, 247, 247, 0.85);
+  white-space: pre-line;
+
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+// -----------------------------------------------------------------------------
+// Embedded banner
+// -----------------------------------------------------------------------------
+
+.slt-banner {
+  position: relative;
+  width: 100%;
+  min-height: 272px;
+  padding: 50px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  margin-top: 100px;
+}
+
+.slt-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.10) 100%);
+  z-index: 0;
+}
+
+.slt-banner__text {
+  position: relative;
+  z-index: 1;
+  max-width: 610px;
+  margin: 0 0 40px;
+  font-family: var(--font-primary);
+  font-size: 32px;
+  font-weight: var(--font-weight-medium);
+  line-height: 120%;
+  color: #F7F7F7;
+}
+
+.slt-banner__btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 19px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 100px;
+  background: #F7F7F7;
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #111319;
+
+  transition: background-color var(--transition-base) ease;
+
+  svg { display: block; flex-shrink: 0; }
+
+  &:hover { background: #e0e0e0; }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .slt-section {
+    padding-top:    var(--slt-pt-mob, 70px);
+    padding-bottom: var(--slt-pb-mob, 140px);
+  }
+
+  .slt-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 30px;
+  }
+
+  .slt-heading__bottom {
+    padding-left: 40px;
+  }
+
+  .slt-svg {
+    display: none;
+  }
+
+  .slt-timeline {
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .slt-timeline::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 5px;
+    width: 1px;
+    bottom: -60px; // extends through banner margin-top to reach the banner
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .slt-timeline__line-progress {
+    position: absolute;
+    top: 14px;
+    left: 5px;
+    width: 1px;
+    bottom: -60px;
+    background: #fff;
+    transform-origin: top center;
+    transform: scaleY(0);
+  }
+
+  .slt-row {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .slt-row--reversed {
+    padding-left: 0;
+
+    .slt-milestone { max-width: 100%; }
+  }
+
+  .slt-milestone {
+    max-width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0 0 32px;
+    margin-left: -28px;
+  }
+
+  .slt-milestone__mob-dot {
+    display: flex;
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    margin-top: 8px;
+  }
+
+  .slt-milestone__pill {
+    opacity: 0;
+    transform: scale(0.9);
+    background: #111319;
+    white-space: normal;
+  }
+
+  .slt-milestone__pill.is-active {
+    background: #F7F7F7;
+    border-color: #F7F7F7;
+    color: #111319;
+  }
+
+  .slt-milestone__desc {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .slt-milestone__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .slt-banner {
+    margin-top: 60px;
+    padding: 32px;
+    min-height: auto;
+  }
+
+  .slt-banner__text {
+    font-size: 24px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+    .slt-banner__btn{
+        width: 100%;
+    }
+}
