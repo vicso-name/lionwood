@@ -41,10 +41,26 @@ if ( is_singular() ) {
             'career'      => 'page-templates/careers-page.php',
             'whitepaper'  => 'page-templates/insights-page.php',
             'news'        => 'page-templates/insights-page.php',
+            'solution'    => 'page-templates/solutions-page.php',
         ];
 
         if ( isset( $custom_archive_templates[ $post_type ] ) ) {
             $archive_page_id = lionwood_get_template_page_id( $custom_archive_templates[ $post_type ] );
+
+            // Fallback for solution: find page by template name stored in page attributes
+            if ( ! $archive_page_id && $post_type === 'solution' ) {
+                $fallback = get_posts( [
+                    'post_type'   => 'page',
+                    'meta_key'    => '_wp_page_template',
+                    'meta_value'  => 'solutions-page.php', // some installs store without subdir
+                    'numberposts' => 1,
+                    'fields'      => 'ids',
+                    'no_found_rows' => true,
+                    'suppress_filters' => true,
+                ] );
+                $archive_page_id = ! empty( $fallback[0] ) ? (int) $fallback[0] : 0;
+            }
+
             if ( $archive_page_id ) {
                 $items[] = [
                     'label'   => esc_html( get_the_title( $archive_page_id ) ),

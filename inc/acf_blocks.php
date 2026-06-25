@@ -120,6 +120,7 @@ function lionwood_register_acf_blocks() {
         'solutions_for_who',
         'solution_compliance_requirements',
         'solution_timeline',
+        'solution_hero',
     ];
 
     foreach ($blocks as $block_name) {

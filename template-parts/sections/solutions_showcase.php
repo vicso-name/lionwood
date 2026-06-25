@@ -17,6 +17,13 @@ $pt      = absint( get_field( 'padding_top' )        ?: 80 );
 $pb      = absint( get_field( 'padding_bottom' )     ?: 80 );
 $pt_mob  = absint( get_field( 'padding_top_mob' )    ?: 80 );
 $pb_mob  = absint( get_field( 'padding_bottom_mob' ) ?: 80 );
+$default_bg = is_singular( 'solution' ) ? '#E9E9E9' : '#F7F7F7';
+$section_bg = get_field( 'section_bg_color' ) ?: $default_bg;
+
+$on_solution      = is_singular( 'solution' );
+$decor_enabled    = get_field( 'decor_bottom_enabled' );
+if ( $decor_enabled === null ) $decor_enabled = $on_solution;
+$decor_color      = get_field( 'decor_bottom_color' ) ?: ( $on_solution ? '#C83030' : '#F7F7F7' );
 
 $title_top    = get_field( 'title_top' )    ?: __( 'Our Services:', 'lionwood' );
 $title_bottom = get_field( 'title_bottom' ) ?: __( 'From Concept to Growth', 'lionwood' );
@@ -61,6 +68,7 @@ $first = $panels[0];
         --ss-pb: <?php echo $pb; ?>px;
         --ss-pt-mob: <?php echo $pt_mob; ?>px;
         --ss-pb-mob: <?php echo $pb_mob; ?>px;
+        --ss-bg: <?php echo esc_attr( $section_bg ); ?>;
     "
 >
     <div class="ss-section__container">
@@ -220,4 +228,9 @@ $first = $panels[0];
         <?php endif; ?>
 
     </div><!-- .ss-section__container -->
+
+    <?php if ( $decor_enabled ) : ?>
+        <?php get_template_part( 'template-parts/partials/decor-bottom', null, [ 'color' => $decor_color ] ); ?>
+    <?php endif; ?>
+
 </section>

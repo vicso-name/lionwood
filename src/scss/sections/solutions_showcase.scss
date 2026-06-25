@@ -8,9 +8,10 @@
 // -----------------------------------------------------------------------------
 
 .ss-section {
-  background-color: var(--color-background);
+  background-color: var(--ss-bg, var(--color-background));
   padding-top:    var(--ss-pt, 80px);
   padding-bottom: var(--ss-pb, 80px);
+  position: relative;
 }
 
 .ss-section__container {
@@ -485,11 +486,18 @@
   }
 
   .ss-panel__stat-value {
-    font-size: clamp(32px, 10vw, 56px);
+    font-size: 28px; // half of desktop 56px
+    line-height: 110%;
+    letter-spacing: -0.56px;
   }
 
   .ss-panel__stat-desc {
     font-size: 14px;
+  }
+
+  .ss-panel__stat-icon img {
+    width: 28px;
+    height: 28px;
   }
 
   .ss-panel__image {

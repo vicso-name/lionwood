@@ -1,0 +1,246 @@
+// =============================================================================
+// Block: Solution Hero Section  (prefix: sh-)
+// Dark #111319 bg, text left / image right bleeding out of section (auh pattern)
+// =============================================================================
+
+.sh-section {
+  background: var(--color-black); // #111319
+  padding-top:    var(--sh-pt, 80px);
+  padding-bottom: var(--sh-pb, 0px);
+  position: relative;
+  overflow: visible;
+}
+
+.sh-section__inner {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  min-height: 650px; // enough room for 786px image with top: -140px offset
+}
+
+
+// -----------------------------------------------------------------------------
+// Left column — text
+// -----------------------------------------------------------------------------
+
+.sh-col--text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px;
+  z-index: 2;
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — 707px, line 1 shifted 10% right, line 2 left-aligned
+// -----------------------------------------------------------------------------
+
+.sh-heading {
+  width: 707px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 90px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.12px;
+  text-transform: uppercase;
+  color: #F7F7F7;
+}
+
+.sh-heading__line-1 {
+  display: block;
+  padding-left: 10%;
+  opacity: 0.6;
+}
+
+.sh-heading__line-2 {
+  display: block;
+  text-align: left;
+}
+
+
+// -----------------------------------------------------------------------------
+// Description + CTA — wrapped, 344px wide, shifted 10% right on desktop
+// -----------------------------------------------------------------------------
+
+.sh-content {
+  max-width: 344px;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sh-description {
+  margin: 0 0 32px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #F7F7F7;
+}
+
+.sh-btn {
+  display: inline-flex;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary); // #C83030
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+  align-self: flex-start;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover { background: var(--color-primary-hover); }
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column — hero image (auh pattern: overflows above + bleeds below)
+// -----------------------------------------------------------------------------
+
+.sh-col--image {
+  flex-shrink: 0;
+  width: 598px;
+  align-self: flex-end;
+  position: relative;
+  top: -140px; // overflows above section top edge (same as auh)
+}
+
+.sh-image {
+  display: block;
+  width: 598px;
+  height: 786px;
+  object-fit: cover;
+  object-position: center top;
+  margin-bottom: -85px; // bleeds into decor / next section
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// ── ≤1350px: shrink image + reduce top offset proportionally ─────────────────
+@media (max-width: 1350px) {
+  .sh-col--image {
+    width: 480px;
+    top: -100px;
+  }
+
+  .sh-image {
+    width: 480px;
+    height: 631px;
+    margin-bottom: -60px;
+  }
+
+  .sh-heading {
+    font-size: clamp(40px, 4vw, 56px);
+    width: auto;
+  }
+}
+
+// ── ≤1200px: further reduce ───────────────────────────────────────────────────
+@media (max-width: 1200px) {
+  .sh-section__inner {
+    gap: 40px;
+    min-height: 560px;
+  }
+
+  .sh-col--image {
+    width: 380px;
+    top: -80px;
+  }
+
+  .sh-image {
+    width: 380px;
+    height: 500px;
+    margin-bottom: -50px;
+  }
+
+  .sh-heading {
+    font-size: clamp(32px, 3.8vw, 50px);
+    width: auto;
+  }
+}
+
+// ── ≤1023px: single column, image centred (auh pattern) ──────────────────────
+@media (max-width: 1023px) {
+  .sh-section {
+    padding-top:    var(--sh-pt-mob, 60px);
+    padding-bottom: var(--sh-pb-mob, 0px);
+  }
+
+  .sh-section__inner {
+    flex-direction: column;
+    align-items:    stretch;
+    min-height:     0; // explicit reset — 'auto' doesn't reliably override 650px
+    gap:            0;
+  }
+
+  .sh-col--text {
+    flex:           none;
+    padding-bottom: 40px;
+  }
+
+  .sh-heading {
+    font-size:     clamp(28px, 7vw, 44px);
+    margin-bottom: 40px;
+    width:         100%;
+  }
+
+  .sh-content {
+    margin-left: 0;
+    max-width:   100%;
+  }
+
+  .sh-col--image {
+    flex:       none;
+    width:      100%;
+    position:   static;
+    align-self: auto;
+    top:        0;
+  }
+
+  // Keep natural width, centre with translate (same as auh-photo on mobile)
+  .sh-image {
+    width:      380px;
+    height:     500px;
+    max-width:  100%;
+    margin-bottom: 0;
+    position:   relative;
+    left:       50%;
+    transform:  translate(-50%, 0);
+    object-position: center top;
+  }
+}
+
+// ── ≤576px ────────────────────────────────────────────────────────────────────
+@media (max-width: 576px) {
+  .sh-heading__line-1 {
+    padding-left: 6%;
+  }
+
+  .sh-image {
+    width:  300px;
+    height: 394px;
+  }
+}

@@ -207,9 +207,18 @@ function lionwood_get_or_create_solution_template_post(): int {
 
 function lionwood_get_solution_default_template_content(): string {
     return <<<'BLOCKS'
-<!-- wp:acf/simple-hero {"mode":"edit"} /-->
+<!-- wp:acf/solution-hero {"mode":"edit"} /-->
+<!-- wp:acf/value-section {"mode":"edit"} /-->
+<!-- wp:acf/solution-compliance-requirements {"mode":"edit"} /-->
+<!-- wp:acf/solutions-for-who {"mode":"edit"} /-->
+<!-- wp:acf/solution-timeline {"mode":"edit"} /-->
+<!-- wp:acf/sub-solutions {"mode":"edit"} /-->
+<!-- wp:acf/solutions-showcase {"mode":"edit"} /-->
 <!-- wp:acf/solution-comparison {"mode":"edit"} /-->
-<!-- wp:acf/get-started {"mode":"edit"} /-->
+<!-- wp:acf/our-cases {"mode":"edit"} /-->
+<!-- wp:acf/insights-articles {"mode":"edit"} /-->
+<!-- wp:acf/cta-section {"mode":"edit"} /-->
+<!-- wp:acf/faq-section {"mode":"edit"} /-->
 BLOCKS;
 }
 
