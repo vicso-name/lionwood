@@ -82,6 +82,72 @@ add_filter('post_type_link', function (string $link, WP_Post $post): string {
     return trailingslashit(home_url("services/{$post->post_name}"));
 }, 10, 2);
 
+// After ACF writes postmeta, flush the object cache so any subsequent get_permalink()
+// call (canonical redirect check, block-editor re-fetch) reads the updated parent_service.
+add_action('acf/save_post', function ($post_id) {
+    if (is_numeric($post_id) && get_post_type((int) $post_id) === 'sub_service') {
+        clean_post_cache((int) $post_id);
+    }
+}, 20);
+
+// Flush rewrite rules on first publish so the new post's URL is immediately routable.
+// Skipped on subsequent saves (performance) — only !$update (new post) triggers the flush.
+add_action('save_post_sub_service', function (int $post_id, WP_Post $post, bool $update): void {
+    if ($post->post_status === 'publish' && !$update) {
+        flush_rewrite_rules();
+    }
+}, 20, 3);
+
+// Correct the "View Post" / "is now live" notice link after first publish.
+// redirect_post_location fires after all save_post hooks including ACF's, so by this
+// point parent_service postmeta is written. Busting the object cache ensures the notice
+// link rendered on the following page load calls get_permalink() with fresh postmeta.
+add_filter('redirect_post_location', function (string $location, int $post_id): string {
+    if (get_post_type($post_id) !== 'sub_service') {
+        return $location;
+    }
+    clean_post_cache($post_id);
+    return $location;
+}, 20, 2);
+
+
+/* ─────────────────────────────────────────────
+   One-segment URL redirect fallback
+   Catches /services/{slug}/ 404s (e.g. from the "is now live" link on first publish
+   before the guid is corrected) and 301s to /services/{parent-slug}/{slug}/.
+   ───────────────────────────────────────────── */
+
+add_action('template_redirect', function (): void {
+    if (!is_404()) {
+        return;
+    }
+
+    $path  = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    $parts = explode('/', $path);
+
+    if (count($parts) !== 2 || $parts[0] !== 'services') {
+        return;
+    }
+
+    $post = get_page_by_path($parts[1], OBJECT, 'sub_service');
+    if (!$post) {
+        return;
+    }
+
+    $parent_id = (int) get_post_meta($post->ID, 'parent_service', true);
+    if (!$parent_id) {
+        return;
+    }
+
+    $parent = get_post($parent_id);
+    if (!$parent) {
+        return;
+    }
+
+    wp_redirect(trailingslashit(home_url("services/{$parent->post_name}/{$post->post_name}")), 301);
+    exit;
+});
+
 
 /* ─────────────────────────────────────────────
    Template — reuse single-service.php
