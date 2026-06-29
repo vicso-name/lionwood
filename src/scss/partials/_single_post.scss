@@ -324,7 +324,7 @@
     left:       24px;
     right:      32px;
     height:     51px;
-    background: linear-gradient(180deg, rgba(247, 247, 247, 0.00) 0%, #F7F7F7 100%);
+    background: linear-gradient(180deg, rgb(247 247 247 / 0%) 0%, #F7F7F7 100%);
     pointer-events: none;
 }
 
@@ -544,7 +544,7 @@
 .sp-popup__overlay {
     position:           absolute;
     inset:              0;
-    background:         rgba(17, 19, 25, 0.72);
+    background:         rgb(17 19 25 / 72%);
     backdrop-filter:    blur(8px);
     -webkit-backdrop-filter: blur(8px);
     cursor:             pointer;
@@ -591,7 +591,7 @@
 
     svg { display: block; }
 
-    &:hover { background: rgba(17, 19, 25, 0.08); }
+    &:hover { background: rgb(17 19 25 / 8%); }
 }
 
 .sp-popup__title {
@@ -621,7 +621,7 @@
     padding:      16px 20px;
     margin-bottom: 12px;
     border-radius: 14px;
-    border:       1px solid rgba(0, 0, 0, 0.12);
+    border:       1px solid rgb(0 0 0 / 12%);
     background:   #fff;
     outline:      none;
     box-sizing:   border-box;
@@ -640,7 +640,7 @@
 
     &:focus {
         border-color: var(--color-primary, #C83030);
-        box-shadow:   0 0 0 3px rgba(200, 48, 48, 0.12);
+        box-shadow:   0 0 0 3px rgb(200 48 48 / 12%);
     }
 
     &.is-invalid {

@@ -12,6 +12,9 @@
     "scss/dollar-variable-colon-space-after": null,
     "selector-class-pattern": null,
     "custom-property-empty-line-before": null,
-    "media-feature-range-notation": null
+    "media-feature-range-notation": null,
+    "declaration-block-single-line-max-declarations": null,
+    "custom-property-pattern": null,
+    "font-family-no-missing-generic-family-keyword": null
   }
 }

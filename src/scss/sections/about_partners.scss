@@ -103,7 +103,7 @@ $apm-gap:  4px;
     width:         $apm-unit;
     height:        $apm-unit;
     border-radius: 8px;
-    border:        0.937px solid rgba(255, 255, 255, 0.08);
+    border:        0.937px solid rgb(255 255 255 / 8%);
 
     @media (max-width: 1380px) {
         width:  auto;
@@ -116,8 +116,7 @@ $apm-gap:  4px;
     width:         calc(#{$apm-unit} * 2 + #{$apm-gap});
     height:        calc(#{$apm-unit} * 2 + #{$apm-gap});
     border-radius: 8px;
-    border:        0.937px solid rgba(255, 255, 255, 0.08);
-
+    border:        0.937px solid rgb(255 255 255 / 8%);
     display:         flex;
     align-items:     center;
     justify-content: center;
@@ -144,8 +143,7 @@ $apm-gap:  4px;
     width:         calc(#{$apm-unit} * 2 + #{$apm-gap});
     height:        $apm-unit;
     border-radius: 8px;
-    border:        0.937px solid rgba(255, 255, 255, 0.08);
-
+    border:        0.937px solid rgb(255 255 255 / 8%);
     display:     flex;
     align-items: center;
     padding:     0 16px;

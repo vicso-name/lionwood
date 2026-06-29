@@ -154,8 +154,7 @@
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     grid-auto-rows: auto;
-    row-gap: 40px;
-    column-gap: 0;
+    gap: 40px 0;
     flex-wrap: unset;
     // No padding-inline here — handled per-item so divider stays centered
     padding-inline: 0;
@@ -163,7 +162,7 @@
 
 
   .vs-divider {
-    background: rgba(247, 247, 247, 0.2);
+    background: rgb(247 247 247 / 20%);
     width: 1px;
     height: auto;
     align-self: stretch;
@@ -191,7 +190,6 @@
 
   .vs-item {
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
     align-items: center;
   }

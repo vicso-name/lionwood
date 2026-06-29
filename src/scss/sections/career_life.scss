@@ -107,7 +107,7 @@
     width:         100%;
     height:        1px;
     // rgba instead of opacity so the child bar is not dimmed
-    background:    rgba(255, 255, 255, 0.2);
+    background:    rgb(255 255 255 / 20%);
     border-radius: 10px;
     overflow:      visible;
     position:      relative;

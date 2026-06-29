@@ -47,7 +47,7 @@
   background-color: #1a1a1a;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 18%);
 }
 
 
@@ -108,12 +108,11 @@
   padding: 16px 20px;
   align-items: center;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   background: #FFF;
   backdrop-filter: blur(15px);
   margin-bottom: 12px;
   outline: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-regular);
@@ -126,7 +125,7 @@
   }
 
   &:focus {
-    border-color: rgba(200, 48, 48, 0.4);
+    border-color: rgb(200 48 48 / 40%);
   }
 
   &--last {
@@ -187,13 +186,11 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
-
   transition: opacity var(--transition-base) ease;
 
   &:hover {

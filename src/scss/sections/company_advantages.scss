@@ -81,7 +81,6 @@
   border-radius: 8px;
   background: #111319;
   margin-bottom: 35px;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
@@ -105,7 +104,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+  border-bottom: 1px solid rgb(0 0 0 / 20%);
 }
 
 // Check icon — red circle

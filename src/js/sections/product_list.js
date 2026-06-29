@@ -34,8 +34,6 @@
     }
 
     // ── Desktop only: set wrapper height ────────────────────────────────────
-    var pinInner = wrapper.querySelector('.pl-pin-inner');
-
     function setWrapperHeight() {
       if (isMobile) {
         wrapper.style.height = '';

@@ -68,7 +68,7 @@
 
 // Title — single line, two inline colored parts
 .crh-title {
-    margin:         0 0 0;
+    margin:         0;
     font-family:    var(--font-primary);
     font-weight:    var(--font-weight-medium);
     font-size:      var(--font-size-h1, 120px);
@@ -182,7 +182,7 @@
     width:           46px;
     height:          46px;
     border-radius:   50%;
-    border:          1px solid rgba(0, 0, 0, 0.1);
+    border:          1px solid rgb(0 0 0 / 10%);
     background:      transparent;
     cursor:          pointer;
     flex-shrink:     0;
@@ -190,13 +190,14 @@
     padding:         0;
 
     &:hover {
-        border-color: rgba(0, 0, 0, 0.25);
+        border-color: rgb(0 0 0 / 25%);
     }
 }
 
 // "···" expand button — three red dots
 .crh-socials__more {
     @extend %crh-circle-btn;
+
     gap: 3px;
 
     // Hide when expanded
@@ -217,6 +218,7 @@
 // Close button — red X, hidden by default
 .crh-socials__close {
     @extend %crh-circle-btn;
+
     display: none;
 
     svg { display: block; }
@@ -250,8 +252,8 @@
         inset:         0;
         background:    linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.04) 0%,
-            rgba(0, 0, 0, 0.28) 100%
+            rgb(0 0 0 / 4%) 0%,
+            rgb(0 0 0 / 28%) 100%
         );
         pointer-events: none;
         border-radius:  inherit;

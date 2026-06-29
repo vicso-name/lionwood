@@ -98,7 +98,6 @@
   max-width: 410px;
   display: flex;
   flex-direction: column;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2); // 56px
   font-weight: var(--font-weight-medium);
@@ -176,10 +175,10 @@
   justify-content: space-between;
   gap: 16px;
   padding: 14px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
 
   &:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.20);
+    border-top: 1px solid rgb(255 255 255 / 20%);
   }
 }
 
@@ -227,7 +226,6 @@
   gap: 10px;
   border-radius: 28px;
   border: 1px solid #F7F7F7;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
@@ -235,11 +233,10 @@
   color: #F7F7F7;
   text-align: center;
   white-space: nowrap;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.10);
+    background: rgb(255 255 255 / 10%);
   }
 }
 

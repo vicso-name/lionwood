@@ -114,7 +114,7 @@
 .cig-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.10) 100%);
+  background: linear-gradient(180deg, rgb(0 0 0 / 30%) 0%, rgb(0 0 0 / 10%) 100%);
   z-index: 0;
 }
 
@@ -200,14 +200,12 @@
   border: 1px solid #111319;
   background: transparent;
   cursor: pointer;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #111319;
-
   transition: background-color var(--transition-base) ease,
               color var(--transition-base) ease;
 

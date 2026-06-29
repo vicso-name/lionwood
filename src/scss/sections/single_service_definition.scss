@@ -46,7 +46,7 @@
 .ssd-heading__bottom {
   text-align: right;
   margin-right: 80px;
-  color: rgba(255, 255, 255, 0.50);
+  color: rgb(255 255 255 / 50%);
 }
 
 
@@ -72,7 +72,7 @@
   align-items: flex-start;
   gap: 0;
   padding: 20px;
-  pbottom: 40px;
+  padding-bottom: 40px;
   border-radius: 20px;
   background: #E9E9E9;
   height: 100%; // stretch to equal height within grid row
@@ -151,7 +151,7 @@
   font-size: 18px;
   font-weight: var(--font-weight-medium);
   line-height: 130%;
-  color: rgba(247, 247, 247, 0.50);
+  color: rgb(247 247 247 / 50%);
 }
 
 .ssd-counter__total {
@@ -159,7 +159,7 @@
   font-size: 18px;
   font-weight: var(--font-weight-medium);
   line-height: 130%;
-  color: rgba(247, 247, 247, 0.50);
+  color: rgb(247 247 247 / 50%);
 }
 
 
@@ -198,6 +198,6 @@
     .ssd-heading__bottom {
         text-align: right;
         margin-right: 0;
-        color: rgba(255, 255, 255, 0.50);
+        color: rgb(255 255 255 / 50%);
     }
 }

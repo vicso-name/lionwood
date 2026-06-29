@@ -31,7 +31,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 60px;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2);           // 56px
   font-weight: var(--font-weight-medium);
@@ -126,7 +125,6 @@
   background: var(--color-primary); // #C83030
   flex-shrink: 0;
   margin-bottom: 74px; // 74px gap from num to title
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-regular);
@@ -228,7 +226,7 @@
   font-size: 18px;
   font-weight: var(--font-weight-medium);
   line-height: 130%;
-  color: rgba(17, 19, 25, 0.40);
+  color: rgb(17 19 25 / 40%);
 }
 
 

@@ -39,7 +39,6 @@
   flex-direction: column;
   width: 920px;
   flex-shrink: 0;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-medium);
@@ -187,7 +186,6 @@
   background: #fff;
   margin-bottom: 35px;
   align-self: flex-start;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
@@ -208,7 +206,7 @@
   align-items: center;
   gap: 16px;
   padding-block: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
 
   &:last-child {
     border-bottom: none;
@@ -250,7 +248,7 @@
   }
 
   &.is-active {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
   }
 }
 
@@ -347,14 +345,12 @@
   border-radius: 69px;
   background: var(--color-primary); // #C83030
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #F7F7F7;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover,
@@ -384,14 +380,12 @@
   border-radius: 100px;
   background: var(--color-primary);
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #fff;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover,

@@ -78,7 +78,6 @@
   flex-direction: column;
   max-width: 414px;
   margin-bottom: 40px;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-medium);
@@ -147,14 +146,12 @@
   border-radius: 100px;
   background: var(--color-primary); // #C83030
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #F7F7F7;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover,

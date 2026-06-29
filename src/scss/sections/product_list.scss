@@ -141,7 +141,6 @@
 
   &--active {
     opacity:        1;
-    transform:      translateY(-50%);
     pointer-events: auto;
     position:       relative;
     top:            auto;
@@ -188,7 +187,6 @@
   background:      var(--color-primary, #C83030);
   text-decoration: none;
   transition:      background var(--transition-base, 0.3s) ease;
-
   color:          #fff;
   font-family:    var(--font-primary);
   font-size:      16px;

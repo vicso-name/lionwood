@@ -54,7 +54,7 @@
 
 .sse-list {
   // Top border on the whole list
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgb(0 0 0 / 20%);
 }
 
 
@@ -65,7 +65,7 @@
   align-items: center;
   gap: 0;
   padding: 28px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgb(0 0 0 / 20%);
   transition: opacity 0.3s ease;
 
   // Hidden items
@@ -158,14 +158,12 @@
   background: var(--color-primary);
   border: none;
   cursor: pointer;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #F7F7F7;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover {

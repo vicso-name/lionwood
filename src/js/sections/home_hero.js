@@ -40,8 +40,6 @@
     var PAUSE_AFTER  = 2500; // ms to show full word before erasing
     var IMG_DELAY    = 200;  // ms after word fully typed before image appears
 
-    var timer = null;
-
     // ── Type a word character by character ─────────────────────────────────
     function typeWord(word, callback) {
       typedEl.classList.remove('is-pausing', 'is-erasing');
@@ -52,7 +50,7 @@
         if (i <= word.length) {
           typedEl.textContent = word.slice(0, i);
           i++;
-          timer = setTimeout(step, TYPE_SPEED);
+          setTimeout(step, TYPE_SPEED);
         } else {
           typedEl.classList.remove('is-typing');
           typedEl.classList.add('is-pausing');
@@ -72,7 +70,7 @@
         if (i >= 0) {
           typedEl.textContent = word.slice(0, i);
           i--;
-          timer = setTimeout(step, ERASE_SPEED);
+          setTimeout(step, ERASE_SPEED);
         } else {
           typedEl.classList.remove('is-erasing', 'is-typing', 'is-pausing');
           if (callback) callback();
@@ -119,7 +117,7 @@
           showImage(industry);
 
           // 3. Pause while showing full word + image
-          timer = setTimeout(function () {
+          setTimeout(function () {
 
             // 4. Hide image
             hideImage(function () {
@@ -131,7 +129,7 @@
                 currentIndex = (currentIndex + 1) % industries.length;
 
                 // 7. Small gap before typing next word
-                timer = setTimeout(runCycle, 300);
+                setTimeout(runCycle, 300);
               });
             });
 

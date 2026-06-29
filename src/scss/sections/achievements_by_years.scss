@@ -39,7 +39,7 @@
 .aby-tabs {
   display:       flex;
   gap:           60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
   margin-bottom: 80px;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .aby-empty {
-  color:       rgba(255, 255, 255, 0.4);
+  color:       rgb(255 255 255 / 40%);
   font-family: var(--font-primary);
   font-size:   16px;
   padding:     60px 0;
@@ -161,7 +161,6 @@
   background:      transparent;
   cursor:          pointer;
   transition:      background 0.2s ease, color 0.2s ease;
-
   color:          #F7F7F7;
   font-family:    var(--font-primary);
   font-size:      16px;
@@ -184,7 +183,7 @@
     .aby-year-pill__count { opacity: 0.6; }
   }
 
-  &:hover:not(&--active) { background: rgba(255, 255, 255, 0.1); }
+  &:hover:not(&--active) { background: rgb(255 255 255 / 10%); }
 }
 
 

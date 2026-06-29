@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2); // 56px
   font-weight: var(--font-weight-medium);
@@ -120,10 +119,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 28px;
-  border: 1px solid rgba(247, 247, 247, 0.60);
+  border: 1px solid rgb(247 247 247 / 60%);
   background: #C83030;
   cursor: default;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
@@ -152,7 +150,7 @@
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-regular);
   line-height: 130%;
-  color: rgba(247, 247, 247, 0.85);
+  color: rgb(247 247 247 / 85%);
   white-space: pre-line;
 
   // Initial animation state
@@ -200,7 +198,7 @@
     left: 5px;   // center of 12px dot
     width: 1px;
     bottom: calc(-1 * var(--pt-pb-mob, 70px)); // extend to bottom of section
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 20%);
   }
 
   // Animated progress line

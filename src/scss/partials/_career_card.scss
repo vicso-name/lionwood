@@ -7,7 +7,7 @@
     width:          440px;
     min-height:     415px;
     border-radius:  20px;
-    border:         1px solid rgba(0, 0, 0, 0.10);
+    border:         1px solid rgb(0 0 0 / 10%);
     background:     #fff;
     padding:        20px 20px 30px;
     display:        flex;
@@ -58,7 +58,6 @@
     border-radius:   28px;
     background:      var(--color-primary, #C83030);
     flex-shrink:     0;
-
     color:          #F7F7F7;
     font-family:    var(--font-primary);
     font-size:      16px;
@@ -95,7 +94,7 @@
         left:       0;
         width:      400px;
         height:     1px;
-        background: rgba(0, 0, 0, 0.10);
+        background: rgb(0 0 0 / 10%);
     }
 
     &:last-child::after {
@@ -163,7 +162,6 @@
     gap:             10px;
     margin-top:      auto;
     text-decoration: none;
-
     color:       var(--color-black, #111319);
     font-family: var(--font-primary);
     font-size:   16px;

@@ -106,7 +106,7 @@ $cert-gap:  4px;
   width:  $cert-unit;
   height: $cert-unit;
   border-radius: 8px;
-  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  border: 0.937px solid rgb(0 0 0 / 10%);
   background: var(--color-background);
 
   // On mobile grid: fluid width
@@ -121,7 +121,7 @@ $cert-gap:  4px;
   width:  calc(#{$cert-unit} * 2 + #{$cert-gap});
   height: calc(#{$cert-unit} * 2 + #{$cert-gap});
   border-radius: 8px;
-  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  border: 0.937px solid rgb(0 0 0 / 10%);
   background: var(--color-background);
   opacity: 0.88;
 
@@ -155,10 +155,9 @@ $cert-gap:  4px;
   width:  calc(#{$cert-unit} * 2 + #{$cert-gap});
   height: $cert-unit;
   border-radius: 8px;
-  border: 0.937px solid rgba(0, 0, 0, 0.10);
+  border: 0.937px solid rgb(0 0 0 / 10%);
   background: var(--color-background);
   opacity: 0.88;
-
   display: flex;
   align-items: center;
   padding: 0 16px;

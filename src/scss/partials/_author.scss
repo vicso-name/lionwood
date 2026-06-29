@@ -362,7 +362,7 @@
     align-items:     center;
     gap:             10px;
     border-radius:   28px;
-    background:      rgba(255, 255, 255, 0.80);
+    background:      rgb(255 255 255 / 80%);
     font-family:     var(--font-primary);
     font-size:       var(--font-size-body-2, 16px);
     font-weight:     var(--font-weight-medium, 500);
@@ -425,7 +425,6 @@
     font-weight:     500;
     line-height:     1;
     text-transform:  uppercase;
-
     transition: background var(--transition-base, 0.3s) ease,
                 color      var(--transition-base, 0.3s) ease;
 

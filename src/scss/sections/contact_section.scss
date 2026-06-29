@@ -114,7 +114,7 @@
   height: 93px;
   aspect-ratio: 1 / 1;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   opacity: 0.88;
 }
 
@@ -124,7 +124,7 @@
   height: 93px;
   aspect-ratio: unset;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   opacity: 0.88;
   display: flex;
   align-items: flex-start;
@@ -237,19 +237,17 @@
   gap: 10px;
   width: 100%;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   background: #fff;
   backdrop-filter: blur(15px);
   outline: none;
   appearance: none;
   box-sizing: border-box;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: 350;
   line-height: 140%;
   color: #4B4D51;
-
   transition: border-color var(--transition-base) ease,
               box-shadow var(--transition-base) ease;
 
@@ -260,7 +258,7 @@
 
   &:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.15);
+    box-shadow: 0 0 0 3px rgb(200 48 48 / 15%);
   }
 }
 
@@ -309,20 +307,18 @@
   width: 100%;
   padding: 18px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   background: #fff;
   backdrop-filter: blur(15px);
   resize: none;
   min-height: 100px;
   outline: none;
   box-sizing: border-box;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: 350;
   line-height: 140%;
   color: #4B4D51;
-
   transition: border-color var(--transition-base) ease,
               box-shadow var(--transition-base) ease;
 
@@ -333,7 +329,7 @@
 
   &:focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.15);
+    box-shadow: 0 0 0 3px rgb(200 48 48 / 15%);
   }
 }
 
@@ -380,14 +376,12 @@
   border-radius: 30px;
   background: var(--color-primary);
   cursor: pointer;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   color: #fff;
   text-transform: uppercase;
-
   transition: background-color var(--transition-base) ease,
               transform 0.15s ease,
               opacity var(--transition-base) ease;
@@ -403,7 +397,7 @@
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(200, 48, 48, 0.35);
+    box-shadow: 0 0 0 3px rgb(200 48 48 / 35%);
   }
 
   &:disabled {
@@ -528,7 +522,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(233, 233, 233, 0.65);
+  background: rgb(233 233 233 / 65%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;

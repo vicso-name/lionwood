@@ -201,13 +201,11 @@
   padding: 20px 32px;
   border-radius: 100px;
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
-
   transition: background-color var(--transition-base) ease,
               color var(--transition-base) ease,
               border-color var(--transition-base) ease;
@@ -243,7 +241,6 @@
   bottom: 32px;
   right: 32px;
   z-index: 100;
-
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -252,7 +249,6 @@
   background: var(--color-primary);
   color: #fff;
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: var(--font-weight-medium);

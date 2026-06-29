@@ -171,14 +171,12 @@
   border:          none;
   background:      var(--color-primary, #C83030);
   cursor:          pointer;
-
   color:           #fff;
   font-family:     var(--font-primary);
   font-size:       16px;
   font-weight:     500;
   line-height:     1;
   text-transform:  uppercase;
-
   transition: background var(--transition-base, 0.3s) ease;
 
   &:hover { background: var(--color-primary-hover, #a82828); }

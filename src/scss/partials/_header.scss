@@ -12,7 +12,7 @@
     background:       var(--color-background, #F7F7F7);
     transition:       box-shadow var(--transition-base, 0.25s) ease;
     &.is-scrolled {
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 20px rgb(0 0 0 / 8%);
     }
 }
 
@@ -112,7 +112,6 @@
     position:   absolute;
     top:        calc(100% + 8px);
     left:       50%;
-    transform:  translateX(-50%);
     width:      min(1360px, 96vw);
     z-index:    999;
     // Invisible bridge fills the gap so mouse doesn't lose hover
@@ -142,7 +141,7 @@
     padding:        36px 36px 40px;
     border-radius:  20px;
     background:     #FFF;
-    box-shadow:     0 4px 30px 0 rgba(0, 0, 0, 0.10);
+    box-shadow:     0 4px 30px 0 rgb(0 0 0 / 10%);
 
     // Row layouts: group(s) left, flat items right
     &[data-mega-layout="one-group"],
@@ -315,7 +314,7 @@
     svg { flex-shrink: 0; }
 
     &:hover {
-        background: rgba(0, 0, 0, 0.06);
+        background: rgb(0 0 0 / 6%);
     }
 }
 
@@ -344,7 +343,7 @@
 
     svg:last-child { transition: transform var(--transition-fast, 0.15s) ease; }
 
-    &:hover { background: rgba(0, 0, 0, 0.05); }
+    &:hover { background: rgb(0 0 0 / 5%); }
 
     &[aria-expanded="true"] svg:last-child {
         transform: rotate(180deg);
@@ -365,7 +364,7 @@
     padding:       8px;
     border-radius: 12px;
     background:    #FFF;
-    box-shadow:    0 4px 20px rgba(0, 0, 0, 0.10);
+    box-shadow:    0 4px 20px rgb(0 0 0 / 10%);
     opacity:       0;
     pointer-events: none;
     transform:     translateY(-6px);
@@ -392,7 +391,7 @@
     transition:      background var(--transition-fast, 0.15s) ease;
 
     &:hover,
-    &.is-active { background: rgba(0, 0, 0, 0.05); }
+    &.is-active { background: rgb(0 0 0 / 5%); }
 }
 
 // ── CTA button ────────────────────────────────────────────────────────────────
@@ -480,7 +479,7 @@
 .mob__backdrop {
     position:   absolute;
     inset:      0;
-    background: rgba(0, 0, 0, 0.40);
+    background: rgb(0 0 0 / 40%);
     opacity:    0;
     transition: opacity 0.35s ease;
     cursor:     pointer;
@@ -515,7 +514,7 @@
     height:          72px;
     padding:         0 var(--container-padding, 20px);
     flex-shrink:     0;
-    border-bottom:   1px solid rgba(0, 0, 0, 0.06);
+    border-bottom:   1px solid rgb(0 0 0 / 6%);
 }
 
 .mob__hdr-logo {
@@ -558,7 +557,7 @@
     color:           var(--color-black, #111319);
     transition:      background var(--transition-fast, 0.15s) ease;
 
-    &:hover { background: rgba(0, 0, 0, 0.05); }
+    &:hover { background: rgb(0 0 0 / 5%); }
 
     svg { display: block; }
 }
@@ -585,7 +584,7 @@
 
     svg:last-child { transition: transform var(--transition-fast, 0.15s) ease; }
 
-    &:hover { background: rgba(0, 0, 0, 0.05); }
+    &:hover { background: rgb(0 0 0 / 5%); }
 
     &[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
 }
@@ -600,7 +599,7 @@
     padding:        8px;
     border-radius:  12px;
     background:     #FFF;
-    box-shadow:     0 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow:     0 4px 20px rgb(0 0 0 / 12%);
     opacity:        0;
     pointer-events: none;
     transform:      translateY(-6px);
@@ -628,7 +627,7 @@
     transition:      background var(--transition-fast, 0.15s) ease;
 
     &:hover,
-    &.is-active { background: rgba(0, 0, 0, 0.05); }
+    &.is-active { background: rgb(0 0 0 / 5%); }
 }
 
 // ── Scrollable nav body ───────────────────────────────────────────────────────
@@ -764,7 +763,7 @@
 
     svg { transition: transform var(--transition-fast, 0.15s) ease; }
 
-    &:hover { background: rgba(0, 0, 0, 0.05); }
+    &:hover { background: rgb(0 0 0 / 5%); }
 
     .mob__sub-item.is-open & {
         color: var(--color-primary, #C83030);
@@ -788,7 +787,7 @@
 
     .mob__sub-item.is-open & {
         max-height:   600px;
-        border-color: rgba(0, 0, 0, 0.08);
+        border-color: rgb(0 0 0 / 8%);
         padding-top:  8px;
     }
 }
@@ -853,7 +852,7 @@
     padding:        20px 20px max(24px, env(safe-area-inset-bottom, 24px));
     border-radius:  16px 16px 0 0;
     background:     #F7F7F7;
-    box-shadow:     0 -3px 40px 0 rgba(0, 0, 0, 0.20);
+    box-shadow:     0 -3px 40px 0 rgb(0 0 0 / 20%);
 }
 
 .mob__cta {

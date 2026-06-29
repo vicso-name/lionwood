@@ -19,17 +19,13 @@
         if (!grid || !btn) return;
 
         var perPage = parseInt(btn.getAttribute('data-per-page'), 10) || PER_PAGE;
-        var shown   = perPage; // already visible on load
-
         btn.addEventListener('click', function () {
             var hidden = grid.querySelectorAll('.cg-card--hidden');
-            var toShow = Array.prototype.slice.call(hidden, 0, 3);
+            var toShow = Array.prototype.slice.call(hidden, 0, perPage);
 
             toShow.forEach(function (card) {
                 card.classList.remove('cg-card--hidden');
             });
-
-            shown += toShow.length;
 
             // Hide button if all cards are now visible
             var remaining = grid.querySelectorAll('.cg-card--hidden').length;

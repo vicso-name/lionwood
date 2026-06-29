@@ -305,7 +305,7 @@
     &:last-child { margin-bottom: 0; }
 
     &.is-active {
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
     }
 }
 

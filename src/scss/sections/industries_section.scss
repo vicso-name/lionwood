@@ -46,7 +46,6 @@
   flex-direction: column;
   width: 380px;
   flex-shrink: 0;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-medium);
@@ -102,7 +101,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: 350;
@@ -149,7 +147,7 @@
   height: 280px;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 10%);
 }
 
 .ind-slide__image {
@@ -164,7 +162,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgb(0 0 0 / 25%);
   border-radius: 20px;
   pointer-events: none;
 }
@@ -172,7 +170,7 @@
 .ind-slide__image-placeholder {
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgb(255 255 255 / 8%);
 }
 
 // Overlay: number + name — top left
@@ -277,7 +275,7 @@
   &__placeholder {
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgb(255 255 255 / 15%);
   }
 
   // Active state — full opacity + white border ring
@@ -328,19 +326,17 @@
   border-radius: 69px;
   border: 1px solid #fff;
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: 14px;
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #F7F7F7;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover,
   &:focus-visible {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     outline: none;
   }
 }

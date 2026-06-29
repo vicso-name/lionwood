@@ -180,7 +180,7 @@
         border-color: #fff;
         color:        #fff;
         background:   transparent;
-        &:hover { background: rgba(255,255,255,0.1); }
+        &:hover { background: rgb(255 255 255 / 10%); }
     }
     .adf-slide__icon img {
         filter: brightness(0) invert(1);
@@ -195,7 +195,7 @@
         border-color: #111319;
         color:        #111319;
         background:   transparent;
-        &:hover { background: rgba(0,0,0,0.06); }
+        &:hover { background: rgb(0 0 0 / 6%); }
     }
 }
 
@@ -241,7 +241,6 @@
     border:          1px solid;
     text-decoration: none;
     margin-top:      auto;
-
     font-family:     var(--font-primary);
     font-size:       var(--font-size-body-2, 16px);
     font-weight:     var(--font-weight-medium, 500);
@@ -250,7 +249,7 @@
     transition:      background-color var(--transition-base, 0.25s) ease;
 
     &:focus-visible {
-        outline:        2px solid currentColor;
+        outline:        2px solid currentcolor;
         outline-offset: 3px;
     }
 }

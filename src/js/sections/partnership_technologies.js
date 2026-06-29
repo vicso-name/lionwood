@@ -57,7 +57,7 @@
 
         var canRight = (c + 2 < cols) && !occupied[r][c + 1] && !occupied[r][c + 2];
         var canLeft  = (c - 2 >= 0)   && !occupied[r][c - 2] && !occupied[r][c - 1];
-        var dir = null;
+        var dir;
         if (canRight && canLeft) dir = rand() > 0.5 ? 'right' : 'left';
         else if (canRight)       dir = 'right';
         else if (canLeft)        dir = 'left';

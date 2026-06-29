@@ -12,7 +12,7 @@
 
     if (!swiperEl || typeof Swiper === 'undefined') return;
 
-    var swiper = new Swiper(swiperEl, {
+    new Swiper(swiperEl, {
       slidesPerView:  'auto',
       spaceBetween:   16,
       grabCursor:     true,

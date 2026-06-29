@@ -166,7 +166,7 @@
 
 .ph2-image-wrap {
     position: absolute;
-    bottom:   var(--ph2-image-bottom, 0px);
+    bottom:   calc(var(--ph2-image-bottom, 0px) - 2px); // -2px eliminates sub-pixel gap; overflow:hidden clips the bleed
     right:    15%;
     width:    760px;
     display:  flex;
@@ -264,7 +264,7 @@
         margin-top:      47px;
         // pull image into section's padding-bottom so it reaches the bottom edge;
         // when decor enabled (60px), stops 60px above bottom so decor isn't covered
-        margin-bottom:   calc(-1 * var(--ph2-pb-mob, 140px) + var(--ph2-image-bottom, 0px));
+        margin-bottom:   calc(-1 * var(--ph2-pb-mob, 140px) + var(--ph2-image-bottom, 0px) - 2px);
         justify-content: flex-end;
     }
 

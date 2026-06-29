@@ -15,7 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $pt     = absint( get_field( 'padding_top' )        ?: 80 );
-$pb     = absint( get_field( 'padding_bottom' )     ?: 140 );
+$pb     = absint( get_field( 'padding_bottom' )     ?: 0 );
 $pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
 $pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 70 );
 

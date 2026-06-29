@@ -41,7 +41,7 @@
         // Animate from current height to 0
         panel.style.maxHeight = panel.scrollHeight + 'px';
         // Force reflow
-        panel.offsetHeight; // eslint-disable-line
+        panel.offsetHeight; // force reflow
         panel.style.maxHeight = '0';
       }
     }

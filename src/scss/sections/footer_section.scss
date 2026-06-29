@@ -134,7 +134,7 @@
     gap: 40px;
     flex-wrap: wrap;
     padding-bottom: 32px;
-    opacity: 30%;
+    opacity: 0.3;
   }
 
   &__partner-link,
@@ -495,8 +495,8 @@
         gap: 16px;
         padding: 20px 0;
         padding-bottom: 20px;
-        border-top: 1px solid var(--divider-20, rgba(0, 0, 0, 0.20));
-        border-bottom: 1px solid var(--divider-20, rgba(0, 0, 0, 0.20));
+        border-top: 1px solid var(--divider-20, rgb(0 0 0 / 20%));
+        border-bottom: 1px solid var(--divider-20, rgb(0 0 0 / 20%));
     }
     .footer-section__copyright{
         text-align: center;

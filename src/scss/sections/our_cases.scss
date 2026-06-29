@@ -146,9 +146,8 @@
   gap: 10px;
   padding: 4px 14px 5px;
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.80);
+  background: rgb(255 255 255 / 80%);
   backdrop-filter: blur(4px);
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
@@ -248,14 +247,12 @@
   border-radius: 100px;
   background: var(--color-primary);
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2);
   font-weight: var(--font-weight-medium);
   line-height: 100%;
   text-transform: uppercase;
   color: #F7F7F7;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover,

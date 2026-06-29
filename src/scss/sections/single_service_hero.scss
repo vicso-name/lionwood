@@ -38,7 +38,7 @@
 }
 
 .ssh-section__container {
-  position: static; // image-wrap must position vs .ssh-section, not container
+  position: static;
   max-width: var(--container-max-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
@@ -54,9 +54,7 @@
 
 .ssh-body {
   display: flex;
-  align-items: flex-end; // both cols align to bottom
-  justify-content: space-between;
-  gap: 40px;
+  align-items: center;
   width: 100%;
 }
 
@@ -69,7 +67,7 @@
 
 .ssh-content {
   flex: 0 0 auto;
-  max-width: 560px;
+  max-width: 522px;
   display: flex;
   flex-direction: column;
   padding-bottom: 0;
@@ -158,30 +156,28 @@
 
 // -----------------------------------------------------------------------------
 // Right column: decorative image
-// Image bottom is flush with section bottom edge;
-// top overflows upward outside the section bounds.
-//
-// Best practice: position the image wrapper with bottom: 0 relative to the
-// section, so it always anchors to the bottom regardless of content height.
-// The section has overflow: visible so the top part shows above.
+// Absolute vs container (position:relative). bottom:59px = decor height(60) − 1
+// → image bottom = decor top at any section height (works when pb=0).
+// right:container-padding → flush with container content-right (= solution_hero).
+// Image overflows above section via overflow:visible on .ssh-section.
 // -----------------------------------------------------------------------------
 
 .ssh-image-wrap {
   position: absolute;
-  bottom: -80px;
-  right: 0;
-  width: 679px;
-  // No height constraint — image natural height flows upward
+  // mirrors solution_hero: image stops at container right edge, not viewport right
+  right: max(0px, calc((100vw - var(--container-max-width)) / 2));
+  bottom: 59px;
+  width: 598px;
   pointer-events: none;
   user-select: none;
 }
 
 .ssh-image {
   display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: bottom center;
+  width: 598px;
+  height: 786px;
+  object-fit: cover;
+  object-position: center top;
 }
 
 
@@ -189,43 +185,65 @@
 // Responsive
 // =============================================================================
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
   .ssh-image-wrap {
     width: 480px;
   }
 
+  .ssh-image {
+    width: 480px;
+    height: 631px;
+  }
+
   .ssh-heading {
-    font-size: clamp(36px, 5vw, 56px);
+    font-size: clamp(40px, 4vw, 56px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .ssh-section__container {
+    min-height: 560px;
+  }
+
+  .ssh-body {
+    gap: 40px;
+  }
+
+  .ssh-image-wrap {
+    width: 380px;
+  }
+
+  .ssh-image {
+    width: 380px;
+    height: 500px;
+  }
+
+  .ssh-heading {
+    font-size: clamp(32px, 3.8vw, 50px);
   }
 }
 
 @media (max-width: 1023px) {
   .ssh-section {
     padding-top:    var(--ssh-pt-mob, 70px);
-    padding-bottom: var(--ssh-pb-mob, 70px);
-    overflow: hidden; // clip image on mobile
+    padding-bottom: 55px!important;
+    overflow: hidden;
   }
 
   .ssh-section__container {
-    min-height: unset;
+    min-height: 0;
   }
 
   .ssh-body {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 0;
-  }
-
-  .ssh-image-wrap {
-    position: relative;
-    right: auto;
-    width: 100%;
-    max-width: 400px;
-    margin-inline: auto;
   }
 
   .ssh-content {
     max-width: 100%;
+    flex: none;
+    padding-bottom: 40px;
   }
 
   .ssh-content-inner {
@@ -235,17 +253,35 @@
 
   .ssh-heading {
     margin-bottom: 40px;
-    font-size: clamp(32px, 8vw, 56px);
+    font-size: clamp(28px, 7vw, 44px);
+  }
+
+  .ssh-image-wrap {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+  }
+
+  .ssh-image {
+    width: 380px;
+    height: 500px;
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 }
 
 @media (max-width: 576px) {
-    .ssh-cta-btn{
-        width: 100%;
-    }
-    .ssh-image-wrap {
-        bottom: -35px;
-    }
+  .ssh-cta-btn {
+    width: 100%;
+  }
+
+  .ssh-image {
+    width: 300px;
+    height: 394px;
+  }
 }
 
 // =============================================================================
@@ -256,19 +292,19 @@
   align-items: center;
 
   .ssh-image-wrap {
+    position: relative;
+    right: auto;
+    bottom: auto;
     flex: 1;
     min-width: 0;
-    position: relative; // re-enter flex flow; overrides position:absolute from base
-    // right omitted — position:relative defaults to auto; mobile sets right:-80px
-    bottom: auto;
-    // 1025–1360px: container fills viewport, padding = 0 → margin-right = 0
-    // ≤1024px: container has 20px padding → bleed through it
+    align-self: stretch;
     margin-right: calc(-1 * var(--container-padding));
   }
 
   .ssh-image {
     width: 100%;
     height: 483px;
+    margin-bottom: 0;
     object-fit: contain;
     object-position: right;
     border-radius: 0;
@@ -293,12 +329,14 @@
     flex-direction: column;
 
     .ssh-image-wrap {
+      position: relative;
+      right: -80px;
+      bottom: auto;
       width: calc(100% + var(--container-padding));
       max-width: none;
       margin-left: 0;
       margin-right: calc(-1 * var(--container-padding));
       transform: translateY(137px) rotate(45deg) !important;
-      right: -80px;
     }
 
     .ssh-image {

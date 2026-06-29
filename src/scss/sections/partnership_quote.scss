@@ -12,7 +12,6 @@
     // Paddings drive the section height
     padding-top:    var(--pq-pt, 100px);
     padding-bottom: var(--pq-pb, 200px);
-
     background-image:    var(--pq-bg, none);
     background-size:     cover;
     background-position: center center;
@@ -30,17 +29,16 @@
     z-index:    1;
     display:    flex;
     align-items: flex-start;
-
     background:
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.50) 18.27%,
-            rgba(0, 0, 0, 0.00) 66.14%
+            rgb(0 0 0 / 50%) 18.27%,
+            rgb(0 0 0 / 0%) 66.14%
         ),
         linear-gradient(
             0deg,
-            rgba(0, 0, 0, 0.30) 0%,
-            rgba(0, 0, 0, 0.30) 100%
+            rgb(0 0 0 / 30%) 0%,
+            rgb(0 0 0 / 30%) 100%
         );
 }
 
@@ -114,13 +112,13 @@
         background:
             linear-gradient(
                 90deg,
-                rgba(0, 0, 0, 0.65) 0%,
-                rgba(0, 0, 0, 0.20) 100%
+                rgb(0 0 0 / 65%) 0%,
+                rgb(0 0 0 / 20%) 100%
             ),
             linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.40) 0%,
-                rgba(0, 0, 0, 0.40) 100%
+                rgb(0 0 0 / 40%) 0%,
+                rgb(0 0 0 / 40%) 100%
             );
     }
 

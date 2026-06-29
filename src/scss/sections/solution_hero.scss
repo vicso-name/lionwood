@@ -6,7 +6,7 @@
 .sh-section {
   background: var(--color-black); // #111319
   padding-top:    var(--sh-pt, 80px);
-  padding-bottom: var(--sh-pb, 0px);
+  padding-bottom: var(--sh-pb, 0);
   position: relative;
   overflow: visible;
 }
@@ -46,7 +46,6 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 90px;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h2); // 56px
   font-weight: var(--font-weight-medium);
@@ -98,7 +97,6 @@
   border-radius: 100px;
   background: var(--color-primary); // #C83030
   text-decoration: none;
-
   font-family: var(--font-primary);
   font-size: 16px;
   font-weight: var(--font-weight-medium);
@@ -106,7 +104,6 @@
   text-transform: uppercase;
   color: #F7F7F7;
   align-self: flex-start;
-
   transition: background-color var(--transition-base) ease;
 
   &:hover { background: var(--color-primary-hover); }
@@ -186,7 +183,7 @@
 @media (max-width: 1023px) {
   .sh-section {
     padding-top:    var(--sh-pt-mob, 60px);
-    padding-bottom: var(--sh-pb-mob, 0px);
+    padding-bottom: var(--sh-pb-mob, 0);
   }
 
   .sh-section__inner {

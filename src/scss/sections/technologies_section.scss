@@ -97,7 +97,7 @@
   flex-wrap: nowrap;
   gap: 0;
   min-width: max-content; // border-bottom spans full scroll width on mobile; fills container on desktop because block element stretches to parent
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgb(255 255 255 / 20%);
 }
 
 .ts2-tab {
@@ -108,7 +108,6 @@
   border: none;
   cursor: pointer;
   text-align: center;
-
   font-family: var(--font-primary);
   font-size: var(--font-size-h4); // 21px
   font-weight: var(--font-weight-medium);
@@ -163,15 +162,15 @@
 // Base cell — empty
 .ts2-cell {
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   opacity: 0.88;
   box-sizing: border-box;
 }
 
 // Tech cell — has icon
 .ts2-cell--tech {
-  background: rgba(255, 255, 255, 0.30);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgb(255 255 255 / 30%);
+  border: 1px solid rgb(255 255 255 / 20%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,7 +192,7 @@
 // Label cell — spans 2 grid columns via JS gridColumn; dimensions from grid track
 .ts2-cell--label {
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgb(255 255 255 / 20%);
   opacity: 0.88;
   display: flex;
   align-items: center;
