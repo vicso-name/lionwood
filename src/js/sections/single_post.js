@@ -70,8 +70,7 @@
                     }, 2000);
                 });
 
-                // Open with ?q= param: works natively in Perplexity + ChatGPT (prefill).
-                // Gemini ignores it — user pastes from clipboard.
+                // Open with ?q= param: works natively in Perplexity, ChatGPT, and Google AI Mode (udm=50).
                 var sep     = url.indexOf('?') === -1 ? '?' : '&';
                 var fullUrl = url + sep + 'q=' + encodeURIComponent(prompt);
                 window.open(fullUrl, '_blank', 'noopener,noreferrer');

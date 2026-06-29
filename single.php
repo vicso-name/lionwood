@@ -69,7 +69,13 @@ while ( have_posts() ) :
         ],
         [
             'name' => 'Google AI',
-            'url'  => get_field( 'ai_google_url', 'option' ) ?: 'https://gemini.google.com',
+            'url'  => ( function () {
+                $u = get_field( 'ai_google_url', 'option' );
+                if ( empty( $u ) || strpos( $u, 'gemini.google.com' ) !== false ) {
+                    return 'https://www.google.com/search?udm=50';
+                }
+                return $u;
+            } )(),
             'icon' => 'Google_AI.svg',
         ],
     ];
