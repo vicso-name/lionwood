@@ -11,6 +11,11 @@
 defined( 'ABSPATH' ) || exit;
 
 // ── Block fields ─────────────────────────────────────────────────────────────
+$pt     = absint( get_field( 'padding_top' )        ?: 140 );
+$pb     = absint( get_field( 'padding_bottom' )     ?: 200 );
+$pt_mob = absint( get_field( 'padding_top_mob' )    ?: 70 );
+$pb_mob = absint( get_field( 'padding_bottom_mob' ) ?: 140 );
+
 $title_top    = get_field( 'title_top' )    ?: __( 'What Our', 'lionwood' );
 $title_bottom = get_field( 'title_bottom' ) ?: __( 'Clients Say', 'lionwood' );
 
@@ -33,7 +38,15 @@ if ( ! function_exists( 'ts_star_svg' ) ) {
 }
 ?>
 
-<section class="ts-section">
+<section
+	class="ts-section"
+	style="
+		--ts-pt: <?php echo $pt; ?>px;
+		--ts-pb: <?php echo $pb; ?>px;
+		--ts-pt-mob: <?php echo $pt_mob; ?>px;
+		--ts-pb-mob: <?php echo $pb_mob; ?>px;
+	"
+>
 	<div class="ts-section__container">
 
 		<?php /* ── Header row: title block + Clutch rating ─────────────────── */ ?>

@@ -9,7 +9,8 @@
 
 .ts-section {
   background-color: #111319;
-  padding-block: 100px;
+  padding-top:    var(--ts-pt, 100px);
+  padding-bottom: var(--ts-pb, 100px);
   overflow: hidden; // clip overflowing slider
 }
 
@@ -131,7 +132,7 @@
   display: flex;
   gap: 12px;
   justify-content: flex-end;
-  margin-top: 24px;
+  margin-top: 45px;
 }
 
 .ts-nav-btn {
@@ -442,7 +443,8 @@
 
 @media (max-width: 1023px) {
   .ts-section {
-    padding-block: 60px;
+    padding-top:    var(--ts-pt-mob, 70px);
+    padding-bottom: var(--ts-pb-mob, 70px);
   }
 
   .ts-section__header {
