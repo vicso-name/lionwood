@@ -123,7 +123,20 @@ function lionwood_redirect_comments_admin(): void {
 add_action('admin_init', 'lionwood_redirect_comments_admin');
 
 // =============================================================================
-// 4. ACF Options pages
+// 4. Disable ACF Local JSON
+// =============================================================================
+
+// ACF Pro defaults to saving field group JSON into {theme}/acf-json regardless
+// of theme code (see ACF_Local_JSON::__construct()). This project intentionally
+// does not use acf-json (field groups are managed manually via admin only —
+// JSON sync previously caused DB key conflicts and fatal errors). Since the
+// acf-json directory no longer exists, ACF's write attempt silently fails but
+// logs a PHP warning on every field group save. Force the save path to false
+// so ACF skips the write entirely instead of failing.
+add_filter('acf/settings/save_json', '__return_false');
+
+// =============================================================================
+// 5. ACF Options pages
 // =============================================================================
 
 if (function_exists('acf_add_options_page')) {
