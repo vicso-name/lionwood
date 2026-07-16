@@ -82,10 +82,12 @@ $has_more = $total > $per_page;
 wp_reset_postdata();
 
 // ── Terms for pills (load all tabs upfront) ────────────────────────────────────
-$all_terms = [];
+$all_terms  = [];
+$all_counts = [];
 foreach ( $type_map as $key => $cfg ) {
     $terms = get_terms( [ 'taxonomy' => $cfg['taxonomy'], 'hide_empty' => true ] );
-    $all_terms[ $key ] = ( $terms && ! is_wp_error( $terms ) ) ? $terms : [];
+    $all_terms[ $key ]  = ( $terms && ! is_wp_error( $terms ) ) ? $terms : [];
+    $all_counts[ $key ] = (int) ( wp_count_posts( $cfg['post_type'] )->publish ?? 0 );
 }
 ?>
 
@@ -132,27 +134,33 @@ foreach ( $type_map as $key => $cfg ) {
 
             <?php /* Pills per tab */ ?>
             <?php foreach ( $type_map as $key => $cfg ) :
-                $is_active_group = ( $key === $active_type );
-                $terms           = $all_terms[ $key ];
+                $is_active_group    = ( $key === $active_type );
+                $terms              = $all_terms[ $key ];
+                $is_explore_active  = ( $is_active_group && ! $active_cat_id );
             ?>
-                <?php if ( ! empty( $terms ) ) : ?>
-                    <div
-                        class="ccg-pills<?php echo ! $is_active_group ? ' ccg-pills--hidden' : ''; ?>"
-                        data-pills="<?php echo esc_attr( $key ); ?>"
-                    >
-                        <?php foreach ( $terms as $term ) :
-                            $is_active_pill = ( $is_active_group && $term->term_id === $active_cat_id );
-                        ?>
-                            <a
-                                class="ccg-pill<?php echo $is_active_pill ? ' is-active' : ''; ?>"
-                                href="#"
-                                data-term-id="<?php echo esc_attr( $term->term_id ); ?>"
-                                data-type="<?php echo esc_attr( $key ); ?>"
-                                <?php echo $is_active_pill ? 'aria-current="true"' : ''; ?>
-                            ><?php echo esc_html( $term->name ); ?><span class="ccg-pill__count"><?php echo (int) $term->count; ?></span></a>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                <div
+                    class="ccg-pills<?php echo ! $is_active_group ? ' ccg-pills--hidden' : ''; ?>"
+                    data-pills="<?php echo esc_attr( $key ); ?>"
+                >
+                    <a
+                        class="ccg-pill ccg-pill--all<?php echo $is_explore_active ? ' is-active' : ''; ?>"
+                        href="#"
+                        data-term-id="0"
+                        data-type="<?php echo esc_attr( $key ); ?>"
+                        <?php echo $is_explore_active ? 'aria-current="true"' : ''; ?>
+                    ><?php esc_html_e( 'Explore All', 'lionwood' ); ?><span class="ccg-pill__count"><?php echo (int) $all_counts[ $key ]; ?></span></a>
+                    <?php foreach ( $terms as $term ) :
+                        $is_active_pill = ( $is_active_group && $term->term_id === $active_cat_id );
+                    ?>
+                        <a
+                            class="ccg-pill<?php echo $is_active_pill ? ' is-active' : ''; ?>"
+                            href="#"
+                            data-term-id="<?php echo esc_attr( $term->term_id ); ?>"
+                            data-type="<?php echo esc_attr( $key ); ?>"
+                            <?php echo $is_active_pill ? 'aria-current="true"' : ''; ?>
+                        ><?php echo esc_html( $term->name ); ?><span class="ccg-pill__count"><?php echo (int) $term->count; ?></span></a>
+                    <?php endforeach; ?>
+                </div>
             <?php endforeach; ?>
 
         </div><!-- .ig-filter -->

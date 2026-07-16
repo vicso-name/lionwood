@@ -38,6 +38,7 @@
   letter-spacing: var(--letter-spacing-h2); // -1.68px
   text-transform: uppercase;
   color: #E9E9E9;
+  transform: translate(-100px, 0);
 }
 
 .cta-heading__top {
@@ -264,6 +265,7 @@
     width: 100%;
     font-size: clamp(32px, 7vw, 56px);
     margin-bottom: 40px;
+    transform: translate(0, 0);
   }
 
   .cta-grid {

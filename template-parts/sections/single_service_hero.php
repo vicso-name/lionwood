@@ -43,7 +43,7 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 // Build inline bg style
 $bg_style = '';
 if ( $bg_url ) {
-	$bg_style = "background-image: linear-gradient(0deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.40) 100%), url('{$bg_url}');";
+	$bg_style = "background-image:  url('{$bg_url}');";
 } else {
 	$bg_style = 'background-color: #111319;';
 }

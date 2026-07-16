@@ -154,6 +154,13 @@ function replaceImagesWithInlineSVGs() {
         var leaveTimer;
         item.addEventListener('mouseenter', function () {
             clearTimeout(leaveTimer);
+            // Close any other item still open/hovered so dropdowns never overlap
+            menuDropItems.forEach(function (other) {
+                if (other === item) return;
+                other.classList.remove('is-open', 'is-hovered');
+                var otherTrigger = other.querySelector('[data-hdr-trigger]');
+                if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+            });
             item.classList.add('is-hovered');
         });
         item.addEventListener('mouseleave', function () {

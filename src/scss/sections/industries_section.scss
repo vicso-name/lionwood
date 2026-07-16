@@ -40,11 +40,11 @@
   margin-bottom: 80px;
 }
 
-// Heading block — width 380px
+// Heading block — width 528px
 .ind-section__heading {
   display: flex;
   flex-direction: column;
-  width: 380px;
+  width: 528px;
   flex-shrink: 0;
   font-family: var(--font-primary);
   font-size: var(--font-size-h2);
@@ -225,6 +225,9 @@
     background: #fff;
     transform: rotate(-90deg) scale(1.08);
     outline: none;
+  }
+  svg{
+    transform: rotate(90deg);
   }
 }
 

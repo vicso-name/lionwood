@@ -40,7 +40,7 @@
   display: block;
 
   &--1 { padding-left: 0; }
-  &--2 { padding-left: 140px; }
+  &--2 { padding-left: 385px; }
   &--3 { padding-left: 280px; }
   &--4 { padding-left: 0; opacity: 0.5; }
 }
@@ -206,7 +206,7 @@
 .sps-banner__text {
   position: relative;
   z-index: 1;
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 0 40px;
   font-family: var(--font-primary);
   font-size: 32px;
@@ -296,7 +296,7 @@
   }
 
   .sps-heading__line {
-    &--2 { padding-left: 80px; }
+    &--2 { padding-left: 220px; }
     &--3 { padding-left: 160px; }
   }
 }
@@ -313,7 +313,7 @@
   }
 
   .sps-heading__line {
-    &--2 { padding-left: 40px; }
+    &--2 { padding-left: 110px; }
     &--3 { padding-left: 80px; }
   }
 
@@ -352,7 +352,7 @@
   }
 
   .sps-heading__line {
-    &--2 { padding-left: 20px; }
+    &--2 { padding-left: 55px; }
     &--3 { padding-left: 40px; }
   }
 }

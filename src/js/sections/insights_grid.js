@@ -143,8 +143,8 @@
           wrap.classList.toggle('ccg-pills--hidden', wrap.getAttribute('data-pills') !== type);
         });
 
-        // Clear active pill, reset term filter
-        setActivePill(null);
+        // Activate "Explore All" pill for the new tab, reset term filter
+        setActivePill(section.querySelector('.ccg-pill--all[data-type="' + type + '"]'));
 
         doFilter(type, [], buildUrl(type, 0));
       });
@@ -159,9 +159,17 @@
         var termId = parseInt(pill.getAttribute('data-term-id') || '0', 10);
         var type   = pill.getAttribute('data-type') || state.type;
 
-        // Toggle off if already active
+        // "Explore All" pill — always active, clears the term filter
+        if (!termId) {
+          if (pill.classList.contains('is-active')) return;
+          setActivePill(pill);
+          doFilter(type, [], buildUrl(type, 0));
+          return;
+        }
+
+        // Toggle off if already active → falls back to "Explore All"
         if (pill.classList.contains('is-active')) {
-          setActivePill(null);
+          setActivePill(section.querySelector('.ccg-pill--all[data-type="' + type + '"]'));
           doFilter(type, [], buildUrl(type, 0));
           return;
         }

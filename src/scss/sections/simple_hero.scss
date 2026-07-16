@@ -39,6 +39,19 @@
 
 
 // -----------------------------------------------------------------------------
+// Content — shrinks to the heading's own width so the description
+// right-aligns against the heading's end, not the full container edge.
+// -----------------------------------------------------------------------------
+
+.sh-content {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
+
+// -----------------------------------------------------------------------------
 // Heading — one row, two parts
 // -----------------------------------------------------------------------------
 
@@ -65,12 +78,10 @@
 
 
 // -----------------------------------------------------------------------------
-// Description — pushed to right half, margin-top 100px
+// Description — right edge aligned with heading via .sh-content, margin-top 100px
 // -----------------------------------------------------------------------------
 
 .sh-description-wrap {
-  display: flex;
-  justify-content: flex-end; // push to right
   margin-top: 100px;
 }
 
@@ -82,6 +93,7 @@
   font-weight: var(--font-weight-medium);
   line-height: 130%;
   color: var(--color-black);
+  transform: translate(260px);
 }
 
 
@@ -102,6 +114,11 @@
     padding-bottom: var(--sh-pb-mob, 70px);
   }
 
+  .sh-content {
+    display: block;
+    max-width: 100%;
+  }
+
   .sh-heading {
     font-size: clamp(40px, 12vw, 80px);
     letter-spacing: -1px;
@@ -111,12 +128,12 @@
 
   .sh-description-wrap {
     margin-top: 48px;
-    justify-content: flex-start;
   }
 
   .sh-description {
     width: 100%;
     max-width: 392px;
+    transform: translate(0);
   }
 }
 

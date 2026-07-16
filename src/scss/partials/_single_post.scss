@@ -257,11 +257,16 @@
 }
 
 .sp-toc__scrollbar {
+    display:     none; // shown only once JS confirms the nav list actually overflows
     order:       2; // scrollbar on the right side
     flex-shrink: 0;
     width:       2px;
     background:  transparent;
     position:    relative;
+}
+
+.sp-toc.has-scroll .sp-toc__scrollbar {
+    display: block;
 }
 
 .sp-toc__nav {

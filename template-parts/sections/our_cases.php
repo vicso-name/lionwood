@@ -115,6 +115,12 @@ $allowed_stat = [ 'strong' => [] ];
                                     #<?php echo esc_html( $primary_term->name ); ?>
                                 </span>
                             <?php endif; ?>
+
+                            <span class="oc-card__arrow" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.23438 11.771L11.7769 4.22852M6.12 4.22852L11.7769 4.22852L11.7768 9.88537" stroke="#F7F7F7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </div>
 
                         <?php /* Body */ ?>

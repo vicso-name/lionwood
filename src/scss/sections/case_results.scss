@@ -27,6 +27,7 @@
   justify-content: space-between;
   gap: 60px;
   margin-bottom: 80px;
+  max-width: 1150px;
 }
 
 .cr-title {
@@ -40,6 +41,14 @@
   letter-spacing: -1.68px;
   text-transform: uppercase;
   color: var(--color-black);
+}
+
+.cr-title__line {
+  display: inline-block;
+}
+
+.cr-title__line--2 {
+  margin-left: 25%;
 }
 
 .cr-description {

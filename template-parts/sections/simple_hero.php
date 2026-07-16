@@ -7,7 +7,8 @@
  *
  * Layout:
  *   - Full-width H1: [DARK PART] [GRAY PART] — one row, flex space-between
- *   - Description: 392px, right-aligned (pushed to right half), margin-top 100px
+ *   - Description: 392px, right-aligned against the heading's own width
+ *     (not the full container), margin-top 100px
  *   - Optional decor-bottom partial
  */
 
@@ -38,18 +39,22 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
 >
     <div class="sh-section__container">
 
-        <?php /* ── Heading ─────────────────────────────────────────────── */ ?>
-        <h1 class="sh-heading">
-            <span class="sh-heading__dark sh-anim" data-delay="0"><?php echo esc_html( $title_dark ); ?></span>
-            <span class="sh-heading__gray sh-anim" data-delay="100"><?php echo esc_html( $title_gray ); ?></span>
-        </h1>
+        <div class="sh-content">
 
-        <?php /* ── Description — right-aligned, below heading ───────────── */ ?>
-        <?php if ( $description ) : ?>
-            <div class="sh-description-wrap sh-anim" data-delay="220">
-                <p class="sh-description"><?php echo $description; ?></p>
-            </div>
-        <?php endif; ?>
+            <?php /* ── Heading ─────────────────────────────────────────────── */ ?>
+            <h1 class="sh-heading">
+                <span class="sh-heading__dark sh-anim" data-delay="0"><?php echo esc_html( $title_dark ); ?></span>
+                <span class="sh-heading__gray sh-anim" data-delay="100"><?php echo esc_html( $title_gray ); ?></span>
+            </h1>
+
+            <?php /* ── Description — right-aligned against heading width ────── */ ?>
+            <?php if ( $description ) : ?>
+                <div class="sh-description-wrap sh-anim" data-delay="220">
+                    <p class="sh-description"><?php echo $description; ?></p>
+                </div>
+            <?php endif; ?>
+
+        </div><!-- .sh-content -->
 
     </div><!-- .sh-section__container -->
 

@@ -303,7 +303,16 @@
             thumb.style.top = Math.round(ratio * maxTop) + 'px';
         }
 
+        // Custom scrollbar track is only shown when the nav list actually overflows
+        function updateScrollbarVisibility() {
+            if (!navEl || !tocWrap) return;
+            var hasScroll = navEl.scrollHeight > navEl.clientHeight + 1;
+            tocWrap.classList.toggle('has-scroll', hasScroll);
+        }
+
         navEl.addEventListener('scroll', updateScrollbar);
+        window.addEventListener('resize', updateScrollbarVisibility, { passive: true });
+        updateScrollbarVisibility();
 
         var OFFSET = 120;
 

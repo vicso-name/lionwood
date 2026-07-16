@@ -183,6 +183,23 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  transition: opacity var(--transition-base) ease,
+              transform var(--transition-base) ease,
+              filter var(--transition-base) ease;
+}
+
+// Progressive enhancement: while JS observes scroll, dim every card except
+// the one crossing the viewport center; .is-active is toggled in JS.
+.sol-cards--js .sol-card {
+  opacity: 0.4;
+  filter: blur(1px);
+  transform: scale(0.96);
+}
+
+.sol-cards--js .sol-card.is-active {
+  opacity: 1;
+  filter: none;
+  transform: scale(1);
 }
 
 .sol-card__icon {

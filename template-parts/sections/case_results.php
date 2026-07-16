@@ -37,7 +37,17 @@ $decor_color   = get_field( 'decor_bottom_color' ) ?: '#ffffff';
         <?php /* ── Row 1: Heading + Description ───────────────────────── */ ?>
         <?php if ( $title || $description ) : ?>
         <div class="cr-header">
-            <?php if ( $title ) : ?><h2 class="cr-title"><?php echo $title; ?></h2><?php endif; ?>
+            <?php if ( $title ) :
+                $title_lines = preg_split( '/<br\s*\/?>/i', $title );
+                $title_lines = array_map( 'trim', $title_lines );
+            ?>
+                <h2 class="cr-title">
+                    <?php foreach ( $title_lines as $i => $line ) : ?>
+                        <?php if ( $i > 0 ) : ?><br><?php endif; ?>
+                        <span class="cr-title__line<?php echo $i === 1 ? ' cr-title__line--2' : ''; ?>"><?php echo $line; ?></span>
+                    <?php endforeach; ?>
+                </h2>
+            <?php endif; ?>
             <?php if ( $description ) : ?>
                 <p class="cr-description"><?php echo $description; ?></p>
             <?php endif; ?>
