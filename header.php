@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title><?php wp_title(' | ', true, 'right'); ?><?php bloginfo('name'); ?></title>
+    <?php // <title> intentionally not hardcoded here — add_theme_support('title-tag')
+    // in functions.php already makes WordPress (and RankMath on top of it) render
+    // it via wp_head() below; a manual tag here produced two <title> elements. ?>
     <?php wp_head(); ?>
 </head>
 

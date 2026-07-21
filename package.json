@@ -12,7 +12,8 @@
     "lint:scss": "stylelint \"src/scss/**/*.scss\"",
     "lint:scss:fix": "stylelint \"src/scss/**/*.scss\" --fix",
     "lint:js": "eslint \"src/js/**/*.js\"",
-    "setup": "node scripts/setup.mjs"
+    "setup": "node scripts/setup.mjs",
+    "deploy:ftp": "bash scripts/deploy-ftp.sh"
   },
   "keywords": [
     "gulp",

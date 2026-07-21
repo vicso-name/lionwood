@@ -117,8 +117,12 @@ $skip_cells = [
             <?php /* CTA Card overlaid on grid ─────────────────────────── */ ?>
             <div class="cta-card">
                 <?php
-                $bg_url = $card_bg
-                    ? esc_url( $card_bg['url'] )
+                // ACF "card_bg" return format can be "Array" or "URL" depending on how the
+                // field was configured per-environment (acf-json is intentionally not synced
+                // across environments on this project) — accept either.
+                $card_bg_raw = is_array( $card_bg ) ? ( $card_bg['url'] ?? '' ) : (string) $card_bg;
+                $bg_url      = $card_bg_raw
+                    ? esc_url( $card_bg_raw )
                     : esc_url( THEME_URI . '/assets/img/cta_block_bg.webp' );
                 ?>
                 <div

@@ -18,9 +18,11 @@ defined( 'ABSPATH' ) || exit;
 // Build breadcrumb items: [ 'label' => '', 'url' => '', 'current' => bool ]
 $items = [];
 
-// 1. Home
+// 1. Home — labeled "Lionwood" instead of "Home" per client request.
+// Hardcoded capitalized, not get_bloginfo('name') — the registered site
+// title is lowercase "lionwood", but the breadcrumb should read capitalized.
 $items[] = [
-    'label'   => __( 'Home', 'lionwood' ),
+    'label'   => 'Lionwood',
     'url'     => home_url( '/' ),
     'current' => false,
 ];

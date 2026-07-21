@@ -117,6 +117,186 @@ function lionwood_opengraph_meta_tags() {
 }
 add_action('wp_head', 'lionwood_opengraph_meta_tags', 5);
 
+
+// ── Schema.org structured data ─────────────────────────────────────────────
+// RankMath doesn't auto-generate any of this on this install (verified: no
+// application/ld+json output at all before this), so it's hand-rolled here,
+// same as the existing BreadcrumbList (template-parts/partials/breadcrumbs.php)
+// and the FAQPage that used to live in faq_section.php (removed per client —
+// FAQPage stays off; everything below is net-new).
+
+function lionwood_schema_logo() {
+    if ( ! function_exists( 'get_field' ) ) return '';
+    $logo = get_field( 'logo', 'option' );
+    return ! empty( $logo['url'] ) ? $logo['url'] : '';
+}
+
+function lionwood_schema_excerpt( $post ) {
+    $raw = has_excerpt( $post->ID )
+        ? get_the_excerpt( $post )
+        : wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 55 );
+    return $raw ?: get_bloginfo( 'description' );
+}
+
+function lionwood_schema_image( $post ) {
+    if ( function_exists( 'get_field' ) ) {
+        $image_share = get_field( 'image_share', $post->ID );
+        if ( ! empty( $image_share['url'] ) ) return $image_share['url'];
+    }
+    if ( has_post_thumbnail( $post->ID ) ) {
+        $src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+        if ( $src ) return $src[0];
+    }
+    return '';
+}
+
+// Same recursive parse_blocks() traversal already used in
+// lionwood_enqueue_detected_block_assets() (inc/acf_blocks.php), reused here
+// to detect the Contact page by its acf/contact-hero block instead of a
+// hardcoded slug — survives the page being renamed/moved.
+function lionwood_post_has_block( $block_name ) {
+    global $post;
+    if ( ! $post || ! has_blocks( $post->post_content ) ) return false;
+
+    $stack = parse_blocks( $post->post_content );
+    while ( $stack ) {
+        $block = array_shift( $stack );
+        if ( ! empty( $block['blockName'] ) && $block['blockName'] === $block_name ) return true;
+        if ( ! empty( $block['innerBlocks'] ) ) {
+            foreach ( $block['innerBlocks'] as $inner ) $stack[] = $inner;
+        }
+    }
+    return false;
+}
+
+function lionwood_schema_organization() {
+    $org = [
+        '@type' => 'Organization',
+        '@id'   => home_url( '/' ) . '#organization',
+        'name'  => 'Lionwood', // registered site title is lowercase "lionwood" — client wants it capitalized (same call as the BreadcrumbList fix)
+        'url'   => home_url( '/' ),
+    ];
+
+    $logo = lionwood_schema_logo();
+    if ( $logo ) {
+        $org['logo'] = [ '@type' => 'ImageObject', 'url' => $logo ];
+    }
+
+    if ( function_exists( 'get_field' ) ) {
+        $same_as = [];
+        foreach ( get_field( 'social_links', 'option' ) ?: [] as $item ) {
+            $url = $item['link']['url'] ?? '';
+            // Guard against placeholder "#" links left unfilled in the ACF
+            // repeater — seen on this exact install — rather than leaking
+            // them into sameAs as if they were real social profile URLs.
+            if ( $url && wp_http_validate_url( $url ) ) $same_as[] = $url;
+        }
+        if ( $same_as ) $org['sameAs'] = $same_as;
+
+        foreach ( get_field( 'emails', 'option' ) ?: [] as $item ) {
+            if ( ! empty( $item['email'] ) ) {
+                $org['contactPoint'] = [
+                    '@type'       => 'ContactPoint',
+                    'email'       => $item['email'],
+                    'contactType' => 'customer service',
+                ];
+                break; // primary contact email only
+            }
+        }
+
+        foreach ( get_field( 'offices', 'option' ) ?: [] as $office ) {
+            if ( ! empty( $office['address'] ) ) {
+                // The address field is free-text with literal line breaks
+                // (footer.php renders it via nl2br); collapse those to a
+                // single-line streetAddress instead of embedding raw CRLFs.
+                $street = trim( preg_replace( '/\s*[\r\n]+\s*/', ', ', $office['address'] ) );
+                $org['address'] = array_filter( [
+                    '@type'         => 'PostalAddress',
+                    'name'          => $office['name'] ?? '',
+                    'streetAddress' => $street,
+                ] );
+                if ( ! empty( $office['phone'] ) ) $org['telephone'] = $office['phone'];
+                break; // primary office only
+            }
+        }
+    }
+
+    return $org;
+}
+
+function lionwood_schema_markup() {
+    $graph = [];
+
+    if ( is_front_page() ) {
+        $graph[] = lionwood_schema_organization();
+        // array_filter: WP "Tagline" (bloginfo('description')) is blank on
+        // this install — drop the key rather than emit "description":"".
+        $graph[] = array_filter( [
+            '@type'       => 'WebPage',
+            'url'         => home_url( '/' ),
+            'name'        => get_bloginfo( 'name' ),
+            'description' => get_bloginfo( 'description' ),
+            'isPartOf'    => [ '@id' => home_url( '/' ) . '#organization' ],
+        ] );
+    } elseif ( is_singular() && lionwood_post_has_block( 'acf/contact-hero' ) ) {
+        $graph[] = lionwood_schema_organization();
+    } elseif ( is_singular() && in_array( get_post_type(), [ 'service', 'sub_service', 'industry' ], true ) ) {
+        global $post;
+        $graph[] = [
+            '@type'       => 'Service',
+            'name'        => get_the_title( $post ),
+            'url'         => get_permalink( $post ),
+            'description' => lionwood_schema_excerpt( $post ),
+            'provider'    => [
+                '@type' => 'Organization',
+                'name'  => 'Lionwood',
+                'url'   => home_url( '/' ),
+            ],
+        ];
+    } elseif ( is_singular() && in_array( get_post_type(), [ 'post', 'news' ], true ) ) {
+        global $post;
+        $img  = lionwood_schema_image( $post );
+        $logo = lionwood_schema_logo();
+        $graph[] = array_filter( [
+            '@type'         => 'Article',
+            'headline'      => get_the_title( $post ),
+            'description'   => lionwood_schema_excerpt( $post ),
+            'url'           => get_permalink( $post ),
+            'datePublished' => get_gmt_from_date( $post->post_date_gmt ?: $post->post_date, 'c' ),
+            'dateModified'  => get_gmt_from_date( $post->post_modified_gmt ?: $post->post_modified, 'c' ),
+            'image'         => $img ?: null,
+            'author'        => [
+                '@type' => 'Person',
+                'name'  => get_the_author_meta( 'display_name', $post->post_author ),
+            ],
+            'publisher'     => array_filter( [
+                '@type' => 'Organization',
+                'name'  => 'Lionwood',
+                'logo'  => $logo ? [ '@type' => 'ImageObject', 'url' => $logo ] : null,
+            ] ),
+        ] );
+    } elseif ( is_author() ) {
+        $author_id = get_queried_object_id();
+        $graph[] = [
+            '@type' => 'Person',
+            'name'  => get_the_author_meta( 'display_name', $author_id ),
+            'url'   => get_author_posts_url( $author_id ),
+        ];
+    }
+
+    if ( empty( $graph ) ) return;
+
+    $data = count( $graph ) === 1
+        ? array_merge( [ '@context' => 'https://schema.org' ], $graph[0] )
+        : [ '@context' => 'https://schema.org', '@graph' => $graph ];
+
+    echo "\n<script type=\"application/ld+json\">\n"
+        . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+        . "\n</script>\n";
+}
+add_action( 'wp_head', 'lionwood_schema_markup', 5 );
+
+
 function lionwood_custom_body_classes( $classes ) {
     if ((is_archive() || is_author() || is_category() || is_home() || is_tag()) && get_post_type() === 'post') {
         // $classes[] = 'is-blog';

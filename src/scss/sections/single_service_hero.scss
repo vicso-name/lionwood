@@ -173,11 +173,23 @@
 .ssh-image-wrap {
   position: absolute;
   // mirrors solution_hero: image stops at container right edge, not viewport right
-  right: max(0px, calc((100vw - var(--container-max-width)) / 2));
+  // NOTE: do not rewrite as max(0px, calc(...)) — clean-css strips the unit off
+  // "0px" in production builds (dev builds skip minification), producing an
+  // unbalanced max(0, <length>) that some browsers drop as invalid, collapsing
+  // `right` back to auto. Use a plain value + explicit breakpoint instead.
+  right: 0;
   bottom: 59px;
   width: 598px;
   pointer-events: none;
   user-select: none;
+}
+
+// ≥1360px: container is capped at --container-max-width and centered, so the
+// image must be pulled in by the resulting side margin to stay container-flush.
+@media (min-width: 1360px) {
+  .ssh-image-wrap {
+    right: calc((100vw - var(--container-max-width)) / 2);
+  }
 }
 
 .ssh-image {

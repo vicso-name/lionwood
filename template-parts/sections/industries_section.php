@@ -6,13 +6,14 @@
  * Template file  : blocks/industries-section/industries-section.php
  *
  * Full-screen section (min-height: 100vh).
- * Active slide changes via IntersectionObserver on thumbnails
- * or direct thumbnail click.
  *
- * NOTE: For a true scroll-driven "sticky" experience where each industry
- * occupies its own scroll step, wrap .ind-section in a tall container
- * and set .ind-section to position:sticky; top:0. Currently uses
- * IntersectionObserver + click navigation.
+ * Desktop (>=1024px): scroll-driven. industries_section.js pins the
+ * section with a GSAP ScrollTrigger and scrubs the active industry from
+ * scroll position (total * 100vh of scroll distance). Thumbnail click and
+ * arrow keys still work and sync the page's scroll position to match.
+ *
+ * Mobile (<1024px): unchanged carousel — thumbnail click, arrow keys, and
+ * a timed auto-advance. No scroll-jacking.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -56,10 +57,10 @@ if ( empty( $industries ) ) return;
         <?php /* ── Header row ───────────────────────────────────────────── */ ?>
         <div class="ind-section__header">
 
-            <div class="ind-section__heading">
+            <h2 class="ind-section__heading">
                 <span class="ind-section__title-top"><?php echo esc_html( $title_top ); ?></span>
                 <span class="ind-section__title-bottom"><?php echo esc_html( $title_bottom ); ?></span>
-            </div>
+            </h2>
 
             <?php if ( $description ) : ?>
                 <p class="ind-section__description"><?php echo $description; ?></p>

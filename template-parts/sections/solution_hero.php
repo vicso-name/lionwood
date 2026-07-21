@@ -43,7 +43,7 @@ $decor_color  = get_field( 'decor_bottom_color' ) ?: '#C83030';
             <div class="sh-heading">
                 <span class="sh-heading__line-1"><?php echo $title_line_1; ?></span>
                 <?php if ( $title_line_2 ) : ?>
-                    <span class="sh-heading__line-2"><?php echo $title_line_2; ?></span>
+                    <h1 class="sh-heading__line-2"><?php echo $title_line_2; ?></h1>
                 <?php endif; ?>
             </div>
 

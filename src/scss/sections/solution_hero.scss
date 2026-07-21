@@ -62,6 +62,17 @@
 }
 
 .sh-heading__line-2 {
+  // Now an <h1> (was a span) that only ever had display/text-align of its
+  // own, relying on inheriting font-size/color/etc. from .sh-heading. But
+  // _general.scss has a global `h1, h2, h3... { font-weight; color; margin }`
+  // typography reset that matches any <h1> directly (element selector) —
+  // that beats plain inheritance regardless of the ancestor's own rules,
+  // so as an h1 this turned dark gray/bold instead of the intended white.
+  // `all: unset` strips that reset in one go instead of re-declaring each
+  // property (color, font-family, line-height, letter-spacing, ...) by
+  // hand and risking missing one, the way font-size/font-weight already
+  // were the first time around.
+  all: unset;
   display: block;
   text-align: left;
 }

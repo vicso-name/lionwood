@@ -112,6 +112,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  // Hard safety net: if title/desc clamps ever miscompute by a few px
+  // (percentage line-height rounding, long unbroken words), nothing escapes
+  // the fixed card height instead of visibly overflowing past its border.
+  overflow: hidden;
 }
 
 // Number badge — red circle
@@ -124,7 +128,14 @@
   border-radius: 50%;
   background: var(--color-primary); // #C83030
   flex-shrink: 0;
-  margin-bottom: 74px; // 74px gap from num to title
+  // 54px, not the original 74px: with a title clamped to its full 2 lines
+  // AND a description clamped to its full 4 lines (the actual worst case —
+  // see the "Context Mapping & System Overview" card), the fixed 287px
+  // card only has 55.4px of headroom left after num-badge + title + desc.
+  // At 74px the content was ~19px taller than the card, so .sds-card's
+  // overflow: hidden silently cropped the bottom of the description
+  // instead of letting -webkit-line-clamp end it cleanly with an ellipsis.
+  margin-bottom: 54px;
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-regular);
@@ -139,13 +150,23 @@
   font-family: var(--font-primary);
   font-size: var(--font-size-h4); // 21px
   font-weight: var(--font-weight-medium);
-  line-height: 140%;
+  // Unitless, not 140% — percentage line-height combined with line-clamp
+  // computes the clamp box height inconsistently across browsers (the clamp
+  // rounds line-height differently than normal layout does), which is what
+  // let a sliver of a 3rd line peek through without the ellipsis on long
+  // titles. Unitless avoids that mismatch and still scales with font-size.
+  line-height: 1.4;
   color: var(--color-black);
   // Prevent overflow if title is too long
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
+  // Flex items default to min-height:auto, which lets them grow past their
+  // clamp box instead of being clipped by it — this line is required, not
+  // decorative, for the clamp to actually take effect inside .sds-card's flex column.
+  min-height: 0;
 }
 
 // Description
@@ -155,13 +176,15 @@
   font-family: var(--font-primary);
   font-size: var(--font-size-body-2); // 16px
   font-weight: var(--font-weight-regular);
-  line-height: 120%;
+  line-height: 1.2; // see .sds-card__title note on unitless vs percentage
   color: #3D3F43;
   // Clamp to prevent overflow
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
+  min-height: 0; // see .sds-card__title note on flex-item clamp clipping
 }
 
 
@@ -259,7 +282,9 @@
   }
 
   .sds-card__num {
-    margin-bottom: 40px;
+    // Same overflow math as desktop (see .sds-card__num comment above),
+    // recomputed for the 260px mobile card: worst case only leaves ~28px.
+    margin-bottom: 26px;
   }
 }
 

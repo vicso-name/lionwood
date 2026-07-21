@@ -158,6 +158,38 @@ BrowserSync proxy is hardcoded to `http://lionwood.test` in [gulpfile.js:159](gu
 
 ---
 
+## Deployment
+
+The live site is reached over FTP — theme lives at `wp-content/themes/lionwood/` on the server, which already
+contains its own `.git/`, `node_modules/`, `.claude/`, and (critically) `acf-json/`.
+
+```bash
+npm run deploy:ftp
+```
+
+This runs `scripts/deploy-ftp.sh`, which:
+1. Runs `npm run lint` (warns on failure but does **not** block deploy — the working tree often carries unrelated
+   in-progress edits in other section files; don't let stale lint errors in files you didn't touch stop a deploy)
+2. Builds production assets (`gulp clean`, `styles`, `scripts`, `copyFonts`, `generateFontsCSS` with
+   `NODE_ENV=production`)
+3. Prompts for the FTP password (or reads `FTP_PASSWORD` from the environment) — **never hardcode it in the repo**
+4. Uploads every file via a single batched `curl -K` call (reuses the FTP connection instead of reconnecting per
+   file — far faster than one `curl` process per file)
+5. Asks for a final `y/N` confirmation before touching the server, then reports how many of the files uploaded
+   (HTTP/FTP code `226`)
+
+**Hardcoded exclusions (`scripts/deploy-ftp.sh`) — do not remove:**
+- `acf-json/` — **never** touch this on deploy. ACF field groups on this project are managed manually through
+  wp-admin only; syncing local JSON here causes ACF key conflicts and fatal errors on the live site (see
+  `.claude` memory: "Never touch acf-json/").
+- `.git/`, `node_modules/`, `.claude/` — dev tooling with no runtime purpose; the remote already has its own
+  independent `.git/` that a local one would clobber.
+
+FTP connection details (host/user) are in the script header; only the password is prompted per-run, so nothing
+sensitive lives in git history.
+
+---
+
 ## Adding a New Section (Step-by-Step)
 
 ### Naming convention

@@ -5,7 +5,6 @@
  * ACF block slug : acf/faq-section
  *
  * Best practices:
- * - Schema.org FAQPage structured data
  * - <details>/<summary> for native CSS-only fallback
  * - JS enhances with smooth animation via max-height transition
  * - aria-expanded on trigger, aria-hidden on panel
@@ -47,29 +46,6 @@ $close_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" vi
         --faq-pb-mob: <?php echo $pb_mob; ?>px;
     "
 >
-    <?php /* Schema.org FAQPage structured data */ ?>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            <?php foreach ( $items as $i => $item ) :
-                $q = esc_js( $item['question'] ?? '' );
-                $a = esc_js( wp_strip_all_tags( $item['answer'] ?? '' ) );
-            ?>
-            {
-                "@type": "Question",
-                "name": "<?php echo $q; ?>",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "<?php echo $a; ?>"
-                }
-            }<?php echo $i < count( $items ) - 1 ? ',' : ''; ?>
-            <?php endforeach; ?>
-        ]
-    }
-    </script>
-
     <div class="faq-section__container">
 
         <?php /* ── Heading ─────────────────────────────────────────────── */ ?>

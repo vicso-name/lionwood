@@ -1,19 +1,28 @@
 /**
- * Industries Section — slider + progress circle
+ * Industries Section
  *
- * Navigation:
- *   - Thumbnail click → go to that slide
- *   - Arrow keys on the section → previous / next
- *   - Auto-advance every AUTO_INTERVAL ms (pauses on focus for accessibility)
+ * Desktop (>=1024px): full-screen, scroll-driven. GSAP ScrollTrigger pins
+ * the section for `total * 100vh` of scroll and scrubs the active industry
+ * from scroll progress. Thumbnail clicks / arrow keys still work and also
+ * move the page's scroll position to match, so manual navigation stays in
+ * sync with the next scroll-driven update instead of being overridden by it.
  *
- * NOTE: For true sticky scroll-driven behaviour (each industry = one scroll step),
- * wrap .ind-section in a tall div (height: N * 100vh) and set
- * .ind-section { position: sticky; top: 0; } — then drive activeIndex from
- * scroll position. Currently uses click + optional auto-advance.
+ * Mobile (<1024px): unchanged — thumbnail click, arrow keys, and a 4s
+ * auto-advance timer that pauses on focus. No scroll-jacking.
+ *
+ * Reloads on resize across the 1024px breakpoint (same approach as
+ * solution_timeline.js) since tearing down/rebuilding the ScrollTrigger
+ * pin vs. the plain mobile handlers isn't worth the complexity.
  */
 
 (function () {
   'use strict';
+
+  var DESKTOP_BREAKPOINT = 1024;
+
+  function isMobile() {
+    return window.innerWidth < DESKTOP_BREAKPOINT;
+  }
 
   function initSection(section) {
     var slides    = Array.prototype.slice.call(section.querySelectorAll('.ind-slide'));
@@ -68,70 +77,112 @@
       update();
     }
 
-    // ── Thumbnail clicks — navigate and restart the auto-advance timer ────────
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        goTo(parseInt(thumb.getAttribute('data-thumb-index'), 10));
-        startAuto();
+    // ── Desktop: GSAP ScrollTrigger pin + scrub ───────────────────────────────
+    function initDesktop() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        // Graceful fallback — no scroll-jacking available, but manual nav
+        // (thumbnails/arrow keys) still works without a scroll sync target.
+        initManualNav(null);
+        update();
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      var st = ScrollTrigger.create({
+        trigger: section,
+        start:   'top top',
+        end:     function () { return '+=' + (total * window.innerHeight); },
+        pin:     true,
+        scrub:   true,
+        onUpdate: function (self) {
+          var index = Math.min(Math.floor(self.progress * total), total - 1);
+          goTo(index);
+        },
       });
-    });
 
-    // ── Keyboard navigation ───────────────────────────────────────────────────
-    section.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-        goTo(Math.min(activeIndex + 1, total - 1));
-      }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-        goTo(Math.max(activeIndex - 1, 0));
-      }
-    });
-
-    // ── Auto-advance ──────────────────────────────────────────────────────────
-    var AUTO_INTERVAL = 4000;
-    var autoTimer     = null;
-
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(function () {
-        goTo((activeIndex + 1) % total);
-      }, AUTO_INTERVAL);
+      initManualNav(st);
+      update();
     }
 
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    // Thumbnail clicks + arrow keys. On desktop with an active ScrollTrigger,
+    // also scrolls the page to the matching position so the choice isn't
+    // immediately overridden by the next scroll-driven onUpdate.
+    function initManualNav(st) {
+      function goToAndScroll(index) {
+        index = Math.max(0, Math.min(index, total - 1));
+        goTo(index);
+
+        if (st) {
+          var progress = index / total;
+          var y = st.start + progress * (st.end - st.start);
+          // +2px nudge past the exact boundary so the scrub's floor() math
+          // lands back on this same index, not the previous one.
+          window.scrollTo({ top: y + 2, behavior: 'smooth' });
+        }
+      }
+
+      thumbs.forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+          goToAndScroll(parseInt(thumb.getAttribute('data-thumb-index'), 10));
+        });
+      });
+
+      section.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          goToAndScroll(activeIndex + 1);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          goToAndScroll(activeIndex - 1);
+        }
+      });
     }
 
-    // Pause on focus (accessibility), resume on focusout.
-    section.addEventListener('focusin',  stopAuto);
-    section.addEventListener('focusout', startAuto);
+    // ── Mobile: click nav + auto-advance (unchanged from previous behaviour) ──
+    function initMobile() {
+      thumbs.forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+          goTo(parseInt(thumb.getAttribute('data-thumb-index'), 10));
+          startAuto();
+        });
+      });
 
-    // ── Initial state ─────────────────────────────────────────────────────────
-    update();
-    startAuto();
+      section.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          goTo(Math.min(activeIndex + 1, total - 1));
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          goTo(Math.max(activeIndex - 1, 0));
+        }
+      });
 
-    /*
-     * ── STICKY SCROLL (future enhancement) ───────────────────────────────────
-     * To enable scroll-driven navigation:
-     *
-     * 1. In SCSS add:
-     *    .ind-section-sticky-wrap { height: calc(var(--ind-total) * 100vh); }
-     *    .ind-section { position: sticky; top: 0; min-height: 100vh; }
-     *
-     * 2. In PHP wrap <section class="ind-section"> with:
-     *    <div class="ind-section-sticky-wrap" style="--ind-total: N;">...</div>
-     *
-     * 3. Uncomment the scroll handler below:
-     *
-     * var wrap = section.closest('.ind-section-sticky-wrap');
-     * if (wrap) {
-     *   window.addEventListener('scroll', function () {
-     *     var rect     = wrap.getBoundingClientRect();
-     *     var progress = (-rect.top) / (rect.height - window.innerHeight);
-     *     var index    = Math.min(Math.floor(progress * total), total - 1);
-     *     if (index >= 0) goTo(index);
-     *   }, { passive: true });
-     * }
-     */
+      var AUTO_INTERVAL = 4000;
+      var autoTimer     = null;
+
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(function () {
+          goTo((activeIndex + 1) % total);
+        }, AUTO_INTERVAL);
+      }
+
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      // Pause on focus (accessibility), resume on focusout.
+      section.addEventListener('focusin',  stopAuto);
+      section.addEventListener('focusout', startAuto);
+
+      update();
+      startAuto();
+    }
+
+    if (isMobile()) {
+      initMobile();
+    } else {
+      initDesktop();
+    }
   }
 
   function init() {
@@ -143,5 +194,21 @@
   } else {
     init();
   }
+
+  // Reload when crossing the mobile/desktop breakpoint — mirrors
+  // solution_timeline.js, since desktop uses a GSAP ScrollTrigger pin and
+  // mobile doesn't; tearing down/rebuilding in place isn't worth it.
+  var wasMob = isMobile();
+  var bpTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(bpTimer);
+    bpTimer = setTimeout(function () {
+      var nowMob = isMobile();
+      if (nowMob !== wasMob) {
+        wasMob = nowMob;
+        window.location.reload();
+      }
+    }, 300);
+  }, { passive: true });
 
 })();

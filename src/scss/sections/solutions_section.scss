@@ -67,6 +67,37 @@
   z-index: 0; // behind cards
 }
 
+// When this section directly follows an Industries Section that has its
+// bottom decoration enabled, draw a separate 60px "cap" segment — exactly
+// decor-bottom's fixed height (see _general.scss .decor-bottom) — from the
+// section's top edge up to the decoration's own top edge, so the line
+// visually touches it.
+//
+// This is a standalone pseudo-element (not an extension of .sol-col__line
+// itself) so its elevated z-index only ever competes with .decor-bottom
+// (z-index: 2) in that 60px strip above the section — it never overlaps the
+// cards' vertical range, so it can't paint over them the way raising
+// .sol-col__line's own z-index did (that hid the cards behind the line).
+//
+// Desktop only: below 1024px the columns stack (.sol-section__body becomes
+// flex-direction: column) and the right column is no longer adjacent to the
+// section's top edge, so the touch-up effect has nothing to reach for.
+@media (min-width: 1024px) {
+  .ind-section:has(.decor-bottom) + .sol-section .sol-col--right::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--sol-pt, 100px) - 60px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: #000;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
 
 // -----------------------------------------------------------------------------
 // Left column content
