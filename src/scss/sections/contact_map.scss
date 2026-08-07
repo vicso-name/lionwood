@@ -1,0 +1,229 @@
+// =============================================================================
+// Block: Contact Map Section  (prefix: cms-)
+// Based 1-to-1 on map-section (ms-).
+// Left col: offices repeater instead of ms-text.
+// =============================================================================
+
+.cms-section {
+    --cms-pad: var(--container-padding);
+}
+
+@media (max-width: 1360px) {
+    .cms-section {
+        --cms-pad: 20px;
+    }
+}
+
+// Section shell — mirrors ms-section
+.cms-section {
+    background-color: var(--color-background-alt, #E9E9E9);
+    padding-top:      var(--cms-pt, 100px);
+    padding-bottom:   var(--cms-pb, 200px);
+    overflow:         hidden;
+    position:         relative;
+}
+
+.cms-section__container {
+    max-width:      1400px;
+    margin-inline:  auto;
+    padding-inline: var(--cms-pad);
+}
+
+// -----------------------------------------------------------------------------
+// Title — identical to ms-title
+// -----------------------------------------------------------------------------
+
+.cms-title {
+    max-width:     1195px;
+    margin-bottom: 60px;
+
+    p:first-child {
+        text-indent: 140px;
+    }
+
+    p, h1, h2, h3 {
+        margin:      0;
+        font-family: var(--font-primary);
+        font-size:   36px;
+        font-weight: var(--font-weight-medium);
+        line-height: normal;
+        color:       #000;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Content row — identical to ms-row
+// -----------------------------------------------------------------------------
+
+.cms-row {
+    display:  flex;
+    align-items: flex-start;
+    gap:      0;
+    position: relative;
+}
+
+// -----------------------------------------------------------------------------
+// Left: offices list
+// Fixed width, sits at left edge — map auto-pushes right
+// -----------------------------------------------------------------------------
+
+.cms-offices {
+    width:          345px;
+    flex-shrink:    0;
+    display:        flex;
+    flex-direction: column;
+    gap:            16px;
+    padding-top:    20px;
+    // No margin-left: auto — stays at left, map fills remaining space
+}
+
+// Divider between offices
+.cms-offices__divider {
+    width:      100%;
+    height:     1px;
+    background: #000;
+    opacity:    0.2;
+}
+
+// Single office item
+.cms-office__head {
+    display:     flex;
+    align-items: flex-start;
+    gap:         12px;
+}
+
+// Flag icon — circle 46×46px, flag 19px inside
+.cms-office__flag {
+    flex-shrink:     0;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    width:           46px;
+    height:          46px;
+    border-radius:   50%;
+    background:      #F7F7F7;
+
+    img {
+        display:    block;
+        width:      19px;
+        height:     auto;
+        object-fit: contain;
+    }
+}
+
+// Info column
+.cms-office__info {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    min-width:      0;
+}
+
+// Office name
+.cms-office__name {
+    display:     block;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// Address
+.cms-office__address {
+    display:     block;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    opacity:     0.8;
+}
+
+// Phone
+.cms-office__phone {
+    display:         block;
+    color:           var(--color-black, #111319);
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     var(--font-weight-medium, 500);
+    line-height:     1.4;
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-primary, #C83030);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Map — identical to ms-map, margin-left:auto pushes it right
+// -----------------------------------------------------------------------------
+
+.cms-map {
+    flex:        none;
+    margin-left: auto; // absorbs free space between offices and map
+
+    img {
+        display:   block;
+        width:     968px;
+        max-width: none;
+        height:    auto;
+    }
+}
+
+// =============================================================================
+// Responsive — mirrors ms- breakpoints exactly
+// =============================================================================
+
+@media (min-width: 1361px) and (max-width: 1599px) {
+    .cms-map {
+        margin-right: calc((var(--container-max-width) - 100vw) / 2);
+    }
+}
+
+@media (max-width: 1360px) {
+    .cms-map {
+        margin-right: calc(-1 * var(--cms-pad));
+    }
+}
+
+@media (max-width: 1023px) {
+    .cms-section {
+        padding-top:    var(--cms-pt-mob, 70px);
+        padding-bottom: var(--cms-pb-mob, 140px);
+    }
+
+    .cms-title {
+        margin-bottom: 40px;
+
+        p:first-child {
+            text-indent: 60px;
+        }
+
+        p, h1, h2, h3 {
+            font-size: clamp(22px, 5vw, 36px);
+        }
+    }
+
+    .cms-row {
+        flex-direction: column;
+        gap:            0;
+    }
+
+    // Map above offices on mobile — mirrors ms-map order: -1
+    .cms-map {
+        order:         -1;
+        width:         calc(100% + var(--cms-pad));
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .cms-offices {
+        width:       100%;
+        margin-left: 0;
+        padding-top: 0;
+    }
+}

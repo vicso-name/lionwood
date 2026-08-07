@@ -1,0 +1,334 @@
+// =============================================================================
+// Block: Single Deliver Solutions
+// File : blocks/single-deliver-solutions/_single-deliver-solutions.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.sds-section {
+  background-color: var(--color-background);
+  padding-top:    var(--sds-pt, 100px);
+  padding-bottom: var(--sds-pb, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+.sds-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+
+// -----------------------------------------------------------------------------
+// Heading — 590px wide, left-aligned
+// -----------------------------------------------------------------------------
+
+.sds-heading {
+  width: 666px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);           // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: var(--letter-spacing-h2); // -1.68px
+  text-transform: uppercase;
+}
+
+.sds-heading__top    { color: #848588; position: relative; left: 110px;  }
+.sds-heading__bottom { color: var(--color-black); }
+
+
+// -----------------------------------------------------------------------------
+// Scroll animations — heading (JS adds .sds-anim to guard; .is-visible reveals)
+// -----------------------------------------------------------------------------
+
+.sds-heading.sds-anim .sds-heading__top,
+.sds-heading.sds-anim .sds-heading__bottom {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sds-heading.sds-anim .sds-heading__bottom {
+  transition-delay: 0.15s;
+}
+
+.sds-heading.is-visible .sds-heading__top,
+.sds-heading.is-visible .sds-heading__bottom {
+  opacity: 1;
+  transform: none;
+}
+
+
+// -----------------------------------------------------------------------------
+// Desktop grid — 14 cols × N rows, 93px cells, 4px gap
+// -----------------------------------------------------------------------------
+
+.sds-grid {
+  // Default (≥1380px, where the container has 0 side padding and 1360px of
+  // room — see the fluid override below for why the shrink stops here).
+  --sds-unit: 93px;
+
+  display: grid;
+  grid-template-columns: repeat(14, var(--sds-unit));
+  grid-template-rows: repeat(var(--sds-grid-rows, 3), var(--sds-unit));
+  gap: 4px;
+  // Center grid within container on wide screens
+  justify-content: center;
+}
+
+// Empty cell
+.sds-cell {
+  width: var(--sds-unit, 93px);
+  height: var(--sds-unit, 93px);
+  border-radius: 8px;
+  border: 1.071px solid #E9E9E9;
+  box-sizing: border-box;
+}
+
+// Content cell — spans 3×3
+.sds-cell--content {
+  width: auto;
+  height: auto;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+
+// -----------------------------------------------------------------------------
+// Card — 287×287px, inside the 3×3 content cell
+// -----------------------------------------------------------------------------
+
+.sds-card {
+  width: calc(var(--sds-unit, 93px) * 3 + 8px);
+  height: calc(var(--sds-unit, 93px) * 3 + 8px);
+  padding: 20px;
+  border-radius: 8px;
+  background: #E9E9E9;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  // Hard safety net: if title/desc clamps ever miscompute by a few px
+  // (percentage line-height rounding, long unbroken words), nothing escapes
+  // the fixed card height instead of visibly overflowing past its border.
+  overflow: hidden;
+}
+
+// Number badge — red circle
+.sds-card__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary); // #C83030
+  flex-shrink: 0;
+  // Derived from card height, not a flat 54px: with a title clamped to its
+  // full 2 lines AND a description clamped to its full 4 lines (the actual
+  // worst case — see the "Context Mapping & System Overview" card), fixed
+  // content (padding + badge + title + desc) needs 231.6px, leaving
+  // (card height - 233px) of headroom for this margin — 54px at the
+  // default 287px card, shrinking in lockstep as --sds-unit shrinks the
+  // card between 1268-1379px (see the fluid grid media query below) so the
+  // clamped text never gets taller than the card and silently cropped by
+  // .sds-card's overflow: hidden.
+  margin-bottom: calc(var(--sds-unit, 93px) * 3 + 8px - 233px);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+  text-align: center;
+}
+
+// Title
+.sds-card__title {
+  margin: 0 0 10px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  // Unitless, not 140% — percentage line-height combined with line-clamp
+  // computes the clamp box height inconsistently across browsers (the clamp
+  // rounds line-height differently than normal layout does), which is what
+  // let a sliver of a 3rd line peek through without the ellipsis on long
+  // titles. Unitless avoids that mismatch and still scales with font-size.
+  line-height: 1.4;
+  color: var(--color-black);
+  // Prevent overflow if title is too long
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  // Flex items default to min-height:auto, which lets them grow past their
+  // clamp box instead of being clipped by it — this line is required, not
+  // decorative, for the clamp to actually take effect inside .sds-card's flex column.
+  min-height: 0;
+}
+
+// Description
+.sds-card__desc {
+  margin: 0;
+  width: 236px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2; // see .sds-card__title note on unitless vs percentage
+  color: #3D3F43;
+  // Clamp to prevent overflow
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  min-height: 0; // see .sds-card__title note on flex-item clamp clipping
+}
+
+
+// -----------------------------------------------------------------------------
+// Scroll animations — cards (desktop only; JS adds .sds-anim + transition-delay)
+// -----------------------------------------------------------------------------
+
+@media (min-width: 1268px) {
+  .sds-card.sds-anim {
+    opacity: 0;
+    transform: translateY(36px);
+    transition:
+      opacity  0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .sds-card.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Fluid grid — 1268px to 1379px
+//
+// .sds-grid is a fixed-px 14×93px grid (1354px wide) that only fits the
+// container once --container-padding drops to 0 at 1380px (see
+// _tokens.scss). Below that, even at common laptop widths (1366px,
+// 1280px), the fixed grid would overflow the container and get cropped by
+// .sds-section's overflow: hidden.
+//
+// Instead of switching to the mobile Swiper that early, shrink --sds-unit
+// to fit — but only down to 84px (card 260px), because that's the exact
+// size already validated for the mobile Swiper card (see the 1267px
+// breakpoint below): margin-bottom, padding and the line-clamped title/desc
+// are proven to fit at 260px, so this fluid zone can never produce a card
+// smaller — and therefore never a text overflow — than what already ships.
+// Below 1268px there isn't enough room left for even a 260px card, so the
+// Swiper takes over there instead of shrinking further.
+// -----------------------------------------------------------------------------
+
+@media (min-width: 1268px) and (max-width: 1379px) {
+  .sds-grid {
+    --sds-unit: clamp(84px, calc((min(100vw, 1360px) - 92px) / 14), 93px);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Mobile Swiper — hidden on desktop, same pattern as Single Service Definition
+// -----------------------------------------------------------------------------
+
+.sds-swiper-wrap {
+  display: none;
+}
+
+.sds-swiper {
+  overflow: visible !important;
+}
+
+.sds-slide {
+  width: 287px;
+  height: auto;
+  // gap between slides set to 16px in Swiper JS config
+}
+
+// Numeric counter
+.sds-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.sds-counter__current {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: var(--color-black);
+}
+
+.sds-counter__sep,
+.sds-counter__total {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 130%;
+  color: rgb(17 19 25 / 40%);
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// 1267px, not 1023px: the desktop grid now shrinks fluidly down to 1268px
+// (see the "Fluid grid" media query above) before handing off to Swiper, so
+// the cutover only needs to happen once even that shrink runs out of room.
+@media (max-width: 1267px) {
+  .sds-section {
+    padding-top:    var(--sds-pt-mob, 70px);
+    padding-bottom: var(--sds-pb-mob, 70px);
+  }
+
+  .sds-heading {
+    width: 100%;
+    font-size: clamp(32px, 7vw, 56px);
+    margin-bottom: 40px;
+  }
+
+  // Hide desktop grid, show swiper
+  .sds-grid        { display: none; }
+  .sds-swiper-wrap { display: block; }
+
+  // Cards in swiper — slightly smaller on mobile
+  .sds-slide { width: 260px; } // must match card width to keep spaceBetween = 16px
+
+  .sds-card {
+    width: 260px;
+    height: 260px;
+  }
+
+  .sds-card__num {
+    // Same overflow math as desktop (see .sds-card__num comment above),
+    // recomputed for the 260px mobile card: worst case only leaves ~28px.
+    margin-bottom: 26px;
+  }
+}
+
+@media (max-width: 576px) {
+    .sds-heading{
+        width: 170px;
+    }
+    .sds-heading__top {
+        color: #848588;
+        position: relative;
+        left: 65px;
+    }
+}

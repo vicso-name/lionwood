@@ -1,0 +1,557 @@
+// =============================================================================
+// Block: Industries Section
+// File : blocks/industries-section/_industries-section.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Section shell — full screen
+// -----------------------------------------------------------------------------
+
+.ind-section {
+  position: relative;
+  background: var(--color-primary); // #C83030
+  border-radius: 60px 60px 0 0;
+  padding-top:    var(--ind-pt, 100px);
+  padding-bottom: var(--ind-pb, 100px);
+  display: flex;
+  flex-direction: column;
+  // Full-screen per client spec; GSAP ScrollTrigger pins this element while
+  // scrolling through it (see industries_section.js). Cancelled on mobile
+  // by the existing `min-height: unset` in the responsive block below.
+  min-height: 100vh;
+
+  // Toggled by industries_section.js in lockstep with .hdr--hidden: while
+  // actually pinned full-viewport (header hidden, nothing above this section
+  // to round away from), rounded top corners just leave the page background
+  // peeking through at the very top edge. Squared off only for that duration.
+  &.ind-section--pinned {
+    border-radius: 0;
+  }
+}
+
+.ind-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  // Centers the header+slider+footer group as a whole within the full-screen
+  // section, instead of the group sitting at the top with .ind-section__footer's
+  // margin-top: auto (below) shoving all the leftover space into one gap
+  // right above the footer — which read as top-heavy.
+  justify-content: center;
+}
+
+
+// -----------------------------------------------------------------------------
+// Header row: heading + description + progress
+// -----------------------------------------------------------------------------
+
+.ind-section__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+// Heading block — width 528px
+.ind-section__heading {
+  // Now an <h2> (was a plain div) — zero the UA default heading margin so
+  // it doesn't add unwanted spacing inside .ind-section__header's flex row.
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 528px;
+  flex-shrink: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  text-transform: uppercase;
+  color: #fff;
+}
+
+// Bottom line of the heading — shifted right on desktop.
+// .ind-section__heading has a fixed 528px width (can't change), and by
+// default (align-items: stretch, the flex column default) this line would
+// stretch to fill all 528px — text-align: right then aligned it to that
+// far edge, way past where the text actually needs to sit. align-self:
+// flex-start makes the box shrink to the text's own width instead, and
+// transform shifts that shrunk box right by a fixed amount.
+.ind-section__title-bottom {
+  align-self: flex-start;
+  transform: translateX(90px);
+}
+
+.ind-section__title-top{
+    width: 195px;
+}
+
+// Description — 439px
+.ind-section__description {
+  width: 439px;
+  flex-shrink: 0;
+  margin: 0;
+  align-self: flex-end;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #F7F7F7;
+  opacity: 0.8;
+}
+
+
+// -----------------------------------------------------------------------------
+// Progress circle
+// -----------------------------------------------------------------------------
+
+.ind-progress {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.ind-progress__svg {
+  width: 60px;
+  height: 60px;
+}
+
+.ind-progress__text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: 350;
+  line-height: 140%;
+  color: #fff;
+  text-align: center;
+}
+
+
+// -----------------------------------------------------------------------------
+// Slider
+// -----------------------------------------------------------------------------
+
+.ind-slider {
+  position: relative;
+  margin-bottom: 80px;
+  // Fixed design height (card is max-width: 600 / height: 280, not
+  // stretched) — .ind-section__footer's existing margin-top: auto still
+  // pushes the footer to the bottom of the now-full-screen section, so
+  // extra vertical space collects as a gap below the slider, not by
+  // growing the slider/card themselves.
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Each slide — always absolute, opacity-switched — no layout shift.
+// height: 100% (of .ind-slider), not a hardcoded px value, so it tracks
+// .ind-slider's height automatically at every short-viewport tier below.
+// top: 0, not vertically centered — this is what makes that safe: since
+// .ind-slide always matches .ind-slider's own (always explicit, bounded)
+// height exactly, top-anchoring == centered with no overflow risk, unlike
+// the earlier translate(-50%,-50%) version which broke when .ind-slider's
+// flex:1 height shrank below the slide's fixed height.
+.ind-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  // translateX(-50%) is the horizontal centering (paired with left: 50%) —
+  // always present. scale() is the entrance effect, animated alongside it in
+  // one transform so centering never has to be re-derived on transition end.
+  transform: translateX(-50%) scale(0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    // Grows in to full size instead of just cross-fading in place.
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+// Image card — fixed design size, centered in the slider
+.ind-slide__card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 10%);
+}
+
+.ind-slide__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Subtle dark overlay for readability of text on image
+.ind-slide__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.ind-slide__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgb(255 255 255 / 8%);
+}
+
+// Overlay: number + name — top left
+.ind-slide__overlay-top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ind-slide__num {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.ind-slide__name {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h4); // 21px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+// Arrow button — bottom right
+.ind-slide__arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  z-index: 1;
+  transform: rotate(-90deg);
+  text-decoration: none;
+  transition: background-color var(--transition-base) ease,
+              transform var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #fff;
+    transform: rotate(-90deg) scale(1.08);
+    outline: none;
+  }
+  svg{
+    transform: rotate(90deg);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Footer row: thumbnails + CTA
+// -----------------------------------------------------------------------------
+
+.ind-section__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  // No margin-top: auto — .ind-section__container centers the group instead
+  // of pinning this row to the bottom (see justify-content: center above).
+}
+
+// .decor-bottom (see _general.scss) is a 60px-tall cap, position: absolute
+// at the section's own bottom edge — it doesn't consume layout space, so it
+// can sit arbitrarily close to (or overlap) the footer depending on
+// padding-bottom alone. Reserve the required clearance directly on the
+// footer instead, independent of the ACF padding_bottom value and of the
+// short-viewport tiers above (which shrink padding-bottom down to 40px) —
+// this guarantees the gap everywhere those would otherwise undercut it.
+.ind-section:has(.decor-bottom) .ind-section__footer {
+  margin-bottom: 140px; // 60px decor height + 80px required visual gap
+}
+
+// Thumbnails
+.ind-thumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ind-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.5;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity 0.3s ease;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgb(255 255 255 / 15%);
+  }
+
+  // Active state — full opacity + white border ring
+  &.is-active {
+    opacity: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -5px;           // (88 - 80) / 2 = 4px + 1px border
+      border-radius: 12px;
+      border: 1px solid #fff;
+      pointer-events: none;
+    }
+  }
+
+  &:hover:not(.is-active) {
+    opacity: 0.75;
+  }
+}
+
+// CTA block
+.ind-section__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.ind-section__cta-label {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 140%;
+  color: #fff;
+  text-align: right;
+}
+
+.ind-section__cta-btn {
+  display: flex;
+  height: 46px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 69px;
+  border: 1px solid #fff;
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background: rgb(255 255 255 / 10%);
+    outline: none;
+  }
+}
+
+
+// =============================================================================
+// Short-viewport desktop (laptops) — shrink vertical rhythm so the whole
+// block (heading + image + thumbnails + Learn More) fits in one screen.
+//
+// On a 100vh full-screen pinned section, anything past the fold is
+// literally unreachable — the page scroll drives slide changes, not an
+// internal scrollbar, so there's no way for the user to scroll down to
+// see a clipped/overflowed footer. Rather than one-off breakpoint tuning,
+// this shrinks padding/gaps/image/heading in two height tiers (still
+// width-gated to >=1024px — mobile is untouched) so the section always
+// fits, on any laptop screen, without the ACF padding fields or the
+// design's fixed 600x280 image needing to change.
+//
+// padding-top has a hard 84px floor (not shrunk via the ACF var like
+// padding-bottom is) — the site nav is `.hdr { position: sticky; top: 0;
+// z-index: 1000 }`, ~72px tall. While pinned, .ind-section's own top also
+// sits at viewport y:0 (GSAP pin, `start: 'top top'`), so anything placed
+// higher than the nav's height renders BEHIND it, permanently hidden for
+// the whole pinned scroll range. Confirmed by measurement: 60px top
+// padding clipped the heading's first line by ~12px, 32px clipped it by
+// ~40px (nearly the whole line). 84px = nav height + a bit of breathing
+// room; verify against `.hdr`'s real height if that ever changes.
+// =============================================================================
+
+@media (min-width: 1024px) and (max-height: 860px) {
+  .ind-section {
+    padding-top:    84px;
+    padding-bottom: min(var(--ind-pb, 100px), 60px);
+  }
+
+  .ind-section__header {
+    margin-bottom: 48px;
+  }
+
+  .ind-slider {
+    margin-bottom: 48px;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 700px) {
+  .ind-section {
+    padding-top:    84px;
+    padding-bottom: min(var(--ind-pb, 100px), 40px);
+  }
+
+  .ind-section__heading {
+    font-size: 36px;
+  }
+
+  .ind-section__header {
+    margin-bottom: 24px;
+  }
+
+  .ind-slider {
+    height: 140px;
+    margin-bottom: 24px;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1023px) {
+  .ind-section {
+    padding-top:    var(--ind-pt-mob, 70px);
+    padding-bottom: var(--ind-pb-mob, 70px);
+    border-radius: 30px 30px 0 0;
+    min-height: unset;
+  }
+
+  .ind-section__header {
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .ind-section__heading {
+    width: 100%;
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .ind-section__description {
+    width: 100%;
+    align-self: auto;
+  }
+
+  .ind-section__title-bottom {
+    text-align: left;
+    // Cancel the desktop translateX(195px) shift — mobile keeps title-bottom
+    // flush left (then re-indented by margin-left at the <=576px tier below).
+    transform: none;
+  }
+
+  .ind-progress {
+    // Move to top right via order
+    order: -1;
+    margin-left: auto;
+  }
+
+  .ind-slide,
+  .ind-slide.is-active {
+    width: 100%;
+    max-width: none;
+    height: 220px;
+  }
+
+  .ind-slider {
+    height: 220px;
+    margin-bottom: 32px;
+  }
+
+  .ind-slide__card {
+    width: 100%;
+    height: 220px;
+  }
+
+  .ind-section__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .ind-section__cta {
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .ind-section__cta-label {
+    text-align: left;
+    width: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .ind-thumbs {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .ind-thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ind-section__title-bottom {
+    margin-left: 70px;
+  }
+}

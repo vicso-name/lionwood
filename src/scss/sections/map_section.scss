@@ -1,0 +1,187 @@
+// =============================================================================
+// Block: Map Section
+// =============================================================================
+
+// Local padding token: ensures minimum 20px gap when the container
+// fills the viewport (no centering margin). Scoped to this section only.
+.ms-section {
+  --ms-pad: var(--container-padding); // 0px at desktop default
+}
+
+@media (max-width: 1360px) {
+  .ms-section {
+    --ms-pad: 20px;
+  }
+}
+
+
+// Section shell
+.ms-section {
+  background-color: var(--color-background);
+  padding-top:    var(--ms-pt, 100px);
+  padding-bottom: var(--ms-pb, 100px);
+  overflow: hidden; // clips map that bleeds past the right viewport edge
+}
+
+.ms-section__container {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--ms-pad);
+}
+
+
+// -----------------------------------------------------------------------------
+// Title
+// -----------------------------------------------------------------------------
+
+.ms-title {
+  max-width: 1195px;
+  margin-bottom: 60px;
+
+  p:first-child {
+    text-indent: 140px;
+  }
+
+  p, h1, h2, h3 {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: 36px;
+    font-weight: var(--font-weight-medium);
+    line-height: normal;
+    color: #000;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Content row: text left | map right
+// -----------------------------------------------------------------------------
+
+.ms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+// Left column — fixed 303px, pushed right by auto margin so it sits
+// adjacent to the map's left edge. Free space lands to the left of the text.
+.ms-text {
+  width: 303px;
+  flex-shrink: 0;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  padding-top: 20px;
+}
+
+.ms-text__para {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2);
+  font-weight: var(--font-weight-regular);
+  line-height: 120%;
+  color: #000;
+  opacity: 0.8;
+}
+
+// Map: fixed 968px natural width, pushed to the right via margin-left:auto.
+//
+// How the bleed works:
+//   margin-left:auto absorbs all free space in the row, pushing the map
+//   flush to the container right edge.
+//   The negative margin-right rules below "donate" extra free space equal
+//   to the centering/padding offset, causing the auto margin to push the
+//   map exactly to the VIEWPORT right edge instead of the container edge.
+//   When the viewport is too narrow for text+map to fit, free space = 0,
+//   margin-left:auto collapses, and the map overflows naturally.
+//   The section's overflow:hidden clips the overflow at the viewport edge.
+.ms-map {
+  flex: none;
+
+  img {
+    display: block;
+    width: 968px;
+    max-width: none; // allow natural 968px even when parent is narrower
+    height: auto;
+  }
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+// ── ≥1600px ───────────────────────────────────────────────────────────────────
+// No bleed. Map flush to container right (margin-left:auto). Contained look.
+
+
+// ── 1361px–1599px: bleed = centering offset ───────────────────────────────────
+// container-padding = 0px (viewport > 1024px token threshold).
+// margin-right = -(centering-offset) = (container-max-width − 100vw) / 2
+// The auto margin then pushes map right by: free-space + centering-offset,
+// landing map's right edge exactly at the viewport right edge.
+
+@media (min-width: 1361px) and (max-width: 1599px) {
+  .ms-map {
+    margin-right: calc((var(--container-max-width) - 100vw) / 2);
+  }
+}
+
+
+// ── ≤1360px: bleed = container padding ────────────────────────────────────────
+// container fills the viewport; ms-pad = 20px.
+// At viewports where text+map fits (≥ ~1311px): map lands at viewport right edge.
+// At narrower viewports: auto margin collapses, map overflows right and is clipped.
+
+@media (max-width: 1360px) {
+  .ms-map {
+    margin-right: calc(-1 * var(--ms-pad));
+  }
+}
+
+
+// ── ≤1023px: column layout (title → map → text) ───────────────────────────────
+
+@media (max-width: 1023px) {
+  .ms-section {
+    padding-top:    var(--ms-pt-mob, 70px);
+    padding-bottom: var(--ms-pb-mob, 70px);
+  }
+
+  .ms-title {
+    margin-bottom: 40px;
+
+    p:first-child {
+      text-indent: 60px;
+    }
+
+    p, h1, h2, h3 {
+      font-size: clamp(22px, 5vw, 36px);
+    }
+  }
+
+  .ms-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  // Map above text; responsive width bleeds to viewport right edge.
+  // margin-right: -ms-pad comes from the ≤1360px rule above.
+  .ms-map {
+    order: -1;
+    width: calc(100% + var(--ms-pad)); // expand to cover right padding
+    margin-bottom: 40px;
+
+    img {
+      width: 100%; // responsive in column layout, not fixed 968px
+    }
+  }
+
+  .ms-text {
+    width: 100%;
+    margin-left: 0; // cancel the auto margin from base style
+    gap: 24px;
+    padding-top: 0;
+  }
+}

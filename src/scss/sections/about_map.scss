@@ -1,0 +1,239 @@
+// =============================================================================
+// Block: About Map Section  (prefix: ams-)
+// Based 1-to-1 on map-section (ms-) patterns.
+// Left col replaced: badge + stats list with counter animation.
+// =============================================================================
+
+// Local padding token — mirrors ms-section pattern exactly
+.ams-section {
+    --ams-pad: var(--container-padding);
+}
+
+@media (max-width: 1360px) {
+    .ams-section {
+        --ams-pad: 20px;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ams-section {
+    background-color: var(--color-background, #F7F7F7);
+    padding-top:      var(--ams-pt, 100px);
+    padding-bottom:   var(--ams-pb, 100px);
+    overflow:         hidden;
+    position:         relative;
+}
+
+.ams-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--ams-pad);
+}
+
+// -----------------------------------------------------------------------------
+// Title — mirrors ms-title exactly
+// -----------------------------------------------------------------------------
+
+.ams-title {
+    max-width:     1195px;
+    margin-bottom: 60px;
+
+    p:first-child {
+        text-indent: 140px;
+    }
+
+    p, h1, h2, h3 {
+        margin:      0;
+        font-family: var(--font-primary);
+        font-size:   36px;
+        font-weight: var(--font-weight-medium);
+        line-height: normal;
+        color:       #000;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Content row: stats left | map right
+// -----------------------------------------------------------------------------
+
+.ams-row {
+    display:     flex;
+    align-items: flex-start;
+    gap:         50px;
+}
+
+// -----------------------------------------------------------------------------
+// Left col — stats (mirrors ms-text width/margin pattern)
+// -----------------------------------------------------------------------------
+
+.ams-stats {
+    width:          345px; // matches divider width from design spec
+    flex-shrink:    0;
+    margin-left:    auto; // pushes stats to be adjacent to map left edge
+    display:        flex;
+    flex-direction: column;
+    padding-top:    20px;
+}
+
+// Badge label
+.ams-stats__label {
+    display:         inline-flex;
+    padding:         5px 15px 6px;
+    justify-content: center;
+    align-items:     center;
+    gap:             10px;
+    border-radius:   8px;
+    background:      #E9E9E9;
+    color:           #111319;
+    font-family:     var(--font-primary);
+    font-size:       16px;
+    font-weight:     500;
+    line-height:     1.4;
+    margin-bottom:   36px;
+    white-space:     nowrap;
+    width:           fit-content;
+}
+
+// Stats list
+.ams-stats__list {
+    list-style: none;
+    margin:     0;
+    padding:    0;
+}
+
+.ams-stats__item {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             12px;
+    padding:         16px 0;
+    position:        relative;
+
+    // Separator
+    &::after {
+        content:    '';
+        position:   absolute;
+        bottom:     0;
+        left:       0;
+        width:      100%;
+        height:     1px;
+        background: #000;
+        opacity:    0.2;
+    }
+
+    // Last item also has border
+}
+
+.ams-stats__value-wrap {
+    flex-shrink: 0;
+}
+
+.ams-stats__value {
+    display:        block;
+    color:          var(--color-primary, #C83030);
+    font-family:    var(--font-primary);
+    font-size:      56px;
+    font-weight:    500;
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    // Prevent layout shift during animation
+    min-width:      4ch;
+}
+
+.ams-stats__descriptor {
+    color:       #111319;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align:  right;
+}
+
+// -----------------------------------------------------------------------------
+// Map — identical to ms-map
+// -----------------------------------------------------------------------------
+
+.ams-map {
+    flex: none;
+
+    img {
+        display:   block;
+        width:     968px;
+        max-width: none;
+        height:    auto;
+    }
+}
+
+// =============================================================================
+// Responsive — mirrors ms- breakpoints exactly
+// =============================================================================
+
+// ── 1361px–1599px ─────────────────────────────────────────────────────────────
+@media (min-width: 1361px) and (max-width: 1599px) {
+    .ams-map {
+        margin-right: calc((var(--container-max-width) - 100vw) / 2);
+    }
+}
+
+// ── ≤1360px ───────────────────────────────────────────────────────────────────
+@media (max-width: 1360px) {
+    .ams-map {
+        margin-right: calc(-1 * var(--ams-pad));
+    }
+}
+
+// ── ≤1023px: column layout (map → stats) ──────────────────────────────────────
+@media (max-width: 1023px) {
+    .ams-section {
+        padding-top:    var(--ams-pt-mob, 70px);
+        padding-bottom: var(--ams-pb-mob, 70px);
+    }
+
+    .ams-title {
+        margin-bottom: 40px;
+
+        p:first-child {
+            text-indent: 60px;
+        }
+
+        p, h1, h2, h3 {
+            font-size: clamp(22px, 5vw, 36px);
+        }
+    }
+
+    .ams-row {
+        flex-direction: column;
+        gap:            0;
+    }
+
+    // Map above stats
+    .ams-map {
+        order:         -1;
+        width:         calc(100% + var(--ams-pad));
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .ams-stats {
+        width:       100%;
+        margin-left: 0;
+        padding-top: 0;
+    }
+
+    .ams-stats__value {
+        font-size: clamp(36px, 8vw, 56px);
+    }
+}
+
+@media (max-width: 640px) {
+    .ams-stats__value {
+        font-size: 40px;
+    }
+}

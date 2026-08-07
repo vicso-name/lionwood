@@ -1,0 +1,159 @@
+// =============================================================
+// Design Tokens — single source of truth for all design values
+// =============================================================
+//
+// All values are derived from actual usage in the codebase.
+// Do NOT add values that are not yet used — add them when you need them.
+//
+// Usage in CSS:   color: var(--color-primary);
+// Usage in SCSS:  Use $variables from _variables.scss, which now
+//                 reference these custom properties for compatibility.
+//
+// To add a new token:
+//   1. Add the CSS custom property here under the appropriate section
+//   2. If a SCSS $variable alias is needed, add it to _variables.scss
+//   3. Reference var(--token-name) in component SCSS files
+// =============================================================
+
+:root {
+
+  // ---------------------------------------------------------------------------
+  // Colors
+  // ---------------------------------------------------------------------------
+
+  --color-primary:          #C83030;
+  --color-primary-hover:    #A82828;
+  --color-black:            #111319;
+  --color-total-black:      #000000;
+  --color-black-hover:      #3B3F4B;
+  --color-background:       #F7F7F7;
+  --color-background-alt:   #E9E9E9;
+  --color-background-hover: #DADADA;
+  --color-text:             #3D3F43;
+  --color-text-muted:       #848588;
+  --color-border-black:     rgb(0 0 0 / 20%);
+  --color-border-white:     rgb(255 255 255 / 20%);
+  --color-white:            #F7F7F7;
+
+  // Aliases consumed by _general.scss — do not remove or rename these.
+  --c-text:  var(--color-text);
+  --c-color: var(--color-primary);
+
+  // ---------------------------------------------------------------------------
+  // Typography — Font stack
+  // ---------------------------------------------------------------------------
+
+  --font-primary: "PP Neue Montreal", "Arial", sans-serif;
+
+  // ---------------------------------------------------------------------------
+  // Typography — Desktop scale
+  // ---------------------------------------------------------------------------
+
+  --font-size-h1:           120px;
+  --line-height-h1:         100%;
+  --letter-spacing-h1:      -0.02em;
+
+  --font-size-h1-small:     56px;
+  --line-height-h1-small:   110%;
+  --letter-spacing-h1-small: -0.02em;
+
+  --font-size-h2:           56px;
+  --line-height-h2:         110%;
+  --letter-spacing-h2:      -0.02em;
+
+  --font-size-h3:           32px;
+  --line-height-h3:         120%;
+
+  --font-size-h4:           21px;
+  --line-height-h4:         140%;
+
+  --font-size-body-1:       18px;
+  --line-height-body-1:     130%;
+
+  --font-size-body-2:       16px;
+  --line-height-body-2:     140%;
+
+  --font-size-body-3:       14px;
+  --line-height-body-3:     120%;
+
+  --font-size-btn-big:      16px;
+  --line-height-btn:        100%;
+
+  --font-size-btn-small:    14px;
+  --letter-spacing-btn-small: -0.01em;
+
+  --font-size-ticker:       76px;
+  --line-height-ticker:     100%;
+  --letter-spacing-ticker:  -0.03em;
+
+  // Legacy aliases — referenced by _general.scss; kept for backward compatibility
+  --font-size-base: 16px;
+  --font-size-sm:   14px;
+  --font-size-lg:   18px;
+  --font-size-xl:   24px;
+  --font-size-h5:   14px;
+
+  --line-height-base:   1.5;
+  --line-height-tight:  1.04;
+  --line-height-snug:   1.18;
+  --line-height-normal: 1.34;
+
+  // ---------------------------------------------------------------------------
+  // Font weights
+  // ---------------------------------------------------------------------------
+
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  // ---------------------------------------------------------------------------
+  // Spacing (4px base scale)
+  // ---------------------------------------------------------------------------
+
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  // ---------------------------------------------------------------------------
+  // Layout
+  // ---------------------------------------------------------------------------
+
+  --container-max-width: 1360px;
+  --container-padding:    0px;
+  --section-padding-y:    60px;
+
+  // ---------------------------------------------------------------------------
+  // Transitions
+  // ---------------------------------------------------------------------------
+
+  --transition-base: 0.3s;
+  --transition-fast: 0.15s;
+}
+
+// ---------------------------------------------------------------------------
+// Typography — Mobile overrides
+// ---------------------------------------------------------------------------
+
+@media (max-width: 1379px) {
+  :root {
+    --container-padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-h1: 36px;
+    --font-size-h2: 40px;
+    --letter-spacing-h2: -0.03em;
+    --font-size-h3: 30px;
+    --font-size-h4: 20px;
+  }
+}

@@ -1,0 +1,371 @@
+// =============================================================================
+// Block: Single Service Hero
+// File : blocks/single-service-hero/_single-service-hero.scss
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Load-in animation
+// JS adds .is-loaded to .ssh-section; each .ssh-anim reads --anim-delay
+// -----------------------------------------------------------------------------
+
+.ssh-anim {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--anim-delay, 0ms);
+
+  .ssh-section.is-loaded & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.ssh-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top:    var(--ssh-pt, 80px);
+  padding-bottom: var(--ssh-pb, 80px);
+  overflow: visible; // allow decorative image to overflow upward
+  border-radius: 20px 20px 0 0;
+  background-attachment: fixed; // parallax effect on desktop
+}
+
+.ssh-section__container {
+  position: static;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  min-height: 500px;
+  display: flex;
+  align-items: stretch;
+}
+
+
+// -----------------------------------------------------------------------------
+// Body — two columns: content left, image right
+// -----------------------------------------------------------------------------
+
+.ssh-body {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+
+// -----------------------------------------------------------------------------
+// Left content column
+// Heading is full width; description + CTA are wrapped in a 330px block
+// shifted ~25% from left (via margin-left on the inner wrap)
+// -----------------------------------------------------------------------------
+
+.ssh-content {
+  flex: 0 0 auto;
+  max-width: 666px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  align-self: center;
+}
+
+// Double heading — shrink-wrapped to its widest line (the title) so the
+// shorter prefix line can be centered against it, not the full column width
+.ssh-heading {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;    // center prefix relative to title
+  align-self: flex-start; // opt out of .ssh-content's stretch — shrink to content
+  max-width: 100%;
+  margin-bottom: 80px;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-h2); // 56px
+  font-weight: var(--font-weight-medium);
+  line-height: 110%;
+  letter-spacing: -1.68px;
+  text-transform: uppercase;
+}
+
+.ssh-heading__prefix {
+  // 60% opacity baked into the color's alpha channel, not the `opacity` property —
+  // .ssh-anim (this element also carries that class) animates `opacity` for the
+  // load-in fade and forces it to 1 once .is-loaded lands, which would clobber
+  // a plain `opacity: 0.6` here.
+  color: rgb(250 250 250 / 60%); // #848588 @ 60%
+}
+
+.ssh-heading__title {
+  color: #F7F7F7;
+}
+
+// Description + CTA wrap — 330px, shifted right ~25%
+.ssh-content-inner {
+  width: 400px;
+  margin-left: 25%;
+}
+
+// Wysiwyg description
+.ssh-description {
+  margin-bottom: 30px;
+
+  p, li {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-2); // 16px
+    font-weight: var(--font-weight-medium);
+    line-height: 140%;
+    color: #F7F7F7;
+    margin: 0 0 8px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  strong { font-weight: 700; }
+}
+
+// CTA button
+.ssh-cta-btn {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 20px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: var(--color-primary); // #C83030
+  text-decoration: none;
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-2); // 16px
+  font-weight: var(--font-weight-medium);
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #F7F7F7;
+
+  transition: background-color var(--transition-base) ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-primary-hover);
+    outline: none;
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Right column: decorative image
+// Absolute vs container (position:relative). bottom:59px = decor height(60) − 1
+// → image bottom = decor top at any section height (works when pb=0).
+// right:container-padding → flush with container content-right (= solution_hero).
+// Image overflows above section via overflow:visible on .ssh-section.
+// -----------------------------------------------------------------------------
+
+.ssh-image-wrap {
+  position: absolute;
+  // mirrors solution_hero: image stops at container right edge, not viewport right
+  // NOTE: do not rewrite as max(0px, calc(...)) — clean-css strips the unit off
+  // "0px" in production builds (dev builds skip minification), producing an
+  // unbalanced max(0, <length>) that some browsers drop as invalid, collapsing
+  // `right` back to auto. Use a plain value + explicit breakpoint instead.
+  right: 0;
+  bottom: 59px;
+  width: 598px;
+  pointer-events: none;
+  user-select: none;
+}
+
+// ≥1360px: container is capped at --container-max-width and centered, so the
+// image must be pulled in by the resulting side margin to stay container-flush.
+@media (min-width: 1360px) {
+  .ssh-image-wrap {
+    right: calc((100vw - var(--container-max-width)) / 2);
+  }
+}
+
+.ssh-image {
+  display: block;
+  width: 598px;
+  height: 786px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1350px) {
+  .ssh-image-wrap {
+    width: 480px;
+  }
+
+  .ssh-image {
+    width: 480px;
+    height: 631px;
+  }
+
+  .ssh-heading {
+    font-size: clamp(40px, 4vw, 56px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .ssh-section__container {
+    min-height: 560px;
+  }
+
+  .ssh-body {
+    gap: 40px;
+  }
+
+  .ssh-image-wrap {
+    width: 380px;
+  }
+
+  .ssh-image {
+    width: 380px;
+    height: 500px;
+  }
+
+  .ssh-heading {
+    font-size: clamp(32px, 3.8vw, 50px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ssh-section {
+    padding-top:    var(--ssh-pt-mob, 70px);
+    padding-bottom: 55px!important;
+    overflow: hidden;
+  }
+
+  .ssh-section__container {
+    min-height: 0;
+  }
+
+  .ssh-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .ssh-content {
+    max-width: 100%;
+    flex: none;
+    padding-bottom: 40px;
+  }
+
+  .ssh-content-inner {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .ssh-heading {
+    margin-bottom: 40px;
+    font-size: clamp(28px, 7vw, 44px);
+  }
+
+  .ssh-image-wrap {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+  }
+
+  .ssh-image {
+    width: 380px;
+    height: 500px;
+    max-width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 576px) {
+  .ssh-cta-btn {
+    width: 100%;
+  }
+
+  .ssh-image {
+    width: 300px;
+    height: 394px;
+  }
+}
+
+// =============================================================================
+// Image style: centered mode (833×483, flush right, vertically centered)
+// =============================================================================
+
+.ssh-body--centered {
+  align-items: center;
+
+  .ssh-image-wrap {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    flex: 1;
+    min-width: 0;
+    align-self: stretch;
+    margin-right: calc(-1 * var(--container-padding));
+  }
+
+  .ssh-image {
+    width: 100%;
+    height: 483px;
+    margin-bottom: 0;
+    object-fit: contain;
+    object-position: right;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+}
+
+// ≥1361px: container = 1360px centered; compensate (vw − 1360px) / 2 centering gap
+@media (min-width: 1361px) {
+  .ssh-body--centered .ssh-image-wrap {
+    margin-right: calc((var(--container-max-width) - 100vw) / 2);
+  }
+}
+
+@media (max-width: 1023px) {
+  .ssh-section--centered {
+    padding-bottom: 200px;
+  }
+
+  .ssh-body--centered {
+    flex-direction: column;
+
+    .ssh-image-wrap {
+      position: relative;
+      right: -80px;
+      bottom: auto;
+      width: calc(100% + var(--container-padding));
+      max-width: none;
+      margin-left: 0;
+      margin-right: calc(-1 * var(--container-padding));
+      transform: translateY(137px) rotate(45deg) !important;
+    }
+
+    .ssh-image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 833 / 483;
+      border-radius: 0;
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+    }
+  }
+}

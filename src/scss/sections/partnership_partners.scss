@@ -1,0 +1,110 @@
+// =============================================================================
+// Block: Partnership Partners  (prefix: pp-)
+// Based 1-to-1 on our-partners (op-).
+// Differences: bg #F7F7F7, no border-radius, logos as-is (no invert filter),
+// dividers and bars use dark color.
+// =============================================================================
+
+@keyframes pp-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(var(--pp-single-w, -50%)); }
+}
+
+// -----------------------------------------------------------------------------
+// Section shell
+// -----------------------------------------------------------------------------
+
+.pp-section {
+    position:       relative;
+    background:     #F7F7F7;
+    padding-top:    var(--pp-pt, 100px);
+    padding-bottom: var(--pp-pb, 100px);
+}
+
+// -----------------------------------------------------------------------------
+// Marquee — overflow hidden only on wrap, not section
+// -----------------------------------------------------------------------------
+
+.pp-marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    width:    100%;
+}
+
+.pp-track {
+    display:     flex;
+    align-items: center;
+    width:       max-content;
+    will-change: transform;
+    animation:   pp-marquee var(--pp-speed, 30s) linear infinite;
+
+    &:hover { animation-play-state: paused; }
+
+    @media (prefers-reduced-motion: reduce) {
+        animation:   none;
+        width:       100%;
+        overflow-x:  auto;
+        flex-wrap:   nowrap;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Logo item — no invert filter (light bg, logos shown as-is)
+// -----------------------------------------------------------------------------
+
+.pp-logo {
+    display:         flex;
+    height:          56px;
+    padding:         12px 28px;
+    justify-content: center;
+    align-items:     center;
+    flex-shrink:     0;
+
+    img {
+        display:    block;
+        max-width:  120px;
+        max-height: 32px;
+        width:      auto;
+        height:     auto;
+        object-fit: contain;
+        // No invert — logos shown in original colors on light bg
+        opacity:    0.85;
+        transition: opacity 0.2s ease;
+
+        &:hover { opacity: 1; }
+    }
+}
+
+.pp-divider {
+    flex-shrink: 0;
+    width:       1px;
+    height:      22px;
+    background:  #111319;
+    opacity:     0.15;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 768px) {
+    .pp-mask { width: 40px; }
+
+    .pp-logo {
+        height:  44px;
+        padding: 8px 20px;
+
+        img {
+            max-width:  80px;
+            max-height: 28px;
+        }
+    }
+
+    .pp-bars { margin-top: var(--pp-pb-mob, 48px); }
+
+    .pp-bar:nth-child(1) { width: 60%;  height: 1px;  }
+    .pp-bar:nth-child(2) { width: 75%;  height: 2px;  }
+    .pp-bar:nth-child(3) { width: 87%;  height: 3px;  }
+    .pp-bar:nth-child(4) { width: 95%;  height: 5px;  }
+    .pp-bar:nth-child(5) { width: 99%;  height: 24px; }
+}

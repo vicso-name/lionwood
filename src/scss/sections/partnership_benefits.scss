@@ -1,0 +1,148 @@
+// =============================================================================
+// Block: Partnership Benefits  (prefix: pb-)
+// =============================================================================
+
+.pb-section {
+    background-color: #F7F7F7;
+    padding-top:      var(--pb-pt, 50px);
+    padding-bottom:   var(--pb-pb, 70px);
+    position:         relative;
+}
+
+.pb-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Heading — 766px, two lines
+// =============================================================================
+
+.pb-heading {
+    display:        flex;
+    flex-direction: column;
+    width:          766px;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+    color:          var(--color-black, #111319);
+}
+
+.pb-heading__top {
+    // Left-aligned — default
+}
+
+.pb-heading__bottom {
+    opacity: 0.4;
+    padding-left: 15%; // shifted 15% right relative to top line
+}
+
+// =============================================================================
+// Grid — 3 columns
+// =============================================================================
+
+.pb-grid {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   20px;
+}
+
+// =============================================================================
+// Card
+// =============================================================================
+
+.pb-card {
+    display:        flex;
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+    padding:        20px;
+    border-radius:  20px;
+    background:     #E9E9E9;
+    box-sizing:     border-box;
+}
+
+// Icon — 60×60 with margin-bottom after
+.pb-card__icon {
+    flex-shrink:   0;
+    width:         60px;
+    height:        60px;
+    margin-bottom: 40px; // spec: margin-bottom 40px between icon and title
+
+    img {
+        display:    block;
+        width:      60px;
+        height:     60px;
+        object-fit: contain;
+    }
+}
+
+// Title
+.pb-card__title {
+    margin:      0;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   21px;
+    font-weight: var(--font-weight-medium, 500);
+    line-height: 1.4;
+}
+
+// Description
+.pb-card__desc {
+    margin:      0;
+    color:       #3D3F43;
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .pb-heading {
+        width:     auto;
+        font-size: clamp(36px, 5vw, 56px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .pb-section {
+        padding-top:    var(--pb-pt-mob, 40px);
+        padding-bottom: var(--pb-pb-mob, 40px);
+    }
+
+    .pb-heading {
+        font-size:     clamp(28px, 7vw, 48px);
+        margin-bottom: 40px;
+    }
+
+    .pb-heading__bottom {
+        padding-left: 10%;
+    }
+
+    .pb-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .pb-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pb-heading {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .pb-heading__bottom {
+        padding-left: 5%;
+    }
+}

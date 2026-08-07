@@ -1,0 +1,130 @@
+// =============================================================================
+// Block: Career Possibilities  (prefix: cp-)
+// =============================================================================
+
+@use '../partials/career_card';
+
+.cp-section {
+    background-color: #E9E9E9;
+    padding-top:      var(--cp-pt, 100px);
+    padding-bottom:   var(--cp-pb, 200px);
+    position:         relative;
+    overflow:         hidden;
+}
+
+.cp-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Heading — 576px, two lines
+// =============================================================================
+
+.cp-heading {
+    display:        flex;
+    flex-direction: column;
+    width:          576px;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+.cp-heading__top {
+    color:        #848588;
+    padding-left: 20%;
+}
+
+.cp-heading__bottom {
+    color: var(--color-black, #111319);
+}
+
+// =============================================================================
+// Desktop grid — 3 cols
+// =============================================================================
+
+.cp-grid--desktop {
+    display:               grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:                   20px;
+
+    .cg-card {
+        width:  auto;
+        height: 100%;
+    }
+}
+
+// =============================================================================
+// Mobile Swiper — hidden on desktop
+// =============================================================================
+
+.cp-grid--mobile {
+    display: none;
+}
+
+.cp-slide {
+    width:     85vw;
+    max-width: 440px;
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .cp-heading {
+        width:     auto;
+        font-size: clamp(36px, 5vw, 56px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .cp-section {
+        padding-top:    var(--cp-pt-mob, 70px);
+        padding-bottom: var(--cp-pb-mob, 140px);
+    }
+
+    .cp-heading {
+        font-size:     clamp(28px, 7vw, 56px);
+        margin-bottom: 40px;
+    }
+
+    .cp-heading__top {
+        padding-left: 15%;
+    }
+
+    .cp-grid--desktop {
+        display: none;
+    }
+
+    .cp-grid--mobile {
+        display:        block;
+        overflow:       hidden;
+        padding-inline: var(--container-padding);
+    }
+
+    .cp-slide .cg-card {
+        width:      100%;
+        min-height: 415px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cp-heading {
+        font-size: clamp(24px, 8vw, 40px);
+    }
+
+    .cp-heading__top {
+        padding-left: 10%;
+    }
+
+    .cp-slide {
+        width:     90vw;
+        max-width: none;
+    }
+}

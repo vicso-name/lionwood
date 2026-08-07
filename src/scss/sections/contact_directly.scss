@@ -1,0 +1,238 @@
+// =============================================================================
+// Block: Contact Directly  (prefix: cd-)
+// Red bg, two-line heading, 2-col contact cards grid
+// =============================================================================
+
+.cd-section {
+    background-color: var(--color-primary, #C83030);
+    padding-top:      var(--cd-pt, 100px);
+    padding-bottom:   var(--cd-pb, 200px);
+    position:         relative;
+    overflow:         hidden;
+}
+
+.cd-section__container {
+    max-width:      var(--container-max-width);
+    margin-inline:  auto;
+    padding-inline: var(--container-padding);
+}
+
+// =============================================================================
+// Heading — 580px, two lines
+// =============================================================================
+
+.cd-heading {
+    display:        flex;
+    flex-direction: column;
+    width:          580px;
+    margin-bottom:  60px;
+    font-family:    var(--font-primary);
+    font-size:      var(--font-size-h2, 56px);
+    font-weight:    var(--font-weight-medium, 500);
+    line-height:    1.1;
+    letter-spacing: -1.68px;
+    text-transform: uppercase;
+}
+
+.cd-heading__top {
+    color:        #F7F7F7;
+    opacity:      0.5;
+    padding-left: 25%; // centered relative to bottom line
+}
+
+.cd-heading__bottom {
+    color:   #F7F7F7;
+    opacity: 1;
+}
+
+// =============================================================================
+// Cards grid — 2 columns, 20px gap
+// =============================================================================
+
+.cd-grid {
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:                   20px;
+}
+
+// =============================================================================
+// Card
+// =============================================================================
+
+.cd-card {
+    min-height:     171px;
+    border-radius:  12px;
+    background:     #F7F7F7;
+    padding:        20px;
+    display:        flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing:     border-box;
+}
+
+// ── Row 1: contact person + description ──────────────────────────────────────
+
+.cd-card__top {
+    display:     flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap:         20px;
+    margin-bottom: 16px;
+}
+
+// Contact person block
+.cd-contact {
+    display:     flex;
+    align-items: center;
+    gap:         12px;
+    flex-shrink: 0;
+}
+
+.cd-contact__photo {
+    flex-shrink:         0;
+    width:               67px;
+    height:              67px;
+    border-radius:       12px;
+    background-size:     cover;
+    background-position: center top;
+    background-color:    #D1D1D1;
+}
+
+.cd-contact__info {
+    display:        flex;
+    flex-direction: column;
+    gap:            4px;
+    justify-content: center;
+}
+
+.cd-contact__name {
+    display:     block;
+    color:       #110A03;
+    font-family: var(--font-primary);
+    font-size:   18px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.cd-contact__position {
+    display:     block;
+    color:       #848588;
+    font-family: var(--font-primary);
+    font-size:   14px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+// Description text — right side when contact exists, left side when alone
+.cd-card__desc {
+    width:       226px;
+    flex-shrink: 0;
+    margin:      0;
+    color:       var(--color-black, #111319);
+    font-family: var(--font-primary);
+    font-size:   16px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align:  right;
+
+    // When no contact person — left-aligned, full width
+    &--alone {
+        width:      100%;
+        text-align: left;
+    }
+}
+
+// ── Row 2: email link ─────────────────────────────────────────────────────────
+
+.cd-card__email {
+    display:         flex;
+    align-items:     center;
+    gap:             8px;
+    text-decoration: none;
+    margin-top:      auto;
+
+    span {
+        color:       #000;
+        font-family: var(--font-primary);
+        font-size:   var(--font-size-h3, 32px);
+        font-weight: var(--font-weight-medium, 500);
+        line-height: 1.2;
+    }
+
+    svg {
+        display:     block;
+        flex-shrink: 0;
+        transition:  transform 0.2s ease;
+    }
+
+    &:hover svg {
+        transform: translate(2px, -2px);
+    }
+}
+
+// =============================================================================
+// Responsive
+// =============================================================================
+
+@media (max-width: 1200px) {
+    .cd-heading {
+        width:     auto;
+        font-size: clamp(36px, 5vw, 56px);
+    }
+
+    .cd-card__email span {
+        font-size: clamp(20px, 3vw, 32px);
+    }
+}
+
+@media (max-width: 1023px) {
+    .cd-section {
+        padding-top:    var(--cd-pt-mob, 70px);
+        padding-bottom: var(--cd-pb-mob, 140px);
+    }
+
+    .cd-heading {
+        font-size:     clamp(28px, 7vw, 56px);
+        margin-bottom: 40px;
+    }
+
+    .cd-heading__top {
+        padding-left: 15%;
+    }
+
+    .cd-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cd-card {
+        min-height: unset;
+    }
+
+    .cd-card__email span {
+        font-size: clamp(18px, 5vw, 28px);
+    }
+}
+
+@media (max-width: 640px) {
+    .cd-card__top {
+        flex-direction: column-reverse;
+        gap:            12px;
+    }
+
+    .cd-card__desc {
+        width:      100%;
+        text-align: left;
+    }
+
+    .cd-heading {
+        font-size:   clamp(24px, 8vw, 40px);
+    }
+
+    .cd-heading__top {
+        padding-left: 10%;
+    }
+
+    .cd-card__email span {
+        font-size: 22px;
+    }
+}
